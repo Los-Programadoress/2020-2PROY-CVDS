@@ -6,7 +6,7 @@ public class EquiposException extends Exception{
 
 	public EquiposException() {}
 
-	 public EquiposException(String message) {
+	public EquiposException(String message) {
 		 super(message);
 	}
 
