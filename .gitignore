@@ -19,4 +19,6 @@ target
 .classpath
 .DS_Store
 /nbproject/
+
 /bin/
+.vscode
