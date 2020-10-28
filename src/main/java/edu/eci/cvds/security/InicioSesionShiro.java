@@ -34,4 +34,5 @@ public class InicioSesionShiro implements InicioSesion{
     public boolean isLogged(){
         return SecurityUtils.getSubject().isAuthenticated();  
     }
+    
 }
