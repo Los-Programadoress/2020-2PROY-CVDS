@@ -1,13 +1,16 @@
 .#*
 *.log
+
 # Maven files
 target/
 target
 /target/
+
 # IntelliJ files
 .idea/
 .idea
 *.iml
+
 # Eclipse files
 .settings/
 .settings
