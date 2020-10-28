@@ -5,6 +5,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
     <properties resource="config.properties"></properties>
     
+    <typeAliases>
+        <typeAlias type='edu.eci.cvds.entities.Usuario' alias='Usuario' />
+	</typeAliases>
+
     <environments default="test">
         <environment id="test">
             <transactionManager type="JDBC" />
@@ -16,4 +20,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
             </dataSource>
         </environment>
     </environments>
+
+    <mappers>
+        <mapper resource="mappers/UsuarioMapper.xml"></mapper>
+	</mappers>
+    
 </configuration>
