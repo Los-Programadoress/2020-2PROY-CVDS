@@ -8,6 +8,8 @@ import org.mybatis.guice.datasource.helper.JdbcHelper;
 
 import edu.eci.cvds.persistence.UsuarioDAO;
 import edu.eci.cvds.persistence.mybatisimpl.MyBATISUsuarioDAO;
+import edu.eci.cvds.services.EquiposServices;
+import edu.eci.cvds.services.impl.EquiposServicesImpl;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -28,6 +30,7 @@ public class GuiceContextListener implements ServletContextListener {
                 setClassPathResource("mybatis-config.xml");
 
                 bind(UsuarioDAO.class).to(MyBATISUsuarioDAO.class);
+                bind(EquiposServices.class).to(EquiposServicesImpl.class);
 
             }
         });
