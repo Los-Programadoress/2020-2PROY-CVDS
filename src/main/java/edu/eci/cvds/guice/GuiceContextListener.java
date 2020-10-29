@@ -12,6 +12,11 @@ import edu.eci.cvds.persistence.mybatisimpl.MyBATISUsuarioDAO;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
+/**
+* Clase que permite crear y configurar el inyector 
+* @author: Angélica Alfaro - Laura Izquierdo - César Ortiz
+* @version: 1.0
+*/
 public class GuiceContextListener implements ServletContextListener {
 
     public void contextDestroyed(ServletContextEvent servletContextEvent) {

@@ -11,9 +11,14 @@ import org.mybatis.guice.datasource.helper.JdbcHelper;
 import java.util.Optional;
 import static com.google.inject.Guice.createInjector;
 
+/**
+* Clase fábrica de los servicios
+* @author: Angélica Alfaro - Laura Izquierdo - César Ortiz
+* @version: 1.0
+*/
 public class EquiposServicesFactory {
 
-	private static EquiposServicesFactory instance = new EquiposServicesFactory();
+	   private static EquiposServicesFactory instance = new EquiposServicesFactory();
 
 	   private static Optional<Injector> optInjector;
 

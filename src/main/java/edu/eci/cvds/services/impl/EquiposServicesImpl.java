@@ -8,18 +8,28 @@ import edu.eci.cvds.persistence.UsuarioDAO;
 import edu.eci.cvds.services.EquiposException;
 import edu.eci.cvds.services.EquiposServices;
 
+/**
+* Clase que cuenta con los servicios
+* @author: Angélica Alfaro - Laura Izquierdo - César Ortiz
+* @version: 1.0
+*/
 public class EquiposServicesImpl implements EquiposServices{
 	
 	@Inject
     UsuarioDAO usuarioDAO;
 	
-	@Override
-	public Usuario consultarUsuario(String idCorreo, String contrasena) throws EquiposException {
-		try {
-			return usuarioDAO.consultarUsuario(idCorreo,contrasena);
-		}
-		catch (PersistenceException ex) {
-			 throw new EquiposException("Error al consultar el usuario" + ex.getLocalizedMessage(), ex);
-		}
-	}
+     /**
+      * Método que permite consultar a un usuario 
+      * @param idCorreo: Identificador de correo del usuario
+      * @param contrasena: Contraseña con la que cuenta el usuario
+      */
+     @Override
+     public Usuario consultarUsuario(String idCorreo, String contrasena) throws EquiposException {
+    	 try {
+    		 return usuarioDAO.consultarUsuario(idCorreo,contrasena);
+    	 }
+    	 catch (PersistenceException ex) {
+    		 throw new EquiposException("Error al consultar el usuario" + ex.getLocalizedMessage(), ex);
+    	 }
+    }
 }
