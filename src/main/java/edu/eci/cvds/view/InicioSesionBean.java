@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 @SessionScoped
 public class InicioSesionBean {
 	private static final Logger log = LoggerFactory.getLogger(InicioSesionBean.class);
-	private String urlLogin = "faces/sesion.xhtml";
+	private String urlLogin = "sesion.xhtml";
 	private String idCorreo;
     private String password;
 	private String message;
