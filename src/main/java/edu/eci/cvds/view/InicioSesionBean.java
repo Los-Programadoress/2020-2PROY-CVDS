@@ -1,12 +1,14 @@
 package edu.eci.cvds.view;
 
-import java.util.logging.*;
 import java.io.IOException;
+import java.io.Serializable;
 
+import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -19,13 +21,15 @@ import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-@SuppressWarnings("deprecation")
-@ManagedBean(name = "InicioSesionBean", eager=true)
+@Named
+@Stateless
 @SessionScoped
-public class InicioSesionBean {
+@ManagedBean(name = "inicioSesionBean", eager = true)
+public class InicioSesionBean{
+
 	private static final Logger log = LoggerFactory.getLogger(InicioSesionBean.class);
-	private String urlLogin = "faces/sesion.xhtml";
+	private String urlLogin = "/faces/index.xhtml";
+	private Boolean rememberMe = false;
 	private String idCorreo;
     private String password;
 	private String message;
@@ -35,17 +39,20 @@ public class InicioSesionBean {
      * Try and authenticate the user
      */
     public void doLogin() {
-    	System.out.println(getidCorreo());
-        subject = SecurityUtils.getSubject();
+    	subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(getidCorreo(), new Sha256Hash(getPassword()).toHex());
+		
         try {
-			subject.login(token);
-			FacesContext.getCurrentInstance().getExternalContext().redirect(urlLogin);
-            
+        	subject.login(token);
+			if (subject.hasRole("Estudiante")) {
+				System.out.println("entra");
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/sesion.xhtml");
+			}
         } catch (UnknownAccountException e1) {
             facesError("Cuenta Desconocida");
             log.error(e1.getMessage(), e1);
         } catch (IncorrectCredentialsException e2) {
+        	System.err.println("Incorrecto");
             facesError("Contraseña incorrecta");
             log.error(e2.getMessage(), e2);
         } catch (LockedAccountException e3) {
@@ -61,7 +68,7 @@ public class InicioSesionBean {
         }
     }
 	
-	public void logOut() throws  IOException{
+	public void doLogOut() throws  IOException{
         SecurityUtils.getSubject().logout();
         try {
             FacesContext.getCurrentInstance().getExternalContext().redirect(urlLogin);
@@ -70,12 +77,8 @@ public class InicioSesionBean {
         }
 	}
 	
-	public boolean isLogged(){
-        return SecurityUtils.getSubject().isAuthenticated();  
-    }
-	
 	/**
-     * Adds a new SEVERITY_ERROR FacesMessage for the ui
+     * Adds a new SEVERITY_ERROR FacesMessage
      * @param message Error Message
      */
     private void facesError(String message) {
@@ -101,6 +104,14 @@ public class InicioSesionBean {
 	public String getMessage() {
 		return message;
 	}
+	
+	public Boolean getRememberMe() {
+        return rememberMe;
+    }
+
+    public void setRememberMe(Boolean lembrar) {
+        this.rememberMe = lembrar;
+    }
 
 	public void setMessage(String message) {
 		this.message = message;
@@ -110,7 +121,7 @@ public class InicioSesionBean {
         return urlLogin;
     }
 
-    public void setUrl(String Url) {
+    public void setUrl(String urlLogin) {
         this.urlLogin = urlLogin;
     }
 }	

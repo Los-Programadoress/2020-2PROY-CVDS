@@ -8,6 +8,7 @@ import com.google.inject.Injector;
 
 public abstract class BasePageBean implements Serializable{
 
+	private static final long serialVersionUID = 4033353993739578463L;
 	private Injector injector;
 
     public Injector getInjector() {
