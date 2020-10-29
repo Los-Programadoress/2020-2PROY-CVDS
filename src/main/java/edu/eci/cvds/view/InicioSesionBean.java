@@ -2,6 +2,7 @@ package edu.eci.cvds.view;
 
 import java.io.IOException;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -74,5 +75,9 @@ public class InicioSesionBean {
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
+	public void info() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, message, "PrimeFaces Rocks."));
+    }
 	
 }
