@@ -21,14 +21,17 @@ import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
+
+@SuppressWarnings("serial")
 @Named
 @Stateless
 @SessionScoped
-@ManagedBean(name = "inicioSesionBean", eager = true)
-public class InicioSesionBean{
+@ManagedBean(name = "InicioSesionBean", eager = true)
+public class InicioSesionBean implements Serializable {
 
 	private static final Logger log = LoggerFactory.getLogger(InicioSesionBean.class);
-	private String urlLogin = "/faces/index.xhtml";
+	private String urlLogin = "/faces/sesion.xhtml";
 	private Boolean rememberMe = false;
 	private String idCorreo;
     private String password;
@@ -38,30 +41,27 @@ public class InicioSesionBean{
 	/**
      * Try and authenticate the user
      */
-    public void doLogin() {
+    public void doLogin(){
     	subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(getidCorreo(), new Sha256Hash(getPassword()).toHex());
-		
+        UsernamePasswordToken token = new UsernamePasswordToken(getidCorreo(), getPassword());
         try {
         	subject.login(token);
-			if (subject.hasRole("Estudiante")) {
-				System.out.println("entra");
-				FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/sesion.xhtml");
-			}
-        } catch (UnknownAccountException e1) {
+        	System.err.println();
+			FacesContext.getCurrentInstance().getExternalContext().redirect(urlLogin);
+        } catch (UnknownAccountException ex) {
             facesError("Cuenta Desconocida");
-            log.error(e1.getMessage(), e1);
-        } catch (IncorrectCredentialsException e2) {
+            log.error(ex.getMessage(), ex);
+        } catch (IncorrectCredentialsException ex) {
         	System.err.println("Incorrecto");
             facesError("Contraseña incorrecta");
-            log.error(e2.getMessage(), e2);
-        } catch (LockedAccountException e3) {
+            log.error(ex.getMessage(), ex);
+        } catch (LockedAccountException ex) {
             facesError("Cuenta bloqueada");
-            log.error(e3.getMessage(), e3);
-        } catch (AuthenticationException | IOException e4) {
-            facesError("Error Desconocido: " + e4.getMessage());
-            log.error(e4.getMessage(), e4);
-        } catch (NullPointerException e5) {
+            log.error(ex.getMessage(), ex);
+        } catch (AuthenticationException | IOException ex) {
+            facesError("Error Desconocido: " + ex.getMessage());
+            log.error(ex.getMessage(), ex);
+        } catch (NullPointerException ex) {
             System.err.println("Nulo");
         } finally {
             token.clear();
