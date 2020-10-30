@@ -1,58 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-  <display-name>Archetype Created Web Application</display-name>
-  <context-param>
-    <param-name>javax.faces.PROJECT_STAGE</param-name>
-    <param-value>Development</param-value>
-  </context-param>
-  <listener>
-    <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
-  </listener>
-  <filter>
-    <filter-name>ShiroFilter</filter-name>
-    <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
-  </filter>
-  <filter>
-  	<filter-name>securityFilter</filter-name>
-    <filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>ShiroFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-    <dispatcher>REQUEST</dispatcher>
-    <dispatcher>FORWARD</dispatcher>
-    <dispatcher>INCLUDE</dispatcher>
-    <dispatcher>ERROR</dispatcher>
-  </filter-mapping>
-  <filter-mapping>
-    <filter-name>securityFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-    <dispatcher>REQUEST</dispatcher>
-    <dispatcher>FORWARD</dispatcher>
-    <dispatcher>INCLUDE</dispatcher>
-    <dispatcher>ERROR</dispatcher>
-  </filter-mapping>
-  <servlet>
-    <servlet-name>Faces Servlet</servlet-name>
-    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Faces Servlet</servlet-name>
-    <url-pattern>/faces/*</url-pattern>
-    <url-pattern>/javax.faces.resource/*</url-pattern>
-  </servlet-mapping>
-  <session-config>
-    <session-timeout>100</session-timeout>
-  </session-config>
-  <welcome-file-list>
-    <welcome-file>faces/index.xhtml</welcome-file>
-  </welcome-file-list>
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+    <context-param>
+        <param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
+    </listener>
 
-  <listener>
-    <listener-class>edu.eci.cvds.guice.GuiceContextListener</listener-class>
-  </listener>
+    <filter>
+        <filter-name>ShiroFilter</filter-name>
+        <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>securityFilter</filter-name>
+        <filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class>
+    </filter>
+    <mime-mapping>
+        <extension>woff2</extension>
+        <mime-type>application/x-font-woff2</mime-type>
+    </mime-mapping>
+    <filter-mapping>
+        <filter-name>ShiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>securityFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+        <url-pattern>/javax.faces.resource/*</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            100
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>faces/index.xhtml</welcome-file>
+    </welcome-file-list>
+    <listener>
+        <listener-class>edu.eci.cvds.guice.GuiceContextListener</listener-class>
+    </listener>
 
-  
+
 </web-app>
