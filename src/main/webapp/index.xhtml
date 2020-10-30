@@ -9,18 +9,21 @@
 	<link rel="stylesheet" href="master.css"/>
 </h:head>
 <h:body>
-	<h:form id="form">	
+	<h:form id="form">
+		<p:messages id="messages" showDetail="true" closable="true">
+        	<p:autoUpdate />
+        </p:messages> 	
 		<h1>Inicio de sesión</h1>
 		<p:panelGrid columns="5" style="max-width:500px;margin-left:auto;margin-right:auto; background-color: #3CBC8D">
 			<label class="label" for="nombreUsuario">ID Usuario</label>
 			<label class="label" for="contraseña">Contraseña</label>
 		</p:panelGrid>
 		<p:panelGrid columns="5" style="max-width:500px;margin-left:auto;margin-right:auto; background-color: #3CBC8D">
-			<p:inputText id="idCorreo" placeholder="ID Usuario" value="#{inicioSesionBean.idCorreo}" />
-			<p:inputText id="password" placeholder="Password" value="#{inicioSesionBean.password}" />
+			<p:inputText id="username" placeholder="ID Usuario" value="#{shiroBean.idCorreo}" />
+			<p:inputText id="password" placeholder="Password" value="#{shiroBean.password}" />
 		</p:panelGrid>
 		<p:panelGrid columns="2" style="max-width:500px;margin-left:auto;margin-right:auto;">
-			<p:commandButton align="center" style="background-color: #3CBC8D" update="form" actionListener="#{inicioSesionBean.doLogin()}" value="Ingresar"/>
+			<p:commandButton align="center" style="background-color: #3CBC8D" update="form" actionListener="#{shiroBean.doLogin()}" value="Ingresar"/>
 		</p:panelGrid>	
 	</h:form>
 </h:body>
