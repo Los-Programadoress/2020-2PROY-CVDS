@@ -47,7 +47,7 @@ public class ShiroLoginBean implements Serializable{
         
         try {
             subject.login(token);
-            FacesContext.getCurrentInstance().getExternalContext().redirect("faces/sesion.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/sesion.xhtml");
         } catch (UnknownAccountException e) {
         	messageError("Usuario Desconocido");
             log.error(e.getMessage(), e);
