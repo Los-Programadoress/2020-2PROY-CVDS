@@ -11,6 +11,8 @@ import javax.faces.context.FacesContext;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Level;
+
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -39,19 +41,19 @@ public class ShiroLoginBean implements Serializable{
     	//System.out.println(getidCorreo());
     	//System.out.println(getPassword());
         subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(getidCorreo(), new Sha256Hash(getPassword()).toHex());
-        System.out.println(token.getPassword());
+        UsernamePasswordToken token = new UsernamePasswordToken(getidCorreo(), getPassword());
+        //System.out.println(token.getPassword());
         
         try {
             subject.login(token);
             if (subject.hasRole("Estudiante") || subject.hasRole("Profesor")) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/sesion.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/sesion.xhtml");
             }
         } catch (UnknownAccountException e) {
         	messageError("Usuario Desconocido");
             log.error(e.getMessage(), e);
         } catch (IncorrectCredentialsException e) {
-            messageError("Datos Incorrectos");
+            messageError("Contraseña Incorrecta");
             log.error(e.getMessage(), e);
         } catch (LockedAccountException e) {
             messageError("Usuario Inactivo");

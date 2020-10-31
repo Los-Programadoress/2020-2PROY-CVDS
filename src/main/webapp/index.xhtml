@@ -18,10 +18,10 @@
 				<p:autoUpdate />
 			</p:messages> 
 			<label class="label" for="nombreUsuario">ID Usuario</label>
-			<p:inputText id="username" class="input" placeholder="ID Usuario" value="#{inicioSesionBean.idCorreo}" />
+			<p:inputText id="username" class="input" placeholder="ID Usuario" value="#{shiroBean.idCorreo}" />
 			<label class="label" for="contraseña">Contraseña</label>
-			<p:inputText id="password" type="password" class="input" placeholder="Password" value="#{inicioSesionBean.password}" />
-			<p:commandButton class="input" update="form" actionListener="#{inicioSesionBean.doLogin()}" value="Ingresar"/>
+			<p:inputText id="password" type="password" class="input" placeholder="Password" value="#{shiroBean.password}" />
+			<p:commandButton class="input" update="form" actionListener="#{shiroBean.doLogin()}" value="Ingresar"/>
 		</h:form>
 	</div>
 </h:body>
