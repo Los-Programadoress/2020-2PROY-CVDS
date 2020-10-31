@@ -69,12 +69,18 @@ public class ShiroLoginBean implements Serializable{
     }
 
     public void doLogOut() {
-
-        SecurityUtils.getSubject().logout();
+    	subject = SecurityUtils.getSubject();
         try {
+<<<<<<< Updated upstream:src/main/java/edu/eci/cvds/view/ShiroLoginBean.java
             FacesContext.getCurrentInstance().getExternalContext().redirect(loginUrl);
         } catch (IOException e) {
             java.util.logging.Logger.getLogger(ShiroLoginBean.class.getName()).log(Level.SEVERE, null, e);
+=======
+        	subject.logout();
+            FacesContext.getCurrentInstance().getExternalContext().redirect("faces/index.xhtml");
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(InicioSesionBean.class.getName()).log(Level.SEVERE, null, ex);
+>>>>>>> Stashed changes:src/main/java/edu/eci/cvds/view/InicioSesionBean.java
         }
     }
 
