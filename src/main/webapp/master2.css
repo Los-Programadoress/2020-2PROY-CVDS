@@ -1,0 +1,22 @@
+body{
+  background: url(https://image.freepik.com/vector-gratis/fondo-pantalla-placa-circuito-neon_23-2148333271.jpg) no-repeat fixed center;
+  margin: 0;
+  padding: 0;
+  background-size: 100% 100%;
+}
+
+.en-sesion{
+  height: 30px;
+  background: #900;
+}
+
+.en-sesion .submit{
+  background: #900;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 13px;
+  position: absolute;
+  top: 5px;
+  left: 92%;
+}

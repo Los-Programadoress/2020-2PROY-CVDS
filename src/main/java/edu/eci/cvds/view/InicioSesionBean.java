@@ -20,14 +20,15 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 
+
 @Named
 @Stateless
 @SessionScoped
-@ManagedBean(name = "shiroBean", eager = true)
+@ManagedBean(name = "inicioSesionBean", eager = true)
 public class InicioSesionBean implements Serializable{
 
     private static final Logger log = LoggerFactory.getLogger(InicioSesionBean.class);
-
+    private String message;
     private String idCorreo;
     private String password;
     private Boolean rememberMe = false;
@@ -76,7 +77,7 @@ public class InicioSesionBean implements Serializable{
 
         SecurityUtils.getSubject().logout();
         try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect(redirectUrl);
+            FacesContext.getCurrentInstance().getExternalContext().redirect("faces/index.xhtml");
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(InicioSesionBean.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -118,6 +119,10 @@ public class InicioSesionBean implements Serializable{
     public String getRedirectUrl() {
         return redirectUrl;
     }
+	public void info() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, message, "PrimeFaces Rocks."));
+    }
+	
 
     public void setRedirectUrl(String redirectUrl) {
         this.redirectUrl = redirectUrl;
