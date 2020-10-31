@@ -5,12 +5,23 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-	<h:head>
-		<link rel="stylesheet" href="master2.css"/>
-	</h:head>
-	<body>
-		<div class="en-sesion">
-	       <a href="faces/index.xhtml"> <input class="submit" type="submit" value="Cerrar sesión"/> </a>
-	    </div>
-	</body>
+<h:head>
+	<link rel="stylesheet" href="master.css"/>
+</h:head>
+<h:body>
+	<div class="inicio-sesion">
+		<img class="avatar" src="img/lab.png"/>
+		
+		<h1 class="h1">Inicio de sesión</h1>
+		<h:form id="form">
+			<p:messages id="messages" class="fallo" showDetail="true" closable="true">
+				<p:autoUpdate />
+			</p:messages> 
+			<label class="label" for="nombreUsuario">ID Usuario</label>
+			<p:inputText id="username" class="input" placeholder="ID Usuario" value="#{inicioSesionBean.idCorreo}" />
+			<label class="label" for="contraseña">Contraseña</label>
+			<p:inputText id="password" type="password" class="input" placeholder="Password" value="#{inicioSesionBean.password}" />
+		</h:form>
+	</div>
+</h:body>
 </html>

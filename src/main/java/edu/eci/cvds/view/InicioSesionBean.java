@@ -46,9 +46,9 @@ public class InicioSesionBean implements Serializable{
         try {
             subject.login(token);
             if (subject.hasRole("Estudiante")) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/sesion.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/sesion.xhtml");
             } else if (subject.hasRole("Profesor")) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/sesion.xhtml");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/sesion.xhtml");
             }
         } catch (UnknownAccountException ex) {
         	System.err.println("Cuenta Desconocida");
