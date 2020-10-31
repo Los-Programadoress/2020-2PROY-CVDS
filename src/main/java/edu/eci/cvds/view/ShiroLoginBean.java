@@ -38,7 +38,7 @@ public class ShiroLoginBean implements Serializable{
     Subject subject;
 
     /**
-     * Permitir acceso al Usuario
+     * Permite acceso al Usuario
      */
     public void doLogin() {
 
@@ -66,7 +66,10 @@ public class ShiroLoginBean implements Serializable{
             token.clear();
         }
     }
-
+    
+    /**
+     * Permite cierre de sesión del Usuario
+     */
     public void doLogOut() {
 
         SecurityUtils.getSubject().logout();
@@ -79,7 +82,7 @@ public class ShiroLoginBean implements Serializable{
     
 
     /**
-     * Construir un SEVERITY_ERROR con mensaje
+     * Construye un SEVERITY_ERROR con mensaje
      * @param message Error Message
      */
     private void messageError(String message) {
