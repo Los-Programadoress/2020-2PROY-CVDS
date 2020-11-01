@@ -3,12 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.UsuarioMapper">
-
+ 
+  <mapper namespace="edu.eci.cvds.persistence.mybatisimpl.mappers.UsuarioMapper">
   <resultMap type='Usuario' id='UsuarioResult'>
     <id property='idCorreo' column='idCorreo' />
     <result property='nombre' column='nombre' />
-    <result property='rol' column='rol' />
     <result property='estado' column='estado' />
     <result property='correo' column='correo' />
     <result property='constrasena' column='contrasena' />
@@ -17,12 +16,11 @@
   <select parameterType="map" id="consultarUsuario" resultMap="UsuarioResult">
     SELECT
       u.idCorreo,
-      u.nombre
-      u.rol,
+      u.nombre,
       u.estado,
       u.correo,
       u.contrasena,
-    FROM Usuario as u
-    WHERE u.idCorreo = #{idCorreo} AND u.contrasena = #{contrasena};
+    FROM usuario as u
+    WHERE u.idCorreo = #{idCorreo};
   </select>
 </mapper>

@@ -16,6 +16,5 @@ public interface UsuarioMapper {
       * @param idCorreo: Identificador de correo del usuario
       * @param contrasena: Contraseña con la que cuenta el usuario
       */
-     public Usuario consultarUsuario( @Param("idCorreo") String idCorreo, @Param("contrasena") String contrasena);
-   
+     public Usuario consultarUsuario( @Param("idCorreo") String idCorreo);   
 }

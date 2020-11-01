@@ -12,7 +12,6 @@ public interface UsuarioDAO {
      /**
      * Método que permite consultar a un usuario 
      * @param idCorreo: Identificador de correo del usuario
-     * @param contrasena: Contraseña con la que cuenta el usuario
      */
-    public Usuario consultarUsuario(String idCorreo, String contrasena) throws PersistenceException;
+    public Usuario consultarUsuario(String idCorreo) throws PersistenceException;
 }

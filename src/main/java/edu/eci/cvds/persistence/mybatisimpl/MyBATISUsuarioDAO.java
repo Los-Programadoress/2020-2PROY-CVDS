@@ -24,9 +24,9 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
      * @param contrasena: Contraseña con la que cuenta el usuario
      */
 	@Override
-	public Usuario consultarUsuario(String idCorreo, String contrasena) throws PersistenceException {;
+	public Usuario consultarUsuario(String idCorreo) throws PersistenceException {;
 		try{
-			return usuarioMapper.consultarUsuario(idCorreo,contrasena);
+			return usuarioMapper.consultarUsuario(idCorreo);
 		}
 		catch(org.apache.ibatis.exceptions.PersistenceException e){
             throw new PersistenceException("Error al consultar el usuario",e);            
