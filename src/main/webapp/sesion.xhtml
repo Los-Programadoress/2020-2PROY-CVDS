@@ -1,28 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	
-<h:head>
-	<link rel="stylesheet" href="master.css"/>
-</h:head>
-<h:body>
-	<div class="inicio-sesion">
-		<img class="avatar" src="img/lab.png"/>
+
+	<h:head>
+		<link rel="stylesheet" href="master2.css"/>
+	</h:head>
+	<body>
+		<div class="en-sesion">
+			<h:form id="form">
+				<p:commandButton class="submit" update="form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
+			</h:form>
+	    </div>
 		
-		<h1 class="h1">Inicio de sesión</h1>
-		<h:form id="form">
-			<p:messages id="messages" class="fallo" showDetail="true" closable="true">
-				<p:autoUpdate />
-			</p:messages> 
-			<label class="label" for="nombreUsuario">ID Usuario</label>
-			<p:inputText id="username" class="input" placeholder="ID Usuario" value="#{shiroBean.idCorreo}" />
-			<label class="label" for="contraseña">Contraseña</label>
-			<p:inputText id="password" type="password" class="input" placeholder="Password" value="#{shiroBean.password}" />
-			<p:commandButton class="input" update="form" actionListener="#{shiroBean.doLogin()}" value="Ingresar"/>
-		</h:form>
-	</div>
-</h:body>
+		<div class="en-sesion1">
+			<img class="imagen" src="https://i.pinimg.com/564x/61/f4/f3/61f4f36fbe96012150256d342df91af1.jpg"/>
+		</div>
+		<div class="en-sesion2">
+			<div class="en-sesion3">
+				<h1 class="h1">MENU</h1>
+			</div>
+		</div>
+	</body> 
 </html>
