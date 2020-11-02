@@ -1,7 +1,7 @@
 body{
+  background: url(https://gtdconsultoria.com/images/servicios/servicio_tecnico.jpg) no-repeat fixed center;
   margin: 0;
   padding: 0;
-  background: url(https://gtdconsultoria.com/images/servicios/servicio_tecnico.jpg) no-repeat fixed center;
   background-size: 100% 100%;
 }
 .inicio-sesion{
@@ -29,7 +29,7 @@ body{
 .inicio-sesion .h1{
   color: #fff;
   margin: 0;
-  padding: 20px 0 20px;
+  padding: 5px 0 20px;
   text-align: center;
   font-size: 30px;
 }
@@ -54,7 +54,7 @@ body{
   border-bottom: 1px solid #FF0001;
   background: transparent;
   outline: none;
-  height: 40px;
+  height: 30px;
   font-size: 15px;
 }
 
@@ -68,19 +68,11 @@ body{
   border-radius: 20px;
 }
 
-
-.en-sesion{
-  height: 30px;
-  background: #900;
-}
-
-.en-sesion .submit{
-  background: #900;
-  outline: none;
-  border: none;
-  color: #fff;
-  font-size: 13px;
+.inicio-sesion .fallo{
   position: absolute;
-  top: 5px;
-  left: 92%;
+  width: 80%;
+  left: 10%;
+  top: 75%;
 }
+
+

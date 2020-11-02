@@ -47,7 +47,7 @@ public class EquiposServicesFactory {
 
 	   public EquiposServices getEquiposServices(){
 	       if (!optInjector.isPresent()) {
-	           optInjector = Optional.of(myBatisInjector("development","mybatis-config.xml", JdbcHelper.MySQL));
+	           optInjector = Optional.of(myBatisInjector("development","mybatis-config.xml", JdbcHelper.PostgreSQL));
 	       }
 
 	       return optInjector.get().getInstance(EquiposServices.class);
@@ -56,7 +56,7 @@ public class EquiposServicesFactory {
 
 	   public EquiposServices getEquiposServicesTesting(){
 	       if (!optInjector.isPresent()) {
-	           optInjector = Optional.of(myBatisInjector("test","mybatis-config-h2.xml", JdbcHelper.MySQL));
+	           optInjector = Optional.of(myBatisInjector("test","mybatis-config-h2.xml", JdbcHelper.PostgreSQL));
 	       }
 
 	       return optInjector.get().getInstance(EquiposServices.class);
