@@ -2,6 +2,7 @@ package edu.eci.cvds.view;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.ejb.Stateless;
@@ -19,7 +20,9 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.Sha256Hash;
+import org.apache.shiro.crypto.hash.Sha512Hash;
 
 @Stateless
 @SessionScoped
@@ -27,7 +30,7 @@ import org.apache.shiro.crypto.hash.Sha256Hash;
 public class ShiroLoginBean implements Serializable{
 
     private static final Logger log = LoggerFactory.getLogger(ShiroLoginBean.class);
-
+    
     private String idCorreo;
     private String password;
     private Boolean rememberMe = false;
@@ -35,25 +38,21 @@ public class ShiroLoginBean implements Serializable{
     Subject subject;
 
     /**
-     * Permitir acceso al Usuario
+     * Permite acceso al Usuario
      */
     public void doLogin() {
-    	//System.out.println(getidCorreo());
-    	//System.out.println(getPassword());
-        subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(getidCorreo(), getPassword());
-        //System.out.println(token.getPassword());
+
+    	subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(getidCorreo(),new Sha256Hash(getPassword()).toHex());
         
         try {
             subject.login(token);
-            if (subject.hasRole("Estudiante") || subject.hasRole("Profesor")) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/sesion.xhtml");
-            }
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/sesion.xhtml");
         } catch (UnknownAccountException e) {
         	messageError("Usuario Desconocido");
             log.error(e.getMessage(), e);
         } catch (IncorrectCredentialsException e) {
-            messageError("Contraseña Incorrecta");
+            messageError("Credenciales Incorrectas");
             log.error(e.getMessage(), e);
         } catch (LockedAccountException e) {
             messageError("Usuario Inactivo");
@@ -67,7 +66,10 @@ public class ShiroLoginBean implements Serializable{
             token.clear();
         }
     }
-
+    
+    /**
+     * Permite cierre de sesión del Usuario
+     */
     public void doLogOut() {
     	SecurityUtils.getSubject().logout();
         try {
@@ -76,9 +78,10 @@ public class ShiroLoginBean implements Serializable{
             java.util.logging.Logger.getLogger(ShiroLoginBean.class.getName()).log(Level.SEVERE, null, e);
         }
     }
+    
 
     /**
-     * Construir un SEVERITY_ERROR con mensaje
+     * Construye un SEVERITY_ERROR con mensaje
      * @param message Error Message
      */
     private void messageError(String message) {

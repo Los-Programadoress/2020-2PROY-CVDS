@@ -30,9 +30,7 @@ public class ServicesDBTest {
     public void clearDB() throws SQLException {
         Connection conn = DriverManager.getConnection("jdbc:h2:file:./target/db/testdb;MODE=PostgreSQL", "anonymous", "");
         Statement stmt = conn.createStatement();
-        stmt.execute("DELETE from usuario");
-        stmt.execute("DELETE from rol");
-        //stmt.execute("delete sequence ROL_seq");
+        stmt.execute("DELETE FROM USUARIO");
         conn.commit();
         conn.close();
     }
@@ -46,17 +44,25 @@ public class ServicesDBTest {
         return DriverManager.getConnection("jdbc:h2:file:./target/db/testdb;MODE=PostgreSQL", "anonymous", "");        
     }
     
+    /**
+     * Realiza operaciones con la base de datos
+     * @throws SQLException
+     * @throws EquiposException
+     */
     @Test
     public void pruebaCeroTest() throws SQLException, EquiposException {
         //Insertar datos en la base de datos de pruebas, de acuerdo con la clase
         //de equivalencia correspondiente
         Connection conn=getConnection();
-        Statement stmt=conn.createStatement(); 
-        //stmt.execute("DELETE from usuario");
-        //stmt.execute("DELETE from rol");
-        //stmt.execute("CREATE SEQUENCE ROL_seq");
-        stmt.execute("INSERT INTO `rol` (`id`,`nombreRol`) VALUES (1,'Administrativo')");
-        //stmt.execute("INSERT INTO `USUARIO` (`idCorreo`, `correo`, `nombre` , `rol_id` , `estado`, `contrasena`) VALUES ('pelo.perez','pelo.perez@mail.escuelaing.edu.co','Pablo Perez', 2,'Inactivo','eciPablo')");
+        Statement stmt=conn.createStatement();
+        /*stmt.execute("CREATE TABLE IF NOT EXISTS `USUARIO` (\n" + 
+        		"  `idCorreo` VARCHAR(30) NOT NULL,\n" + 
+        		"  `correo` VARCHAR(50) UNIQUE NOT NULL,\n" + 
+        		"  `nombre` VARCHAR(50) NOT NULL,\n" + 
+        		"  `estado` VARCHAR(30) NOT NULL,\n" + 
+        		"  contrasena VARCHAR(65) NOT NULL,\n" + 
+        		"  PRIMARY KEY (`idCorreo`));");*/
+        stmt.execute("INSERT INTO `USUARIO` (`idCorreo`, `correo`, `nombre` , `estado`, `contrasena`) VALUES('maria.alfaro','maria.alfaro@mail.escuelaing.edu.co', 'Angelica Alfaro','Activo','44f632480c49db38c4d0cbc2bea2384049c74a689baf5bf576163455787185a3')"); 
         conn.commit();
         conn.close();
 	
