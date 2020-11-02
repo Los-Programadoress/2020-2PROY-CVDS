@@ -2,7 +2,11 @@ package edu.eci.cvds.services;
 
 import com.google.inject.Injector;
 
+import edu.eci.cvds.persistence.ElementoDAO;
+import edu.eci.cvds.persistence.EquipoDAO;
 import edu.eci.cvds.persistence.UsuarioDAO;
+import edu.eci.cvds.persistence.mybatisimpl.MyBATISElementoDAO;
+import edu.eci.cvds.persistence.mybatisimpl.MyBATISEquipoDAO;
 import edu.eci.cvds.persistence.mybatisimpl.MyBATISUsuarioDAO;
 import edu.eci.cvds.services.impl.EquiposServicesImpl;
 
@@ -11,9 +15,14 @@ import org.mybatis.guice.datasource.helper.JdbcHelper;
 import java.util.Optional;
 import static com.google.inject.Guice.createInjector;
 
+/**
+* Clase fábrica de los servicios
+* @author: Angélica Alfaro - Laura Izquierdo - César Ortiz
+* @version: 1.0
+*/
 public class EquiposServicesFactory {
 
-	private static EquiposServicesFactory instance = new EquiposServicesFactory();
+	   private static EquiposServicesFactory instance = new EquiposServicesFactory();
 
 	   private static Optional<Injector> optInjector;
 
@@ -26,6 +35,8 @@ public class EquiposServicesFactory {
 	               setClassPathResource(pathResource);
 	               bind(EquiposServices.class).to(EquiposServicesImpl.class);
 	               bind(UsuarioDAO.class).to(MyBATISUsuarioDAO.class);
+	               bind(EquipoDAO.class).to(MyBATISEquipoDAO.class);
+	               bind(ElementoDAO.class).to(MyBATISElementoDAO.class);
 	           }
 	       });
 	   }
