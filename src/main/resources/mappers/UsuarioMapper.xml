@@ -18,9 +18,8 @@
       u.idCorreo,
       u.nombre,
       u.estado,
-      u.correo,
-      u.contrasena,
-    FROM usuario as u
+      u.correo
+    FROM USUARIO as u
     WHERE u.idCorreo = #{idCorreo};
   </select>
 </mapper>

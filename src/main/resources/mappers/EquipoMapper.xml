@@ -17,7 +17,7 @@
   SELECT
       e.numero,
       e.marca,
-      e.disponible,
+      e.disponible
     FROM equipo as e
     LEFT JOIN usuario AS u ON e.usuario_idCorreo = u.idCorreo
   </select>
@@ -26,15 +26,15 @@
   SELECT
       e.numero,
       e.marca,
-      e.disponible,
+      e.disponible
     FROM equipo as e
     LEFT JOIN usuario AS u ON e.usuario_idCorreo = u.idCorreo
     WHERE e.numero = #{nequipo}
   </select>
   
   <insert parameterType="map" id="registrarEquipo">
-    INSERT INTO equipo (numero, marca, disponible, usuario_idCorreo) 
-    VALUES ( #{idnum}, #{marca}, #{equipo.disponible}, #{uidcorreo});
+    INSERT INTO EQUIPO (marca, disponible, usuario_idCorreo) 
+    VALUES ( #{marca}, #{disponible}, #{uidcorreo});
   </insert>
   
   <select parameterType="map" id="consultarElementosEquipo" resultMap="EquipoResult">
@@ -44,7 +44,7 @@
       el.tipo,
       el.nombre,
       el.disponible,
-      el.numEquipo,
+      el.numEquipo
     FROM equipo AS e
     LEFT JOIN elemento AS el ON e.numero = el.numEquipo
     WHERE e.numero = #{nequipo}

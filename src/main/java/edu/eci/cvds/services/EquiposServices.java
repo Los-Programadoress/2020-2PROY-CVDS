@@ -36,20 +36,18 @@ public interface EquiposServices {
  	
      /**
       * Método que permite registrar un equipo 
-      * @param numero: Número que identifica el equipo
       * @param marca: Marca del equipo
       * @param usuario: Usuario que registra el equipo
       */
- 	 public void registrarEquipo(int numero, String marca, Usuario usuario) throws EquiposException;
+ 	 public void registrarEquipo(String marca, Usuario usuario) throws EquiposException;
  	 
  	/**
       * Método que permite registrar elemento a un equipo
-      * @param id: Identificador del elemento
  	  * @param tipo: Tipo del elemento
  	  * @param nombre: Nombre del elemento
  	  * @param nequipo: Número de equipo al que pertenece el elemento
       */
- 	 public void registrarElementoEquipo(int id, String tipo, String nombre, int nequipo) throws EquiposException;
+ 	 public void registrarElementoEquipo(String tipo, String nombre, int nequipo) throws EquiposException;
  	 
  	/**
       * Método que permite registrar consultar los elementos de un equipo 
@@ -60,9 +58,8 @@ public interface EquiposServices {
  	 
  	/**
       * Método que permite registrar un elemento
-      * @param id: Identificador del elemento
  	  * @param tipo: Tipo del elemento
  	  * @param nombre: Nombre del elemento
       */
- 	 public void registrarElemento(int id, String tipo, String nombre) throws EquiposException;
+ 	 public void registrarElemento(String tipo, String nombre) throws EquiposException;
 }

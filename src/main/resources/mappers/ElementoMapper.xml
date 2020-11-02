@@ -13,12 +13,12 @@
   </resultMap>
   
  <insert parameterType="map" id="registrarElementoEquipo">
-    INSERT INTO elemento (id, tipo, nombre, disponible, numEquipo) 
-    VALUES ( #{id}, #{tipo}, #{nombre}, #{elemento.disponible}, #{nequipo});
+    INSERT INTO elemento (tipo, nombre, disponible, numEquipo) 
+    VALUES ( #{tipo}, #{nombre}, #{disponible}, #{nequipo});
   </insert>
   
   <insert parameterType="map" id="registrarElemento">
-    INSERT INTO elemento (id, tipo, nombre, disponible) 
-    VALUES ( #{id}, #{tipo}, #{nombre}, #{elemento.disponible});
+    INSERT INTO elemento (tipo, nombre, disponible) 
+    VALUES ( #{tipo}, #{nombre}, #{disponible});
   </insert> 
 </mapper>

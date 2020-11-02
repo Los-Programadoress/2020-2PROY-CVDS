@@ -28,8 +28,9 @@ public class ServicesDBTest {
 
     @After
     public void clearDB() throws SQLException {
-        Connection conn = DriverManager.getConnection("jdbc:h2:file:./target/db/testdb;MODE=PostgreSQL", "anonymous", "");
+        Connection conn = getConnection();
         Statement stmt = conn.createStatement();
+        stmt.execute("DELETE FROM EQUIPO");
         stmt.execute("DELETE FROM USUARIO");
         conn.commit();
         conn.close();
@@ -51,18 +52,11 @@ public class ServicesDBTest {
      */
     @Test
     public void pruebaCeroTest() throws SQLException, EquiposException {
-        //Insertar datos en la base de datos de pruebas, de acuerdo con la clase
-        //de equivalencia correspondiente
         Connection conn=getConnection();
         Statement stmt=conn.createStatement();
-        /*stmt.execute("CREATE TABLE IF NOT EXISTS `USUARIO` (\n" + 
-        		"  `idCorreo` VARCHAR(30) NOT NULL,\n" + 
-        		"  `correo` VARCHAR(50) UNIQUE NOT NULL,\n" + 
-        		"  `nombre` VARCHAR(50) NOT NULL,\n" + 
-        		"  `estado` VARCHAR(30) NOT NULL,\n" + 
-        		"  contrasena VARCHAR(65) NOT NULL,\n" + 
-        		"  PRIMARY KEY (`idCorreo`));");*/
+        //Insertar datos en la base de datos de pruebas
         stmt.execute("INSERT INTO `USUARIO` (`idCorreo`, `correo`, `nombre` , `estado`, `contrasena`) VALUES('maria.alfaro','maria.alfaro@mail.escuelaing.edu.co', 'Angelica Alfaro','Activo','44f632480c49db38c4d0cbc2bea2384049c74a689baf5bf576163455787185a3')"); 
+        stmt.execute("INSERT INTO `EQUIPO` (`marca`, `usuario_idcorreo`) VALUES('LG','maria.alfaro')"); 
         conn.commit();
         conn.close();
 	

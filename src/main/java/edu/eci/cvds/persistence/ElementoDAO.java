@@ -8,18 +8,16 @@ package edu.eci.cvds.persistence;
 public interface ElementoDAO {
 	/**
      * Método que permite registrar elemento a un equipo
-     * @param id: Identificador del elemento
 	 * @param tipo: Tipo del elemento
 	 * @param nombre: Nombre del elemento
 	 * @param nequipo: Número de equipo al que pertenece el elemento
      */
-	 public void registrarElementoEquipo(int id, String tipo, String nombre, int nequipo) throws PersistenceException;
+	 public void registrarElementoEquipo(String tipo, String nombre, int nequipo) throws PersistenceException;
 	 
 	/**
      * Método que permite registrar un elemento
-     * @param id: Identificador del elemento
 	 * @param tipo: Tipo del elemento
 	 * @param nombre: Nombre del elemento
      */
-	 public void registrarElemento(int id, String tipo, String nombre) throws PersistenceException;
+	 public void registrarElemento(String tipo, String nombre) throws PersistenceException;
 }

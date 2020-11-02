@@ -35,9 +35,7 @@ public class GuiceContextListener implements ServletContextListener {
             @Override
             protected void initialize() {
                 install(JdbcHelper.PostgreSQL);
-                setEnvironmentId("development");
-                setClassPathResource("mybatis-config.xml");
-
+                
                 bind(UsuarioDAO.class).to(MyBATISUsuarioDAO.class);
                 bind(EquipoDAO.class).to(MyBATISEquipoDAO.class);
                 bind(ElementoDAO.class).to(MyBATISElementoDAO.class);

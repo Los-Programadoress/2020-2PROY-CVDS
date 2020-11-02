@@ -17,7 +17,7 @@ public class Usuario implements Serializable{
     private String correo;
     private String contrasena;
     
-    /**
+	/**
      *Constructor para la clase usuario
      */
     public Usuario() {}
@@ -123,6 +123,6 @@ public class Usuario implements Serializable{
      */
     @Override
     public String toString() {
-    	return "Usuario {idCorreo: " + idCorreo + ", nombre: " + nombre + ", estado: " + estado + ", correo : " + correo + ", contrasena: " + contrasena + "}";
+    	return "Usuario {idCorreo: " + idCorreo + ", nombre: " + nombre + ", estado: " + estado + ", correo : " + correo + "}";
      }
 }
