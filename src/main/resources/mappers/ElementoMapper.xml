@@ -18,7 +18,7 @@
   </insert>
   
   <insert parameterType="map" id="registrarElemento">
-    INSERT INTO elemento (id, tipo, nombre, disponible, numEquipo) 
-    VALUES ( #{id}, #{tipo}, #{nombre}, #{elemento.disponible},);
+    INSERT INTO elemento (id, tipo, nombre, disponible) 
+    VALUES ( #{id}, #{tipo}, #{nombre}, #{elemento.disponible});
   </insert> 
 </mapper>
