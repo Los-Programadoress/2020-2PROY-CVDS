@@ -10,7 +10,19 @@
 	</h:head>
 	<body>
 		<div class="en-sesion">
-	       <a href="/faces/index.xhtml"> <input class="submit" type="submit" value="Cerrar sesión"/> </a>
+			<h:form id="form">
+				<p:commandButton class="submit" update="form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
+			</h:form>
 	    </div>
+		
+		<div class="en-sesion1">
+			<img class="imagen" src="https://i.pinimg.com/564x/61/f4/f3/61f4f36fbe96012150256d342df91af1.jpg"/>
+		</div>
+		<div class="en-sesion2">
+			<div class="en-sesion3">
+				<h1 class="h1">MENU</h1>
+			</div>
+		</div>
+		<script src="noBack.js"></script>
 	</body> 
 </html>
