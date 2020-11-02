@@ -52,7 +52,7 @@ public class ShiroLoginBean implements Serializable{
         	messageError("Usuario Desconocido");
             log.error(e.getMessage(), e);
         } catch (IncorrectCredentialsException e) {
-            messageError("Contraseña Incorrecta");
+            messageError("Credenciales Incorrectas");
             log.error(e.getMessage(), e);
         } catch (LockedAccountException e) {
             messageError("Usuario Inactivo");
