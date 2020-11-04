@@ -5,6 +5,7 @@ import java.util.List;
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Usuario;
+import edu.eci.cvds.services.EquiposException;
 
 /**
 * Interface que permite acceder a datos
@@ -31,9 +32,9 @@ public interface EquipoDAO {
      * Método que permite registrar un equipo 
      * @param numero: Número que identifica el equipo
      * @param marca: Marca del equipo
-     * @param usuario: Usuario que registra el equipo
+     * @param idcorreo: Identificador del correo del usuario
      */
-	 public void registrarEquipo(String marca, Usuario usuario) throws PersistenceException;
+	 public void registrarEquipo(String marca, String idcorreo) throws EquiposException;
 	 
 	 /**
      * Método que permite registrar consultar los elementos de un equipo 

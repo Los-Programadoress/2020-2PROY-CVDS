@@ -48,6 +48,12 @@ body:before{
 	top: 25%;
 }
 
+.input2{
+	position: absolute;
+	left: 43%;
+	top: 30%;
+}
+
 .boton{
 	position: absolute;
 	left: 70%;
@@ -57,9 +63,9 @@ body:before{
 	border: none;
 }
 
-.boton2{
+.boton1{
 	position: absolute;
-	left: 70%;
+	left: 67%;
 	top: 35%;
 	background: #900;
 	color: #fff;

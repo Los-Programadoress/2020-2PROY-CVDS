@@ -15,31 +15,35 @@ import edu.eci.cvds.services.EquiposServices;
 @ManagedBean(name="RegistrarElementoBean")
 @SessionScoped
 public class RegistrarElementoBean {
-	 private List<Elemento> elementos= null;
+	 private List<Elemento> elementos;
 	 
 	 @Inject
 	 private EquiposServices equipoS;
 
 	public List<Elemento> consultarElementos(){
+		System.out.println("entro al bean");
 		try{
 			elementos = equipoS.consultarElementos();
+			System.out.println(elementos.size());
 		}
-		catch(EquiposException e){            
+		catch(EquiposException e){   
+			System.out.println(elementos.size());
 		}
-		return elementos;
+		
+		return elementos; 
 	 }  
 	 
-	 public void registrarElementoEquipo(int id, String tipo, String nombre, int nequipo) throws EquiposException{
+	 public void registrarElementoEquipo(String tipo, String nombre, int nequipo) throws EquiposException{
     	try {
-   		 equipoS.registrarElementoEquipo(id,tipo,nombre,nequipo);
+   		 equipoS.registrarElementoEquipo(tipo,nombre,nequipo);
  		}
  		catch (EquiposException e) {
    	 	}
 	 }
 	 
-	 public void registrarElemento(int id, String tipo, String nombre) throws EquiposException{
+	 public void registrarElemento(String tipo, String nombre) throws EquiposException{
 		try{
-			equipoS.registrarElemento(id, tipo, nombre);
+			equipoS.registrarElemento(tipo, nombre);
 		}
 		catch(EquiposException e){           
 		}

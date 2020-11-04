@@ -18,10 +18,11 @@
 				<h1 class="h1" >Registrar Equipo</h1>
 			</center>
 			<img class="imagen" src="https://www.tecnocomprascr.com/wp-content/uploads/2014/06/Lenovo-ThinkCentre-300x202.png"/>
-			<p:inputText class="input" placeholder="Marca" type="String" binding="#{marca}"/>
-			<a href="/faces/registrarelemento.xhtml"><p:commandButton type="button" update="Equipos_Form" class="boton" value="Registrar"/></a>
-			
-			<p:dataTable class="tabla">
+			<p:inputText id="marca" class="input" placeholder="Marca" type="String" value="#{marca}"/>
+			<p:inputText id="idcorreo" class="input2" placeholder="Idcorreo" type="String" value="#{idcorreo}"/>
+			<p:commandButton update="Equipos_Form" actionListener="#{RegistrarEquiposBean.registrarEquipo(marca, idcorreo)}" class="boton" value="Registrar"/>
+			<a href="/faces/registrarelemento.xhtml"><p:commandButton type="button" class="boton1" value="Registrar Elementos"/></a>
+			<p:dataTable var="req" value="#{RegistrarEquiposBean.consultarEquipos()}" class="tabla">
 				<f:facet name="header" >Equipos Registrados</f:facet>
 				<p:column class="columna" headerText="Número">
 					<h:outputText value="#{req.numero}" />

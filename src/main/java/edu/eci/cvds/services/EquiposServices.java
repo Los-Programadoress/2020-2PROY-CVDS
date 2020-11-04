@@ -21,6 +21,12 @@ public interface EquiposServices {
      public Usuario consultarUsuario(String idCorreo) throws EquiposException;
      
      /**
+      * Método que permite registrar a un usuario 
+      * @param usuario: Usuario a registrar
+      */
+     public void registrarUsuario(Usuario usuario) throws EquiposException;
+     
+     /**
       * Método que permite consultar los equipos
       * @return lista de equipos consultados
       * 
@@ -36,20 +42,18 @@ public interface EquiposServices {
  	
      /**
       * Método que permite registrar un equipo 
-      * @param numero: Número que identifica el equipo
       * @param marca: Marca del equipo
-      * @param usuario: Usuario que registra el equipo
+      * @param idcorreo: Identificador del correo del usuario
       */
- 	 public void registrarEquipo(String marca, Usuario usuario) throws EquiposException;
+ 	 public void registrarEquipo(String marca, String idcorreo) throws EquiposException;
  	 
  	/**
       * Método que permite registrar elemento a un equipo
-      * @param id: Identificador del elemento
  	  * @param tipo: Tipo del elemento
  	  * @param nombre: Nombre del elemento
  	  * @param nequipo: Número de equipo al que pertenece el elemento
       */
- 	 public void registrarElementoEquipo(int id, String tipo, String nombre, int nequipo) throws EquiposException;
+ 	 public void registrarElementoEquipo(String tipo, String nombre, int nequipo) throws EquiposException;
  	 
  	/**
       * Método que permite registrar consultar los elementos de un equipo 
@@ -60,9 +64,21 @@ public interface EquiposServices {
  	 
  	/**
       * Método que permite registrar un elemento
-      * @param id: Identificador del elemento
  	  * @param tipo: Tipo del elemento
  	  * @param nombre: Nombre del elemento
       */
- 	 public void registrarElemento(int id, String tipo, String nombre) throws EquiposException;
+ 	 public void registrarElemento(String tipo, String nombre) throws EquiposException;
+ 	 
+ 	/**
+ 	 * Método que permite registrar un elemento
+ 	     * @param nume: Identificador del numero
+ 	 * @param tipo: Tipo del elemento
+ 	     */
+ 	public void asociarElemento(int nume, String tipo) throws EquiposException;
+
+ 	/**
+ 	     * Método que permite registrar un elemento
+ 	     * @return lista de elementos consultados
+ 	     */
+ 	public List<Elemento> consultarElementos() throws EquiposException;
 }

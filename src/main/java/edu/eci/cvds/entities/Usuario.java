@@ -17,7 +17,7 @@ public class Usuario implements Serializable{
     private String correo;
     private String contrasena;
     
-    /**
+	/**
      *Constructor para la clase usuario
      */
     public Usuario() {}
@@ -29,9 +29,9 @@ public class Usuario implements Serializable{
      * @param estado: Indica si un usuario esta activo o no
      * @param contrasena: Contraseña con la que cuenta el usuario
      */
-    public Usuario(String idCorreo, String nombre, String estado, String correo, String contrasena) {
+    public Usuario(String idCorreo, String correo, String nombre, String estado, String contrasena) {
     	this.idCorreo = idCorreo;
-        this.nombre= nombre;
+        this.nombre = nombre;
     	this.estado = estado;
     	this.correo = correo;
         this.contrasena = contrasena;
@@ -123,6 +123,6 @@ public class Usuario implements Serializable{
      */
     @Override
     public String toString() {
-    	return "Usuario {idCorreo: " + idCorreo + ", nombre: " + nombre + ", estado: " + estado + ", correo : " + correo + ", contrasena: " + contrasena + "}";
+    	return "Usuario {idCorreo: " + idCorreo + ", nombre: " + nombre + ", estado: " + estado + ", correo : " + correo + "}";
      }
 }

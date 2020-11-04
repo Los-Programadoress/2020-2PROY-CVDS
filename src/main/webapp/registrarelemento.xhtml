@@ -23,10 +23,14 @@
 				<p:commandButton update="Elementos_Form" class="boton3"/>
 				<p:commandButton update="Elementos_Form" class="boton4"/>
 			</div>
-			<p:inputText class="input" placeholder="Modelo" type="String" binding="#{marca}"/>
+			<p:inputText class="input" placeholder="Modelo" type="String"/>
 			<p:commandButton update="Elementos_Form" class="boton" value="Registrar"/>
-			<p:dataTable class="tabla">
+			<p:dataTable var="rel" value="#{RegistrarElementoBean.consultarElementos()}" class="tabla">
 				<f:facet name="header" class="columna">Elementos Registrados</f:facet>
+				<p:column class="columna" headerText="Id">
+					<h:outputText value="#{rel.numequipo}" />
+				</p:column>
+				
 				<p:column class="columna" headerText="Id">
 					<h:outputText value="#{rel.id}" />
 				</p:column>
