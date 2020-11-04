@@ -31,5 +31,4 @@
         <mapper resource="mappers/ElementoMapper.xml"></mapper>
     </mappers> 
         
-        
 </configuration>

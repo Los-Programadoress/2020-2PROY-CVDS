@@ -37,9 +37,8 @@ public class GuiceContextListener implements ServletContextListener {
                 install(JdbcHelper.PostgreSQL);
                 
                 bind(UsuarioDAO.class).to(MyBATISUsuarioDAO.class);
-                bind(EquipoDAO.class).to(MyBATISEquipoDAO.class);
-                bind(ElementoDAO.class).to(MyBATISElementoDAO.class);
-
+                //bind(EquipoDAO.class).to(MyBATISEquipoDAO.class);
+                //bind(ElementoDAO.class).to(MyBATISElementoDAO.class);
             }
         });
         

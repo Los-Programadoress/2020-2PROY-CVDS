@@ -6,22 +6,27 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:head>
+		<title>Menú</title>
 		<link rel="stylesheet" href="master2.css"/>
 	</h:head>
 	<body>
+		<h1 class="h1">MENÚ</h1>
 		<div class="en-sesion">
 			<h:form id="form">
 				<p:commandButton class="submit" update="form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
 			</h:form>
 	    </div>
-		
 		<div class="en-sesion1">
-			<img class="imagen" src="https://i.pinimg.com/564x/61/f4/f3/61f4f36fbe96012150256d342df91af1.jpg"/>
+			<img class="imagen" src="https://media.aws.alkosto.com/ymarketingcolcomercio/Alkosto/informatica/contenido/HP/190781987055/190781987055_01.png"/>
+			<a href="/faces/registrarequipo.xhtml"><input type="button" class="boton" value="Registrar Equipo"/></a>
 		</div>
 		<div class="en-sesion2">
-			<div class="en-sesion3">
-				<h1 class="h1">MENU</h1>
-			</div>
+			<img class="imagen" src="img/compus1.png"/>
+			<a href="/faces/registrarelemento.xhtml"><input type="button" class="boton" value="Registrar Elemento"/></a>
+		</div>
+		<div class="en-sesion3">
+			<img class="imagen" src="https://docentes.uaa.mx//wp-content/uploads/sites/1/nggallery/uaa-iconos/documentos.png"/>
+			<input type="button" class="boton" value="Registrar Novedad"/>
 		</div>
 		<script src="noBack.js"></script>
 	</body> 
