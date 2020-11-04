@@ -32,9 +32,9 @@ public interface EquipoDAO {
      * Método que permite registrar un equipo 
      * @param numero: Número que identifica el equipo
      * @param marca: Marca del equipo
-     * @param idCorreo: Identificador del usuario.
+     * @param idcorreo: Identificador del correo del usuario
      */
-	 public void registrarEquipo(String marca, String idCorreo) throws EquiposException;
+	 public void registrarEquipo(String marca, String idcorreo) throws EquiposException;
 	 
 	 /**
      * Método que permite registrar consultar los elementos de un equipo 

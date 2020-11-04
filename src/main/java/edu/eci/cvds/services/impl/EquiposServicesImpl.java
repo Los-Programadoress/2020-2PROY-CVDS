@@ -94,9 +94,9 @@ public class EquiposServicesImpl implements EquiposServices{
       * @param idCorreo: Identificador del usuario.
       */
      @Override
- 	 public void registrarEquipo(String marca, String idCorreo) throws EquiposException {
+ 	 public void registrarEquipo(String marca, String idcorreo) throws EquiposException {
  		try {
- 			equipoDAO.registrarEquipo(marca, idCorreo);
+ 			equipoDAO.registrarEquipo(marca, idcorreo);
  		}
  		catch (EquiposException ex) {
  			throw new EquiposException("Error al registrar el equipo" + ex.getLocalizedMessage(), ex);
@@ -168,6 +168,7 @@ public class EquiposServicesImpl implements EquiposServices{
 	    * @return lista de elementos consultados
 	    */
 	public List<Elemento> consultarElementos() throws EquiposException{
+		System.out.println("entro al services");
 		try{
 			System.out.println("defer");
 			return elementoDAO.consultarElementos();

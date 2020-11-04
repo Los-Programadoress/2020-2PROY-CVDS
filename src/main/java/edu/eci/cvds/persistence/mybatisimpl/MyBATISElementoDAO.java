@@ -69,6 +69,7 @@ public class MyBATISElementoDAO implements ElementoDAO{
      * @return lista de elementos consultados
      */
 	 public List<Elemento> consultarElementos() throws PersistenceException{
+		 System.out.println("entro al dao");
 		 try{
 			 return elementoMapper.consultarElementos();
 		 }
