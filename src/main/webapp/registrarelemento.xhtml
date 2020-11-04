@@ -23,13 +23,17 @@
 				<p:commandButton update="Elementos_Form" class="boton3"/>
 				<p:commandButton update="Elementos_Form" class="boton4"/>
 			</div>
-			<p:inputText id="nombre" class="input" placeholder="Nombre" type="String" value="#{nombre}"/>
-			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento(nombre)}" class="boton" value="Registrar"/>
-			
-			<p:dataTable var="req" value="#{registrarElementosBean.consultarElementos()}" class="tabla">
-				<f:facet name="header" >Elementos Registrados</f:facet>
+			<p:inputText class="input" placeholder="Modelo" type="String"/>
+			<p:commandButton update="Elementos_Form" class="boton" value="Registrar"/>
+			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElementos()}" class="tabla">
+				<f:facet name="header" class="columna">Elementos Registrados</f:facet>
+				
 				<p:column class="columna" headerText="Id">
-					<h:outputText value="#{req.id}" />
+					<h:outputText value="#{rel.id}" />
+				</p:column>
+				
+				<p:column class="columna" headerText="Tipo">
+					<h:outputText value="#{rel.tipo}" />
 				</p:column>
 	 
 				<p:column class="columna" headerText="Nombre">
@@ -40,6 +44,9 @@
 					<h:outputText value="#{req.disponible}" />
 				</p:column>
 				
+				<p:column class="columna" headerText="Equipo">
+					<p:commandButton update="Elementos_Form" value="Asociar" />
+				</p:column>
 			</p:dataTable>
 			
 		</h:form>
