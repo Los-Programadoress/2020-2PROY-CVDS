@@ -4,4 +4,4 @@
 
 
 # Enlace Heroku
-[Enlace Heroku](https://dashboard.heroku.com/apps/historialdeequipo)
+[Enlace Heroku](https://historialdeequipo.herokuapp.com)
