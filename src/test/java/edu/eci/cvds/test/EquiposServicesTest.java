@@ -86,8 +86,7 @@ public class EquiposServicesTest {
     @Test
     public void deberiaConsultarEquipos() {
     	try {
-    		Usuario usuario = equiposServices.consultarUsuario("maria.alfaro");     		
-    		equiposServices.registrarEquipo("ASUS", usuario.getIdCorreo());
+    		equiposServices.registrarEquipo("ASUS", "maria.alfaro");
     		
     		List<Equipo> equipos = equiposServices.consultarEquipos();
     		assertTrue(equipos.size()>=1);
@@ -105,8 +104,7 @@ public class EquiposServicesTest {
     @Test
     public void deberiaRegistrarElementoAEquipo() {
     	try {
-    		Usuario usuario = equiposServices.consultarUsuario("maria.alfaro");     		
-    		equiposServices.registrarEquipo("TOSHIBA", usuario.getIdCorreo());
+    		equiposServices.registrarEquipo("TOSHIBA", "maria.alfaro");
     		equiposServices.registrarElementoEquipo("Mouse", "Vertical Inalámbrico", 5);
     		equiposServices.registrarElementoEquipo("Pantalla", "LED", 5);
     		equiposServices.registrarElementoEquipo("Torre", "V530 AIO", 5);
@@ -129,8 +127,7 @@ public class EquiposServicesTest {
     public void noDeberiaRegistrarElementoAEquipo() {
     	boolean r = false;
     	try {
-    		Usuario usuario = equiposServices.consultarUsuario("maria.alfaro");
-    		equiposServices.registrarEquipo("DELL", usuario.getIdCorreo());
+    		equiposServices.registrarEquipo("DELL", "maria.alfaro");
     		equiposServices.registrarElementoEquipo("Mouse", "Vertical Inalámbrico", 6);
     		assertEquals(equiposServices.consultarEquipo(5).getMarca(),"DELL");
     		
