@@ -44,6 +44,20 @@ public class EquiposServicesImpl implements EquiposServices{
     		 throw new EquiposException("Error al consultar el usuario" + ex.getLocalizedMessage(), ex);
     	 }
      }
+     
+     /**
+      * Método que permite registrar a un usuario 
+      * @param usuario: Usuario a registrar
+      */
+ 	 @Override
+     public void registrarUsuario(Usuario usuario) throws EquiposException {
+ 		try {
+ 			usuarioDAO.registrarUsuario(usuario);
+ 		}
+ 		catch (EquiposException ex) {
+ 			throw new EquiposException("Error al registrar el usuario" + ex.getLocalizedMessage(), ex);
+ 		}
+ 	 }
     
      /**
       * Método que permite consultar los equipos
@@ -76,31 +90,29 @@ public class EquiposServicesImpl implements EquiposServices{
      
      /**
       * Método que permite registrar un equipo 
-      * @param numero: Número que identifica el equipo
       * @param marca: Marca del equipo
       * @param usuario: Usuario que registra el equipo
       */
      @Override
- 	 public void registrarEquipo(int numero, String marca, Usuario usuario) throws EquiposException {
+ 	 public void registrarEquipo(String marca, Usuario usuario) throws EquiposException {
  		try {
-   		 equipoDAO.registrarEquipo(numero, marca, usuario);
+ 			equipoDAO.registrarEquipo(marca, usuario);
  		}
- 		catch (PersistenceException ex) {
+ 		catch (EquiposException ex) {
  			throw new EquiposException("Error al registrar el equipo" + ex.getLocalizedMessage(), ex);
    	 	}
  	 }
      
      /**
       * Método que permite registrar elemento a un equipo
-      * @param id: Identificador del elemento
  	  * @param tipo: Tipo del elemento
  	  * @param nombre: Nombre del elemento
  	  * @param nequipo: Número de equipo al que pertenece el elemento
       */
      @Override
- 	 public void registrarElementoEquipo(int id, String tipo, String nombre, int nequipo) throws EquiposException{
+ 	 public void registrarElementoEquipo(String tipo, String nombre, int nequipo) throws EquiposException{
     	try {
-   		 elementoDAO.registrarElementoEquipo(id,tipo,nombre,nequipo);
+   		 elementoDAO.registrarElementoEquipo(tipo,nombre,nequipo);
  		}
  		catch (PersistenceException ex) {
  			throw new EquiposException("Error al registrar elemento del equipo" + ex.getLocalizedMessage(), ex);
@@ -124,17 +136,44 @@ public class EquiposServicesImpl implements EquiposServices{
 	
 	/**
      * Método que permite registrar un elemento
-     * @param id: Identificador del elemento
 	 * @param tipo: Tipo del elemento
 	 * @param nombre: Nombre del elemento
      */
 	@Override
-	 public void registrarElemento(int id, String tipo, String nombre) throws EquiposException{
+	 public void registrarElemento(String tipo, String nombre) throws EquiposException{
 		try{
-			elementoDAO.registrarElemento(id, tipo, nombre);
+			elementoDAO.registrarElemento(tipo, nombre);
 		}
 		catch(PersistenceException e){
 			throw new EquiposException("Error al registrar el elemento",e);            
 		}
 	}
+	
+	/**
+	* Método que permite registrar un elemento
+	    * @param nume: Identificador del numero
+	* @param tipo: Tipo del elemento
+	    */
+	public void asociarElemento(int nume, String tipo) throws EquiposException{
+		try{
+			elementoDAO.asociarElemento(nume, tipo);
+		}
+		catch(PersistenceException e){
+			throw new EquiposException("Error al asociar el elemento",e);            
+		}
+	}
+
+	/**
+	    * Método que permite registrar un elemento
+	    * @return lista de elementos consultados
+	    */
+	public List<Elemento> consultarElementos() throws EquiposException{
+		try{
+			return elementoDAO.consultarElementos();
+		}
+		catch(PersistenceException e){
+			throw new EquiposException("Error al consutar elementos",e);            
+		}
+	}
+
 }

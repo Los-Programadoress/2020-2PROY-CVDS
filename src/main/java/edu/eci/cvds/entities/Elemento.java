@@ -25,7 +25,7 @@ public class Elemento {
 	 *Constructor para la clase elemento
 	 * @param id: Identificador del elemento
 	 * @param tipo: Tipo del elemento
-	 * @param nombre: Nombre del elemento
+	 * @param nombre: Modelo del elemento
 	 * @param disponible: Disponibilidad del elemento
  	 */
 	public Elemento(int id, String tipo, String nombre, boolean disponible) {
@@ -40,7 +40,7 @@ public class Elemento {
 	 *Constructor para la clase elemento
 	 * @param id: Identificador del elemento
 	 * @param tipo: Tipo del elemento
-	 * @param nombre: Nombre del rol
+	 * @param nombre: Modelo del elemento
  	 */
 	public Elemento(int id, String tipo, String nombre) {
 		super();
