@@ -45,20 +45,6 @@ public class EquiposServicesTest {
     }
     
     /**
-     * Debería permitir consultar un usuario.
-     */
-    @Test
-    public void deberiaConsultarUsuario() {
-    	try {
-    		Usuario usuario = equiposServices.consultarUsuario("maria.alfaro");
-    		assertEquals(usuario.getNombre(),"Angelica Alfaro");
-	    	
-		} catch (EquiposException e) {
-			Assert.assertFalse(false);
-		}
-    }
-    
-    /**
      * Debe permitir registrar un equipo.
      * Registro Válido: Debe existir el usuario para relacionarlo con el nuevo equipo.
      */
