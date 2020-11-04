@@ -169,6 +169,7 @@ public class EquiposServicesImpl implements EquiposServices{
 	    */
 	public List<Elemento> consultarElementos() throws EquiposException{
 		try{
+			System.out.println("defer");
 			return elementoDAO.consultarElementos();
 		}
 		catch(PersistenceException e){

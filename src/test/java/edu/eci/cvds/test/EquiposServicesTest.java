@@ -53,7 +53,6 @@ public class EquiposServicesTest {
     	try {
     		equiposServices.registrarEquipo("DELL", "maria.alfaro");
     		Equipo e = equiposServices.consultarEquipo(3);
-    		System.out.println(e.getNumero());
     		assertEquals(e.getNumero(),3);
 	    	
 		} catch (EquiposException e) {
