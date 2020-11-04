@@ -91,12 +91,12 @@ public class EquiposServicesImpl implements EquiposServices{
      /**
       * Método que permite registrar un equipo 
       * @param marca: Marca del equipo
-      * @param usuario: Usuario que registra el equipo
+      * @param idCorreo: Identificador del usuario.
       */
      @Override
- 	 public void registrarEquipo(String marca, Usuario usuario) throws EquiposException {
+ 	 public void registrarEquipo(String marca, String idCorreo) throws EquiposException {
  		try {
- 			equipoDAO.registrarEquipo(marca, usuario);
+ 			equipoDAO.registrarEquipo(marca, idCorreo);
  		}
  		catch (EquiposException ex) {
  			throw new EquiposException("Error al registrar el equipo" + ex.getLocalizedMessage(), ex);

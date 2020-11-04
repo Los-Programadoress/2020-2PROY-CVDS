@@ -56,14 +56,14 @@ public class MyBATISEquipoDAO implements EquipoDAO{
      * Método que permite registrar un equipo 
      * @param numero: Número que identifica el equipo
      * @param marca: Marca del equipo
-     * @param usuario: Usuario que registra el equipo
+     * @param idCorreo: Identificador del usuario.
      */
 	@Override
 	@Transactional
-	 public void registrarEquipo(String marca, Usuario usuario) throws EquiposException{
+	 public void registrarEquipo(String marca, String idCorreo) throws EquiposException{
 		boolean disponible = true;
 		try{
-			Usuario user = usuarioMapper.consultarUsuario(usuario.getIdCorreo());
+			Usuario user = usuarioMapper.consultarUsuario(idCorreo);
 			equipoMapper.registrarEquipo(marca, disponible, user.getIdCorreo());
 		}
 		catch(NullPointerException e){

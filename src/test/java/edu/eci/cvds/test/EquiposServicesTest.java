@@ -52,7 +52,7 @@ public class EquiposServicesTest {
     public void deberiaRegistrarEquipo() {
     	try {
     		Usuario usuario = equiposServices.consultarUsuario("maria.alfaro");     		
-    		equiposServices.registrarEquipo("DELL", usuario);
+    		equiposServices.registrarEquipo("DELL", usuario.getIdCorreo());
     		Equipo e = equiposServices.consultarEquipo(3);
     		assertEquals(e.getNumero(),3);
 	    	
@@ -70,10 +70,10 @@ public class EquiposServicesTest {
     	boolean r = false;
     	try {
     		Usuario usuario = equiposServices.consultarUsuario("pepe.torres");     		
-    		equiposServices.registrarEquipo("HP", usuario);
+    		equiposServices.registrarEquipo("HP", usuario.getIdCorreo());
     		assertEquals(equiposServices.consultarEquipo(4).getMarca(),"HP");
     		
-		} catch (EquiposException e) {
+		}catch (EquiposException | NullPointerException e) {
 			r = true;
 		}
     	Assert.assertTrue(r);
@@ -87,7 +87,7 @@ public class EquiposServicesTest {
     public void deberiaConsultarEquipos() {
     	try {
     		Usuario usuario = equiposServices.consultarUsuario("maria.alfaro");     		
-    		equiposServices.registrarEquipo("ASUS", usuario);
+    		equiposServices.registrarEquipo("ASUS", usuario.getIdCorreo());
     		
     		List<Equipo> equipos = equiposServices.consultarEquipos();
     		assertTrue(equipos.size()>=1);
@@ -106,7 +106,7 @@ public class EquiposServicesTest {
     public void deberiaRegistrarElementoAEquipo() {
     	try {
     		Usuario usuario = equiposServices.consultarUsuario("maria.alfaro");     		
-    		equiposServices.registrarEquipo("TOSHIBA", usuario);
+    		equiposServices.registrarEquipo("TOSHIBA", usuario.getIdCorreo());
     		equiposServices.registrarElementoEquipo("Mouse", "Vertical Inalámbrico", 5);
     		equiposServices.registrarElementoEquipo("Pantalla", "LED", 5);
     		equiposServices.registrarElementoEquipo("Torre", "V530 AIO", 5);
@@ -130,7 +130,7 @@ public class EquiposServicesTest {
     	boolean r = false;
     	try {
     		Usuario usuario = equiposServices.consultarUsuario("maria.alfaro");
-    		equiposServices.registrarEquipo("DELL", usuario);
+    		equiposServices.registrarEquipo("DELL", usuario.getIdCorreo());
     		equiposServices.registrarElementoEquipo("Mouse", "Vertical Inalámbrico", 6);
     		assertEquals(equiposServices.consultarEquipo(5).getMarca(),"DELL");
     		
