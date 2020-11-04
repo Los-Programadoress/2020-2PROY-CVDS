@@ -21,6 +21,12 @@ public interface EquiposServices {
      public Usuario consultarUsuario(String idCorreo) throws EquiposException;
      
      /**
+      * Método que permite registrar a un usuario 
+      * @param usuario: Usuario a registrar
+      */
+     public void registrarUsuario(Usuario usuario) throws EquiposException;
+     
+     /**
       * Método que permite consultar los equipos
       * @return lista de equipos consultados
       * 
@@ -62,4 +68,17 @@ public interface EquiposServices {
  	  * @param nombre: Nombre del elemento
       */
  	 public void registrarElemento(String tipo, String nombre) throws EquiposException;
+ 	 
+ 	/**
+ 	 * Método que permite registrar un elemento
+ 	     * @param nume: Identificador del numero
+ 	 * @param tipo: Tipo del elemento
+ 	     */
+ 	public void asociarElemento(int nume, String tipo) throws EquiposException;
+
+ 	/**
+ 	     * Método que permite registrar un elemento
+ 	     * @return lista de elementos consultados
+ 	     */
+ 	public List<Elemento> consultarElementos() throws EquiposException;
 }

@@ -19,7 +19,6 @@
       e.marca,
       e.disponible
     FROM equipo as e
-    LEFT JOIN usuario AS u ON e.usuario_idCorreo = u.idCorreo
   </select>
   
   <select parameterType="map" id="consultarEquipo" resultMap="EquipoResult">
@@ -28,7 +27,6 @@
       e.marca,
       e.disponible
     FROM equipo as e
-    LEFT JOIN usuario AS u ON e.usuario_idCorreo = u.idCorreo
     WHERE e.numero = #{nequipo}
   </select>
   
@@ -39,7 +37,7 @@
   
   <select parameterType="map" id="consultarElementosEquipo" resultMap="EquipoResult">
    SELECT
-   	  e.usuario_idCorreo
+   	  e.usuario_idCorreo,
       el.id,
       el.tipo,
       el.nombre,

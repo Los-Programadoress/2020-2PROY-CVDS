@@ -22,4 +22,10 @@
     FROM USUARIO as u
     WHERE u.idCorreo = #{idCorreo};
   </select>
+  
+  <insert parameterType="map" id="registrarUsuario">
+    INSERT INTO USUARIO (idCorreo, correo, nombre , estado, contrasena)
+    VALUES ( #{usuario.idCorreo}, #{usuario.correo}, #{usuario.nombre}, #{usuario.estado}, #{usuario.contrasena});
+  </insert>
+  
 </mapper>

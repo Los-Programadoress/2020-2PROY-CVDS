@@ -1,9 +1,12 @@
 package edu.eci.cvds.persistence.mybatisimpl;
 
+import java.util.List;
+
 import org.mybatis.guice.transactional.Transactional;
 
 import com.google.inject.Inject;
 
+import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.persistence.ElementoDAO;
 import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.persistence.mybatisimpl.mappers.ElementoMapper;
@@ -46,4 +49,32 @@ public class MyBATISElementoDAO implements ElementoDAO{
             throw new PersistenceException("Error al registrar el elemento",e);            
         } 
 	}
+	 
+	 /**
+	 * Método que permite registrar un elemento
+	 * @param nume: Identificador del numero
+	 * @param tipo: Tipo del elemento
+	 */
+	 public void asociarElemento(int nume, String tipo) throws PersistenceException{
+		 try{
+			 elementoMapper.asociarElemento(nume,tipo);
+		 }
+		 catch(org.apache.ibatis.exceptions.PersistenceException e){
+		     throw new PersistenceException("Error al asociar el elemento",e);            
+		 }
+	 }
+
+	 /**
+     * Método que permite registrar un elemento
+     * @return lista de elementos consultados
+     */
+	 public List<Elemento> consultarElementos() throws PersistenceException{
+		 try{
+			 return elementoMapper.consultarElementos();
+		 }
+		 catch(org.apache.ibatis.exceptions.PersistenceException e){
+            throw new PersistenceException("Error al consutar elementos",e);            
+        }
+	 }
+
 }

@@ -29,9 +29,9 @@ public class Usuario implements Serializable{
      * @param estado: Indica si un usuario esta activo o no
      * @param contrasena: Contraseña con la que cuenta el usuario
      */
-    public Usuario(String idCorreo, String nombre, String estado, String correo, String contrasena) {
+    public Usuario(String idCorreo, String correo, String nombre, String estado, String contrasena) {
     	this.idCorreo = idCorreo;
-        this.nombre= nombre;
+        this.nombre = nombre;
     	this.estado = estado;
     	this.correo = correo;
         this.contrasena = contrasena;
