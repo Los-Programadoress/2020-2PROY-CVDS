@@ -7,7 +7,7 @@
 	
 	<h:head> 
 		<title>Registro elemento</title>
-		<link rel="stylesheet" href="master4.css"/>
+		<link rel="stylesheet" href="master3.css"/>
 	</h:head>
 	<body>
 		<h:form id="Elementos_Form">
@@ -18,38 +18,28 @@
 				<h1 class="h1">Registrar Elemento</h1>
 			</center>
 			<div class="grupoBotones">
-				<p:commandButton update="Elementos_Form" class="boton"/>
+				<p:commandButton update="Elementos_Form" class="boton" />
 				<p:commandButton update="Elementos_Form" class="boton2"/>
 				<p:commandButton update="Elementos_Form" class="boton3"/>
 				<p:commandButton update="Elementos_Form" class="boton4"/>
 			</div>
-			<p:inputText class="input" placeholder="Modelo" type="String"/>
-			<p:commandButton update="Elementos_Form" class="boton" value="Registrar"/>
-			<p:dataTable var="rel" value="#{RegistrarElementoBean.consultarElementos()}" class="tabla">
-				<f:facet name="header" class="columna">Elementos Registrados</f:facet>
+			<p:inputText id="nombre" class="input" placeholder="Nombre" type="String" value="#{nombre}"/>
+			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento(nombre)}" class="boton" value="Registrar"/>
+			
+			<p:dataTable var="req" value="#{registrarElementosBean.consultarElementos()}" class="tabla">
+				<f:facet name="header" >Elementos Registrados</f:facet>
 				<p:column class="columna" headerText="Id">
-					<h:outputText value="#{rel.numequipo}" />
-				</p:column>
-				
-				<p:column class="columna" headerText="Id">
-					<h:outputText value="#{rel.id}" />
-				</p:column>
-				
-				<p:column class="columna" headerText="Tipo">
-					<h:outputText value="#{rel.tipo}" />
+					<h:outputText value="#{req.id}" />
 				</p:column>
 	 
 				<p:column class="columna" headerText="Nombre">
-					<h:outputText value="#{rel.nombre}" />
+					<h:outputText value="#{req.nombre}" />
 				</p:column>
 	 
 				<p:column class="columna" headerText="Disponible">
-					<h:outputText value="#{rel.disponible}" />
+					<h:outputText value="#{req.disponible}" />
 				</p:column>
 				
-				<p:column class="columna" headerText="Equipo">
-					<p:commandButton update="Equipos_Form" value="Asociar" />
-				</p:column>
 			</p:dataTable>
 			
 		</h:form>
