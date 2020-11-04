@@ -25,11 +25,8 @@
 			</div>
 			<p:inputText class="input" placeholder="Modelo" type="String"/>
 			<p:commandButton update="Elementos_Form" class="boton" value="Registrar"/>
-			<p:dataTable var="rel" value="#{RegistrarElementoBean.consultarElementos()}" class="tabla">
+			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElementos()}" class="tabla">
 				<f:facet name="header" class="columna">Elementos Registrados</f:facet>
-				<p:column class="columna" headerText="Id">
-					<h:outputText value="#{rel.numequipo}" />
-				</p:column>
 				
 				<p:column class="columna" headerText="Id">
 					<h:outputText value="#{rel.id}" />
@@ -48,7 +45,7 @@
 				</p:column>
 				
 				<p:column class="columna" headerText="Equipo">
-					<p:commandButton update="Equipos_Form" value="Asociar" />
+					<p:commandButton update="Elementos_Form" value="Asociar" />
 				</p:column>
 			</p:dataTable>
 			

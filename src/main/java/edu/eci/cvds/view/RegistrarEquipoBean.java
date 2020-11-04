@@ -9,7 +9,6 @@ import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Usuario;
-import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.services.EquiposException;
 import edu.eci.cvds.services.EquiposServices;
 
@@ -17,8 +16,10 @@ import edu.eci.cvds.services.EquiposServices;
 @ManagedBean(name="RegistrarEquiposBean")
 @SessionScoped
 public class RegistrarEquipoBean extends BasePageBean{
+
+	private static final long serialVersionUID = 650984420982868194L;
+
 	private List<Equipo> equipos= null;
-	private Equipo equipo = null;
 
 	@Inject
 	private EquiposServices equipoS;
@@ -28,8 +29,7 @@ public class RegistrarEquipoBean extends BasePageBean{
 	public List<Equipo> consultarEquipos(){
  		try{
  			equipos= equipoS.consultarEquipos();
- 		}
- 		catch(EquiposException e){    
+ 		}catch(EquiposException e){    
  	    }
  		return equipos;
  	}
@@ -37,8 +37,7 @@ public class RegistrarEquipoBean extends BasePageBean{
 	public void registrarEquipo(String marca, String idcorreo) {
 		try{
 			equipoS.registrarEquipo(marca, idcorreo);
-		}
-		catch(EquiposException e){           
+		}catch(EquiposException e){           
         }
 	 }
 	
@@ -50,11 +49,4 @@ public class RegistrarEquipoBean extends BasePageBean{
 		this.equipos = equipos;
 	}
 
-	public Equipo getEquipo() {
-		return equipo;
-	}
-
-	public void setEquipo(Equipo equipo) {
-		this.equipo = equipo;
-	}
 }
