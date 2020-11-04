@@ -61,9 +61,10 @@ public class MyBatisMain {
         
         //System.out.println(cm.consultarEquipo(1));
         ElementoMapper cm3=sqlss.getMapper(ElementoMapper.class);
+        System.out.println(cm3.consultarElementos());
         //cm.registrarElemento("Torre", "Completa E-ATX", false);
         //System.out.println(cm.consultarElementosEquipo(6));
-        UsuarioMapper cm=sqlss.getMapper(UsuarioMapper.class);
+        /*UsuarioMapper cm=sqlss.getMapper(UsuarioMapper.class);
         Usuario u = cm.consultarUsuario("maria.alfaro");   		
 		cm2.registrarEquipo("TOSHIBA", true, u.getIdCorreo());
 		cm3.registrarElementoEquipo("Mouse", "Vertical Inalámbrico",false, 1);
@@ -71,7 +72,7 @@ public class MyBatisMain {
 		cm3.registrarElementoEquipo("Torre", "V530 AIO",false, 1);
 		cm3.registrarElementoEquipo("Teclado", "Flexible",false, 1);
 		Equipo e = cm2.consultarEquipo(1);
-		System.out.println(cm2.consultarElementosEquipo(1));
+		System.out.println(cm2.consultarElementosEquipo(1));*/
         
         
         sqlss.commit();      

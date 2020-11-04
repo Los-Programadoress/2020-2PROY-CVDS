@@ -43,9 +43,9 @@ public interface EquiposServices {
      /**
       * Método que permite registrar un equipo 
       * @param marca: Marca del equipo
-      * @param usuario: Usuario que registra el equipo
+      * @param idCorreo: Identificador del usuario.
       */
- 	 public void registrarEquipo(String marca, Usuario usuario) throws EquiposException;
+ 	 public void registrarEquipo(String marca, String idCorreo) throws EquiposException;
  	 
  	/**
       * Método que permite registrar elemento a un equipo

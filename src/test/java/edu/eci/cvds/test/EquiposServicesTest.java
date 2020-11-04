@@ -41,23 +41,7 @@ public class EquiposServicesTest {
      * Instancia los Servicios de EquiposServices.
      */
     public EquiposServicesTest() {
-    	equiposServices = EquiposServicesFactory.getInstance().getEquiposServices();
-    }
-    
-    /**
-     * Debería permitir consultar un usuario.
-     */
-    @Test
-    public void deberiaConsultarUsuario() {
-    	try {
-    		Usuario u = new Usuario ("maria.alfaro","maria.alfaro@mail.escuelaing.edu.co", "Angelica Alfaro","Activo","44f632480c49db38c4d0cbc2bea2384049c74a689baf5bf576163455787185a3");
-    		equiposServices.registrarUsuario(u);
-    		Usuario usuario = equiposServices.consultarUsuario(u.getIdCorreo());
-    		assertEquals(usuario.getNombre(),"Angelica Alfaro");
-	    	
-		} catch (EquiposException e) {
-			Assert.assertFalse(false);
-		}
+    	equiposServices = EquiposServicesFactory.getInstance().getEquiposServicesTesting();
     }
     
     /**
@@ -67,10 +51,9 @@ public class EquiposServicesTest {
     @Test
     public void deberiaRegistrarEquipo() {
     	try {
-    		Usuario usuario = equiposServices.consultarUsuario("maria.alfaro");     		
-    		equiposServices.registrarEquipo("DELL", usuario);
-    		Equipo e = equiposServices.consultarEquipo(1);
-    		assertEquals(e.getNumero(),1);
+    		equiposServices.registrarEquipo("DELL", "maria.alfaro");
+    		Equipo e = equiposServices.consultarEquipo(3);
+    		assertEquals(e.getNumero(),3);
 	    	
 		} catch (EquiposException e) {
 			Assert.assertFalse(false);
@@ -86,10 +69,10 @@ public class EquiposServicesTest {
     	boolean r = false;
     	try {
     		Usuario usuario = equiposServices.consultarUsuario("pepe.torres");     		
-    		equiposServices.registrarEquipo("HP", usuario);
-    		assertEquals(equiposServices.consultarEquipo(2).getMarca(),"HP");
+    		equiposServices.registrarEquipo("HP", usuario.getIdCorreo());
+    		assertEquals(equiposServices.consultarEquipo(4).getMarca(),"HP");
     		
-		} catch (EquiposException e) {
+		}catch (EquiposException | NullPointerException e) {
 			r = true;
 		}
     	Assert.assertTrue(r);
@@ -102,8 +85,7 @@ public class EquiposServicesTest {
     @Test
     public void deberiaConsultarEquipos() {
     	try {
-    		Usuario usuario = equiposServices.consultarUsuario("maria.alfaro");     		
-    		equiposServices.registrarEquipo("ASUS", usuario);
+    		equiposServices.registrarEquipo("ASUS", "maria.alfaro");
     		
     		List<Equipo> equipos = equiposServices.consultarEquipos();
     		assertTrue(equipos.size()>=1);
@@ -121,14 +103,13 @@ public class EquiposServicesTest {
     @Test
     public void deberiaRegistrarElementoAEquipo() {
     	try {
-    		Usuario usuario = equiposServices.consultarUsuario("maria.alfaro");     		
-    		equiposServices.registrarEquipo("TOSHIBA", usuario);
-    		equiposServices.registrarElementoEquipo("Mouse", "Vertical Inalámbrico", 2);
-    		equiposServices.registrarElementoEquipo("Pantalla", "LED", 2);
-    		equiposServices.registrarElementoEquipo("Torre", "V530 AIO", 2);
-    		equiposServices.registrarElementoEquipo("Teclado", "Flexible", 2);
-    		Equipo e = equiposServices.consultarEquipo(2);
-    		List<Elemento> elementos = equiposServices.consultarElementosEquipo(2);
+    		equiposServices.registrarEquipo("TOSHIBA", "maria.alfaro");
+    		equiposServices.registrarElementoEquipo("Mouse", "Vertical Inalámbrico", 5);
+    		equiposServices.registrarElementoEquipo("Pantalla", "LED", 5);
+    		equiposServices.registrarElementoEquipo("Torre", "V530 AIO", 5);
+    		equiposServices.registrarElementoEquipo("Teclado", "Flexible", 5);
+    		Equipo e = equiposServices.consultarEquipo(5);
+    		List<Elemento> elementos = equiposServices.consultarElementosEquipo(5);
     		
     		assertEquals(elementos.size(),4);
 
@@ -145,9 +126,8 @@ public class EquiposServicesTest {
     public void noDeberiaRegistrarElementoAEquipo() {
     	boolean r = false;
     	try {
-    		Usuario usuario = equiposServices.consultarUsuario("maria.alfaro");
-    		equiposServices.registrarEquipo("DELL", usuario);
-    		equiposServices.registrarElementoEquipo("Mouse", "Vertical Inalámbrico", 5);
+    		equiposServices.registrarEquipo("DELL", "maria.alfaro");
+    		equiposServices.registrarElementoEquipo("Mouse", "Vertical Inalámbrico", 6);
     		assertEquals(equiposServices.consultarEquipo(5).getMarca(),"DELL");
     		
 		} catch (EquiposException e) {
