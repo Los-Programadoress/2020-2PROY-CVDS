@@ -91,7 +91,7 @@ public class EquiposServicesImpl implements EquiposServices{
      /**
       * Método que permite registrar un equipo 
       * @param marca: Marca del equipo
-      * @param usuario: Usuario que registra el equipo
+      * @param idCorreo: Identificador del usuario.
       */
      @Override
  	 public void registrarEquipo(String marca, String idcorreo) throws EquiposException {
@@ -170,6 +170,7 @@ public class EquiposServicesImpl implements EquiposServices{
 	public List<Elemento> consultarElementos() throws EquiposException{
 		System.out.println("entro al services");
 		try{
+			System.out.println("defer");
 			return elementoDAO.consultarElementos();
 		}
 		catch(PersistenceException e){

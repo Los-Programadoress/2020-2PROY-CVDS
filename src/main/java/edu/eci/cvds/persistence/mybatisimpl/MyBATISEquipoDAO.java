@@ -56,7 +56,7 @@ public class MyBATISEquipoDAO implements EquipoDAO{
      * Método que permite registrar un equipo 
      * @param numero: Número que identifica el equipo
      * @param marca: Marca del equipo
-     * @param usuario: Usuario que registra el equipo
+     * @param idCorreo: Identificador del usuario.
      */
 	@Override
 	@Transactional
