@@ -1,5 +1,10 @@
 package edu.eci.cvds.persistence;
 
+/**
+* Clase que permite controlar las excepciones
+* @author: Angélica Alfaro - Laura Izquierdo - César Ortiz
+* @version: 1.0
+*/
 public class PersistenceException extends Exception {
 
 	private static final long serialVersionUID = 1L;

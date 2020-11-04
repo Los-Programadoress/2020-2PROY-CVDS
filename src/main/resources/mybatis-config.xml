@@ -8,6 +8,8 @@
 
     <typeAliases>
         <typeAlias type='edu.eci.cvds.entities.Usuario' alias='Usuario'/>
+        <typeAlias type='edu.eci.cvds.entities.Equipo' alias='Equipo'/>
+        <typeAlias type='edu.eci.cvds.entities.Elemento' alias='Elemento'/>
 
     </typeAliases>
 
@@ -25,7 +27,8 @@
         
     <mappers>
         <mapper resource="mappers/UsuarioMapper.xml"></mapper>
+        <mapper resource="mappers/EquipoMapper.xml"></mapper>
+        <mapper resource="mappers/ElementoMapper.xml"></mapper>
     </mappers> 
-        
         
 </configuration>
