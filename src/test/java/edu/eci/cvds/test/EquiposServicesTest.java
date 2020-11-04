@@ -27,7 +27,7 @@ public class EquiposServicesTest {
 	private EquiposServices equiposServices;
 
     public EquiposServicesTest() {
-    	equiposServices = EquiposServicesFactory.getInstance().getEquiposServicesTesting();
+    	//equiposServices = EquiposServicesFactory.getInstance().getEquiposServicesTesting();
     }
     
     @Test

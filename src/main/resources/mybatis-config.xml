@@ -27,5 +27,4 @@
         <mapper resource="mappers/UsuarioMapper.xml"></mapper>
     </mappers> 
         
-        
 </configuration>

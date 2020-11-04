@@ -56,10 +56,10 @@ public class MyBATISEquipoDAO implements EquipoDAO{
      * @param usuario: Usuario que registra el equipo
      */
 	@Override
-	 public void registrarEquipo(int numero, String marca, Usuario usuario) throws PersistenceException{
+	 public void registrarEquipo(String marca, Usuario usuario) throws PersistenceException{
 		Usuario user = usuarioMapper.consultarUsuario(usuario.getIdCorreo());
 		try{
-			equipoMapper.registrarEquipo(numero, marca, user.getIdCorreo());
+			equipoMapper.registrarEquipo(marca, user.getIdCorreo());
 		}
 		catch(org.apache.ibatis.exceptions.PersistenceException e){
             throw new PersistenceException("Error al registrar el equipo",e);            
