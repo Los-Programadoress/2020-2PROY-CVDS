@@ -60,10 +60,10 @@ public class MyBATISEquipoDAO implements EquipoDAO{
      */
 	@Override
 	@Transactional
-	 public void registrarEquipo(String marca, Usuario usuario) throws EquiposException{
+	 public void registrarEquipo(String marca, String idcorreo) throws EquiposException{
 		boolean disponible = true;
 		try{
-			Usuario user = usuarioMapper.consultarUsuario(usuario.getIdCorreo());
+			Usuario user = usuarioMapper.consultarUsuario(idcorreo);
 			equipoMapper.registrarEquipo(marca, disponible, user.getIdCorreo());
 		}
 		catch(NullPointerException e){

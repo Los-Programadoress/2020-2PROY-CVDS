@@ -28,7 +28,7 @@ public interface EquipoMapper {
 	 * @param disponible 
      * @param numero: Número que identifica el equipo
      * @param marca: Marca del equipo
-     * @param usuario: Usuario que registra el equipo
+     * @param idcorreo: Identificador del correo del usuario
      */
 	 public void registrarEquipo(@Param("marca")String marca, @Param("disponible")boolean disponible, @Param("uidcorreo")String idCorreo);
 	 
