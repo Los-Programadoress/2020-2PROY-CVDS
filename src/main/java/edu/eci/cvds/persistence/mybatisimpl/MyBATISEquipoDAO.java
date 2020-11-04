@@ -2,6 +2,8 @@ package edu.eci.cvds.persistence.mybatisimpl;
 
 import java.util.List;
 
+import org.mybatis.guice.transactional.Transactional;
+
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Elemento;
@@ -11,6 +13,7 @@ import edu.eci.cvds.persistence.EquipoDAO;
 import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.persistence.mybatisimpl.mappers.EquipoMapper;
 import edu.eci.cvds.persistence.mybatisimpl.mappers.UsuarioMapper;
+import edu.eci.cvds.services.EquiposException;
 
 public class MyBATISEquipoDAO implements EquipoDAO{
 	
@@ -56,13 +59,15 @@ public class MyBATISEquipoDAO implements EquipoDAO{
      * @param usuario: Usuario que registra el equipo
      */
 	@Override
-	 public void registrarEquipo(int numero, String marca, Usuario usuario) throws PersistenceException{
-		Usuario user = usuarioMapper.consultarUsuario(usuario.getIdCorreo());
+	@Transactional
+	 public void registrarEquipo(String marca, Usuario usuario) throws EquiposException{
+		boolean disponible = true;
 		try{
-			equipoMapper.registrarEquipo(numero, marca, user.getIdCorreo());
+			Usuario user = usuarioMapper.consultarUsuario(usuario.getIdCorreo());
+			equipoMapper.registrarEquipo(marca, disponible, user.getIdCorreo());
 		}
-		catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new PersistenceException("Error al registrar el equipo",e);            
+		catch(NullPointerException e){
+            throw new EquiposException("Error al registrar el equipo",e);            
         }
 	 }
 	

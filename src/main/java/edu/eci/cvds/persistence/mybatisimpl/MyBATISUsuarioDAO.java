@@ -1,5 +1,7 @@
 package edu.eci.cvds.persistence.mybatisimpl;
 
+import org.mybatis.guice.transactional.Transactional;
+
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Usuario;
@@ -7,6 +9,7 @@ import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.persistence.UsuarioDAO;
 import edu.eci.cvds.persistence.mybatisimpl.MyBATISUsuarioDAO;
 import edu.eci.cvds.persistence.mybatisimpl.mappers.UsuarioMapper;
+import edu.eci.cvds.services.EquiposException;
 
 /**
 * Clase que permite mapear el acceso a datos
@@ -30,6 +33,21 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
 		}
 		catch(org.apache.ibatis.exceptions.PersistenceException e){
             throw new PersistenceException("Error al consultar el usuario",e);            
+        }
+	}
+	
+	/**
+     * Método que permite registrar a un usuario 
+     * @param usuario: Usuario a registrar
+     */
+	@Override
+	@Transactional
+	public void registrarUsuario(Usuario usuario) throws EquiposException{
+		try{
+			usuarioMapper.registrarUsuario(usuario);
+		}
+		catch(NullPointerException e){
+            throw new EquiposException("Error al registrar el usuario",e);            
         }
 	}
 }
