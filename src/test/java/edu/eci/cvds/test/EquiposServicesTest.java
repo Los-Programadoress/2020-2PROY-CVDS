@@ -51,9 +51,9 @@ public class EquiposServicesTest {
     @Test
     public void deberiaRegistrarEquipo() {
     	try {
-    		Usuario usuario = equiposServices.consultarUsuario("maria.alfaro");     		
-    		equiposServices.registrarEquipo("DELL", usuario.getIdCorreo());
+    		equiposServices.registrarEquipo("DELL", "maria.alfaro");
     		Equipo e = equiposServices.consultarEquipo(3);
+    		System.out.println(e.getNumero());
     		assertEquals(e.getNumero(),3);
 	    	
 		} catch (EquiposException e) {
