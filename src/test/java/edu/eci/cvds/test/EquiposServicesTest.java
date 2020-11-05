@@ -52,9 +52,8 @@ public class EquiposServicesTest {
     public void deberiaRegistrarEquipo() {
     	try {
     		equiposServices.registrarEquipo("DELL", "maria.alfaro");
-    		Equipo e = equiposServices.consultarEquipo(3);
-    		assertEquals(e.getNumero(),3);
-	    	
+    		Equipo e = equiposServices.consultarEquipo(1);
+    		assertEquals(e.getNumero(),1);
 		} catch (EquiposException e) {
 			Assert.assertFalse(false);
 		}
@@ -68,9 +67,9 @@ public class EquiposServicesTest {
     public void noDeberiaRegistrarEquipo() {
     	boolean r = false;
     	try {
-    		Usuario usuario = equiposServices.consultarUsuario("pepe.torres");     		
-    		equiposServices.registrarEquipo("HP", usuario.getIdCorreo());
-    		assertEquals(equiposServices.consultarEquipo(4).getMarca(),"HP");
+    		//Usuario usuario = equiposServices.consultarUsuario("pepe.torres");     		
+    		equiposServices.registrarEquipo("HP", "pepe.torres");
+    		assertEquals(equiposServices.consultarEquipo(2).getMarca(),"HP");
     		
 		}catch (EquiposException | NullPointerException e) {
 			r = true;
@@ -89,7 +88,7 @@ public class EquiposServicesTest {
     		
     		List<Equipo> equipos = equiposServices.consultarEquipos();
     		assertTrue(equipos.size()>=1);
-    		assertEquals(equipos.get(1).getMarca(),"ASUS");
+    		assertEquals(equipos.get(2).getMarca(),"ASUS");
     		
 		} catch (EquiposException e) {
 			Assert.assertFalse(false);
@@ -104,12 +103,12 @@ public class EquiposServicesTest {
     public void deberiaRegistrarElementoAEquipo() {
     	try {
     		equiposServices.registrarEquipo("TOSHIBA", "maria.alfaro");
-    		equiposServices.registrarElementoEquipo("Mouse", "Vertical Inalámbrico", 5);
-    		equiposServices.registrarElementoEquipo("Pantalla", "LED", 5);
-    		equiposServices.registrarElementoEquipo("Torre", "V530 AIO", 5);
-    		equiposServices.registrarElementoEquipo("Teclado", "Flexible", 5);
-    		Equipo e = equiposServices.consultarEquipo(5);
-    		List<Elemento> elementos = equiposServices.consultarElementosEquipo(5);
+    		equiposServices.registrarElementoEquipo("Mouse", "Vertical Inalámbrico", 4);
+    		equiposServices.registrarElementoEquipo("Pantalla", "LED", 4);
+    		equiposServices.registrarElementoEquipo("Torre", "V530 AIO", 4);
+    		equiposServices.registrarElementoEquipo("Teclado", "Flexible", 4);
+    		Equipo e = equiposServices.consultarEquipo(4);
+    		List<Elemento> elementos = equiposServices.consultarElementosEquipo(4);
     		
     		assertEquals(elementos.size(),4);
 
@@ -127,8 +126,8 @@ public class EquiposServicesTest {
     	boolean r = false;
     	try {
     		equiposServices.registrarEquipo("DELL", "maria.alfaro");
-    		equiposServices.registrarElementoEquipo("Mouse", "Vertical Inalámbrico", 6);
-    		assertEquals(equiposServices.consultarEquipo(5).getMarca(),"DELL");
+    		equiposServices.registrarElementoEquipo("Mouse", "Vertical Inalámbrico", 5);
+    		assertEquals(equiposServices.consultarEquipo(4).getMarca(),"DELL");
     		
 		} catch (EquiposException e) {
 			r = true;
@@ -150,7 +149,7 @@ public class EquiposServicesTest {
     		equiposServices.registrarElemento("Pantalla", "Plasma");
     		
     		List<Elemento> elementos = equiposServices.consultarElementos();
-    		assertEquals(elementos.size(),8);
+    		assertEquals(elementos.size(),10);
     			
 		} catch (EquiposException e) {
 			Assert.assertFalse(false);
@@ -169,7 +168,8 @@ public class EquiposServicesTest {
     		equiposServices.registrarElemento("Mouse", "Óptico Dux");
     		
     		List<Elemento> e=equiposServices.consultarElementos();
-    		assertEquals(e.get(1).getNombre(),"Óptico Dux");
+    		System.out.println(e.size());
+    		assertEquals(e.get(11).getNombre(),"Óptico Dux");
     		
     		
 		} catch (EquiposException e) {
@@ -177,40 +177,5 @@ public class EquiposServicesTest {
 		}
     }
     
-    /**
-     * Al registrar un elemento este debe estar disponible.
-     * Consulta Válida: Un elemento registrado está disponible (true) para ser asociado.
-     */
-    @Test
-    public void deberiaConsultarElementoDisponible() {
-    	try {
-    		equiposServices.registrarElemento("Torre", "Modelo HP 6305");
-    		
-    		List<Elemento> e=equiposServices.consultarElementos();
-    		assertEquals(e.get(2).isDisponible(),true);
-    		
-    		
-		} catch (EquiposException e) {
-			Assert.assertFalse(false);
-		}
-    }
-    
-    /**
-     * Al registrar un elemento a un equipo este no debe estar disponible.
-     * Consulta Válida: Un elemento asociado a un equipo no está disponible (false).
-     */
-    @Test
-    public void deberiaConsultarElementoNoDisponible() {
-    	try {
-    		equiposServices.registrarElementoEquipo("Mouse", "Vertical Inalámbrico 3", 3);
-    		
-    		List<Elemento> e=equiposServices.consultarElementos();
-    		assertEquals(e.get(11).isDisponible(),false);
-    		
-    		
-		} catch (EquiposException e) {
-			Assert.assertFalse(false);
-		}
-    }
     
 }

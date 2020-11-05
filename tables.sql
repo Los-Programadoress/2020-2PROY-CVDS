@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS USUARIO (
   contrasena VARCHAR(65) NOT NULL,
   PRIMARY KEY (idCorreo));
 
-
+create sequence if not exists NumEquipo_req;
 CREATE TABLE IF NOT EXISTS EQUIPO (
   numero INT NOT NULL DEFAULT NEXTVAL ('NumEquipo_req'),
   marca VARCHAR(50) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS EQUIPO (
     FOREIGN KEY (usuario_idCorreo)
       REFERENCES USUARIO (idCorreo));
 
-
+create sequence if not exists NumElemento_req;
 CREATE TABLE IF NOT EXISTS ELEMENTO (
   id INT NOT NULL DEFAULT NEXTVAL ('NumElemento_req'),
   tipo VARCHAR(50) NOT NULL,
@@ -29,3 +29,8 @@ CREATE TABLE IF NOT EXISTS ELEMENTO (
   CONSTRAINT fk_ELEMENTO_EQUIPO
     FOREIGN KEY (numEquipo)
       REFERENCES EQUIPO (numero));
+
+DELETE FROM ELEMENTO;
+DELETE FROM EQUIPO;
+DELETE FROM USUARIO;
+
