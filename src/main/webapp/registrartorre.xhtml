@@ -4,33 +4,28 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-	
+
 	<h:head> 
-		<title>Registro elemento</title>
-		<link rel="stylesheet" href="master4.css"/>
+		<title>Registrar Torre</title>
+		<link rel="stylesheet" href="master3.css"/>
 	</h:head>
 	<body>
 		<h:form id="Elementos_Form">
 			<div class="en-sesion">
-				<p:commandButton class="submit" update="Elementos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
+					<p:commandButton class="submit" update="Elementos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
 			</div>
 			<center>
-				<h1 class="h1">Registrar Elemento</h1>
+				<h1 class="h1" >Registrar Torre</h1>
 			</center>
-			<div class="grupoBotones">
-				<p:commandButton update="Elementos_Form" class="boton" />
-				<p:commandButton update="Elementos_Form" class="boton2"/>
-				<p:commandButton update="Elementos_Form" class="boton3"/>
-				<p:commandButton update="Elementos_Form" class="boton4"/>
-			</div>
-			<p:inputText class="input" placeholder="Modelo" type="String"/>
+			<img class="imagen" src="https://5.imimg.com/data5/ED/YX/FV/SELLER-15352930/dell-3050-500x500.png"/>
+			<p:inputText id="marca" class="input" placeholder="Marca" type="String" value="#{marca}"/>
 			<p:commandButton update="Elementos_Form" class="boton" value="Registrar"/>
+			<a href="/faces/registrarequipo.xhtml"><p:commandButton type="button" class="boton1" value="Registrar Equipo"/></a>
 			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElementos()}" class="tabla"
-			paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                     rows="8" selectionMode="single" id="documento"
+					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     rows="6" selectionMode="single" id="documento"
                      rowKey="#{rel.id}">
-				<f:facet name="header" class="columna">Elementos Registrados</f:facet>
-				
+				<f:facet name="header" >Torres Registradas</f:facet>
 				<p:column class="columna" headerText="Id">
 					<h:outputText value="#{rel.id}" />
 				</p:column>
@@ -40,11 +35,11 @@
 				</p:column>
 	 
 				<p:column class="columna" headerText="Nombre">
-					<h:outputText value="#{req.nombre}" />
+					<h:outputText value="#{rel.nombre}" />
 				</p:column>
 	 
 				<p:column class="columna" headerText="Disponible">
-					<h:outputText value="#{req.disponible}" />
+					<h:outputText value="#{rel.disponible}" />
 				</p:column>
 			</p:dataTable>
 			

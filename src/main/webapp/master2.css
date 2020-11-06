@@ -35,7 +35,7 @@ body{
   height: 300px;
   position: absolute;
   top: 40%;
-  left: 22%;
+  left: 15%;
   background: #900;
 }
 
@@ -60,7 +60,7 @@ body{
   height: 300px;
   position: absolute;
   top: 40%;
-  left: 42%;
+  left: 35%;
   background: #900;
 }
 
@@ -85,7 +85,7 @@ body{
   height: 300px;
   position: absolute;
   top: 40%;
-  left: 62%;
+  left: 55%;
   background: #900;
 }
 
@@ -97,6 +97,32 @@ body{
 }
 
 .en-sesion3 .boton{
+  color: #fff;
+  position: absolute;
+  top: 60%;
+  height: 40%;
+  width: 100%;
+  background: #900;
+  font-size: 20px;
+}
+
+.en-sesion4{
+  width: 200px;
+  height: 300px;
+  position: absolute;
+  top: 40%;
+  left: 75%;
+  background: #900;
+}
+
+.en-sesion4 .imagen{
+  position: absolute;
+  height: 60%;
+  width: 80%;
+  left: 5%;
+}
+
+.en-sesion4 .boton{
   color: #fff;
   position: absolute;
   top: 60%;
