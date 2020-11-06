@@ -168,9 +168,7 @@ public class EquiposServicesImpl implements EquiposServices{
 	    * @return lista de elementos consultados
 	    */
 	public List<Elemento> consultarElementos() throws EquiposException{
-		System.out.println("entro al services");
 		try{
-			System.out.println("defer");
 			return elementoDAO.consultarElementos();
 		}
 		catch(PersistenceException e){
