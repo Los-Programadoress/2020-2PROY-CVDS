@@ -49,16 +49,16 @@ public class EquiposServicesTest {
     /**
      * Obtiene un usuario prueba de la base de datos
      */
-    @Before
+    /*@Before
     public void checkUsuario(){
         try {
-        	//Usuario usuario = new Usuario("maria.alfaro","maria.alfaro@mail.escuelaing.edu.co", "Angelica Alfaro","Activo","44f632480c49db38c4d0cbc2bea2384049c74a689baf5bf576163455787185a3"); 
-			//equiposServices.registrarUsuario(usuario);
-			user = equiposServices.consultarUsuario("maria.alfaro");
+        	Usuario user = new Usuario("maria.alfaro","maria.alfaro@mail.escuelaing.edu.co", "Angelica Alfaro","Activo","44f632480c49db38c4d0cbc2bea2384049c74a689baf5bf576163455787185a3"); 
+			equiposServices.registrarUsuario(user);
+    		
 		} catch (EquiposException e) {
 			assertFalse(false);
 		}    
-    }
+    }*/
     
     /**
      * Debe permitir registrar un equipo.
@@ -67,6 +67,9 @@ public class EquiposServicesTest {
     @Test
     public void deberiaRegistrarEquipo() {
     	try {
+    		Usuario user = new Usuario("maria.alfaro","maria.alfaro@mail.escuelaing.edu.co", "Angelica Alfaro","Activo","44f632480c49db38c4d0cbc2bea2384049c74a689baf5bf576163455787185a3"); 
+			equiposServices.registrarUsuario(user);
+			
     		int eqPreRegistro = equiposServices.consultarEquipos().size(); 
     		equiposServices.registrarEquipo("ASUS", user.getIdCorreo());
     		int eqPosRegistro = equiposServices.consultarEquipos().size(); 
