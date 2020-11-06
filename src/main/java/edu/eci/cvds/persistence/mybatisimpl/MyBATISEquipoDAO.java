@@ -2,6 +2,8 @@ package edu.eci.cvds.persistence.mybatisimpl;
 
 import java.util.List;
 
+import org.mybatis.guice.transactional.Transactional;
+
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Elemento;
@@ -11,6 +13,7 @@ import edu.eci.cvds.persistence.EquipoDAO;
 import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.persistence.mybatisimpl.mappers.EquipoMapper;
 import edu.eci.cvds.persistence.mybatisimpl.mappers.UsuarioMapper;
+import edu.eci.cvds.services.EquiposException;
 
 public class MyBATISEquipoDAO implements EquipoDAO{
 	
@@ -22,6 +25,7 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	
 	 /**
      * Método que permite consultar los equipos
+     * @throws PersistenceException Errores con la base de datos
      * @return lista de equipos consultados
      */
 	 @Override
@@ -37,6 +41,7 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	 /**
      * Método que permite consultar un equipo
      * @param numero: Número que identifica el equipo
+     * @throws PersistenceException Errores con la base de datos
      * @return Equipo consultado
      */
 	@Override
@@ -53,15 +58,19 @@ public class MyBATISEquipoDAO implements EquipoDAO{
      * Método que permite registrar un equipo 
      * @param numero: Número que identifica el equipo
      * @param marca: Marca del equipo
-     * @param usuario: Usuario que registra el equipo
+     * @param idCorreo: Identificador del usuario
+     * @throws PersistenceException Errores con la base de datos
+     * @throws NullPointerException El idCorreo no existe
      */
 	@Override
-	 public void registrarEquipo(int numero, String marca, Usuario usuario) throws PersistenceException{
-		Usuario user = usuarioMapper.consultarUsuario(usuario.getIdCorreo());
+	@Transactional
+	 public void registrarEquipo(String marca, String idcorreo) throws PersistenceException{
+		boolean disponible = true;
 		try{
-			equipoMapper.registrarEquipo(numero, marca, user.getIdCorreo());
+			Usuario user = usuarioMapper.consultarUsuario(idcorreo);
+			equipoMapper.registrarEquipo(marca, disponible, user.getIdCorreo());
 		}
-		catch(org.apache.ibatis.exceptions.PersistenceException e){
+		catch(org.apache.ibatis.exceptions.PersistenceException | NullPointerException e){
             throw new PersistenceException("Error al registrar el equipo",e);            
         }
 	 }
@@ -69,6 +78,7 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	/**
      * Método que permite registrar consultar los elementos de un equipo 
      * @param nequipo: Número que identifica el equipo
+     * @throws PersistenceException Errores con la base de datos
      * @return lista de elementos del equipo consultados
      */
 	@Override

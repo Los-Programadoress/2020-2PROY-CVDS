@@ -4,11 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     
-    <properties resource="config.properties">
-    </properties>
+    <properties resource="config.properties"></properties>
 
     <typeAliases>
-        <typeAlias type='edu.eci.cvds.samples.entities.Usuario' alias='Usuario'/>
+        <typeAlias type='edu.eci.cvds.entities.Usuario' alias='Usuario'/>
+        <typeAlias type='edu.eci.cvds.entities.Equipo' alias='Equipo'/>
+        <typeAlias type='edu.eci.cvds.entities.Elemento' alias='Elemento'/>
 
     </typeAliases>
 
@@ -26,7 +27,8 @@
         
     <mappers>
         <mapper resource="mappers/UsuarioMapper.xml"></mapper>
+        <mapper resource="mappers/EquipoMapper.xml"></mapper>
+        <mapper resource="mappers/ElementoMapper.xml"></mapper>
     </mappers> 
-        
         
 </configuration>

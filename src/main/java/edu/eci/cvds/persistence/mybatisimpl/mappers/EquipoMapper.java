@@ -25,11 +25,12 @@ public interface EquipoMapper {
 	 
 	/**
      * Método que permite registrar un equipo 
+	 * @param disponible 
      * @param numero: Número que identifica el equipo
      * @param marca: Marca del equipo
-     * @param usuario: Usuario que registra el equipo
+     * @param idcorreo: Identificador del correo del usuario
      */
-	 public void registrarEquipo(@Param("idnum")int numero, @Param("marca") String marca, @Param("uidcorreo") String idCorreo);
+	 public void registrarEquipo(@Param("marca")String marca, @Param("disponible")boolean disponible, @Param("uidcorreo")String idCorreo);
 	 
 	 /**
      * Método que permite registrar consultar los elementos de un equipo 

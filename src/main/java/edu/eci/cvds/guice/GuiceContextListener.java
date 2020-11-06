@@ -12,6 +12,8 @@ import edu.eci.cvds.persistence.UsuarioDAO;
 import edu.eci.cvds.persistence.mybatisimpl.MyBATISElementoDAO;
 import edu.eci.cvds.persistence.mybatisimpl.MyBATISEquipoDAO;
 import edu.eci.cvds.persistence.mybatisimpl.MyBATISUsuarioDAO;
+import edu.eci.cvds.services.EquiposServices;
+import edu.eci.cvds.services.impl.EquiposServicesImpl;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -32,17 +34,14 @@ public class GuiceContextListener implements ServletContextListener {
         Injector injector = Guice.createInjector(new XMLMyBatisModule() {
             @Override
             protected void initialize() {
-                install(JdbcHelper.MySQL);
-                setEnvironmentId("development");
-                setClassPathResource("mybatis-config.xml");
-
+                install(JdbcHelper.PostgreSQL);
                 bind(UsuarioDAO.class).to(MyBATISUsuarioDAO.class);
                 bind(EquipoDAO.class).to(MyBATISEquipoDAO.class);
                 bind(ElementoDAO.class).to(MyBATISElementoDAO.class);
-
+                bind(EquiposServices.class).to(EquiposServicesImpl.class);
             }
         });
-
+        
         servletContextEvent.getServletContext().setAttribute(Injector.class.getName(), injector);
     }
 }

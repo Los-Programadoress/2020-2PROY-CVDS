@@ -1,0 +1,135 @@
+body{
+  background: url(bg.jpg) no-repeat fixed center;
+  margin: 0;
+  padding: 0;
+  background-size: 100% 100%;
+}
+
+.en-sesion{
+  height: 40px;
+  background: #900;
+}
+
+.en-sesion .submit{
+  background: #900;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  position: absolute;
+  top: 5px;
+  left: 90%;
+}
+
+.h1{
+  color: #000;
+  position: absolute;
+  top: 10%;
+  left: 40%;
+  text-align: center;
+  font-size: 80px;
+}
+
+.en-sesion1{
+  width: 200px;
+  height: 300px;
+  position: absolute;
+  top: 40%;
+  left: 22%;
+  background: #900;
+}
+
+.en-sesion1 .imagen{
+  position: absolute;
+  height: 60%;
+  width: 100%;
+}
+
+.en-sesion1 .boton{
+  color: #fff;
+  position: absolute;
+  top: 60%;
+  height: 40%;
+  width: 100%;
+  background: #900;
+  font-size: 20px;
+}
+
+.en-sesion2{
+  width: 200px;
+  height: 300px;
+  position: absolute;
+  top: 40%;
+  left: 42%;
+  background: #900;
+}
+
+.en-sesion2 .imagen{
+  position: absolute;
+  height: 60%;
+  width: 100%;
+}
+
+.en-sesion2 .boton{
+  color: #fff;
+  position: absolute;
+  top: 60%;
+  height: 40%;
+  width: 100%;
+  background: #900;
+  font-size: 20px;
+}
+
+.en-sesion3{
+  width: 200px;
+  height: 300px;
+  position: absolute;
+  top: 40%;
+  left: 62%;
+  background: #900;
+}
+
+.en-sesion3 .imagen{
+  position: absolute;
+  height: 60%;
+  width: 80%;
+  left: 5%;
+}
+
+.en-sesion3 .boton{
+  color: #fff;
+  position: absolute;
+  top: 60%;
+  height: 40%;
+  width: 100%;
+  background: #900;
+  font-size: 20px;
+  
+  
+.en-sesion4{
+  width: 200px;
+  height: 300px;
+  position: absolute;
+  top: 40%;
+  left: 75%;
+  background: #900;
+}
+
+.en-sesion4 .imagen{
+  position: absolute;
+  height: 60%;
+  width: 80%;
+  left: 5%;
+}
+
+.en-sesion4 .boton{
+  color: #fff;
+  position: absolute;
+  top: 60%;
+  height: 40%;
+  width: 100%;
+  background: #900;
+  font-size: 20px;
+}
+
+

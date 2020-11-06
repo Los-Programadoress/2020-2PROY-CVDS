@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head> 
+		<title>Registro equipo</title>
+		<link rel="stylesheet" href="master3.css"/>
+	</h:head>
+	<body>
+		<h:form id="Equipos_Form">
+			<div class="en-sesion">
+					<p:commandButton class="submit" update="Equipos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
+			</div>
+			<center>
+				<h1 class="h1" >Registrar Equipo</h1>
+			</center>
+			<img class="imagen" src="https://www.tecnocomprascr.com/wp-content/uploads/2014/06/Lenovo-ThinkCentre-300x202.png"/>
+			<p:inputText id="marca" class="input" placeholder="Marca" type="String" value="#{marca}"/>
+			<p:inputText id="idcorreo" class="input2" placeholder="Idcorreo" type="String" value="#{idcorreo}"/>
+			<p:commandButton update="Equipos_Form" actionListener="#{RegistrarEquiposBean.registrarEquipo(marca, idcorreo)}" class="boton" value="Registrar"/>
+			<a href="/faces/registrarelemento.xhtml"><p:commandButton type="button" class="boton1" value="Registrar Elementos"/></a>
+			<p:dataTable var="req" value="#{RegistrarEquiposBean.consultarEquipos()}" class="tabla">
+				<f:facet name="header" >Equipos Registrados</f:facet>
+				<p:column class="columna" headerText="Número">
+					<h:outputText value="#{req.numero}" />
+				</p:column>
+	 
+				<p:column class="columna" headerText="Marca">
+					<h:outputText value="#{req.marca}" />
+				</p:column>
+	 
+				<p:column class="columna" headerText="Disponible">
+					<h:outputText value="#{req.disponible}" />
+				</p:column>
+			</p:dataTable>
+			
+		</h:form>
+	</body>
+</html>
