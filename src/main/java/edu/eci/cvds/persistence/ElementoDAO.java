@@ -11,7 +11,8 @@ import edu.eci.cvds.services.EquiposException;
 * @version: 1.0
 */
 public interface ElementoDAO {
-	/**
+	
+   /**
      * Método que permite registrar elemento a un equipo
 	 * @param tipo: Tipo del elemento
 	 * @param nombre: Nombre del elemento
@@ -20,7 +21,7 @@ public interface ElementoDAO {
      */
 	 public void registrarElementoEquipo(String tipo, String nombre, int nequipo) throws PersistenceException;
 	 
-	/**
+   /**
      * Método que permite registrar un elemento
 	 * @param tipo: Tipo del elemento
 	 * @param nombre: Nombre del elemento
@@ -28,22 +29,31 @@ public interface ElementoDAO {
      */
 	 public void registrarElemento(String tipo, String nombre) throws PersistenceException;
 
-	/**
+   /**
  	 * Método que permite asociar un elemento a un equipo
  	 * @param nume: Identificador del numero
  	 * @param numElemento: Identificador del elemento
  	 * @throws PersistenceException Errores con la base de datos
  	*/
 	public void asociarElemento(int nume, int numElemento) throws PersistenceException;
+    
+  /**
+	* Método que permite desasociar un elemento
+	* @param disponible: Permite identificar la disponibilidad del elemento
+	* @param nume: Identificador del equipo
+	* @param tipo: Tipo del elemento
+	* @throws PersistenceException Errores con la base de datos
+	*/
+	public void desasociarElemento(boolean disponible, int nume, String tipo) throws PersistenceException;
 
-	/**
+  /**
     * Método que permite registrar un elemento
     * @throws PersistenceException Errores con la base de datos
     * @return lista de elementos consultados
     */
 	public List<Elemento> consultarElementos() throws PersistenceException;
 	
-	/**
+   /**
      * Método que permite registrar un elemento
      * @param tipo El tipo de elemento
      * @throws EquiposException Errores con la operación
@@ -51,7 +61,7 @@ public interface ElementoDAO {
      */
 	public List<Elemento> consultarElemento(String tipo) throws PersistenceException;
 	
-	/**
+   /**
      * Método que permite saber si es un tipo válido
      * @param tipo: Tipo del elemento
      * @return si es un elemento válido

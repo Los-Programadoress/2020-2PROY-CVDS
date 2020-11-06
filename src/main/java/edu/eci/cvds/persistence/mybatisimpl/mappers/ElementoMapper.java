@@ -34,7 +34,15 @@ public interface ElementoMapper {
  	 * @param disponible: Estado del elemento
  	 */
 	public void asociarElemento(@Param("nume")int nume, @Param("numel")int numElemento, @Param("disponible")boolean disponible);
-
+	
+	/**
+	* Método que permite desasociar un elemento
+	* @param disponible: Permite identificar la disponibilidad del elemento
+	* @param nume: Identificador del equipo
+	* @param tipo: Tipo del elemento
+	*/
+	public void desasociarElemento(@Param("disponible") boolean disponible, @Param("nume")int nume, @Param("tipo") String tipo);
+	
 	/**
     * Método que permite registrar un elemento
     * @return lista de elementos consultados
@@ -44,9 +52,8 @@ public interface ElementoMapper {
 	/**
      * Método que permite registrar un elemento
      * @param tipo El tipo de elemento
-	 * @param disponible 
      * @return lista de elementos del tipo consultados
      */
-	public List<Elemento> consultarElementoDisponible(@Param("tipo")String tipo, @Param("disponible")boolean disponible);
+	public List<Elemento> consultarElemento(@Param("tipo")String tipo);
 	
 }

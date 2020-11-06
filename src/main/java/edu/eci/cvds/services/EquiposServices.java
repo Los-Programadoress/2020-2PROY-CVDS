@@ -86,6 +86,15 @@ public interface EquiposServices {
  	public void asociarElemento(int nume, int numElemento) throws EquiposException;
  	
  	/**
+ 	* Método que permite desasociar un elemento
+ 	* @param disponible: Permite identificar la disponibilidad del elemento
+ 	* @param nume: Identificador del equipo
+ 	* @param tipo: Tipo del elemento
+ 	* @throws EquiposException Errores con la operación
+ 	*/
+ 	public void desasociarElemento(boolean disponible, int nume, String tipo) throws EquiposException;
+ 	
+ 	/**
      * Método que permite consultar los elementos existentes
      * @throws EquiposException Errores con la operación
      * @return lista de elementos consultados

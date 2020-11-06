@@ -59,7 +59,7 @@ public class MyBATISElementoDAO implements ElementoDAO{
         } 
 	}
 	 
-	 /**
+	/**
  	 * Método que permite asociar un elemento a un equipo
  	 * @param nume: Identificador del numero
  	 * @param numElemento: Identificador del elemento
@@ -76,6 +76,24 @@ public class MyBATISElementoDAO implements ElementoDAO{
 		     throw new PersistenceException("Error al asociar el elemento",e);            
 		 }
 	 }
+	
+  /**
+	* Método que permite desasociar un elemento
+	* @param disponible: Permite identificar la disponibilidad del elemento
+	* @param nume: Identificador del equipo
+	* @param tipo: Tipo del elemento
+	* @throws PersistenceException Errores con la base de datos
+	*/
+	@Override
+	@Transactional
+	public void desasociarElemento(boolean disponible, int nume, String tipo) throws PersistenceException{
+		try{
+			elementoMapper.desasociarElemento(disponible,nume,tipo);
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al desasociar el elemento",e);
+		}
+	}
 
 	 /**
      * Método que permite registrar un elemento
@@ -100,10 +118,9 @@ public class MyBATISElementoDAO implements ElementoDAO{
      */
 	 @Override
 	 public List<Elemento> consultarElemento(String tipo) throws PersistenceException {
-		 boolean disponible = true; 
 		 String tipoC = convertToFormat(tipo);
 		 try {
-			 return elementoMapper.consultarElementoDisponible(tipoC, disponible);
+			 return elementoMapper.consultarElemento(tipoC);
 		 }
 		 catch(org.apache.ibatis.exceptions.PersistenceException | IllegalArgumentException e){
 			 throw new PersistenceException("Error al consultar elementos de tipo: "+ tipoC,e);

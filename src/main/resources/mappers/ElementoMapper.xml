@@ -27,14 +27,20 @@
 	  	WHERE id = #{numel}
 	</update>
 	
-	<select parameterType="map" id="consultarElementoDisponible" resultMap="ElementoResult">
+	<select parameterType="map" id="consultarElemento" resultMap="ElementoResult">
 	 SELECT
 	    el.id,
 	    el.nombre,
 	    el.disponible,
 	  FROM elemento AS el
-	  WHERE el.tipo = #{tipo} AND el.disponible = #{disponible}
-	</select> 
+	  WHERE el.tipo = #{tipo}
+	</select>
+	
+	<update parameterType="map" id="desasociarElemento">
+		UPDATE elemento
+		SET numequipo = null, disponible = #{disp}
+		WHERE numequipo = #{nume} AND tipo = #{tip}
+	</update> 
 	
 	<select parameterType="map" id="consultarElementos" resultMap="ElementoResult">
 	 SELECT

@@ -173,6 +173,22 @@ public class EquiposServicesImpl implements EquiposServices{
 			throw new EquiposException("Error al asociar el elemento",e);            
 		}
 	}
+	
+  /**
+	* Método que permite desasociar un elemento
+	* @param disponible: Permite identificar la disponibilidad del elemento
+	* @param nume: Identificador del equipo
+	* @param tipo: Tipo del elemento
+	* @throws EquiposException Errores con la operación
+	*/
+	public void desasociarElemento(boolean disponible, int nume, String tipo) throws EquiposException{
+		try{
+			elementoDAO.desasociarElemento(disponible,nume,tipo);
+		}
+		catch(PersistenceException e){
+			throw new EquiposException("Error al desasociar el elemento",e);
+		}
+	}
 
 	/**
     * Método que permite consultar los elementos existentes
