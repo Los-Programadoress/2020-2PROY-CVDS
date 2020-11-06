@@ -22,7 +22,10 @@
 			<p:inputText id="idcorreo" class="input2" placeholder="Idcorreo" type="String" value="#{idcorreo}"/>
 			<p:commandButton update="Equipos_Form" actionListener="#{RegistrarEquiposBean.registrarEquipo(marca, idcorreo)}" class="boton" value="Registrar"/>
 			<a href="/faces/registrarelemento.xhtml"><p:commandButton type="button" class="boton1" value="Registrar Elementos"/></a>
-			<p:dataTable var="req" value="#{RegistrarEquiposBean.consultarEquipos()}" class="tabla">
+			<p:dataTable var="req" value="#{RegistrarEquiposBean.consultarEquipos()}" class="tabla"
+					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     rows="8" selectionMode="single" id="documento"
+                     rowKey="#{req.numero}">
 				<f:facet name="header" >Equipos Registrados</f:facet>
 				<p:column class="columna" headerText="Número">
 					<h:outputText value="#{req.numero}" />
