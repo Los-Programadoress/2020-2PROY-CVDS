@@ -13,6 +13,8 @@ public interface UsuarioDAO {
      /**
      * Método que permite consultar a un usuario 
      * @param idCorreo: Identificador de correo del usuario
+     * @throws PersistenceException Errores con la base de datos
+     * @return Usuario consultado
      */
     public Usuario consultarUsuario(String idCorreo) throws PersistenceException;
 
@@ -20,7 +22,7 @@ public interface UsuarioDAO {
     /**
      * Método que permite registrar a un usuario 
      * @param usuario: Usuario a registrar
-     * @throws EquiposException 
+     * @throws PersistenceException Errores con la base de datos
      */
-	public void registrarUsuario(Usuario usuario) throws EquiposException;
+	public void registrarUsuario(Usuario usuario) throws PersistenceException;
 }

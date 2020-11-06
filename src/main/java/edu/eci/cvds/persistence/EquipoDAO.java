@@ -17,6 +17,7 @@ public interface EquipoDAO {
 	
 	 /**
      * Método que permite consultar los equipos
+     * @throws PersistenceException Errores con la base de datos
      * @return lista de equipos consultados
      */
 	 public List<Equipo> consultarEquipos() throws PersistenceException;
@@ -24,6 +25,7 @@ public interface EquipoDAO {
 	 /**
      * Método que permite consultar un equipo
      * @param numero: Número que identifica el equipo
+     * @throws PersistenceException Errores con la base de datos
      * @return Equipo consultado
      */
 	 public Equipo consultarEquipo(int nequipo) throws PersistenceException;
@@ -33,12 +35,14 @@ public interface EquipoDAO {
      * @param numero: Número que identifica el equipo
      * @param marca: Marca del equipo
      * @param idcorreo: Identificador del correo del usuario
+	 * @throws PersistenceException Errores con la base de datos 
      */
-	 public void registrarEquipo(String marca, String idcorreo) throws EquiposException;
+	 public void registrarEquipo(String marca, String idcorreo) throws PersistenceException;
 	 
 	 /**
      * Método que permite registrar consultar los elementos de un equipo 
      * @param nequipo: Número que identifica el equipo
+     * @throws PersistenceException Errores con la base de datos
      * @return lista de elementos del equipo consultados
      */
 	 public List<Elemento> consultarElementosEquipo(int nequipo) throws PersistenceException;
