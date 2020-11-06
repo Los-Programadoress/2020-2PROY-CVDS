@@ -25,6 +25,8 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
      * Método que permite consultar a un usuario 
      * @param idCorreo: Identificador de correo del usuario
      * @param contrasena: Contraseña con la que cuenta el usuario
+     * @throws PersistenceException Errores con la base de datos
+     * @return Usuario consultado
      */
 	@Override
 	public Usuario consultarUsuario(String idCorreo) throws PersistenceException {;
@@ -37,17 +39,19 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
 	}
 	
 	/**
-     * Método que permite registrar a un usuario 
+     * Método que permite registrar a un usuario
      * @param usuario: Usuario a registrar
+     * @throws PersistenceException Errores con la base de datos
+     * @throws NullPointerException
      */
 	@Override
 	@Transactional
-	public void registrarUsuario(Usuario usuario) throws EquiposException{
+	public void registrarUsuario(Usuario usuario) throws PersistenceException{
 		try{
 			usuarioMapper.registrarUsuario(usuario);
 		}
-		catch(NullPointerException e){
-            throw new EquiposException("Error al registrar el usuario",e);            
+		catch(org.apache.ibatis.exceptions.PersistenceException | NullPointerException e){
+            throw new PersistenceException("Error al registrar el usuario",e);            
         }
 	}
 }
