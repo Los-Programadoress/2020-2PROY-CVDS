@@ -25,6 +25,7 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	
 	 /**
      * Método que permite consultar los equipos
+     * @throws PersistenceException Errores con la base de datos
      * @return lista de equipos consultados
      */
 	 @Override
@@ -40,6 +41,7 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	 /**
      * Método que permite consultar un equipo
      * @param numero: Número que identifica el equipo
+     * @throws PersistenceException Errores con la base de datos
      * @return Equipo consultado
      */
 	@Override
@@ -56,24 +58,27 @@ public class MyBATISEquipoDAO implements EquipoDAO{
      * Método que permite registrar un equipo 
      * @param numero: Número que identifica el equipo
      * @param marca: Marca del equipo
-     * @param idCorreo: Identificador del usuario.
+     * @param idCorreo: Identificador del usuario
+     * @throws PersistenceException Errores con la base de datos
+     * @throws NullPointerException El idCorreo no existe
      */
 	@Override
 	@Transactional
-	 public void registrarEquipo(String marca, String idcorreo) throws EquiposException{
+	 public void registrarEquipo(String marca, String idcorreo) throws PersistenceException{
 		boolean disponible = true;
 		try{
 			Usuario user = usuarioMapper.consultarUsuario(idcorreo);
 			equipoMapper.registrarEquipo(marca, disponible, user.getIdCorreo());
 		}
-		catch(NullPointerException e){
-            throw new EquiposException("Error al registrar el equipo",e);            
+		catch(org.apache.ibatis.exceptions.PersistenceException | NullPointerException e){
+            throw new PersistenceException("Error al registrar el equipo",e);            
         }
 	 }
 	
 	/**
      * Método que permite registrar consultar los elementos de un equipo 
      * @param nequipo: Número que identifica el equipo
+     * @throws PersistenceException Errores con la base de datos
      * @return lista de elementos del equipo consultados
      */
 	@Override

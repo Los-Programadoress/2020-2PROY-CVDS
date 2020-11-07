@@ -8,6 +8,7 @@ import javax.faces.bean.SessionScoped;
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Elemento;
+import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.services.EquiposException;
 import edu.eci.cvds.services.EquiposServices;
 
@@ -41,10 +42,30 @@ public class RegistrarElementoBean extends BasePageBean{
    	 	}
 	 }
 	 
-	 public void registrarElemento( String nombre) throws EquiposException{
-		 
-		 System.out.println("entro a elemento resgister");
+	 public void registrarElemento(String tipo, String nombre) throws EquiposException{
+		try{
+			equipoS.registrarElemento(tipo, nombre);
+		}catch (EquiposException e) {
+ 			e.printStackTrace();
+   	 	}
+	}
+	 
+	 public List<Elemento> consultarElemento(String tipo) throws EquiposException {
+		try{
+			elementos = equipoS.consultarElemento(tipo);
+		}catch (EquiposException e) {
+ 			e.printStackTrace();          
+		}
+		return elementos;
 	 }
+	 
+	 public void asociacionElemento(int id,int numero,String tipo) throws EquiposException{
+		try {
+			equipoS.asociacionElemento(id, numero, tipo);
+		}catch(EquiposException e){  
+			e.printStackTrace();
+		}	
+	}
 	 
 	 public List<Elemento> getElementos() {
 		return elementos;

@@ -9,17 +9,21 @@ import com.google.inject.Inject;
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.persistence.ElementoDAO;
 import edu.eci.cvds.persistence.PersistenceException;
+import edu.eci.cvds.persistence.TipoElemento;
 import edu.eci.cvds.persistence.mybatisimpl.mappers.ElementoMapper;
+import edu.eci.cvds.services.EquiposException;
 
 public class MyBATISElementoDAO implements ElementoDAO{
 	
 	@Inject
 	private ElementoMapper elementoMapper;
+	
 	/**
      * Método que permite registrar un elemento a un equipo 
 	 * @param tipo: Tipo del elemento
 	 * @param nombre: Nombre del rol
 	 * @param nequipo: Número de equipo al que pertenece el elemento
+	 * @throws PersistenceException Errores con la base de datos
      */
 	@Override
 	@Transactional
@@ -37,44 +41,122 @@ public class MyBATISElementoDAO implements ElementoDAO{
      * Método que permite registrar un elemento
 	 * @param tipo: Tipo del elemento
 	 * @param nombre: Nombre del elemento
+	 * @throws PersistenceException Errores con la base de datos
+	 * @throws IllegalArgumentException No existe el tipo de elemento
      */
 	 @Override
 	 @Transactional
 	 public void registrarElemento(String tipo, String nombre) throws PersistenceException{
 		boolean disponible = true;
+		String tipoC = convertToFormat(tipo);
 		try{
-			elementoMapper.registrarElemento(tipo,nombre, disponible);
+			if (esTipoValido(tipoC)) {
+				elementoMapper.registrarElemento(tipoC,nombre, disponible);
+			}
 		}
-		catch(org.apache.ibatis.exceptions.PersistenceException e){
+		catch(org.apache.ibatis.exceptions.PersistenceException | IllegalArgumentException e){
             throw new PersistenceException("Error al registrar el elemento",e);            
         } 
 	}
 	 
-	 /**
-	 * Método que permite registrar un elemento
-	 * @param nume: Identificador del numero
-	 * @param tipo: Tipo del elemento
-	 */
-	 public void asociarElemento(int nume, String tipo) throws PersistenceException{
-		 try{
-			 elementoMapper.asociarElemento(nume,tipo);
+	/**
+ 	 * Método que permite asociar un elemento a un equipo
+ 	 * @param nume: Identificador del numero
+ 	 * @param numElemento: Identificador del elemento
+ 	 * @throws PersistenceException Errores con la base de datos
+ 	 */
+	@Override
+	@Transactional
+	 public void asociarElemento(int nume, int numElemento) throws PersistenceException{
+		boolean disponible = false; 
+		try{
+			 elementoMapper.asociarElemento(nume,numElemento, disponible);
 		 }
 		 catch(org.apache.ibatis.exceptions.PersistenceException e){
 		     throw new PersistenceException("Error al asociar el elemento",e);            
 		 }
 	 }
+	
+  /**
+	* Método que permite desasociar un elemento
+	* @param disponible: Permite identificar la disponibilidad del elemento
+	* @param nume: Identificador del equipo
+	* @param tipo: Tipo del elemento
+	* @throws PersistenceException Errores con la base de datos
+	*/
+	@Override
+	@Transactional
+	public void desasociarElemento(boolean disponible, int nume, String tipo) throws PersistenceException{
+		String tipoC = convertToFormat(tipo);
+		try{
+			if(esTipoValido(tipoC)) {
+				elementoMapper.desasociarElemento(disponible,nume,tipo);
+			}
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
+			throw new PersistenceException("Error al desasociar el elemento",e);
+		}
+	}
 
 	 /**
      * Método que permite registrar un elemento
+     * @throws PersistenceException Errores con la base de datos
      * @return lista de elementos consultados
      */
+	 @Override
 	 public List<Elemento> consultarElementos() throws PersistenceException{
 		 try{
 			 return elementoMapper.consultarElementos();
 		 }
 		 catch(org.apache.ibatis.exceptions.PersistenceException e){
-            throw new PersistenceException("Error al consutar elementos",e);            
+            throw new PersistenceException("Error al consultar elementos",e);            
         }
 	 }
+	 
+	 /**
+     * Método que permite registrar un elemento
+     * @param tipo El tipo de elemento
+     * @throws PersistenceException Errores con la base de datos
+     * @return lista de elementos del tipo consultados
+     */
+	 @Override
+	 public List<Elemento> consultarElemento(String tipo) throws PersistenceException {
+		 String tipoC = convertToFormat(tipo);
+		 try {
+			 return elementoMapper.consultarElemento(tipoC);
+		 }
+		 catch(org.apache.ibatis.exceptions.PersistenceException | IllegalArgumentException e){
+			 throw new PersistenceException("Error al consultar elementos de tipo: "+ tipoC,e);
+		 }
+	 }
+
+	 /**
+     * Método que permite saber si es un tipo válido
+     * @param tipo: Tipo del elemento
+     * @return si es un elemento válido
+     */
+	@Override
+	public boolean esTipoValido(String tipo){	
+		return (TipoElemento.valueOf(tipo) != null);
+	}
+	
+	/**
+     * Método que permite convertir el tipo ingresado a un formato reconocido
+     * @param tipo: Tipo del elemento
+     * @return el tipo en el formato
+     */
+	public String convertToFormat(String tipo) {
+		 // Obtener primera letra y convertirla a mayúscula
+	    String primeraLetra = tipo.substring(0, 1).toUpperCase();
+
+	    // Obtener el resto de la cadena, intacta.
+	    // Y convertir a minúscula
+	    String restoDeLaCadena = tipo.substring(1).toLowerCase();
+
+	    // Concatenar
+	    String tipoConverted = primeraLetra + restoDeLaCadena;
+		return tipoConverted;
+		
+	}
 
 }
