@@ -19,19 +19,15 @@
 			</center>
 			<img class="imagen" src="https://5.imimg.com/data5/ED/YX/FV/SELLER-15352930/dell-3050-500x500.png"/>
 			<p:inputText id="marca" class="input" placeholder="Marca" type="String" value="#{marca}"/>
-			<p:commandButton update="Elementos_Form" class="boton" value="Registrar"/>
-			<a href="/faces/registrarequipo.xhtml"><p:commandButton type="button" class="boton1" value="Registrar Equipo"/></a>
-			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElementos()}" class="tabla"
+			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento('Torre', marca)}" class="boton" value="Registrar"/>
+			<a href="/faces/registrarequipo.xhtml"><p:commandButton type="button" class="boton1" value="Siguiente"/></a>
+			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElemento('Torre')}" class="tabla"
 					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                      rows="6" selectionMode="single" id="documento"
                      rowKey="#{rel.id}">
 				<f:facet name="header" >Torres Registradas</f:facet>
 				<p:column class="columna" headerText="Id">
 					<h:outputText value="#{rel.id}" />
-				</p:column>
-				
-				<p:column class="columna" headerText="Tipo">
-					<h:outputText value="#{rel.tipo}" />
 				</p:column>
 	 
 				<p:column class="columna" headerText="Nombre">

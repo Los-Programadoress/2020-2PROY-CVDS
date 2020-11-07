@@ -30,6 +30,17 @@ body:before{
   left: 90%;
 }
 
+.en-sesion .submit2{
+  background: #900;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  position: absolute;
+  top: 5px;
+  left: 84%;
+}
+
 .h1{
 	color: #fff;
 }
@@ -91,6 +102,12 @@ body:before{
 	position: absolute;
 	left: 43%;
 	top: 20%;
+}
+
+.input1{
+	position: absolute;
+	left: 43%;
+	top: 25%;
 }
 
 .boton{

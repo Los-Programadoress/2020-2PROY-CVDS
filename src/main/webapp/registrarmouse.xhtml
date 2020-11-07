@@ -17,21 +17,17 @@
 			<center>
 				<h1 class="h1" >Registrar Mouse</h1>
 			</center>
-			<img class="imagen" src="https://lh3.googleusercontent.com/proxy/Ry5C1nel6HRj2Kw-M49f8_wEGWq62Ry4GwR_Jdg4SI4FbvqDpd3sEi5lFTj0Nk_lpoiqwDznMlK9ZPX2UQIxUR_uIr3zj-160lMXFrII"/>
+			<img class="imagen" src="img/mouse.png"/>
 			<p:inputText id="marca" class="input" placeholder="Marca" type="String" value="#{marca}"/>
-			<p:commandButton update="Elementos_Form" class="boton" value="Registrar"/>
-			<a href="/faces/registrarpantalla.xhtml"><p:commandButton type="button" class="boton1" value="Registrar Pantalla"/></a>
-			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElementos()}" class="tabla"
+			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento('Mouse', marca)}" class="boton" value="Registrar"/>
+			<a href="/faces/registrarpantalla.xhtml"><p:commandButton type="button" class="boton1" value="Siguiente"/></a>
+			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElemento('Mouse')}" class="tabla"
 					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                      rows="6" selectionMode="single" id="documento"
                      rowKey="#{rel.id}">
-				<f:facet name="header" >Mouses Registrados</f:facet>
+				<f:facet name="header" >Mouse Registrados</f:facet>
 				<p:column class="columna" headerText="Id">
 					<h:outputText value="#{rel.id}" />
-				</p:column>
-				
-				<p:column class="columna" headerText="Tipo">
-					<h:outputText value="#{rel.tipo}" />
 				</p:column>
 	 
 				<p:column class="columna" headerText="Nombre">

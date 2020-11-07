@@ -19,19 +19,15 @@
 			</center>
 			<img class="imagen" src="https://d22k5h68hofcrd.cloudfront.net/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/3/V/3VN40AA-1_T1540959343.png"/>
 			<p:inputText id="marca" class="input" placeholder="Marca" type="String" value="#{marca}"/>
-			<p:commandButton update="Elementos_Form" class="boton" value="Registrar"/>
-			<a href="/faces/registrartorre.xhtml"><p:commandButton type="button" class="boton1" value="Registrar Torre"/></a>
-			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElementos()}" class="tabla"
+			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento('Teclado', marca)}" class="boton" value="Registrar"/>
+			<a href="/faces/registrartorre.xhtml"><p:commandButton type="button" class="boton1" value="Siguiente"/></a>
+			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElemento('Teclado')}" class="tabla"
 					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                      rows="6" selectionMode="single" id="documento"
                      rowKey="#{rel.id}">
 				<f:facet name="header" >Teclados Registrados</f:facet>
 				<p:column class="columna" headerText="Id">
 					<h:outputText value="#{rel.id}" />
-				</p:column>
-				
-				<p:column class="columna" headerText="Tipo">
-					<h:outputText value="#{rel.tipo}" />
 				</p:column>
 	 
 				<p:column class="columna" headerText="Nombre">

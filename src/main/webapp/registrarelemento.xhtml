@@ -12,6 +12,7 @@
 	<body>
 		<h:form id="Elementos_Form">
 			<div class="en-sesion">
+				<a href="/faces/sesion.xhtml"><p:commandButton type="button" class="submit2" update="Equipos_Form" value="Menú"/></a>
 				<p:commandButton class="submit" update="Elementos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
 			</div>
 			<center>
@@ -23,8 +24,9 @@
 				<p:commandButton update="Elementos_Form" class="boton3"/>
 				<p:commandButton update="Elementos_Form" class="boton4"/>
 			</div>
-			<p:inputText class="input" placeholder="Modelo" type="String"/>
-			<p:commandButton update="Elementos_Form" class="boton" value="Registrar"/>
+			<p:inputText class="input" placeholder="Modelo" type="String" value="#{modelo}"/>
+			<p:inputText class="input1" placeholder="Tipo" type="String" value="#{tipo}"/>
+			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento(tipo, modelo)}" class="boton" value="Registrar" />
 			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElementos()}" class="tabla"
 			paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                      rows="8" selectionMode="single" id="documento"
@@ -39,12 +41,12 @@
 					<h:outputText value="#{rel.tipo}" />
 				</p:column>
 	 
-				<p:column class="columna" headerText="Nombre">
-					<h:outputText value="#{req.nombre}" />
+				<p:column class="columna" headerText="Modelo">
+					<h:outputText value="#{rel.nombre}" />
 				</p:column>
 	 
 				<p:column class="columna" headerText="Disponible">
-					<h:outputText value="#{req.disponible}" />
+					<h:outputText value="#{rel.disponible}" />
 				</p:column>
 			</p:dataTable>
 			

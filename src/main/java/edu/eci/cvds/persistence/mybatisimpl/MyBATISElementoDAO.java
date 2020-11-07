@@ -87,8 +87,11 @@ public class MyBATISElementoDAO implements ElementoDAO{
 	@Override
 	@Transactional
 	public void desasociarElemento(boolean disponible, int nume, String tipo) throws PersistenceException{
+		String tipoC = convertToFormat(tipo);
 		try{
-			elementoMapper.desasociarElemento(disponible,nume,tipo);
+			if(esTipoValido(tipoC)) {
+				elementoMapper.desasociarElemento(disponible,nume,tipo);
+			}
 		}
 		catch(org.apache.ibatis.exceptions.PersistenceException e){
 			throw new PersistenceException("Error al desasociar el elemento",e);

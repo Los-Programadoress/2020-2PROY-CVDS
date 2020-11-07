@@ -19,19 +19,15 @@
 			</center>
 			<img class="imagen" src="https://www.att.com/es-us//catalog/en/idse/LG/LG%20UltraWide%20Full%20HD%20IPS%20Gaming%20Monitor%2029-inch/Black-hero-zoom.png"/>
 			<p:inputText id="marca" class="input" placeholder="Marca" type="String" value="#{marca}"/>
-			<p:commandButton update="Elementos_Form" class="boton" value="Registrar"/>
-			<a href="/faces/registrarteclado.xhtml"><p:commandButton type="button" class="boton1" value="Registrar Teclado"/></a>
-			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElementos()}" class="tabla"
+			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento('Pantalla', marca)}" class="boton" value="Registrar"/>
+			<a href="/faces/registrarteclado.xhtml"><p:commandButton type="button" class="boton1" value="Siguiente"/></a>
+			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElemento('Pantalla')}" class="tabla"
 					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                      rows="6" selectionMode="single" id="documento"
                      rowKey="#{rel.id}">
 				<f:facet name="header" >Pantallas Registradas</f:facet>
 				<p:column class="columna" headerText="Id">
 					<h:outputText value="#{rel.id}" />
-				</p:column>
-				
-				<p:column class="columna" headerText="Tipo">
-					<h:outputText value="#{rel.tipo}" />
 				</p:column>
 	 
 				<p:column class="columna" headerText="Nombre">
