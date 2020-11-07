@@ -30,6 +30,17 @@ body:before{
   left: 90%;
 }
 
+.en-sesion .submit2{
+  background: #900;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  position: absolute;
+  top: 5px;
+  left: 84%;
+}
+
 .h1{
 	color: #fff;
 }
@@ -93,6 +104,12 @@ body:before{
 	top: 20%;
 }
 
+.input1{
+	position: absolute;
+	left: 43%;
+	top: 25%;
+}
+
 .boton{
 	position: absolute;
 	left: 70%;
@@ -105,7 +122,7 @@ body:before{
 .tabla{
 	position: absolute;
 	left: 15%;
-	top: 38%;
+	top: 35%;
 	width: 70%;
 }
 

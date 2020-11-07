@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:head> 
-		<title>Registro equipo</title>
+		<title>Asociar Elemento</title>
 		<link rel="stylesheet" href="master3.css"/>
 	</h:head>
 	<body>
@@ -16,28 +16,32 @@
 				<p:commandButton class="submit" update="Equipos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
 			</div>
 			<center>
-				<h1 class="h1" >Registrar Equipo</h1>
+				<h1 class="h1" >Asociar Elemento</h1>
 			</center>
 			<img class="imagen" src="https://www.tecnocomprascr.com/wp-content/uploads/2014/06/Lenovo-ThinkCentre-300x202.png"/>
-			<p:inputText id="marca" class="input" placeholder="Marca" type="String" value="#{marca}"/>
-			<p:inputText id="idcorreo" class="input2" placeholder="IdCorreo" type="String" value="#{idcorreo}"/>
-			<p:commandButton update="Equipos_Form" actionListener="#{RegistrarEquiposBean.registrarEquipo(marca, idcorreo)}" class="boton" value="Registrar"/>
-			<p:dataTable var="req" value="#{RegistrarEquiposBean.consultarElementosUltimoEquipo()}" class="tabla">
+			<p:inputText class="input" placeholder="IdElemento" type="String" value="#{id}"/>
+			<p:inputText class="input2" placeholder="NumeroEquipo" type="String" value="#{numequipo}"/>
+			<p:inputText class="input3" placeholder="Tipo" type="String" value="#{tipo}"/>
+			<p:commandButton update="Equipos_Form" actionListener="#{registrarElementosBean.asociacionElemento(id,numequipo,tipo)}" class="boton" value="Asociar"/>
+			<p:dataTable var="ael" value="#{registrarElementosBean.consultarElementos()}" class="tabla"
+					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     rows="6" selectionMode="single" id="documento"
+                     rowKey="#{ael.id}">
 				<f:facet name="header" >Elementos del Equipo</f:facet>
 				<p:column class="columna" headerText="Id">
-					<h:outputText value="#{req.id}" />
+					<h:outputText value="#{ael.id}" />
 				</p:column>
 	 
 				<p:column class="columna" headerText="Tipo">
-					<h:outputText value="#{req.tipo}" />
+					<h:outputText value="#{ael.tipo}" />
 				</p:column>
 	 
 				<p:column class="columna" headerText="Marca">
-					<h:outputText value="#{req.nombre}" />
+					<h:outputText value="#{ael.nombre}" />
 				</p:column>
 				
 				<p:column class="columna" headerText="Disponible">
-					<h:outputText value="#{req.disponible}" />
+					<h:outputText value="#{ael.disponible}" />
 				</p:column>
 			</p:dataTable>
 			
