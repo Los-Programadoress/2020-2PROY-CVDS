@@ -41,7 +41,7 @@ public interface ElementoMapper {
 	* @param nume: Identificador del equipo
 	* @param tipo: Tipo del elemento
 	*/
-	public void desasociarElemento(@Param("disponible") boolean disponible, @Param("nume")int nume, @Param("tipo") String tipo);
+	public void desasociarElemento(@Param("disp") boolean disponible, @Param("nume")int nume, @Param("tipo") String tipo);
 	
 	/**
     * Método que permite registrar un elemento

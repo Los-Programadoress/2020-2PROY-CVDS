@@ -35,14 +35,12 @@
     VALUES ( #{marca}, #{disponible}, #{uidcorreo});
   </insert>
   
-  <select parameterType="map" id="consultarElementosEquipo" resultMap="EquipoResult">
+  <select parameterType="map" id="consultarElementosEquipo" resultMap="edu.eci.cvds.persistence.mybatisimpl.mappers.ElementoMapper.ElementoResult">
    SELECT
-   	  e.usuario_idCorreo,
       el.id,
       el.tipo,
       el.nombre,
-      el.disponible,
-      el.numEquipo
+      el.disponible
     FROM equipo AS e
     LEFT JOIN elemento AS el ON e.numero = el.numEquipo
     WHERE e.numero = #{nequipo}

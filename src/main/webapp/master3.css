@@ -30,6 +30,17 @@ body:before{
   left: 90%;
 }
 
+.en-sesion .submit2{
+  background: #900;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  position: absolute;
+  top: 5px;
+  left: 84%;
+}
+
 .h1{
 	color: #fff;
 }
@@ -42,16 +53,32 @@ body:before{
 	width: 200px;
 }
 
+.imagen2{
+	position: absolute;
+	top: 15%;
+	left: 40%;
+	height: 180px;
+	width: 225px;
+}
+
+
+
 .input{
 	position: absolute;
-	left: 43%;
+	left: 42%;
 	top: 25%;
 }
 
 .input2{
 	position: absolute;
-	left: 43%;
+	left: 42%;
 	top: 30%;
+}
+
+.input3{
+	position: absolute;
+	left: 42%;
+	top: 35%;
 }
 
 .boton{
@@ -65,8 +92,8 @@ body:before{
 
 .boton1{
 	position: absolute;
-	left: 67%;
-	top: 35%;
+	left: 46%;
+	top: 90%;
 	background: #900;
 	color: #fff;
 	border: none;

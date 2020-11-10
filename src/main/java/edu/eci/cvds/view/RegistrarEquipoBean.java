@@ -7,6 +7,7 @@ import javax.faces.bean.SessionScoped;
 
 import com.google.inject.Inject;
 
+import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.services.EquiposException;
@@ -20,6 +21,7 @@ public class RegistrarEquipoBean extends BasePageBean{
 	private static final long serialVersionUID = 650984420982868194L;
 
 	private List<Equipo> equipos= null;
+	private List<Elemento> elemento = null;
 
 	@Inject
 	private EquiposServices equipoS;
@@ -39,7 +41,15 @@ public class RegistrarEquipoBean extends BasePageBean{
 			equipoS.registrarEquipo(marca, idcorreo);
 		}catch(EquiposException e){           
         }
-	 }
+	}
+	
+	public List<Elemento> consultarElementosUltimoEquipo(){
+ 		try{
+ 			elemento = equipoS.consultarElementosUltimoEquipo();
+ 		}catch(EquiposException e){    
+ 	    }
+ 		return elemento;
+ 	}
 	
 	public List<Equipo> getEquipos() {
 		return equipos;
