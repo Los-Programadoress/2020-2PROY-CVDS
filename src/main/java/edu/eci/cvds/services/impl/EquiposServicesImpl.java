@@ -103,6 +103,20 @@ public class EquiposServicesImpl implements EquiposServices{
  	 public void registrarEquipo(String marca, String idcorreo) throws EquiposException {
  		try {
  			equipoDAO.registrarEquipo(marca, idcorreo);
+ 			List<Equipo> equipos = consultarEquipos();
+
+ 		    //antes de registrar elementos
+
+ 		    Equipo equipoRegistrado = equipos.get(equipos.size()-1);
+
+ 		    //asociar elementos
+
+ 		    List<Elemento> elementos = consultarElementos();
+ 		 
+ 		    asociarElemento(equipoRegistrado.getNumero(),elementos.size());
+ 		    asociarElemento(equipoRegistrado.getNumero(),elementos.size()-1);
+ 		    asociarElemento(equipoRegistrado.getNumero(),elementos.size()-2);
+ 		    asociarElemento(equipoRegistrado.getNumero(),elementos.size()-3);
  		}
  		catch (PersistenceException ex) {
  			throw new EquiposException("Error al registrar el equipo" + ex.getLocalizedMessage(), ex);
@@ -173,22 +187,6 @@ public class EquiposServicesImpl implements EquiposServices{
 			throw new EquiposException("Error al asociar el elemento",e);            
 		}
 	}
-	
-  /**
-	* Método que permite desasociar un elemento
-	* @param disponible: Permite identificar la disponibilidad del elemento
-	* @param nume: Identificador del equipo
-	* @param tipo: Tipo del elemento
-	* @throws EquiposException Errores con la operación
-	*/
-	public void desasociarElemento(boolean disponible, int nume, String tipo) throws EquiposException{
-		try{
-			elementoDAO.desasociarElemento(disponible,nume,tipo);
-		}
-		catch(PersistenceException e){
-			throw new EquiposException("Error al desasociar el elemento",e);
-		}
-	}
 
 	/**
     * Método que permite consultar los elementos existentes
@@ -206,7 +204,7 @@ public class EquiposServicesImpl implements EquiposServices{
 	}
 	
  	/**
-     * Método que permite registrar un elemento
+     * Método que permite consultar los elementos de un tipo.
      * @param tipo El tipo de elemento
      * @throws EquiposException Errores con la operación
      * @return lista de elementos del tipo consultados
@@ -230,6 +228,40 @@ public class EquiposServicesImpl implements EquiposServices{
 	@Override
 	public boolean esTipoValido(String tipo) throws EquiposException {
 		return elementoDAO.esTipoValido(tipo);
+	}
+	
+	/**
+     * Método que permite saber los elementos del ultimo Equipo
+     * @throws EquiposException Errores con la operación
+     * @return Lista de elementos del equipo consultado
+     */
+	@Override
+	public List<Elemento> consultarElementosUltimoEquipo() throws EquiposException{
+ 		try{
+ 			List<Equipo> equipos = consultarEquipos();
+		    Equipo equipoRegistrado = equipos.get(equipos.size()-1);
+		    int equiponum = equipoRegistrado.getNumero();
+ 			return equipoDAO.consultarElementosEquipo(equiponum);
+ 		}catch(PersistenceException e){  
+ 			throw new EquiposException("Error al consultar elementos del equipo: ",e);  
+ 	    }
+ 	}
+	
+	
+	/**
+	* Método que permite desasociar un elemento
+	* @param disponible: Permite identificar la disponibilidad del elemento
+	* @param nume: Identificador del equipo
+	* @param tipo: Tipo del elemento
+	* @throws EquiposException Errores con la operación
+	*/
+	public void asociacionElemento(int id,int numero,String tipo) throws EquiposException{
+		try {
+			elementoDAO.desasociarElemento(true, numero, tipo);
+			elementoDAO.asociarElemento(numero, id);
+		}catch(PersistenceException e){  
+ 			throw new EquiposException("Error al asociar un elemento: ",e);  
+		}	
 	}
 
 }

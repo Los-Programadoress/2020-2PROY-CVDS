@@ -11,6 +11,7 @@ import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.persistence.EquipoDAO;
 import edu.eci.cvds.persistence.PersistenceException;
+import edu.eci.cvds.persistence.mybatisimpl.mappers.ElementoMapper;
 import edu.eci.cvds.persistence.mybatisimpl.mappers.EquipoMapper;
 import edu.eci.cvds.persistence.mybatisimpl.mappers.UsuarioMapper;
 import edu.eci.cvds.services.EquiposException;
@@ -18,7 +19,9 @@ import edu.eci.cvds.services.EquiposException;
 public class MyBATISEquipoDAO implements EquipoDAO{
 	
 	@Inject
-	private EquipoMapper equipoMapper;
+	private EquipoMapper equipoMapper;	
+	@Inject
+	private ElementoMapper elementoMapper;
 	
 	@Inject
 	private UsuarioMapper usuarioMapper;
