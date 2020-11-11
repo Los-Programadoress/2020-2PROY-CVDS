@@ -2,20 +2,9 @@ package edu.eci.cvds.test;
 
  
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.*; 
 
- 
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
-
- 
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -27,10 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 
  
-
 import com.google.inject.Inject;
-
- 
 
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
