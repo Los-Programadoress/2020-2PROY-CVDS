@@ -130,6 +130,21 @@ public class MyBATISElementoDAO implements ElementoDAO{
 			 throw new PersistenceException("Error al consultar elementos de tipo: "+ tipoC,e);
 		 }
 	 }
+	 
+	 /**
+     * Método que permite consultar los elementos disponibles
+     * @throws EquiposException Errores con la operación
+     * @return lista de elementos disponibles 
+     */
+	@Override
+	public List<Elemento> consultarElementosDisponibles() throws PersistenceException{
+		 try {
+			 return elementoMapper.consultarElementosDisponibles();
+		 }
+		 catch(org.apache.ibatis.exceptions.PersistenceException e){
+			 throw new PersistenceException("Error al consultar elementos disponibles",e);
+		 }
+	}
 
 	 /**
      * Método que permite saber si es un tipo válido
