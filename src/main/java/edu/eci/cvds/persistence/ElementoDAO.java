@@ -54,7 +54,7 @@ public interface ElementoDAO {
 	public List<Elemento> consultarElementos() throws PersistenceException;
 	
    /**
-     * Método que permite registrar un elemento
+     * Método que permite consultar los elementos de un tipo.
      * @param tipo El tipo de elemento
      * @throws EquiposException Errores con la operación
      * @return lista de elementos del tipo consultados
