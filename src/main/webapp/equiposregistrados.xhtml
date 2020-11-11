@@ -21,18 +21,14 @@
 			<img class="imagen2" src="img/compu.png"/>
 			<p:dataTable var="ceq" value="#{RegistrarEquiposBean.consultarEquipos()}" class="tabla"
 					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                     rows="6" selectionMode="single" id="documento"
-                     rowKey="#{ceq.numero}">
-				<p:column class="columna" headerText="Número">
-					<h:outputText value="#{ceq.numero}" />
-				</p:column>
-	 
+                    rows="6" selectionMode="single" id="documento"
+                    rowKey="#{ceq.numero}">
 				<p:column class="columna" headerText="Marca">
 					<h:outputText value="#{ceq.marca}" />
 				</p:column>
-	 
+				
 				<p:column class="columna" headerText="Disponible">
-					<h:outputText value="#{ceq.disponible}" />
+					<h:outputText value="#{ceq.disponibilidad}" />
 				</p:column>
 			</p:dataTable>
 			

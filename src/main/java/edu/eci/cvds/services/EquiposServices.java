@@ -101,6 +101,12 @@ public interface EquiposServices {
  	public List<Elemento> consultarElemento(String tipo) throws EquiposException;
  	
  	/**
+ 	* Método que permite registrar un elemento
+ 	* @return lista de elementos consultados
+ 	*/
+ 	public List<Elemento> consultarElementoDisponibles() throws EquiposException;
+ 	
+ 	/**
      * Método que permite saber si es un tipo válido
      * @param tipo: Tipo del elemento
      * @throws EquiposException Errores con la operación

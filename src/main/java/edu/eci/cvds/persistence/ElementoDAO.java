@@ -61,6 +61,13 @@ public interface ElementoDAO {
      */
 	public List<Elemento> consultarElemento(String tipo) throws PersistenceException;
 	
+	/**
+     * Método que permite consultar los elementos disponibles
+     * @throws EquiposException Errores con la operación
+     * @return lista de elementos disponibles 
+     */
+	public List<Elemento> consultarElementosDisponibles() throws PersistenceException;
+	
    /**
      * Método que permite saber si es un tipo válido
      * @param tipo: Tipo del elemento

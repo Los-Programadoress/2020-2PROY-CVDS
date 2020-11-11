@@ -12,7 +12,7 @@
 	<body>
 		<h:form id="Elementos_Form">
 			<div class="en-sesion">
-					<p:commandButton class="submit" update="Elementos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
+				<p:commandButton class="submit" update="Elementos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
 			</div>
 			<center>
 				<h1 class="h1" >Registrar Pantalla</h1>
@@ -23,19 +23,15 @@
 			<a href="/faces/registrarteclado.xhtml"><p:commandButton type="button" class="boton1" value="Siguiente"/></a>
 			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElemento('Pantalla')}" class="tabla"
 					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                     rows="6" selectionMode="single" id="documento"
+                     rows="6" selectionMode="single"
                      rowKey="#{rel.id}">
 				<f:facet name="header" >Pantallas Registradas</f:facet>
-				<p:column class="columna" headerText="Id">
-					<h:outputText value="#{rel.id}" />
-				</p:column>
-	 
 				<p:column class="columna" headerText="Nombre">
 					<h:outputText value="#{rel.nombre}" />
 				</p:column>
 	 
 				<p:column class="columna" headerText="Disponible">
-					<h:outputText value="#{rel.disponible}" />
+					<h:outputText value="#{rel.disponibilidad}" />
 				</p:column>
 			</p:dataTable>
 			

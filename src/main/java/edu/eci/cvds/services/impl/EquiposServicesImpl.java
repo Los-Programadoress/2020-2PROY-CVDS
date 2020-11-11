@@ -220,6 +220,19 @@ public class EquiposServicesImpl implements EquiposServices{
 	}
 	
 	/**
+ 	* Método que permite registrar un elemento
+ 	* @return lista de elementos consultados
+ 	*/
+ 	public List<Elemento> consultarElementoDisponibles() throws EquiposException{
+ 		try{
+			return elementoDAO.consultarElementosDisponibles();
+		}
+		catch(PersistenceException e){
+			throw new EquiposException("Error al consultar elementos disponibles: ",e);            
+		}
+ 	}
+	
+	/**
      * Método que permite saber si es un tipo válido
      * @param tipo: Tipo del elemento
      * @throws EquiposException Errores con la operación

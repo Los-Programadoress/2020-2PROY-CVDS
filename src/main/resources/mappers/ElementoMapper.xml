@@ -33,7 +33,7 @@
 	    el.nombre,
 	    el.disponible
 	  FROM elemento AS el
-	  WHERE el.tipo = #{tipo}
+	  WHERE el.tipo = #{tipo} AND el.disponible = true;
 	</select>
 	
 	<update parameterType="map" id="desasociarElemento">
@@ -50,4 +50,14 @@
 	    el.disponible
 	  FROM elemento AS el
 	</select>  
+	
+	<select parameterType="map" id="consultarElementosDisponibles" resultMap="ElementoResult">
+	 SELECT
+	    el.id,
+	    el.tipo,
+	    el.nombre,
+	    el.disponible
+	  FROM elemento AS el
+	  el.disponible = true;
+	</select>
 </mapper>
