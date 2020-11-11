@@ -9,6 +9,17 @@
 		<title>Asociar Elemento</title>
 		<link rel="stylesheet" href="master3.css"/>
 	</h:head>
+	<script type="text/javascript">
+		function ConfirmInscription(){
+			var respuesta = confirm("Estas seguro de asociar el elemento al equipo?");
+			if(respuesta){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+	</script >
 	<body>
 		<h:form id="Equipos_Form">
 			<div class="en-sesion">
@@ -22,16 +33,12 @@
 			<p:inputText class="input" placeholder="IdElemento" type="String" value="#{id}"/>
 			<p:inputText class="input2" placeholder="NumeroEquipo" type="String" value="#{numequipo}"/>
 			<p:inputText class="input3" placeholder="Tipo" type="String" value="#{tipo}"/>
-			<p:commandButton update="Equipos_Form" actionListener="#{registrarElementosBean.asociacionElemento(id,numequipo,tipo)}" class="boton" value="Asociar"/>
-			<p:dataTable var="ael" value="#{registrarElementosBean.consultarElementos()}" class="tabla"
+			<p:commandButton update="Equipos_Form" actionListener="#{registrarElementosBean.asociacionElemento(id,numequipo,tipo)}" class="boton" value="Asociar" onclick="return ConfirmInscription()"/>
+			<p:dataTable var="ael" value="#{registrarElementosBean.consultarElementos()}" class="tabla2"
 					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                      rows="6" selectionMode="single" id="documento"
                      rowKey="#{ael.id}">
-				<f:facet name="header" >Elementos del Equipo</f:facet>
-				<p:column class="columna" headerText="Id">
-					<h:outputText value="#{ael.id}" />
-				</p:column>
-	 
+				<f:facet name="header" >Elementos Registrados</f:facet>
 				<p:column class="columna" headerText="Tipo">
 					<h:outputText value="#{ael.tipo}" />
 				</p:column>
@@ -44,7 +51,19 @@
 					<h:outputText value="#{ael.disponible}" />
 				</p:column>
 			</p:dataTable>
-			
+			<p:dataTable var="ceq" value="#{RegistrarEquiposBean.consultarEquipos()}" class="tabla3"
+					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     rows="6" selectionMode="single" id="documento"
+                     rowKey="#{ceq.numero}">
+				<f:facet name="header" >Equipos Registrados</f:facet>
+				<p:column class="columna" headerText="Marca">
+					<h:outputText value="#{ceq.marca}" />
+				</p:column>
+				
+				<p:column class="columna" headerText="Disponible">
+					<h:outputText value="#{ceq.disponible}" />
+				</p:column>
+			</p:dataTable>
 		</h:form>
 	</body>
 </html>

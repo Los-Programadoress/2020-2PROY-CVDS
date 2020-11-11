@@ -50,6 +50,12 @@ public interface ElementoMapper {
 	public List<Elemento> consultarElementos();
 	
 	/**
+ 	* Método que permite registrar un elemento
+ 	* @return lista de elementos consultados
+ 	*/
+	public List<Elemento> consultarElementosDisponibles();
+	
+	/**
      * Método que permite registrar un elemento
      * @param tipo El tipo de elemento
      * @return lista de elementos del tipo consultados

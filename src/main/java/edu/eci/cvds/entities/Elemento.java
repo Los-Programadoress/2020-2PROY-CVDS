@@ -15,6 +15,7 @@ public class Elemento {
 	private String tipo;
 	private String nombre;
     private boolean disponible;
+    private String disponibilidad;
     
     /**
      *Constructor para la clase elemento
@@ -34,6 +35,7 @@ public class Elemento {
 		this.tipo = tipo;
 		this.nombre = nombre;
 		this.disponible = disponible;
+		
 	}
 	
 	/**
@@ -112,6 +114,20 @@ public class Elemento {
      */
 	public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
+	}
+	
+	/**
+     * Método que cambia la disponibilidad del elemento para mostrarlo como Si o No
+     * @return La disponibilidad del elemento
+     */
+	public String getDisponibilidad() {
+		if (isDisponible() == true) {
+			this.disponibilidad = "Si";
+		}
+		else {
+			this.disponibilidad = "No";
+		}
+		return disponibilidad;
 	}
 	
 	/**

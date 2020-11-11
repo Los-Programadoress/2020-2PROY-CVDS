@@ -15,6 +15,7 @@ public class Equipo implements Serializable{
     private String marca;
     private boolean disponible;
     private Usuario usuario;
+    private String disponibilidad;
     private ArrayList<Elemento> elementos;
     
     /**
@@ -132,6 +133,20 @@ public class Equipo implements Serializable{
 	 */
 	public void setElementos(ArrayList<Elemento> elementos) {
 		this.elementos = elementos;
+	}
+	
+	/**
+     * Método que cambia la disponibilidad del equipo para mostrarlo como Si o No
+     * @return La disponibilidad del equipo
+     */
+	public String getDisponibilidad() {
+		if (isDisponible() == true) {
+			this.disponibilidad = "Si";
+		}
+		else {
+			this.disponibilidad = "No";
+		}
+		return disponibilidad;
 	}
 	
     /**
