@@ -24,10 +24,6 @@
 			<p:commandButton update="Equipos_Form" actionListener="#{RegistrarEquiposBean.registrarEquipo(marca, idcorreo)}" class="boton" value="Registrar"/>
 			<p:dataTable var="req" value="#{RegistrarEquiposBean.consultarElementosUltimoEquipo()}" class="tabla">
 				<f:facet name="header" >Elementos del Equipo</f:facet>
-				<p:column class="columna" headerText="Id">
-					<h:outputText value="#{req.id}" />
-				</p:column>
-	 
 				<p:column class="columna" headerText="Tipo">
 					<h:outputText value="#{req.tipo}" />
 				</p:column>

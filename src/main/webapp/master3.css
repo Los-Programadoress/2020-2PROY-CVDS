@@ -106,6 +106,20 @@ body:before{
 	width: 70%;
 }
 
+.tabla2{
+	position: absolute;
+	left: 5%;
+	top: 43%;
+	width: 43%;
+}
+
+.tabla3{
+	position: absolute;
+	left: 53%;
+	top: 43%;
+	width: 43%;
+}
+
 .ui-datatable-header{
 	background: #900;
 	color: #fff;
@@ -115,3 +129,4 @@ body:before{
 	background: #900;
 	color: #fff;
 }
+
