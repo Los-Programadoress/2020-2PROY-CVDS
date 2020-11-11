@@ -48,6 +48,7 @@ public class RegistrarElementoBean extends BasePageBean{
 	 }
 	 
 	 public void registrarElemento(String tipo, String nombre) throws EquiposException{
+		System.out.println(nombre);
 		try{
 			equipoS.registrarElemento(this.tipoBoton, nombre);
 		}catch (EquiposException e) {
