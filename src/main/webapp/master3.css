@@ -115,3 +115,17 @@ body:before{
 	background: #900;
 	color: #fff;
 }
+
+.tabla2{
+	position: absolute;
+	left: 5%;
+	top: 43%;
+	width: 43%;
+}
+
+.tabla3{
+	position: absolute;
+	left: 53%;
+	top: 43%;
+	width: 43%;
+}

@@ -25,7 +25,7 @@
 					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                      rows="6" selectionMode="single" id="documento"
                      rowKey="#{rel.id}">
-				<f:facet name="header" >Teclados Registrados</f:facet>
+				<f:facet name="header" >Teclados disponibles</f:facet>
 				<p:column class="columna" headerText="Id">
 					<h:outputText value="#{rel.id}" />
 				</p:column>
@@ -35,7 +35,7 @@
 				</p:column>
 	 
 				<p:column class="columna" headerText="Disponible">
-					<h:outputText value="#{rel.disponible}" />
+					<h:outputText value="#{rel.disponibilidad}" />
 				</p:column>
 			</p:dataTable>
 			
