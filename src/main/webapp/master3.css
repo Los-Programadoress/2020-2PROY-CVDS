@@ -61,7 +61,21 @@ body:before{
 	width: 225px;
 }
 
+.imagen3{
+	position: absolute;
+	top: 15%;
+	left: 65%;
+	height: 210px;
+	width: 225px;
+}
 
+.imagen4{
+	position: absolute;
+	top: 13%;
+	left: 12%;
+	height: 200px;
+	width: 360px;
+}
 
 .input{
 	position: absolute;
@@ -83,7 +97,7 @@ body:before{
 
 .boton{
 	position: absolute;
-	left: 70%;
+	left: 75%;
 	top: 25%;
 	background: #900;
 	color: #fff;
@@ -94,6 +108,15 @@ body:before{
 	position: absolute;
 	left: 46%;
 	top: 90%;
+	background: #900;
+	color: #fff;
+	border: none;
+}
+
+.boton2{
+	position: absolute;
+	left: 47%;
+	top: 25%;
 	background: #900;
 	color: #fff;
 	border: none;
@@ -129,4 +152,26 @@ body:before{
 	background: #900;
 	color: #fff;
 }
+
+.checked{
+color:green;
+font-weight: bold; cursor:pointer;
+}
+.notchecked{
+color:red;
+font-weight:bold; cursor: pointer;
+}
+
+.webix_table_radio.checked{
+    background:green;
+    width:16px; height:16px; margin-top:8px;
+}
+
+.webix_table_radio.notchecked{
+    background:orange;
+    width:16px;
+    height:16px;
+    margin-top:8px;
+}
+
 

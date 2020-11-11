@@ -23,7 +23,7 @@
 			<a href="/faces/registrarteclado.xhtml"><p:commandButton type="button" class="boton1" value="Siguiente"/></a>
 			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElemento('Pantalla')}" class="tabla"
 					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                     rows="6" selectionMode="single" id="documento"
+                     rows="6" selectionMode="single"
                      rowKey="#{rel.id}">
 				<f:facet name="header" >Pantallas Registradas</f:facet>
 				<p:column class="columna" headerText="Nombre">

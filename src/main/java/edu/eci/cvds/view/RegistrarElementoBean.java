@@ -9,6 +9,10 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
+import org.primefaces.PrimeFaces;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
+
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Elemento;
@@ -24,6 +28,8 @@ public class RegistrarElementoBean extends BasePageBean{
 
 	private List<Elemento> elementos = null;
 	private String tipoBoton;
+	private Elemento elementoSelec;
+	
 	 
 	 @Inject
 	 private EquiposServices equipoS;
@@ -50,7 +56,13 @@ public class RegistrarElementoBean extends BasePageBean{
 	 public void registrarElemento(String tipo, String nombre) throws EquiposException{
 		System.out.println(nombre);
 		try{
-			equipoS.registrarElemento(this.tipoBoton, nombre);
+			info();
+			if(this.tipoBoton==null) {
+				equipoS.registrarElemento(tipo, nombre);
+			}
+			else {
+				equipoS.registrarElemento(this.tipoBoton, nombre);
+			}
 		}catch (EquiposException e) {
  			e.printStackTrace();
    	 	}
@@ -90,7 +102,8 @@ public class RegistrarElementoBean extends BasePageBean{
 	 }
 	 
 	 public void info() {
-		 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Mouse Registrado"));
+		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro del elemento", "Se registro satisfactoriamente el elemento.");
+         PrimeFaces.current().dialog().showMessageDynamic(message);
 	 }
 	 
 	 public List<Elemento> getElementos() {
@@ -108,5 +121,12 @@ public class RegistrarElementoBean extends BasePageBean{
 	 public void setTipoBoton(String tipoBoton) {
 		this.tipoBoton = tipoBoton;
 	 }
-	 
+
+	public Elemento getElementoSelec() {
+		return elementoSelec;
+	}
+
+	public void setElementoSelec(Elemento elementoSelec) {
+		this.elementoSelec = elementoSelec;
+	}
 }

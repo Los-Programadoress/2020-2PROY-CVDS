@@ -28,7 +28,7 @@
 			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento(modelo, modelo)}" class="boton" value="Registrar" />
 			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElementos()}" class="tabla"
 			paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                     rows="8" selectionMode="single" id="documento"
+                     rows="8" selectionMode="single"
                      rowKey="#{rel.id}">
 				<f:facet name="header" class="columna">Elementos Registrados</f:facet>
 				

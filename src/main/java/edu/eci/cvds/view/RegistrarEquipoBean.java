@@ -22,6 +22,7 @@ public class RegistrarEquipoBean extends BasePageBean{
 
 	private List<Equipo> equipos= null;
 	private List<Elemento> elemento = null;
+	private Equipo equipoSelec;
 
 	@Inject
 	private EquiposServices equipoS;
@@ -59,4 +60,13 @@ public class RegistrarEquipoBean extends BasePageBean{
 		this.equipos = equipos;
 	}
 
+	public Equipo getEquipoSelec() {
+		return equipoSelec;
+	}
+
+	public void setEquipoSelec(Equipo equipoSelec) {
+		this.equipoSelec = equipoSelec;
+	}
+	
+	
 }
