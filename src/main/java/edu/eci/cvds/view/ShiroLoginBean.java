@@ -31,7 +31,9 @@ import org.apache.shiro.crypto.hash.Sha512Hash;
 @ManagedBean(name = "shiroBean", eager = true)
 public class ShiroLoginBean implements Serializable{
 
-    private static final Logger log = LoggerFactory.getLogger(ShiroLoginBean.class);
+	private static final long serialVersionUID = -1002703896862316116L;
+
+	private static final Logger log = LoggerFactory.getLogger(ShiroLoginBean.class);
     
     private String idCorreo;
     private String password;

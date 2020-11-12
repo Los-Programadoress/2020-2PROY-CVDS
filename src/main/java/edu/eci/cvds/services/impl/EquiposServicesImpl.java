@@ -1,5 +1,6 @@
 package edu.eci.cvds.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -29,6 +30,8 @@ public class EquiposServicesImpl implements EquiposServices{
 	
 	@Inject
 	ElementoDAO elementoDAO;
+
+	static final ArrayList<Elemento> elSelected = new ArrayList<>();
 	
      /**
       * Método que permite consultar a un usuario 
@@ -106,17 +109,14 @@ public class EquiposServicesImpl implements EquiposServices{
  			List<Equipo> equipos = consultarEquipos();
 
  		    //antes de registrar elementos
-
  		    Equipo equipoRegistrado = equipos.get(equipos.size()-1);
-
  		    //asociar elementos
-
- 		    List<Elemento> elementos = consultarElementos();
- 		 
- 		    asociarElemento(equipoRegistrado.getNumero(),elementos.size());
- 		    asociarElemento(equipoRegistrado.getNumero(),elementos.size()-1);
- 		    asociarElemento(equipoRegistrado.getNumero(),elementos.size()-2);
- 		    asociarElemento(equipoRegistrado.getNumero(),elementos.size()-3);
+ 		    List<Elemento> elementos = getElSelected();
+ 		    
+ 		    for(Elemento e: elementos) {
+ 		    	asociarElemento(equipoRegistrado.getNumero(),e.getId());
+ 		    }
+ 		    EquiposServicesImpl.elSelected.clear();
  		}
  		catch (PersistenceException ex) {
  			throw new EquiposException("Error al registrar el equipo" + ex.getLocalizedMessage(), ex);
@@ -244,30 +244,13 @@ public class EquiposServicesImpl implements EquiposServices{
 	}
 	
 	/**
-     * Método que permite saber los elementos del ultimo Equipo
-     * @throws EquiposException Errores con la operación
-     * @return Lista de elementos del equipo consultado
-     */
-	@Override
-	public List<Elemento> consultarElementosUltimoEquipo() throws EquiposException{
- 		try{
- 			List<Equipo> equipos = consultarEquipos();
-		    Equipo equipoRegistrado = equipos.get(equipos.size()-1);
-		    int equiponum = equipoRegistrado.getNumero();
- 			return equipoDAO.consultarElementosEquipo(equiponum);
- 		}catch(PersistenceException e){  
- 			throw new EquiposException("Error al consultar elementos del equipo: ",e);  
- 	    }
- 	}
-	
-	
-	/**
 	* Método que permite desasociar un elemento
 	* @param disponible: Permite identificar la disponibilidad del elemento
 	* @param nume: Identificador del equipo
 	* @param tipo: Tipo del elemento
 	* @throws EquiposException Errores con la operación
 	*/
+	@Override
 	public void asociacionElemento(int id,int numero,String tipo) throws EquiposException{
 		try {
 			elementoDAO.desasociarElemento(true, numero, tipo);
@@ -276,5 +259,26 @@ public class EquiposServicesImpl implements EquiposServices{
  			throw new EquiposException("Error al asociar un elemento: ",e);  
 		}	
 	}
+	
+	/**
+	* Método que retorna el conjunto de elementos seleccionados
+	* @return elSelected Lista de elementos seleccionados
+	*/
+	@Override
+	public ArrayList<Elemento> getElSelected() {
+		return elSelected;
+	}
+	
+	/**
+	* Método que agrega elementos a la lista de seleccionados
+	* @param elementoSelec: Elemento seleccionado
+	*/
+	@Override
+	public void add(Elemento elementoSelec) {
 
+		if (elSelected.size() <= 4) {
+			EquiposServicesImpl.elSelected.add(elementoSelec);
+		}
+	}
+	
 }

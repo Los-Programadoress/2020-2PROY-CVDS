@@ -6,8 +6,9 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:head> 
-		<title>Registrar Mouse</title>
+		<title>Selección de Mouse</title>
 		<link rel="stylesheet" href="master3.css"/>
+		<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
 	</h:head>
 	<body>
 		<h:form id="Elementos_Form">
@@ -15,26 +16,33 @@
 					<p:commandButton class="submit" update="Elementos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
 			</div>
 			<center>
-				<h1 class="h1" >Registrar Mouse</h1>
+				<h1 class="h1" >Selección de Mouse</h1>
 			</center>
 			<img class="imagen" src="img/mouse.png"/>
-			<p:inputText id="marca" class="input" placeholder="Marca" type="String" value="#{marca}"/>
+			<p:panel id="panel" name="header" style="margin-bottom:10px;" class="elemRegis" >
+				<f:facet name="header" >Mouse Nuevo</f:facet>
+		        <p:messages />
+		        <h:panelGrid columns="1" cellpadding="5" >
+		            <p:outputLabel for="marca" value="Marca:" />
+		            <p:inputText id="marca" value="#{marca}" required="false"/>
+		        </h:panelGrid>
+		    </p:panel>    
 			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento('Mouse', marca)}" class="boton" value="Registrar"/>
-			<a href="/faces/registrarpantalla.xhtml"><p:commandButton type="button" class="boton1" value="Siguiente"/></a>
-			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElemento('Mouse')}" class="tabla"
-					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                     rows="6" selectionMode="single" 
-                     rowKey="#{rel.id}">
-				<f:facet name="header" >Mouse Registrados</f:facet>
-				<p:column class="columna" headerText="Nombre">
-					<h:outputText value="#{rel.nombre}" />
-				</p:column>
-	 
-				<p:column class="columna" headerText="Disponible">
-					<h:outputText value="#{rel.disponibilidad}" />
-				</p:column>
-			</p:dataTable>
 			
+			<p:separator style="width:3px;height:300px" class="separat"/>
+
+			<a href="/faces/registrarpantalla.xhtml"><p:commandButton type="button" class="boton1" value="Siguiente"/></a>
+			<p:dataTable var="cmo" value="#{registrarElementosBean.consultarElemento('Mouse')}" class="elemDispo"
+					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     rows="5" selection="#{registrarElementosBean.elementoSelec}"
+                     rowKey="#{cmo.id}">
+				<f:facet name="header" >Mouse Disponibles</f:facet>
+				<p:column class="columna" headerText="Nombre">
+					<h:outputText value="#{cmo.nombre}" />
+				</p:column>
+				<p:column selectionMode="single" style="width:16px;text-align:center" />
+			</p:dataTable>
+			<p:commandButton action="#{registrarElementosBean.add()}" id="iconOnly" class="botonDisp" update="Elementos_Form" style="margin-right:20px;" icon="pi pi-check" title="Icon Only" />
 		</h:form>
 	</body>
 </html>
