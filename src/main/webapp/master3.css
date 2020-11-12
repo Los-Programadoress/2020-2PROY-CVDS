@@ -27,7 +27,7 @@ body{
 	position: absolute;
 	top: 0%;
 	left: 38%;
-	height: 65px;
+	height: 60px;
 	width: 300px;
 }
 
@@ -48,10 +48,10 @@ body{
 
 .imagen{
 	position: absolute;
-	top: 18%;
-	left: 42%;
-	height: 180px;
-	width: 200px;
+	top: 21%;
+	left: 43%;
+	height: 155px;
+	width: 175px;
 }
 
 .imagen2{

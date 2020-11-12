@@ -30,12 +30,12 @@
 		    </p:panel>    
 			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento('Torre', marca)}" class="boton" value="Registrar"/>
 			
-			<p:separator style="width:3px;height:300px" class="separat"/>
+			<p:separator style="width:3px;height:280px" class="separat"/>
 
 			<a href="/faces/registrarequipo.xhtml"><p:commandButton type="button" class="boton1" value="Siguiente"/></a>
 			<p:dataTable var="cmo" value="#{registrarElementosBean.consultarElemento('Torre')}" class="elemDispo"
 					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                     rows="6" selection="#{registrarElementosBean.elementoSelec}"
+                     rows="4" selection="#{registrarElementosBean.elementoSelec}"
                      rowKey="#{cmo.id}">
 				<f:facet name="header" >Torres Disponibles</f:facet>
 				<p:column class="columna" headerText="Nombre">
