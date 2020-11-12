@@ -31,12 +31,12 @@
 		    </p:panel>    
 			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento('Mouse', marca)}" class="boton" value="Registrar"/>
 			
-			<p:separator style="width:3px;height:300px" class="separat"/>
+			<p:separator style="width:3px;height:280px" class="separat"/>
 
 			<a href="/faces/registrarpantalla.xhtml"><p:commandButton type="button" class="boton1" value="Siguiente"/></a>
 			<p:dataTable var="cmo" value="#{registrarElementosBean.consultarElemento('Mouse')}" class="elemDispo"
 					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                     rows="5" selection="#{registrarElementosBean.elementoSelec}"
+                     rows="4" selection="#{registrarElementosBean.elementoSelec}"
                      rowKey="#{cmo.id}">
 				<f:facet name="header" >Mouse Disponibles</f:facet>
 				<p:column class="columna" headerText="Nombre">
