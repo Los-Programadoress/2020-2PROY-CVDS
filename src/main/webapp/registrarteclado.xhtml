@@ -13,7 +13,9 @@
 	<body>
 		<h:form id="Elementos_Form">
 			<div class="en-sesion">
-					<p:commandButton class="submit" update="Elementos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
+				<a href="/faces/sesion.xhtml"><p:commandButton type="button" class="submit2" update="Equipos_Form" value="Menú"/></a>
+				<p:commandButton class="submit" update="Elementos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
+				<img class="imagen" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
 			</div>
 			<center>
 				<h1 class="h1" >Selección de Teclado</h1>
