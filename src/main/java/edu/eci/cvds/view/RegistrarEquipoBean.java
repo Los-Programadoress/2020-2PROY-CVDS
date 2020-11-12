@@ -21,7 +21,6 @@ public class RegistrarEquipoBean extends BasePageBean{
 	private static final long serialVersionUID = 650984420982868194L;
 
 	private List<Equipo> equipos= null;
-	private List<Elemento> elemento = null;
 	private Equipo equipoSelec;
 
 	@Inject
@@ -41,14 +40,6 @@ public class RegistrarEquipoBean extends BasePageBean{
 		}catch(EquiposException e){           
         }
 	}
-	
-	public List<Elemento> consultarElementosUltimoEquipo(){
- 		try{
- 			elemento = equipoS.consultarElementosUltimoEquipo();
- 		}catch(EquiposException e){    
- 	    }
- 		return elemento;
- 	}
 	
 	public List<Elemento> consultarElementosSelected(){
  		return equipoS.getElSelected();
