@@ -40,6 +40,7 @@ public class RegistrarEquipoBean extends BasePageBean{
 		}catch(EquiposException e){           
         }
 	}
+
 	
 	public List<Elemento> consultarElementosSelected(){
  		return equipoS.getElSelected();

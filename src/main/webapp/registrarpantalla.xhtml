@@ -13,7 +13,9 @@
 	<body>
 		<h:form id="Elementos_Form">
 			<div class="en-sesion">
+				<a href="/faces/sesion.xhtml"><p:commandButton type="button" class="submit2" update="Equipos_Form" value="Menú"/></a>
 				<p:commandButton class="submit" update="Elementos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
+				<img class="imagen" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
 			</div>
 			<center>
 				<h1 class="h1" >Selección de Pantalla</h1>
@@ -28,12 +30,12 @@
 		    </p:panel>    
 			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento('Pantalla', marca)}" class="boton" value="Registrar"/>
 			
-			<p:separator style="width:3px;height:300px" class="separat"/>
+			<p:separator style="width:3px;height:280px" class="separat"/>
 
 			<a href="/faces/registrarteclado.xhtml"><p:commandButton type="button" class="boton1" value="Siguiente"/></a>
 			<p:dataTable var="cmo" value="#{registrarElementosBean.consultarElemento('Pantalla')}" class="elemDispo"
 					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                     rows="6" selection="#{registrarElementosBean.elementoSelec}"
+                     rows="4" selection="#{registrarElementosBean.elementoSelec}"
                      rowKey="#{cmo.id}">
 				<f:facet name="header" >Pantallas Disponibles</f:facet>
 				<p:column class="columna" headerText="Nombre">

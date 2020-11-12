@@ -1,0 +1,71 @@
+body{
+	background: url(bg.jpg) no-repeat fixed center;
+	margin: 0;
+	padding: 0;
+	background-size: 100% 100%;
+}
+
+.en-sesion{
+  height: 65px;
+  background: #900;
+}
+
+.en-sesion .cerrar{
+  background: #900;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  position: absolute;
+  top: 20px;
+  left: 90%;
+}
+
+.en-sesion .logo{
+	position: absolute;
+	left: 38%;
+	height: 65px;
+	width: 300px;
+}
+
+.en-sesion .menu{
+  background: #900;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  position: absolute;
+  top: 20px;
+  left: 84%;
+}
+
+.h1{
+	position: absolute;
+	color: #fff;
+	top: 10%;
+	left: 40%;
+}
+
+.input{
+	position: absolute;
+	left: 20%;
+	top: 30%;
+}
+
+.input2{
+	position: absolute;
+	left: 60%;
+	top: 30%;
+}
+
+.input3{
+	position: absolute;
+	left: 20%;
+	top: 50%;
+}
+
+.input4{
+	position: absolute;
+	left: 60%;
+	top: 50%;
+}
