@@ -1,5 +1,6 @@
 package edu.eci.cvds.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.eci.cvds.entities.Elemento;
@@ -113,13 +114,6 @@ public interface EquiposServices {
      * @return si es un elemento válido
      */
  	public boolean esTipoValido(String tipo) throws EquiposException;
-
-	/**
-	 * Método que permite saber los elementos del ultimo Equipo
-	 * @throws EquiposException Errores con la operación
-	 * @return Lista de elementos del equipo consultado
-	 */
-	public List<Elemento> consultarElementosUltimoEquipo() throws EquiposException;
 	
 	/**
 	* Método que permite desasociar un elemento
@@ -129,4 +123,17 @@ public interface EquiposServices {
 	* @throws EquiposException Errores con la operación
 	*/
 	public void asociacionElemento(int id,int numero,String tipo)throws EquiposException;
+	
+	/**
+	* Método que retorna el conjunto de elementos seleccionados
+	* @return elSelected Lista de elementos seleccionados
+	*/
+	public List<Elemento> getElSelected();
+	
+	/**
+	* Método que agrega elementos a la lista de seleccionados
+	* @param elementoSelec: Elemento seleccionado
+	*/
+	public void add(Elemento elementoSelec);
+
 }

@@ -28,6 +28,7 @@
 			<div class="en-sesion">
 				<a href="/faces/sesion.xhtml"><p:commandButton type="button" class="submit2" update="Equipos_Form" value="Menú"/></a>
 				<p:commandButton class="submit" update="Equipos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
+				<img class="imagen" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
 			</div>
 			<center>
 				<h1 class="h1" >Registrar Equipo</h1>
@@ -35,9 +36,9 @@
 			<img class="imagen" src="https://www.tecnocomprascr.com/wp-content/uploads/2014/06/Lenovo-ThinkCentre-300x202.png"/>
 			<p:inputText id="marca" class="input" placeholder="Marca" type="String" value="#{marca}"/>
 			<p:inputText id="idcorreo" class="input2" placeholder="IdCorreo" type="String" value="#{idcorreo}"/>
-			<p:commandButton update="Equipos_Form" actionListener="#{RegistrarEquiposBean.registrarEquipo(marca, idcorreo)}" class="boton" value="Registrar" onclick="return ConfirmInscription()"/>
-			<p:dataTable var="req" value="#{RegistrarEquiposBean.consultarElementosUltimoEquipo()}" class="tabla">
-				<f:facet name="header" >Elementos del Equipo</f:facet>	 
+			<p:commandButton update="Equipos_Form" actionListener="#{RegistrarEquiposBean.registrarEquipo(marca, idcorreo)}" class="boton1" value="Registrar" onclick="return ConfirmInscription()"/>
+			<p:dataTable var="req" value="#{RegistrarEquiposBean.consultarElementosSelected()}" class="tabla">
+				<f:facet name="header" >Elementos Seleccionados</f:facet>	 
 				<p:column class="columna" headerText="Tipo">
 					<h:outputText value="#{req.tipo}" />
 				</p:column>
@@ -45,10 +46,7 @@
 				<p:column class="columna" headerText="Marca">
 					<h:outputText value="#{req.nombre}" />
 				</p:column>
-				
-				<p:column class="columna" headerText="Disponible">
-					<h:outputText value="#{req.disponible}" />
-				</p:column>
+
 			</p:dataTable>
 			
 		</h:form>

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head> 
+		<title>Registro equipo</title>
+		<link rel="stylesheet" href="master5.css"/>
+	</h:head>
+	
+	<body>
+		<script type="text/javascript">
+            PrimeFaces.locales['es'] = {
+                closeText: 'Cerrar',
+                prevText: 'Anterior',
+                nextText: 'Siguiente',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
+                weekHeader: 'Semana',
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: '',
+                timeOnlyTitle: 'Sólo hora',
+                timeText: 'Tiempo',
+                hourText: 'Hora',
+                minuteText: 'Minuto',
+                secondText: 'Segundo',
+                currentText: 'Fecha actual',
+                ampm: false,
+                month: 'Mes',
+                week: 'Semana',
+                day: 'Día',
+                allDayText: 'Todo el día'
+            };
+        </script>
+		<h:form id="form">
+			<center>
+				<h1 class="h1">Registro Novedad</h1>
+			</center>
+			<div class="en-sesion">
+				<a href="/faces/sesion.xhtml"><p:commandButton type="button" class="menu" update="Equipos_Form" value="Menú"/></a>
+				<p:commandButton class="cerrar" update="form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
+				<img class="logo" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
+			</div>
+			<p:inputText class="input" placeholder="Titulo" type="String" value="#{modelo}"/>
+			<p:inputText class="input2" placeholder="Responsable" type="String" value="#{modelo}"/>
+			<p:inputText class="input3" placeholder="Detalle" type="String" value="#{modelo}"/>
+			<p:calendar  class="input4" value="#{registrarNovedadBean.fecha}" locale="es" pattern="dd/MM/yyyy">
+                <p:ajax event="dateSelect" listener="#{registrarNovedadBean.actualizar_fecha}" update=":form:fecha_seleccioanda"/> 
+            </p:calendar>
+            <br />
+            <br />
+            <h:outputText id="fecha_seleccioanda" value="#{registrarNovedadBean.f_seleccionada}"/>
+		</h:form>
+	</body>
+</html>
