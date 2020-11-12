@@ -26,8 +26,6 @@ public class RegistrarEquipoBean extends BasePageBean{
 
 	@Inject
 	private EquiposServices equipoS;
-	@Inject
-	private Usuario usuarioUsado;
 	
 	public List<Equipo> consultarEquipos(){
  		try{
@@ -50,6 +48,10 @@ public class RegistrarEquipoBean extends BasePageBean{
  		}catch(EquiposException e){    
  	    }
  		return elemento;
+ 	}
+	
+	public List<Elemento> consultarElementosSelected(){
+ 		return equipoS.getElSelected();
  	}
 	
 	public List<Equipo> getEquipos() {
