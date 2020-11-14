@@ -37,21 +37,6 @@ public class RegistrarEquipoBean extends BasePageBean{
  		return equipos;
  	}
 	
-	public void registrarEquipo(String marca, String idcorreo) {
-		try{
-			equipoS.registrarEquipo(marca, idcorreo);
-		}catch(EquiposException e){           
-        }
-	}
-	
-	public List<Elemento> consultarElementosUltimoEquipo(){
- 		try{
- 			elemento = equipoS.consultarElementosUltimoEquipo();
- 		}catch(EquiposException e){    
- 	    }
- 		return elemento;
- 	}
-	
 	public List<Equipo> getEquipos() {
 		return equipos;
 	}

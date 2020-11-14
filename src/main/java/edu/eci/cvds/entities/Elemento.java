@@ -16,7 +16,9 @@ public class Elemento {
 	private String nombre;
     private boolean disponible;
     private String disponibilidad;
-    
+    private boolean dadoDeBaja;
+    private ArrayList<Novedad> novedades;
+
     /**
      *Constructor para la clase elemento
      */
@@ -131,12 +133,46 @@ public class Elemento {
 	}
 	
 	/**
+     * Método que devuelve si el elemento es dado de baja
+     * @return Si el elemento esta o no dado de baja
+     */
+	public boolean isDadoDeBaja() {
+		return dadoDeBaja;
+	}
+	
+	/**
+	 * Método que cambia si el elemento es dado de baja
+	 * @param Estado del elemento
+	 */
+	public void setDadoDeBaja(boolean dadoDeBaja) {
+		this.dadoDeBaja = dadoDeBaja;
+	}
+	
+	/**
+     * Método que devuelve las novedades del elemento
+     * @return Novedades del elemento
+     */
+	public ArrayList<Novedad> getNovedades() {
+		return novedades;
+	}
+	
+	/**
+	 * Método que cambia las novedades del elemento
+	 * @param Novedades del elemento
+	 */
+	public void setNovedades(ArrayList<Novedad> novedades) {
+		this.novedades = novedades;
+	}
+
+	/**
 	 * Método que permite mostrar la salida como string
 	 * @return Los atributos relacionados del equipo
 	 */
 	@Override
 	public String toString() {
-		return "Elemento {id:" + id + ", tipo:" + tipo + ", nombre:" + nombre + ", disponible:" + disponible + "}";
+		return "Elemento {id=" + id + ", tipo=" + tipo + ", nombre=" + nombre + ", disponible=" + disponible
+				+ ", dadoDeBaja=" + dadoDeBaja + ", novedades=" + novedades + "}";
 	}
+	
 	
 }
