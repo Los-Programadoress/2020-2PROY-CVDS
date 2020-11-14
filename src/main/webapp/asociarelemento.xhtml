@@ -30,14 +30,14 @@
 			<center>
 				<h1 class="h1" >Asociar Elemento</h1>
 			</center>
-			<img class="imagen3" src="https://lh3.googleusercontent.com/proxy/YP2Hx7Q3xgT5nNHiWuI4g2sMA-wB2tYWG-YDsLRFd1Lbm-klV33L2tZZCXKkTSfmBmUPQksG8kbwrcNcoJn_xJ0JK_WPtuUxyRWAi9SqUv1mMYqytqKWTmuUfjwZyTwcEaPp5PqEP6D7HF9GieIfuVrbjUw71A"/>
+			<img class="imagen3" src="img/pc.png"/>
 			<img class="imagen4" src="img/elementos.png"/>
 			<p:commandButton update="Equipos_Form" onclick="return ConfirmInscription()" actionListener="#{registrarElementosBean.asociacionElemento(registrarElementosBean.elementoSelec.id,RegistrarEquiposBean.equipoSelec.numero,registrarElementosBean.elementoSelec.tipo)}" class="boton2" value="Asociar"/>
 			<p:dataTable var="ael" value="#{registrarElementosBean.consultarElementos()}" class="tabla2" 
 					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
 					 rows="6" selection="#{registrarElementosBean.elementoSelec}"
                      rowKey="#{ael.id}" >
-				<f:facet name="header" >Elementos Registrados</f:facet>
+				<f:facet name="header" >Elementos Disponibles</f:facet>
 				<p:column class="columna" headerText="Tipo">
 					<h:outputText value="#{ael.tipo}" />
 				</p:column>
