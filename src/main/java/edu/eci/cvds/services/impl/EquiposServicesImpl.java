@@ -319,8 +319,8 @@ public class EquiposServicesImpl implements EquiposServices{
 	*/
 	@Override
 	public void add(Elemento elementoSelec) {
-
-		if (elSelected.size() <= 4 && !elSelected.contains(elementoSelec.getTipo()) ){
+			System.out.println(elSelected.contains(elementoSelec.getTipo()));
+		if (elSelected.size() <= 3 && !elSelected.contains(elementoSelec.getTipo()) ){
 			EquiposServicesImpl.elSelected.add(elementoSelec);
 		}
 	}
