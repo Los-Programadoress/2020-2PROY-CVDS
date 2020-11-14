@@ -1,0 +1,24 @@
+.#*
+*.log
+
+# Maven files
+target/
+target
+/target/
+
+# IntelliJ files
+.idea/
+.idea
+*.iml
+
+# Eclipse files
+.settings/
+.settings
+.project/
+.project
+.classpath
+.DS_Store
+/nbproject/
+
+/bin/
+.vscode
