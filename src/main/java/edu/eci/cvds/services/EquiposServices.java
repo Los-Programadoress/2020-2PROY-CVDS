@@ -50,7 +50,13 @@ public interface EquiposServices {
       */
  	 public Equipo consultarEquipo(int nequipo) throws EquiposException;
  	 
- 	 //FALTA REGISTRAR EQUIPO
+ 	/**
+	   * Método que permite cambiar el estado de dar de baja a un elemento
+	   * @param dBaja: Cambiar estado de baja al elemento
+	   * @param eId: Identificador del elemento
+	   * @throws EquiposException Errores con la operación
+	  */
+	public void registrarEquipo(String marca, String idcorreo) throws EquiposException;
  	 
  	/**
       * Método que permite registrar consultar los elementos de un equipo 
@@ -231,5 +237,7 @@ public interface EquiposServices {
 	* @param elementoSelec: Elemento seleccionado
 	*/
 	public void add(Elemento elementoSelec);
+
+
 
 }
