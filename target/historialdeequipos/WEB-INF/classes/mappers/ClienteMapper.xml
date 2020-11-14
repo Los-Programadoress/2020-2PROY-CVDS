@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.ClienteMapper">
+
+  <resultMap type='Cliente' id='ClienteResult'>
+    <id property='documento' column='documento' />
+    <result property='nombre' column='nombre' />
+    <result property='telefono' column='telefono' />
+    <result property='direccion' column='direccion' />
+    <result property='email' column='email' />
+    <result property='vetado' column='vetado' />
+    <collection property='rentados' ofType='ItemRentado' resultMap='ItemRentadoResult' columnPrefix='iren_'></collection>
+  </resultMap>
+
+  <resultMap type='ItemRentado' id='ItemRentadoResult'>
+    <id property='id' column='id' />
+    <result property='fechainiciorenta' column='fechainiciorenta' />
+    <result property='fechafinrenta' column='fechafinrenta' />
+    <association property="item" javaType="Item" resultMap= 'edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper.ItemResult' columnPrefix = 'item_'></association>
+  </resultMap>
+
+  <select parameterType="map" id="consultarClientes" resultMap="ClienteResult">
+    SELECT  
+      c.nombre,
+      c.documento,
+      c.telefono,
+      c.direccion,
+      c.email,
+      c.vetado,
+      
+      ir.id as iren_id ,
+      ir.fechainiciorenta as iren_fechainiciorenta ,
+      ir.fechafinrenta as iren_fechafinrenta ,
+      
+      i.id as iren_item_id,
+      i.nombre as iren_item_nombre,
+      i.descripcion as iren_item_descripcion,
+      i.fechalanzamiento as iren_item_fechalanzamiento,
+      i.tarifaxdia as iren_item_tarifaxdia,
+      i.formatorenta as iren_item_formatorenta,
+      i.genero as iren_item_genero,        
+      ti.id as iren_tipo_id,
+      ti.descripcion  as iren_tipo_descripcion 
+    FROM 
+      VI_CLIENTES as c 
+      left join VI_ITEMRENTADO as ir on c.documento=ir.CLIENTES_documento 
+      left join VI_ITEMS as i on ir.ITEMS_id=i.id 
+      left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id
+  </select>
+
+  <select parameterType="map" id="consultarCliente" resultMap="ClienteResult">
+    SELECT  
+      c.nombre,
+      c.documento,
+      c.telefono,
+      c.direccion,
+      c.email,
+      c.vetado,
+      
+      ir.id as iren_id ,
+      ir.fechainiciorenta as iren_fechainiciorenta ,
+      ir.fechafinrenta as iren_fechafinrenta ,
+      
+      i.id as iren_item_id,
+      i.nombre as iren_item_nombre,
+      i.descripcion as iren_item_descripcion,
+      i.fechalanzamiento as iren_item_fechalanzamiento,
+      i.tarifaxdia as iren_item_tarifaxdia,
+      i.formatorenta as iren_item_formatorenta,
+      i.genero as iren_item_genero,        
+      ti.id as iren_tipo_id,
+      ti.descripcion  as iren_tipo_descripcion 
+    FROM 
+      VI_CLIENTES as c 
+      left join VI_ITEMRENTADO as ir on c.documento=ir.CLIENTES_documento 
+      left join VI_ITEMS as i on ir.ITEMS_id=i.id 
+      left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id
+    <if test="idcli !=null">
+        WHERE c.documento = #{idcli}
+    </if>
+  </select>
+  
+  <select parameterType="map" id="consultarItemsCliente" resultMap="ClienteResult">
+    SELECT  
+      c.nombre,
+      c.documento,
+      ir.id as iren_id ,
+      i.nombre as iren_item_nombre,
+      i.descripcion as iren_item_descripcion,
+      i.fechalanzamiento as iren_item_fechalanzamiento,
+      i.tarifaxdia as iren_item_tarifaxdia,
+      i.formatorenta as iren_item_formatorenta,
+      i.genero as iren_item_genero,
+      
+      ir.fechainiciorenta as iren_fechainiciorenta ,
+      ir.fechafinrenta as iren_fechafinrenta
+      
+    FROM 
+      VI_CLIENTES as c left join VI_ITEMRENTADO as ir on c.documento=ir.CLIENTES_documento
+      left join VI_ITEMS as i on ir.ITEMS_id=i.id 
+      where c.documento = #{idcli} AND CURDATE() BETWEEN ir.fechainiciorenta AND ir.fechafinrenta  
+  </select>
+  
+  <update parameterType="map" id="vetarCliente">
+  	UPDATE VI_CLIENTES 
+    SET vetado = #{estado}
+    WHERE documento = #{idcli}
+  </update>
+
+  <insert parameterType="map" id="agregarItemRentadoACliente">
+    INSERT INTO
+    VI_ITEMRENTADO (CLIENTES_documento, ITEMS_id, fechainiciorenta, fechafinrenta) 
+    VALUES ( #{idcli}, #{idit}, #{fechainicio}, #{fechafin});
+  </insert>
+  
+  <insert parameterType="map" id="insertarCliente">
+    INSERT INTO VI_CLIENTES (documento,nombre,telefono,direccion,email,vetado)
+	VALUES ( #{cliente.documento}, #{cliente.nombre}, #{cliente.telefono}, #{cliente.direccion}, #{cliente.email}, #{cliente.vetado});
+  </insert>
+          	
+</mapper>
