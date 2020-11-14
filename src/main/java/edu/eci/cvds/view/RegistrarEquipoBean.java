@@ -35,6 +35,8 @@ public class RegistrarEquipoBean extends BasePageBean{
  	}
 	
 	public void registrarEquipo(String marca, String idcorreo) {
+		equipoS.getElSelected().clear();
+		
 		try{
 			equipoS.registrarEquipo(marca, idcorreo);
 		}catch(EquiposException e){           
