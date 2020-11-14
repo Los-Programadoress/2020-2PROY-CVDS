@@ -27,6 +27,8 @@ import edu.eci.cvds.services.EquiposServices;
 */
 public class EquiposServicesImpl implements EquiposServices{
 	
+	static final ArrayList<Elemento> elSelected = new ArrayList<>();
+	
 	@Inject
     UsuarioDAO usuarioDAO;
 	
@@ -35,8 +37,6 @@ public class EquiposServicesImpl implements EquiposServices{
 	
 	@Inject
 	ElementoDAO elementoDAO;
-
-	static final ArrayList<Elemento> elSelected = new ArrayList<>();
 	
 	@Inject
 	NovedadDAO novedadDAO;
@@ -320,7 +320,7 @@ public class EquiposServicesImpl implements EquiposServices{
 	@Override
 	public void add(Elemento elementoSelec) {
 
-		if (elSelected.size() <= 4) {
+		if (elSelected.size() <= 4 && !elSelected.contains(elementoSelec.getTipo()) ){
 			EquiposServicesImpl.elSelected.add(elementoSelec);
 		}
 	}
