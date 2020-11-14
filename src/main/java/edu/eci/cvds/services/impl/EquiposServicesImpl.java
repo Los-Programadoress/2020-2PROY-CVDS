@@ -1,5 +1,6 @@
 package edu.eci.cvds.services.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -34,6 +35,8 @@ public class EquiposServicesImpl implements EquiposServices{
 	
 	@Inject
 	ElementoDAO elementoDAO;
+
+	static final ArrayList<Elemento> elSelected = new ArrayList<>();
 	
 	@Inject
 	NovedadDAO novedadDAO;
@@ -162,6 +165,27 @@ public class EquiposServicesImpl implements EquiposServices{
        * @param eId: Identificador del elemento
        * @throws EquiposException Errores con la operación
       */
+     @Override
+ 	 public void registrarEquipo(String marca, String idcorreo) throws EquiposException {
+ 		try {
+ 			equipoDAO.registrarEquipo(marca, idcorreo);
+ 			List<Equipo> equipos = consultarEquipos();
+
+ 		    //antes de registrar elementos
+ 		    Equipo equipoRegistrado = equipos.get(equipos.size()-1);
+ 		    //asociar elementos
+ 		    List<Elemento> elementos = getElSelected();
+ 		    
+ 		    for(Elemento e: elementos) {
+ 		    	asociarElemento(equipoRegistrado.getNumero(),e.getId());
+ 		    }
+ 		    EquiposServicesImpl.elSelected.clear();
+ 		}
+ 		catch (PersistenceException ex) {
+ 			throw new EquiposException("Error al registrar el equipo" + ex.getLocalizedMessage(), ex);
+   	 	}
+ 	 }
+     
 	  public void cambiarBajaEquipo(boolean dBaja,int eId) throws EquiposException{
 		try{
 			equipoDAO.cambiarBajaEquipo(dBaja,eId);
@@ -279,6 +303,28 @@ public class EquiposServicesImpl implements EquiposServices{
  			throw new EquiposException("Error al asociar un elemento: ",e);  
 		}	
 	}
+	
+	/**
+	* Método que retorna el conjunto de elementos seleccionados
+	* @return elSelected Lista de elementos seleccionados
+	*/
+	@Override
+	public ArrayList<Elemento> getElSelected() {
+		return elSelected;
+	}
+	
+	/**
+	* Método que agrega elementos a la lista de seleccionados
+	* @param elementoSelec: Elemento seleccionado
+	*/
+	@Override
+	public void add(Elemento elementoSelec) {
+
+		if (elSelected.size() <= 4) {
+			EquiposServicesImpl.elSelected.add(elementoSelec);
+		}
+	}
+	
 	
 	/**
      * Método que permite cambiar el estado de dar de baja a un elemento

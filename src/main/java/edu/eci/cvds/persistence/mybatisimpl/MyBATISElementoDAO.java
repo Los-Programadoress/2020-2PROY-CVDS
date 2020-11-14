@@ -122,7 +122,6 @@ public class MyBATISElementoDAO implements ElementoDAO{
 	 @Override
 	 public List<Elemento> consultarElemento(String tipo) throws PersistenceException {
 		 String tipoC = convertToFormat(tipo);
-		 System.out.println(tipoC);
 		 try {
 			 return elementoMapper.consultarElemento(tipoC);
 		 }

@@ -1,6 +1,7 @@
 package edu.eci.cvds.services;
 
 import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.eci.cvds.entities.Elemento;
@@ -219,4 +220,16 @@ public interface EquiposServices {
      * @throws EquiposException Errores con la operación
      */
 	 public List<Laboratorio> consultarLaboratorios() throws EquiposException;
+	/**
+	* Método que retorna el conjunto de elementos seleccionados
+	* @return elSelected Lista de elementos seleccionados
+	*/
+	public List<Elemento> getElSelected();
+	
+	/**
+	* Método que agrega elementos a la lista de seleccionados
+	* @param elementoSelec: Elemento seleccionado
+	*/
+	public void add(Elemento elementoSelec);
+
 }
