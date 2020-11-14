@@ -9,16 +9,19 @@
     <id property='numero' column='numero' />
     <result property='marca' column='marca' />
     <result property='disponible' column='disponible' />
+    <result property='dadoDeBaja' column='dadoDeBaja' />
     <association property="usuario" resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult'></association>
-    <collection property='elementos' ofType='Elemento' resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.ElementoMapper.ElementoResult' columnPrefix='elem_'></collection>    
+    <collection property='elementos' ofType='Elemento' resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.ElementoMapper.ElementoResult' columnPrefix='elem_'></collection>
+    <collection property='novedades' ofType='Novedad' resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.NovedadMapper.NovedadResult' columnPrefix='noved_'></collection>      
   </resultMap>
  
   <select parameterType="map" id="consultarEquipos" resultMap="EquipoResult">
   SELECT
       e.numero,
       e.marca,
-      e.disponible
-    FROM equipo as e
+      e.disponible,
+      e.dadoDeBaja
+    FROM equipo AS e
   </select>
   
   <select parameterType="map" id="consultarEquipo" resultMap="EquipoResult">
@@ -26,7 +29,8 @@
       e.numero,
       e.marca,
       e.disponible
-    FROM equipo as e
+      e.dadoDeBaja
+    FROM equipo AS e
     WHERE e.numero = #{nequipo}
   </select>
   
@@ -44,5 +48,23 @@
     FROM equipo AS e
     LEFT JOIN elemento AS el ON e.numero = el.numEquipo
     WHERE e.numero = #{nequipo}
-  </select> 
+  </select>
+  
+  <update parameterType="map" id="asociarEquipo">
+ 	UPDATE equipo
+  	SET nombreLab = #{nLab}, disponible = #{disponible}
+  	WHERE numero = #{nume}
+  </update>
+  
+  <update parameterType="map" id="desasociarEquipo">
+	UPDATE equipo
+	SET nombreLab = null, disponible = #{disp}
+	WHERE nombreLab = #{nLab}
+  </update>
+  
+  <update parameterType="map" id="cambiarBajaEquipo">
+	UPDATE equipo
+	SET dadoDeBaja = #{dBaja}
+	WHERE numero = #{nume}
+  </update>
 </mapper>

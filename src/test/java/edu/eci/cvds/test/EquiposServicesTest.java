@@ -2,20 +2,9 @@ package edu.eci.cvds.test;
 
  
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.*; 
 
- 
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
-
- 
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -27,10 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 
  
-
 import com.google.inject.Inject;
-
- 
 
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
@@ -72,32 +58,28 @@ public class EquiposServicesTest {
         }    
     }*/
 
- 
-
     /**
      * Debe permitir registrar un equipo con sus elementos.
      * Registro Válido: Debe existir el usuario para relacionarlo con el nuevo equipo.
      */
     @Test
     public void deberiaRegistrarEquipo() {
-        try {
-            //elementos sin asociar
-            equiposServices.registrarElemento("Torre", "V530 AIO PP");
-            equiposServices.registrarElemento("Mouse", "Vertical Inalámbrico PP");
-            equiposServices.registrarElemento("Teclado", "Flexible PP");
-            equiposServices.registrarElemento("Pantalla", "LED PP");
-            
-            int eqPreRegistro = equiposServices.consultarEquipos().size();
-            equiposServices.registrarEquipo("TOSHIBA", "maria.alfaro");
-            int eqPosRegistro = equiposServices.consultarEquipos().size();
-            
-            assertTrue(eqPosRegistro > eqPreRegistro);
+    	try {
+    		//elementos sin asociar
+    		equiposServices.registrarElemento("Torre", "V530 AIO PP");
+    		equiposServices.registrarElemento("Mouse", "Vertical Inalámbrico PP");
+    		equiposServices.registrarElemento("Teclado", "Flexible PP");
+    		equiposServices.registrarElemento("Pantalla", "LED PP");
+    		
+    		int eqPreRegistro = equiposServices.consultarEquipos().size();
+    		equiposServices.registrarEquipo("TOSHIBA", "maria.alfaro");
+    		int eqPosRegistro = equiposServices.consultarEquipos().size();
+    		
+    		assertTrue(eqPosRegistro > eqPreRegistro);
 
- 
-
-        } catch (EquiposException e) {
-            assertFalse(false);
-        }
+    	} catch (EquiposException e) {
+    		assertFalse(false);
+    	}
     }
     
     /**
@@ -106,23 +88,21 @@ public class EquiposServicesTest {
      */
     @Test
     public void noDeberiaRegistrarElementoEquipo() {
-        try {
-            //elemento sin asociar
-            equiposServices.registrarElemento("Torre", "V530 AIO Pa");
-            equiposServices.registrarElemento("Mouse", "Vertical Inalámbrico Pa");
-            equiposServices.registrarElemento("Teclado", "Flexible Pa");
-            equiposServices.registrarElemento("Pantalla", "LED Pa");
-            
-            int eqPreRegistro = equiposServices.consultarEquipos().size();
-            equiposServices.registrarEquipo("ASUS", "pepe.torres");
-            int eqPosRegistro = equiposServices.consultarEquipos().size();
-            assertTrue(eqPosRegistro == eqPreRegistro);
+    	try {
+    		//elemento sin asociar
+    		equiposServices.registrarElemento("Torre", "V530 AIO Pa");
+    		equiposServices.registrarElemento("Mouse", "Vertical Inalámbrico Pa");
+    		equiposServices.registrarElemento("Teclado", "Flexible Pa");
+    		equiposServices.registrarElemento("Pantalla", "LED Pa");
+    		
+    		int eqPreRegistro = equiposServices.consultarEquipos().size();
+    		equiposServices.registrarEquipo("ASUS", "pepe.torres");
+    		int eqPosRegistro = equiposServices.consultarEquipos().size();
+    		assertTrue(eqPosRegistro == eqPreRegistro);
 
- 
-
-        } catch (EquiposException e) {
-            assertFalse(false);
-        }
+		} catch (EquiposException e) {
+			assertFalse(false);
+		}
     }
     
     /**
@@ -166,13 +146,13 @@ public class EquiposServicesTest {
      */
     @Test
     public void deberiaConsultarElemento() {
-        try {
-            List<Elemento> elementos = equiposServices.consultarElemento("Teclado");
-            assertTrue(elementos.size() >= 0);
-            
-        } catch (EquiposException e) {
-            assertFalse(false);
-        }
+    	try {
+    		List<Elemento> elementos = equiposServices.consultarElemento("Teclado");
+    		assertTrue(elementos.size() >= 0);
+    		
+		} catch (EquiposException e) {
+			assertFalse(false);
+		}
     }
     
     /**

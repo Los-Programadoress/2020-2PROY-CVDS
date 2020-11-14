@@ -21,12 +21,10 @@ public class RegistrarEquipoBean extends BasePageBean{
 	private static final long serialVersionUID = 650984420982868194L;
 
 	private List<Equipo> equipos= null;
-	private List<Elemento> elemento = null;
+	private Equipo equipoSelec;
 
 	@Inject
 	private EquiposServices equipoS;
-	@Inject
-	private Usuario usuarioUsado;
 	
 	public List<Equipo> consultarEquipos(){
  		try{
@@ -42,13 +40,10 @@ public class RegistrarEquipoBean extends BasePageBean{
 		}catch(EquiposException e){           
         }
 	}
+
 	
-	public List<Elemento> consultarElementosUltimoEquipo(){
- 		try{
- 			elemento = equipoS.consultarElementosUltimoEquipo();
- 		}catch(EquiposException e){    
- 	    }
- 		return elemento;
+	public List<Elemento> consultarElementosSelected(){
+ 		return equipoS.getElSelected();
  	}
 	
 	public List<Equipo> getEquipos() {
@@ -59,4 +54,13 @@ public class RegistrarEquipoBean extends BasePageBean{
 		this.equipos = equipos;
 	}
 
+	public Equipo getEquipoSelec() {
+		return equipoSelec;
+	}
+
+	public void setEquipoSelec(Equipo equipoSelec) {
+		this.equipoSelec = equipoSelec;
+	}
+	
+	
 }

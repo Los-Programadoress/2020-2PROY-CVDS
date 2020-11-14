@@ -37,7 +37,7 @@ public interface ElementoDAO {
  	*/
 	public void asociarElemento(int nume, int numElemento) throws PersistenceException;
     
-  /**
+   /**
 	* Método que permite desasociar un elemento
 	* @param disponible: Permite identificar la disponibilidad del elemento
 	* @param nume: Identificador del equipo
@@ -54,9 +54,9 @@ public interface ElementoDAO {
 	public List<Elemento> consultarElementos() throws PersistenceException;
 	
    /**
-     * Método que permite registrar un elemento
+     * Método que permite consultar los elementos de un tipo.
      * @param tipo El tipo de elemento
-     * @throws EquiposException Errores con la operación
+     * @throws PersistenceException Errores con la base de datos
      * @return lista de elementos del tipo consultados
      */
 	public List<Elemento> consultarElemento(String tipo) throws PersistenceException;
@@ -67,4 +67,12 @@ public interface ElementoDAO {
      * @return si es un elemento válido
      */
 	public boolean esTipoValido(String tipo);
+	
+	/**
+     * Método que permite cambiar el estado de dar de baja a un elemento
+     * @param dBaja: Cambiar estado de baja al elemento
+     * @param eId: Identificador del elemento
+     * @throws PersistenceException Errores con la base de datos
+     */
+	public void cambiarBajaElemento(boolean dBaja,int eId) throws PersistenceException;
 }

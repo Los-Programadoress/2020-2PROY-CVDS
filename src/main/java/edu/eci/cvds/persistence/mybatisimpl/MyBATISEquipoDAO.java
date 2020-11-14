@@ -11,6 +11,7 @@ import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.persistence.EquipoDAO;
 import edu.eci.cvds.persistence.PersistenceException;
+import edu.eci.cvds.persistence.mybatisimpl.mappers.ElementoMapper;
 import edu.eci.cvds.persistence.mybatisimpl.mappers.EquipoMapper;
 import edu.eci.cvds.persistence.mybatisimpl.mappers.UsuarioMapper;
 import edu.eci.cvds.services.EquiposException;
@@ -18,7 +19,7 @@ import edu.eci.cvds.services.EquiposException;
 public class MyBATISEquipoDAO implements EquipoDAO{
 	
 	@Inject
-	private EquipoMapper equipoMapper;
+	private EquipoMapper equipoMapper;	
 	
 	@Inject
 	private UsuarioMapper usuarioMapper;
@@ -91,4 +92,49 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	    }
 	}
 	
+	/**
+	 * Método que permite asociar un equipo a un laboratorio
+	 * @param nLab: Número del laboratorio
+     * @param nume: Identificador del equipo
+     * @throws PersistenceException Errores con la base de datos
+	 */
+	@Override
+	 public void asociarEquipo(String nLab, int nume) throws PersistenceException{
+		try{
+			equipoMapper.asociarEquipo(nLab, nume);
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
+	        throw new PersistenceException("Error al asociar equipo",e);            
+	    }
+	 }
+	
+	 /**
+	  * Método que permite desasociar un equipo a un laboratorio
+	  * @param disponible: Permite identificar la disponibilidad del elemento
+	  * @param nLab: Número del laboratorio
+	  * @throws PersistenceException Errores con la base de datos
+	  */
+     public void desasociarEquipo(boolean disponible, String nLab) throws PersistenceException{
+    	 try{
+ 			equipoMapper.desasociarEquipo(disponible, nLab);
+ 		}
+ 		catch(org.apache.ibatis.exceptions.PersistenceException e){
+ 	        throw new PersistenceException("Error al desasociar equipo",e);            
+ 	    }
+     }
+	 
+	 /**
+      * Método que permite cambiar el estado de dar de baja a un elemento
+      * @param dBaja: Cambiar estado de baja al elemento
+      * @param eId: Identificador del elemento
+      * @throws PersistenceException Errores con la base de datos
+      */
+	 public void cambiarBajaEquipo(boolean dBaja,int eId) throws PersistenceException {
+		 try{
+	 		equipoMapper.cambiarBajaEquipo(dBaja,eId);
+	 	}
+	 	catch(org.apache.ibatis.exceptions.PersistenceException e){
+	        throw new PersistenceException("Error al cambiar baja del equipo",e);            
+	    }
+	}
 }

@@ -15,7 +15,10 @@ public class Equipo implements Serializable{
     private String marca;
     private boolean disponible;
     private Usuario usuario;
+    private String disponibilidad;
+    private boolean dadoDeBaja;
     private ArrayList<Elemento> elementos;
+    private ArrayList<Novedad> novedades;
     
     /**
      *Constructor para la clase equipo
@@ -23,24 +26,26 @@ public class Equipo implements Serializable{
     public Equipo() {}
     
 	/**
-     *Constructor para la clase usuario
+     *Constructor para la clase quipo
      * @param numero: Número que identifica el equipo
      * @param marca: Marca del equipo
      * @param disponible: Disponibilidad del equipo
      * @param usuario: Usuario que registra el equipo
      * @param elementos: Lista de elementos que tiene el equipo
+     * @param novedades: Lista de novedades que tiene el equipo
      */
-    public Equipo(int numero, String marca, boolean disponible, Usuario usuario, ArrayList<Elemento> elementos) {
+    public Equipo(int numero, String marca, boolean disponible, Usuario usuario, ArrayList<Elemento> elementos, ArrayList<Novedad> novedades) {
 		super();
 		this.numero = numero;
 		this.marca = marca;
 		this.disponible = disponible;
 		this.usuario = usuario;
 		this.elementos = elementos;
+		this.novedades = novedades;
 	}
     
     /**
-     *Constructor para la clase usuario
+     *Constructor para la clase equipo
      * @param numero: Número que identifica el equipo
      * @param marca: Marca del equipo
      * @param usuario: Usuario que registra el equipo
@@ -134,12 +139,60 @@ public class Equipo implements Serializable{
 		this.elementos = elementos;
 	}
 	
+	/**
+     * Método que cambia la disponibilidad del equipo para mostrarlo como Si o No
+     * @return La disponibilidad del equipo
+     */
+	public String getDisponibilidad() {
+		if (isDisponible() == true) {
+			this.disponibilidad = "Si";
+		}
+		else {
+			this.disponibilidad = "No";
+		}
+		return disponibilidad;
+	}
+	
+	/**
+     * Método que devuelve si el equipo es dado de baja
+     * @return Si el equipo esta o no dado de baja
+     */
+    public boolean isDadoDeBaja() {
+		return dadoDeBaja;
+	}
+    
     /**
+	 * Método que cambia si el equipo es dado de baja
+	 * @param Estado del equipo
+	 */
+	public void setDadoDeBaja(boolean dadoDeBaja) {
+		this.dadoDeBaja = dadoDeBaja;
+	}
+	
+	/**
+     * Método que devuelve las novedades del equipo
+     * @return Novedades del equipo
+     */
+	public ArrayList<Novedad> getNovedades() {
+		return novedades;
+	}
+	
+	/**
+	 * Método que cambia las novedades del equipo
+	 * @param Novedades del equipo
+	 */
+	public void setNovedades(ArrayList<Novedad> novedades) {
+		this.novedades = novedades;
+	}
+
+	/**
     * Método que permite mostrar la salida como string
     * @return Los atributos relacionados del equipo
     */
 	@Override
 	public String toString() {
-		return "Equipo {numero: " + numero + ", marca: " + marca + ", disponible: " + disponible + ", usuario:" + usuario + ", elementos:" + elementos + "}";
+		return "Equipo {numero=" + numero + ", marca=" + marca + ", disponible=" + disponible + ", usuario=" + usuario
+				+ ", dadoDeBaja=" + dadoDeBaja + ", elementos=" + elementos + ", novedades=" + novedades + "}";
 	}
+	
 }
