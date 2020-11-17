@@ -10,6 +10,13 @@
 		<link rel="stylesheet" href="master3.css"/>
 		<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
 	</h:head>
+	<script type="text/javascript">
+		function desha(){
+			document.getElementById("Elementos_Form:idSiguiente").disabled = true;
+			document.getElementById("Elementos_Form:iconOnly").disabled = true;
+			document.getElementById("Elementos_Form:idRegistrar").disabled = true;
+		} 
+	</script >
 	<body>
 		<h:form id="Elementos_Form">
 			<div class="en-sesion">
@@ -29,11 +36,11 @@
 		            <p:inputText id="marca" value="#{marca}" required="false"/>
 		        </h:panelGrid>
 		    </p:panel>    
-			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento('Mouse', marca)}" class="boton" value="Registrar"/>
+			<p:commandButton id="idRegistrar" onclick="desha()" update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento('Mouse', marca)}" class="boton" value="Registrar"/>
 			
 			<p:separator style="width:3px;height:280px" class="separat"/>
 
-			<a href="/faces/registrarpantalla.xhtml"><p:commandButton type="button" class="boton1" value="Siguiente"/></a>
+			<a href="/faces/registrarpantalla.xhtml"><p:commandButton id="idSiguiente" type="button" class="boton1" value="Siguiente"/></a>
 			<p:dataTable var="cmo" value="#{registrarElementosBean.consultarElemento('Mouse')}" class="elemDispo"
 					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                      rows="4" selection="#{registrarElementosBean.elementoSelec}"

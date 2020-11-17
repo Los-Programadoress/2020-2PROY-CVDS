@@ -51,12 +51,12 @@
 			<p:inputText class="input" placeholder="Titulo" type="String" value="#{modelo}"/>
 			<p:inputText class="input2" placeholder="Responsable" type="String" value="#{modelo}"/>
 			<p:inputText class="input3" placeholder="Detalle" type="String" value="#{modelo}"/>
-			<p:calendar  class="input4" value="#{registrarNovedadBean.fecha}" locale="es" pattern="dd/MM/yyyy">
-                <p:ajax event="dateSelect" listener="#{registrarNovedadBean.actualizar_fecha}" update=":form:fecha_seleccioanda"/> 
-            </p:calendar>
+			<h:outputText class="input4" value="#{session.lastAccessedTime}">
+				<f:convertDateTime pattern="dd/MM/yyyy" type="date" />
+			</h:outputText>
+			
             <br />
             <br />
-            <h:outputText id="fecha_seleccioanda" value="#{registrarNovedadBean.f_seleccionada}"/>
 		</h:form>
 	</body>
 </html>
