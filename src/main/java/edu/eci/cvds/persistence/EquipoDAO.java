@@ -4,47 +4,69 @@ import java.util.List;
 
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
-import edu.eci.cvds.entities.Usuario;
-import edu.eci.cvds.services.EquiposException;
 
 /**
 * Interface que permite acceder a datos
 * @author: Angélica Alfaro - Laura Izquierdo - César Ortiz
 * @version: 1.0
 */
-
 public interface EquipoDAO {
 	
 	 /**
-     * Método que permite consultar los equipos
-     * @throws PersistenceException Errores con la base de datos
-     * @return lista de equipos consultados
-     */
+      * Método que permite consultar los equipos
+      * @throws PersistenceException Errores con la base de datos
+      * @return lista de equipos consultados
+      */
 	 public List<Equipo> consultarEquipos() throws PersistenceException;
 	 
 	 /**
-     * Método que permite consultar un equipo
-     * @param numero: Número que identifica el equipo
-     * @throws PersistenceException Errores con la base de datos
-     * @return Equipo consultado
-     */
+      * Método que permite consultar un equipo
+      * @param numero: Número que identifica el equipo
+      * @throws PersistenceException Errores con la base de datos
+      * @return Equipo consultado
+      */
 	 public Equipo consultarEquipo(int nequipo) throws PersistenceException;
 	
 	 /**
-     * Método que permite registrar un equipo 
-     * @param numero: Número que identifica el equipo
-     * @param marca: Marca del equipo
-     * @param idcorreo: Identificador del correo del usuario
-	 * @throws PersistenceException Errores con la base de datos 
-     */
+      * Método que permite registrar un equipo 
+      * @param numero: Número que identifica el equipo
+      * @param marca: Marca del equipo
+      * @param idcorreo: Identificador del correo del usuario
+	  * @throws PersistenceException Errores con la base de datos 
+      */
 	 public void registrarEquipo(String marca, String idcorreo) throws PersistenceException;
 	 
 	 /**
-     * Método que permite registrar consultar los elementos de un equipo 
-     * @param nequipo: Número que identifica el equipo
-     * @throws PersistenceException Errores con la base de datos
-     * @return lista de elementos del equipo consultados
-     */
+      * Método que permite registrar consultar los elementos de un equipo 
+      * @param nequipo: Número que identifica el equipo
+      * @throws PersistenceException Errores con la base de datos
+      * @return lista de elementos del equipo consultados
+      */
 	 public List<Elemento> consultarElementosEquipo(int nequipo) throws PersistenceException;
+	 
+	 /**
+ 	  * Método que permite asociar un equipo a un laboratorio
+ 	  * @param nLab: Número del laboratorio
+      * @param nume: Identificador del equipo
+      * @throws PersistenceException Errores con la base de datos
+	  */
+	 public void asociarEquipo(String nLab, int nume) throws PersistenceException;
+	    
+	  /**
+	   * Método que permite desasociar un equipo a un laboratorio
+	   * @param disponible: Permite identificar la disponibilidad del elemento
+	   * @param nLab: Número del laboratorio
+	   * @throws PersistenceException Errores con la base de datos
+	   */
+      public void desasociarEquipo(boolean disponible, String nLab) throws PersistenceException;
+	 
+	 
+	 /**
+      * Método que permite cambiar el estado de dar de baja a un elemento
+      * @param dBaja: Cambiar estado de baja al elemento
+      * @param eId: Identificador del elemento
+      * @throws PersistenceException Errores con la base de datos
+      */
+	 public void cambiarBajaEquipo(boolean dBaja,int eId) throws PersistenceException;
 		 
 }

@@ -129,21 +129,6 @@ public class MyBATISElementoDAO implements ElementoDAO{
 			 throw new PersistenceException("Error al consultar elementos de tipo: "+ tipoC,e);
 		 }
 	 }
-	 
-	 /**
-     * Método que permite consultar los elementos disponibles
-     * @throws EquiposException Errores con la operación
-     * @return lista de elementos disponibles 
-     */
-	@Override
-	public List<Elemento> consultarElementosDisponibles() throws PersistenceException{
-		 try {
-			 return elementoMapper.consultarElementosDisponibles();
-		 }
-		 catch(org.apache.ibatis.exceptions.PersistenceException e){
-			 throw new PersistenceException("Error al consultar elementos disponibles",e);
-		 }
-	}
 
 	 /**
      * Método que permite saber si es un tipo válido
@@ -173,5 +158,22 @@ public class MyBATISElementoDAO implements ElementoDAO{
 		return tipoConverted;
 		
 	}
+	
+	/**
+     * Método que permite cambiar el estado de dar de baja a un elemento
+     * @param dBaja: Cambiar estado de baja al elemento
+     * @param eId: Identificador del elemento
+     * @throws EquiposException Errores con la operación
+     */
+	@Override
+	public void cambiarBajaElemento(boolean dBaja,int eId) throws PersistenceException{
+		try{
+			elementoMapper.cambiarBajaElemento(dBaja, eId);
+		}
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
+           throw new PersistenceException("Error al cambiar la baja del elemento",e);            
+       }
+	}
+	
 
 }
