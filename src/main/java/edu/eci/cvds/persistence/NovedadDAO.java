@@ -1,6 +1,6 @@
 package edu.eci.cvds.persistence;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import edu.eci.cvds.entities.Elemento;

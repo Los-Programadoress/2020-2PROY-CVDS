@@ -14,28 +14,24 @@
 			<div class="en-sesion">
 				<a href="/faces/sesion.xhtml"><p:commandButton type="button" class="submit2" update="Equipos_Form" value="Menú"/></a>
 				<p:commandButton class="submit" update="Elementos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
+				<img class="imagen" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
 			</div>
 			<center>
 				<h1 class="h1">Registrar Elemento</h1>
 			</center>
 			<div class="grupoBotones">
-				<p:commandButton update="Elementos_Form" class="boton" />
-				<p:commandButton update="Elementos_Form" class="boton2"/>
-				<p:commandButton update="Elementos_Form" class="boton3"/>
-				<p:commandButton update="Elementos_Form" class="boton4"/>
+				<p:commandButton update="Elementos_Form" class="boton" actionListener="#{registrarElementosBean.botonMouse()}"/>
+				<p:commandButton update="Elementos_Form" class="boton2" actionListener="#{registrarElementosBean.botonTorre()}"/>
+				<p:commandButton update="Elementos_Form" class="boton3" actionListener="#{registrarElementosBean.botonTeclado()}"/>
+				<p:commandButton update="Elementos_Form" class="boton4" actionListener="#{registrarElementosBean.botonPantalla()}"/>
 			</div>
 			<p:inputText class="input" placeholder="Modelo" type="String" value="#{modelo}"/>
-			<p:inputText class="input1" placeholder="Tipo" type="String" value="#{tipo}"/>
-			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento(tipo, modelo)}" class="boton" value="Registrar" />
+			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento(modelo, modelo)}" class="boton" value="Registrar" />
 			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElementos()}" class="tabla"
 			paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                     rows="8" selectionMode="single" id="documento"
+                     rows="8" selectionMode="single"
                      rowKey="#{rel.id}">
 				<f:facet name="header" class="columna">Elementos Registrados</f:facet>
-				
-				<p:column class="columna" headerText="Id">
-					<h:outputText value="#{rel.id}" />
-				</p:column>
 				
 				<p:column class="columna" headerText="Tipo">
 					<h:outputText value="#{rel.tipo}" />
@@ -46,7 +42,7 @@
 				</p:column>
 	 
 				<p:column class="columna" headerText="Disponible">
-					<h:outputText value="#{rel.disponible}" />
+					<h:outputText value="#{rel.disponibilidad}" />
 				</p:column>
 			</p:dataTable>
 			

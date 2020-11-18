@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: edu.eci.cvds.test.EquiposServicesTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.61 sec
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.898 sec
