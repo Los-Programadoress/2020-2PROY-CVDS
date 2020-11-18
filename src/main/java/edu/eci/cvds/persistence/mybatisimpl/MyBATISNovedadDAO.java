@@ -1,6 +1,7 @@
 package edu.eci.cvds.persistence.mybatisimpl;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.List;
 
 import com.google.inject.Inject;

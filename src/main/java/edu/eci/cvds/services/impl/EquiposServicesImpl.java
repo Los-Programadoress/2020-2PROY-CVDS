@@ -1,7 +1,8 @@
 package edu.eci.cvds.services.impl;
 
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 
 import com.google.inject.Inject;

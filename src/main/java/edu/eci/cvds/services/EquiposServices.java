@@ -1,6 +1,7 @@
 package edu.eci.cvds.services;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -237,7 +238,5 @@ public interface EquiposServices {
 	* @param elementoSelec: Elemento seleccionado
 	*/
 	public void add(Elemento elementoSelec);
-
-
 
 }

@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:head> 
-		<title>Registro equipo</title>
+		<title>Registro Novedad</title>
 		<link rel="stylesheet" href="master5.css"/>
 	</h:head>
 	
@@ -41,22 +41,102 @@
         </script>
 		<h:form id="form">
 			<center>
-				<h1 class="h1">Registro Novedad</h1>
+				<h1 class="h1">Registrar Novedades</h1>
 			</center>
 			<div class="en-sesion">
 				<a href="/faces/sesion.xhtml"><p:commandButton type="button" class="menu" update="Equipos_Form" value="Menú"/></a>
 				<p:commandButton class="cerrar" update="form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
 				<img class="logo" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
 			</div>
-			<p:inputText class="input" placeholder="Titulo" type="String" value="#{modelo}"/>
-			<p:inputText class="input2" placeholder="Responsable" type="String" value="#{modelo}"/>
-			<p:inputText class="input3" placeholder="Detalle" type="String" value="#{modelo}"/>
-			<p:calendar  class="input4" value="#{registrarNovedadBean.fecha}" locale="es" pattern="dd/MM/yyyy">
-                <p:ajax event="dateSelect" listener="#{registrarNovedadBean.actualizar_fecha}" update=":form:fecha_seleccioanda"/> 
-            </p:calendar>
+			<p:separator style="width:3px;height:160px" class="separat"/>
+			<p:separator style="width:3px;height:160px" class="separat2"/>
+			<p:inputText class="input" placeholder="Titulo" type="String" value="#{titulo}"/>
+			<p:inputText class="input2" placeholder="Detalle" type="String" value="#{detalle}"/>
+			<p:autoComplete class="input3" placeholder="Equipo" dropdown="true" value="#{numeroEquipo}" completeMethod="#{registrarNovedadBean.consultarMarcaEquipo()}" />
+			<p:commandButton class="registrarEq" update="form" actionListener="#{registrarNovedadBean.registrarNovedadEquipo(titulo, detalle)}" value="Registrar"/>
+			<p:tabView class="tap">
+				<p:tab title="Novedades Equipos">
+					<p:dataTable var="nov" value="#{registrarNovedadBean.consultarNovedadEquipos()}"
+					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
+					 rows="6" selection="#{registrarElementosBean.elementoSelec}"
+                     rowKey="#{nov.id}">
+						<f:facet name="header" class="columna">Equipos</f:facet>
+			
+						<p:column class="columna" headerText="Titulo">
+							<h:outputText value="#{nov.titulo}" />
+						</p:column>
+				
+						<p:column class="columna" headerText="Fecha">
+							<h:outputText value="#{nov.fecha}" />
+						</p:column>
+						
+						<p:column class="columna" headerText="Responsable">
+							<h:outputText value="#{nov.responsable.idCorreo}" />
+						</p:column>
+						
+						<p:column class="columna" headerText="Detalle">
+							<h:outputText value="#{nov.detalle}" />
+						</p:column>
+				
+					</p:dataTable>
+				</p:tab>
+				
+				<p:tab title="Novedades Elementos">
+					<p:dataTable var="nove" value="#{registrarNovedadBean.consultarNovedadElementos()}"
+						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
+						rows="6" selection="#{registrarElementosBean.elementoSelec}"
+						rowKey="#{nov.id}">
+						<f:facet name="header" class="columna">Elementos</f:facet>
+				
+						<p:column class="columna" headerText="Titulo">
+							<h:outputText value="#{nove.titulo}" />
+						</p:column>
+				
+						<p:column class="columna" headerText="Fecha">
+							<h:outputText value="#{nove.fecha}" />
+						</p:column>
+						
+						<p:column class="columna" headerText="Responsable">
+							<h:outputText value="#{nove.responsable.idCorreo}" />
+						</p:column>
+						
+						<p:column class="columna" headerText="Detalle">
+							<h:outputText value="#{nove.detalle}" />
+						</p:column>
+				
+					</p:dataTable>
+				</p:tab>
+				
+				<p:tab title="Novedades Laboratorios">
+					<p:dataTable var="nove" value="#{registrarNovedadBean.consultarNovedadLaboratorios()}"
+						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
+						rows="6" selection="#{registrarElementosBean.elementoSelec}"
+						rowKey="#{nov.id}">
+						<f:facet name="header" class="columna">Laboratorios</f:facet>
+				
+						<p:column class="columna" headerText="Titulo">
+							<h:outputText value="#{nove.titulo}" />
+						</p:column>
+						
+						<p:column class="columna" headerText="Fecha">
+							<h:outputText value="#{nove.fecha}" />
+						</p:column>
+						
+						<p:column class="columna" headerText="Responsable">
+							<h:outputText value="#{nove.responsable.idCorreo}" />
+						</p:column>
+						
+						<p:column class="columna" headerText="Detalle">
+							<h:outputText value="#{nove.detalle}" />
+						</p:column>
+						
+					</p:dataTable>
+				</p:tab>
+				
+			</p:tabView>
+			
             <br />
             <br />
-            <h:outputText id="fecha_seleccioanda" value="#{registrarNovedadBean.f_seleccionada}"/>
 		</h:form>
 	</body>
 </html>
