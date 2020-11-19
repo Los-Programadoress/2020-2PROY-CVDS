@@ -6,39 +6,45 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:head> 
-		<title>Registrar Teclado</title>
+		<title>Selección de Teclado</title>
 		<link rel="stylesheet" href="master3.css"/>
+		<h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
 	</h:head>
 	<body>
 		<h:form id="Elementos_Form">
 			<div class="en-sesion">
-					<p:commandButton class="submit" update="Elementos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
+				<a href="/faces/sesion.xhtml"><p:commandButton type="button" class="submit2" update="Equipos_Form" value="Menú"/></a>
+				<p:commandButton class="submit" update="Elementos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
+				<img class="imagen" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
 			</div>
 			<center>
-				<h1 class="h1" >Registrar Teclado</h1>
+				<h1 class="h1" >Selección de Teclado</h1>
 			</center>
 			<img class="imagen" src="https://d22k5h68hofcrd.cloudfront.net/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/3/V/3VN40AA-1_T1540959343.png"/>
-			<p:inputText id="marca" class="input" placeholder="Marca" type="String" value="#{marca}"/>
+			<p:panel id="panel" header="Teclado Nuevo" style="margin-bottom:10px;" class="elemRegis" >
+		        <p:messages />
+		        <h:panelGrid columns="1" cellpadding="5" >
+		            <p:outputLabel for="marca" value="Marca:" />
+		            <p:inputText id="marca" value="#{marca}" required="false"/>
+		        </h:panelGrid>
+		    </p:panel>    
 			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento('Teclado', marca)}" class="boton" value="Registrar"/>
-			<a href="/faces/registrartorre.xhtml"><p:commandButton type="button" class="boton1" value="Siguiente"/></a>
-			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElemento('Teclado')}" class="tabla"
-					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                     rows="6" selectionMode="single" id="documento"
-                     rowKey="#{rel.id}">
-				<f:facet name="header" >Teclados Registrados</f:facet>
-				<p:column class="columna" headerText="Id">
-					<h:outputText value="#{rel.id}" />
-				</p:column>
-	 
-				<p:column class="columna" headerText="Nombre">
-					<h:outputText value="#{rel.nombre}" />
-				</p:column>
-	 
-				<p:column class="columna" headerText="Disponible">
-					<h:outputText value="#{rel.disponible}" />
-				</p:column>
-			</p:dataTable>
 			
+			<p:separator style="width:3px;height:280px" class="separat"/>
+
+			<a href="/faces/registrartorre.xhtml"><p:commandButton type="button" class="boton1" value="Siguiente"/></a>
+			<p:dataTable var="cmo" value="#{registrarElementosBean.consultarElemento('Teclado')}" class="elemDispo"
+					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     rows="4" selection="#{registrarElementosBean.elementoSelec}"
+                     rowKey="#{cmo.id}">
+				<f:facet name="header" >Teclados Disponibles</f:facet>
+				<p:column class="columna" headerText="Nombre">
+					<h:outputText value="#{cmo.nombre}" />
+				</p:column>
+				<p:column selectionMode="single" style="width:16px;text-align:center"/>
+			</p:dataTable>
+			<p:commandButton action="#{registrarElementosBean.add()}" id="iconOnly" class="botonDisp" update="Elementos_Form" style="margin-right:20px;" icon="pi pi-check" title="Icon Only" />
 		</h:form>
 	</body>
 </html>
+			

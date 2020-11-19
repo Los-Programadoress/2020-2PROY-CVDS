@@ -29,12 +29,12 @@ public interface EquipoDAO {
 	
 	 /**
       * Método que permite registrar un equipo 
-      * @param numero: Número que identifica el equipo
+      * @param nombre: Nombre del equipo
       * @param marca: Marca del equipo
       * @param idcorreo: Identificador del correo del usuario
 	  * @throws PersistenceException Errores con la base de datos 
       */
-	 public void registrarEquipo(String marca, String idcorreo) throws PersistenceException;
+	 public void registrarEquipo(String nombre, String marca, String idcorreo) throws PersistenceException;
 	 
 	 /**
       * Método que permite registrar consultar los elementos de un equipo 

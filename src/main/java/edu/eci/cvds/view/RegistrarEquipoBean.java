@@ -5,14 +5,19 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
+
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.services.EquiposException;
 import edu.eci.cvds.services.EquiposServices;
-
+import edu.eci.cvds.services.impl.EquiposServicesImpl;
 
 @ManagedBean(name="RegistrarEquiposBean")
 @SessionScoped
@@ -22,6 +27,8 @@ public class RegistrarEquipoBean extends BasePageBean{
 
 	private List<Equipo> equipos= null;
 	private Equipo equipoSelec;
+	
+	private String user;
 
 	@Inject
 	private EquiposServices equipoS;
@@ -29,20 +36,21 @@ public class RegistrarEquipoBean extends BasePageBean{
 	public List<Equipo> consultarEquipos(){
  		try{
  			equipos= equipoS.consultarEquipos();
- 		}catch(EquiposException e){    
+ 		}catch(EquiposException e){  
  	    }
  		return equipos;
  	}
-	
-	public void registrarEquipo(String marca, String idcorreo) {
-		equipoS.getElSelected().clear();
+
+	public void registrarEquipo(String nombre, String marca) {
+		//Capturar el usuario
+		Subject currentUser = SecurityUtils.getSubject();
+		user = currentUser.getPrincipal().toString();
 		
 		try{
-			equipoS.registrarEquipo(marca, idcorreo);
+			equipoS.registrarEquipo(nombre, marca, user);
 		}catch(EquiposException e){           
         }
 	}
-
 	
 	public List<Elemento> consultarElementosSelected(){
  		return equipoS.getElSelected();
@@ -62,6 +70,14 @@ public class RegistrarEquipoBean extends BasePageBean{
 
 	public void setEquipoSelec(Equipo equipoSelec) {
 		this.equipoSelec = equipoSelec;
+	}
+	
+	public String getUser() {
+		return user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
 	}
 	
 	

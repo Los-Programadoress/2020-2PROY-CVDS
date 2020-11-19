@@ -30,7 +30,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
 	    	try{
 	    		novedadMapper.registrarNovedadLaboratorio(titulo, fecha, resp, detalle, nLab);
 			}
-			catch(org.apache.ibatis.exceptions.PersistenceException e){
+			catch(Exception e){
 		        throw new PersistenceException("Error al registrar novedad del laboratorio",e);            
 		    }
 	    }
@@ -48,7 +48,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
 		 try{
 	    	novedadMapper.registrarNovedadEquipo(titulo, fecha, resp, detalle, nEquip);
 		}
-		catch(org.apache.ibatis.exceptions.PersistenceException e){
+		catch(Exception e){
 		    throw new PersistenceException("Error al registrar novedad del equipo",e);            
 	    }
 	 }
@@ -66,7 +66,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
 		 try{
 	    	novedadMapper.registrarNovedadElemento(titulo, fecha, resp, detalle, idElem);
 		}
-		catch(org.apache.ibatis.exceptions.PersistenceException e){
+		catch(Exception e){
 	        throw new PersistenceException("Error al registrar novedad del elemento",e);            
 	    }
 	 }
@@ -80,7 +80,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
 		 try{
 	   		return novedadMapper.consultarNovedadLaboratorios();
 		}
-		catch(org.apache.ibatis.exceptions.PersistenceException e){
+		catch(Exception e){
 	        throw new PersistenceException("Error al consultar las novedades de los laboratorios",e);            
 	    } 
 	 }
@@ -94,7 +94,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
 		 try{
 		   	return novedadMapper.consultarNovedadEquipos();
 		}
-		catch(org.apache.ibatis.exceptions.PersistenceException e){
+		catch(Exception e){
 	        throw new PersistenceException("Error al consultar las novedades de los equipos",e);            
 	    } 
 	 }
@@ -108,7 +108,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
 		 try{
 			 return novedadMapper.consultarNovedadElementos();
 		}
-		catch(org.apache.ibatis.exceptions.PersistenceException e){
+		catch(Exception e){
 	        throw new PersistenceException("Error al consultar las novedades de los elementos",e);            
 	    }  
 	 }

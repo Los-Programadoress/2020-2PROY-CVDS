@@ -109,7 +109,34 @@ public class EquiposServicesImpl implements EquiposServices{
  	    }
  	 }
      
- 	 //FALTA REGISTRAR EQUIPO
+ 	/**
+      * Método que permite cambiar el estado de dar de baja a un elemento
+      * @param nombre: Nombre del equipo 
+	  * @param marca: Marca del elemento
+      * @param idCorreo: Usuario que registra el equipo
+      * @throws EquiposException Errores con la operación
+    */
+   @Override
+	 public void registrarEquipo(String nombre, String marca, String idcorreo) throws EquiposException {
+		try {
+			equipoDAO.registrarEquipo(nombre, marca, idcorreo);
+			List<Equipo> equipos = consultarEquipos();
+			
+		    //antes de registrar elementos
+		    Equipo equipoRegistrado = equipos.get(equipos.size()-1);
+		    //asociar elementos
+		    List<Elemento> elementos = getElSelected();
+		    
+		    for(Elemento e: elementos) {
+		    	asociarElemento(equipoRegistrado.getNumero(),e.getId());
+		    }
+		    EquiposServicesImpl.elSelected.clear();
+		}
+		catch (PersistenceException ex) {
+			throw new EquiposException("Error al registrar el equipo", ex);
+ 	 	}
+	 }
+   
  	
  	/**
      * Método que permite registrar consultar los elementos de un equipo 
@@ -158,34 +185,7 @@ public class EquiposServicesImpl implements EquiposServices{
 				throw new EquiposException("Error al desasociar el equipo",e);            
 			}
 	  }
-	  
-	  /**
-       * Método que permite cambiar el estado de dar de baja a un elemento
-	   * @param dBaja: Cambiar estado de baja al elemento
-       * @param eId: Identificador del elemento
-       * @throws EquiposException Errores con la operación
-      */
-     @Override
- 	 public void registrarEquipo(String marca, String idcorreo) throws EquiposException {
- 		try {
- 			equipoDAO.registrarEquipo(marca, idcorreo);
- 			List<Equipo> equipos = consultarEquipos();
-
- 		    //antes de registrar elementos
- 		    Equipo equipoRegistrado = equipos.get(equipos.size()-1);
- 		    //asociar elementos
- 		    List<Elemento> elementos = getElSelected();
- 		    
- 		    for(Elemento e: elementos) {
- 		    	asociarElemento(equipoRegistrado.getNumero(),e.getId());
- 		    }
- 		    EquiposServicesImpl.elSelected.clear();
- 		}
- 		catch (PersistenceException ex) {
- 			throw new EquiposException("Error al registrar el equipo" + ex.getLocalizedMessage(), ex);
-   	 	}
- 	 }
-     
+	 
 	  public void cambiarBajaEquipo(boolean dBaja,int eId) throws EquiposException{
 		try{
 			equipoDAO.cambiarBajaEquipo(dBaja,eId);

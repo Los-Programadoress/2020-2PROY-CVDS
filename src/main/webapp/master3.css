@@ -5,8 +5,6 @@ body{
 	background-size: 100% 100%;
 }
 
-
-
 .en-sesion{
   height: 65px;
   background: #900;
@@ -54,9 +52,17 @@ body{
 	width: 175px;
 }
 
+.imagenE{
+	position: absolute;
+	top: 20%;
+	left: 42%;
+	height: 180px;
+	width: 200px;
+}
+
 .imagen2{
 	position: absolute;
-	top: 18%;
+	top: 22%;
 	left: 40%;
 	height: 180px;
 	width: 225px;
@@ -80,8 +86,14 @@ body{
 
 .input{
 	position: absolute;
-	left: 25%;
-	top: 43%;
+	left:55%;
+	top: 45%;
+}
+
+.input1{
+	position: absolute;
+	left: 29%;
+	top: 45%;
 }
 
 .input2{
