@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
-import edu.eci.cvds.persistence.PersistenceException;
 
 public interface EquipoMapper {
 	
@@ -24,7 +23,6 @@ public interface EquipoMapper {
 	 
 	 /**
       * Método que permite registrar un equipo 
-      * @param marca 
 	  * @param nombre: Nombre del equipo
       * @param marca: Marca del equipo
       * @param idcorreo: Identificador del correo del usuario
@@ -50,12 +48,12 @@ public interface EquipoMapper {
 	 * @param disponible: Permite identificar la disponibilidad del elemento
 	 * @param nome: Nombre del equipo
 	 */
-    public void desasociarEquipo(@Param("disp")boolean disponible, @Param("nome") String nome);
+    public void desasociarEquipo(@Param("disp")boolean disponible, @Param("nome")String nome);
     
     /**
      * Método que permite cambiar el estado de dar de baja a un elemento
      * @param dBaja: Cambiar estado de baja al elemento
      * @param eId: Identificador del elemento
      */
-	public void cambiarBajaEquipo(@Param("dBaja")boolean dBaja, @Param("eId") int eId);
+	public void cambiarBajaEquipo(@Param("dBaja")boolean dBaja, @Param("eId")int eId);
 }

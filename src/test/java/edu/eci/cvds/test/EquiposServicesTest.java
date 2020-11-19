@@ -65,7 +65,7 @@ public class EquiposServicesTest {
     		equiposServices.add(el3);
     		
     		int eqPreRegistro = equiposServices.consultarEquipos().size();
-    		equiposServices.registrarEquipo("SISTEMAS4", "TOSHIBA", "maria.alfaro");
+    		equiposServices.registrarEquipo("SISTEMAS1", "TOSHIBA", "maria.alfaro");
     		int eqPosRegistro = equiposServices.consultarEquipos().size();
     		
     		assertTrue(eqPosRegistro > eqPreRegistro);
@@ -94,7 +94,6 @@ public class EquiposServicesTest {
     		equiposServices.add(el3);
     		
     		int eqPreRegistro = equiposServices.consultarEquipos().size();
-    		System.out.println(eqPreRegistro);
     		equiposServices.registrarEquipo("SISTEMAS5", "ASUS", "pepe.torres");
     		
     		assertFalse(false);
@@ -102,5 +101,21 @@ public class EquiposServicesTest {
 		} catch (EquiposException e) {
     		assertTrue(true);
 		}
+    }
+    
+    @Test
+    public void deberíaAsociar() {
+    	try {
+			//equiposServices.registrarLaboratorio("LABISW A", "maria.alfaro");
+			//equiposServices.registrarLaboratorio("MULTIMEDIA A", "maria.alfaro");
+			//equiposServices.registrarEquipo("SISTEMAS12", "HP", "cesar.ortiz");
+			//equiposServices.asociacionEquipo("LABISW A", "SISTEMAS12");
+			equiposServices.asociacionEquipo("MULTIMEDIA", "SISTEMAS1");
+			assertTrue(true);
+			
+		} catch (EquiposException e) {
+			assertFalse(false);
+		}
+    	
     }
 }

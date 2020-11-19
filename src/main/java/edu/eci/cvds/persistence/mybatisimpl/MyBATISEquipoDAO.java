@@ -101,7 +101,6 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	@Override
 	 public void asociarEquipo(String nLab, String nome) throws PersistenceException{
 		try{
-			System.out.println("MyBatisEquipoDAO");
 			equipoMapper.asociarEquipo(nLab, nome);
 		}
 		catch(Exception e){
@@ -117,8 +116,7 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	  */
      public void desasociarEquipo(boolean disponible, String nome) throws PersistenceException{
     	 try{
-    		 System.out.println("MyBatisEquipoDAODesasociar");
- 			equipoMapper.desasociarEquipo(disponible, nome);
+    		equipoMapper.desasociarEquipo(disponible, nome);
  		}
  		catch(Exception e){
  	        throw new PersistenceException("Error al desasociar equipo",e);            
