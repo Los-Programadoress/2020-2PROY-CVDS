@@ -163,9 +163,7 @@ public class EquiposServicesImpl implements EquiposServices{
 	@Override
 	public void asociacionEquipo(String nLab, String nome) throws EquiposException{
 		try {
-			System.out.println("EntroEquipoServiceImpl");
 			equipoDAO.desasociarEquipo(true,nome);
-			System.out.println("EntroEquipoServiceImpl2");
 			equipoDAO.asociarEquipo(nLab,nome);
 		}catch(PersistenceException e){  
  			throw new EquiposException("Error al asociar el equipo: ",e);  

@@ -28,7 +28,7 @@ public class EquiposServicesTest {
      * Instancia los Servicios de EquiposServices.
      */
     public EquiposServicesTest() {
-        equiposServices = EquiposServicesFactory.getInstance().getEquiposServices();
+        equiposServices = EquiposServicesFactory.getInstance().getEquiposServicesTesting();
     }
     
     /**
@@ -50,7 +50,7 @@ public class EquiposServicesTest {
      * Debe permitir registrar un equipo con sus elementos.
      * Registro Válido: Debe existir el usuario para relacionarlo con el nuevo equipo.
      */
-    /*@Test
+    @Test
     public void deberiaRegistrarEquipo() {
     	try {
     		//elementos sin asociar
@@ -65,7 +65,7 @@ public class EquiposServicesTest {
     		equiposServices.add(el3);
     		
     		int eqPreRegistro = equiposServices.consultarEquipos().size();
-    		equiposServices.registrarEquipo("SISTEMAS4", "TOSHIBA", "maria.alfaro");
+    		equiposServices.registrarEquipo("SISTEMAS1", "TOSHIBA", "maria.alfaro");
     		int eqPosRegistro = equiposServices.consultarEquipos().size();
     		
     		assertTrue(eqPosRegistro > eqPreRegistro);
@@ -73,13 +73,13 @@ public class EquiposServicesTest {
     	} catch (EquiposException e) {
     		assertFalse(false);
     	}
-    }*/
+    }
     
     /**
      * No debe permitir registrar un equipo.
      * Registro Inválido: No debe existir el usuario para relacionarlo con el nuevo equipo.
      */
-    /*@Test
+    @Test
     public void noDeberiaRegistrarElementoEquipo() {
     	try {
     		//elementos sin asociar
@@ -101,7 +101,7 @@ public class EquiposServicesTest {
 		} catch (EquiposException e) {
     		assertTrue(true);
 		}
-    }*/
+    }
     
     @Test
     public void deberíaAsociar() {
@@ -110,8 +110,7 @@ public class EquiposServicesTest {
 			//equiposServices.registrarLaboratorio("MULTIMEDIA A", "maria.alfaro");
 			//equiposServices.registrarEquipo("SISTEMAS12", "HP", "cesar.ortiz");
 			//equiposServices.asociacionEquipo("LABISW A", "SISTEMAS12");
-			equiposServices.asociacionEquipo("MULTIMEDIA A", "SISTEMAS1");
-
+			equiposServices.asociacionEquipo("MULTIMEDIA", "SISTEMAS1");
 			assertTrue(true);
 			
 		} catch (EquiposException e) {
