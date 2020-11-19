@@ -32,7 +32,7 @@ public class MyBATISElementoDAO implements ElementoDAO{
 		try{
 			elementoMapper.registrarElementoEquipo(tipo,nombre,disponible,nequipo);
 		}
-		catch(org.apache.ibatis.exceptions.PersistenceException e){
+		catch(Exception e){
             throw new PersistenceException("Error al registrar elemento del equipo",e);            
         }
 	 }
@@ -54,7 +54,7 @@ public class MyBATISElementoDAO implements ElementoDAO{
 				elementoMapper.registrarElemento(tipoC,nombre, disponible);
 			}
 		}
-		catch(org.apache.ibatis.exceptions.PersistenceException | IllegalArgumentException e){
+		catch(Exception e){
             throw new PersistenceException("Error al registrar el elemento",e);            
         } 
 	}
@@ -72,7 +72,7 @@ public class MyBATISElementoDAO implements ElementoDAO{
 		try{
 			 elementoMapper.asociarElemento(nume,numElemento, disponible);
 		 }
-		 catch(org.apache.ibatis.exceptions.PersistenceException e){
+		 catch(Exception e){
 		     throw new PersistenceException("Error al asociar el elemento",e);            
 		 }
 	 }
@@ -93,7 +93,7 @@ public class MyBATISElementoDAO implements ElementoDAO{
 				elementoMapper.desasociarElemento(disponible,nume,tipo);
 			}
 		}
-		catch(org.apache.ibatis.exceptions.PersistenceException e){
+		catch(Exception e){
 			throw new PersistenceException("Error al desasociar el elemento",e);
 		}
 	}
@@ -108,7 +108,7 @@ public class MyBATISElementoDAO implements ElementoDAO{
 		 try{
 			 return elementoMapper.consultarElementos();
 		 }
-		 catch(org.apache.ibatis.exceptions.PersistenceException e){
+		 catch(Exception e){
             throw new PersistenceException("Error al consultar elementos",e);            
         }
 	 }
@@ -125,7 +125,7 @@ public class MyBATISElementoDAO implements ElementoDAO{
 		 try {
 			 return elementoMapper.consultarElemento(tipoC);
 		 }
-		 catch(org.apache.ibatis.exceptions.PersistenceException | IllegalArgumentException e){
+		 catch(Exception e){
 			 throw new PersistenceException("Error al consultar elementos de tipo: "+ tipoC,e);
 		 }
 	 }
@@ -170,7 +170,7 @@ public class MyBATISElementoDAO implements ElementoDAO{
 		try{
 			elementoMapper.cambiarBajaElemento(dBaja, eId);
 		}
-		catch(org.apache.ibatis.exceptions.PersistenceException e){
+		catch(Exception e){
            throw new PersistenceException("Error al cambiar la baja del elemento",e);            
        }
 	}

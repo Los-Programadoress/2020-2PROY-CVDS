@@ -38,8 +38,8 @@
   </select>
   
   <insert parameterType="map" id="registrarEquipo">
-    INSERT INTO EQUIPO (marca, disponible, usuario_idCorreo) 
-    VALUES ( #{marca}, #{disponible}, #{uidcorreo});
+    INSERT INTO EQUIPO (nombre, marca, disponible, usuario_idCorreo) 
+    VALUES (#{nombre}, #{marca}, #{disponible}, #{uidcorreo});
   </insert>
   
   <select parameterType="map" id="consultarElementosEquipo" resultMap="edu.eci.cvds.persistence.mybatisimpl.mappers.ElementoMapper.ElementoResult">

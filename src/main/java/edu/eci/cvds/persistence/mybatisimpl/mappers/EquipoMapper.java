@@ -22,14 +22,14 @@ public interface EquipoMapper {
       */
 	 public Equipo consultarEquipo(@Param("nequipo") int nequipo);
 	 
-	/**
+	 /**
       * Método que permite registrar un equipo 
-	  * @param disponible 
-      * @param numero: Número que identifica el equipo
+      * @param marca 
+	  * @param nombre: Nombre del equipo
       * @param marca: Marca del equipo
       * @param idcorreo: Identificador del correo del usuario
       */
-	 public void registrarEquipo(@Param("marca")String marca, @Param("disponible")boolean disponible, @Param("uidcorreo")String idCorreo);
+	 public void registrarEquipo(@Param("nombre")String nombre, @Param("marca")String marca, @Param("disponible")boolean disponible, @Param("uidcorreo")String idCorreo);
 	 
 	 /**
       * Método que permite registrar consultar los elementos de un equipo 

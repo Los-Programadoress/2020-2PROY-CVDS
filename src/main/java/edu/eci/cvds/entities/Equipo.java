@@ -29,15 +29,17 @@ public class Equipo implements Serializable{
 	/**
      *Constructor para la clase quipo
      * @param numero: Número que identifica el equipo
+     * @param nombre: Nombre que identifica el equipo
      * @param marca: Marca del equipo
      * @param disponible: Disponibilidad del equipo
      * @param usuario: Usuario que registra el equipo
      * @param elementos: Lista de elementos que tiene el equipo
      * @param novedades: Lista de novedades que tiene el equipo
      */
-    public Equipo(int numero, String marca, boolean disponible, Usuario usuario, ArrayList<Elemento> elementos, ArrayList<Novedad> novedades) {
+    public Equipo(int numero, String nombre, String marca, boolean disponible, Usuario usuario, ArrayList<Elemento> elementos, ArrayList<Novedad> novedades) {
 		super();
 		this.numero = numero;
+		this.nombre = nombre;
 		this.marca = marca;
 		this.disponible = disponible;
 		this.usuario = usuario;
@@ -48,12 +50,14 @@ public class Equipo implements Serializable{
     /**
      *Constructor para la clase equipo
      * @param numero: Número que identifica el equipo
+     * @param nombre: Nombre que identifica el equipo
      * @param marca: Marca del equipo
      * @param usuario: Usuario que registra el equipo
      */
-    public Equipo(int numero, String marca, Usuario usuario) {
+    public Equipo(int numero, String nombre, String marca, Usuario usuario) {
   		super();
   		this.numero = numero;
+  		this.nombre = nombre;
   		this.marca = marca;
   		this.disponible = true;
   		this.usuario = usuario;
