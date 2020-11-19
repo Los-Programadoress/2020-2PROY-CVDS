@@ -5,6 +5,9 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Elemento;
@@ -23,6 +26,7 @@ public class RegistrarEquipoBean extends BasePageBean{
 
 	private List<Equipo> equipos= null;
 	private Equipo equipoSelec;
+	private String user;
 
 	@Inject
 	private EquiposServices equipoS;
@@ -35,11 +39,13 @@ public class RegistrarEquipoBean extends BasePageBean{
  		return equipos;
  	}
 	
-	public void registrarEquipo(String marca, String idcorreo) {
-		equipoS.getElSelected().clear();
+	public void registrarEquipo(String nombre, String marca) {
+		//Capturar el usuario
+		Subject currentUser = SecurityUtils.getSubject();
+		user = currentUser.getPrincipal().toString();
 		
 		try{
-			equipoS.registrarEquipo(marca, idcorreo);
+			equipoS.registrarEquipo(nombre, marca, user);
 		}catch(EquiposException e){           
         }
 	}

@@ -25,7 +25,7 @@ public class MyBATISLaboratorioDAO implements LaboratorioDAO{
     	try{
     		laboratorioMapper.registrarLaboratorio(nombre, idcorreo);
 		}
-		catch(org.apache.ibatis.exceptions.PersistenceException e){
+		catch(Exception e){
 	        throw new PersistenceException("Error al registrar el laboratorio",e);            
 	    }
     }
@@ -40,7 +40,7 @@ public class MyBATISLaboratorioDAO implements LaboratorioDAO{
 		try{
 			return laboratorioMapper.consultarLaboratorios();
 		}
-		catch(org.apache.ibatis.exceptions.PersistenceException e){
+		catch(Exception e){
 			throw new PersistenceException("Error al consultar los laboratorios",e);            
 	    }
 	}
