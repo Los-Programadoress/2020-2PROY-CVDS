@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="edu.eci.cvds.persistence.mybatisimpl.mappers.NovedadMapper">
+	<resultMap type='Novedad' id='NovedadResult'>
+	  <id property='id' column='id' />
+	  <result property='titulo' column='titulo' />
+	  <result property='fecha' column='fecha' />
+	  <result property='detalle' column='detalle' />
+	  <association property="responsable" resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult'></association>
+	</resultMap>
+	
+	<insert parameterType="map" id="registrarNovedadLaboratorio">
+	   INSERT INTO novedad (titulo, fecha, responsable, detalle, nombreLab) 
+	   VALUES (#{titulo}, #{fecha}, #{resp}, #{detalle}, #{nLab});
+	</insert>
+	
+	<insert parameterType="map" id="registrarNovedadEquipo">
+	   INSERT INTO novedad (titulo, fecha, responsable, detalle, nombreEq) 
+	   VALUES (#{titulo}, #{fecha}, #{resp}, #{detalle}, #{nEquip});
+	</insert>
+	
+	<insert parameterType="map" id="registrarNovedadElemento">
+	   INSERT INTO novedad (titulo, fecha, responsable, detalle, nombreElem) 
+	   VALUES (#{titulo}, #{fecha}, #{resp}, #{detalle}, #{nElem});
+	</insert>
+	 
+  	<select parameterType="map" id="consultarNovedadLaboratorios" resultMap="NovedadResult">
+	  SELECT
+	  	n.id,
+	  	n.titulo,
+	  	n.fecha,
+	  	n.detalle,
+	  	n.nombreLab,
+	  	u.idcorreo
+       FROM novedad AS n
+       LEFT JOIN usuario AS u
+       ON u.idcorreo = n.responsable
+       WHERE n.nombreLab is not null
+   	</select>
+   	
+   	<select parameterType="map" id="consultarNovedadEquipos" resultMap="NovedadResult">
+	  SELECT
+	  	n.id,
+	  	n.titulo,
+	  	n.fecha,
+	  	n.detalle,
+	  	n.nombreEq,
+	  	u.idcorreo
+       FROM novedad AS n
+       LEFT JOIN usuario AS u
+       ON u.idcorreo = n.responsable
+       WHERE n.nombreEq is not null
+   </select>
+   
+   <select parameterType="map" id="consultarNovedadElementos" resultMap="NovedadResult">
+	  SELECT
+	  	n.id,
+	  	n.titulo,
+	  	n.fecha,
+	  	n.detalle,
+	  	n.nombreElem,
+	  	u.idcorreo
+       FROM novedad AS n
+       LEFT JOIN usuario AS u
+       ON u.idcorreo = n.responsable
+       WHERE nombreElem is not null
+   </select>
+</mapper>
