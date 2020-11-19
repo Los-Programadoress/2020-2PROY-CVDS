@@ -28,7 +28,7 @@ public class EquiposServicesTest {
      * Instancia los Servicios de EquiposServices.
      */
     public EquiposServicesTest() {
-        equiposServices = EquiposServicesFactory.getInstance().getEquiposServicesTesting();
+        equiposServices = EquiposServicesFactory.getInstance().getEquiposServices();
     }
     
     /**
@@ -50,7 +50,7 @@ public class EquiposServicesTest {
      * Debe permitir registrar un equipo con sus elementos.
      * Registro Válido: Debe existir el usuario para relacionarlo con el nuevo equipo.
      */
-    @Test
+    /*@Test
     public void deberiaRegistrarEquipo() {
     	try {
     		//elementos sin asociar
@@ -73,13 +73,13 @@ public class EquiposServicesTest {
     	} catch (EquiposException e) {
     		assertFalse(false);
     	}
-    }
+    }*/
     
     /**
      * No debe permitir registrar un equipo.
      * Registro Inválido: No debe existir el usuario para relacionarlo con el nuevo equipo.
      */
-    @Test
+    /*@Test
     public void noDeberiaRegistrarElementoEquipo() {
     	try {
     		//elementos sin asociar
@@ -94,7 +94,6 @@ public class EquiposServicesTest {
     		equiposServices.add(el3);
     		
     		int eqPreRegistro = equiposServices.consultarEquipos().size();
-    		System.out.println(eqPreRegistro);
     		equiposServices.registrarEquipo("SISTEMAS5", "ASUS", "pepe.torres");
     		
     		assertFalse(false);
@@ -102,5 +101,22 @@ public class EquiposServicesTest {
 		} catch (EquiposException e) {
     		assertTrue(true);
 		}
+    }*/
+    
+    @Test
+    public void deberíaAsociar() {
+    	try {
+			//equiposServices.registrarLaboratorio("LABISW A", "maria.alfaro");
+			//equiposServices.registrarLaboratorio("MULTIMEDIA A", "maria.alfaro");
+			//equiposServices.registrarEquipo("SISTEMAS12", "HP", "cesar.ortiz");
+			//equiposServices.asociacionEquipo("LABISW A", "SISTEMAS12");
+			equiposServices.asociacionEquipo("MULTIMEDIA A", "SISTEMAS1");
+
+			assertTrue(true);
+			
+		} catch (EquiposException e) {
+			assertFalse(false);
+		}
+    	
     }
 }

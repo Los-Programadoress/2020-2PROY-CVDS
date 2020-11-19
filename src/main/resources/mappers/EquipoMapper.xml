@@ -55,14 +55,14 @@
   
   <update parameterType="map" id="asociarEquipo">
  	UPDATE equipo
-	SET nombrelab = #{​​nLab}​​, disponible = false​​
-	WHERE nombre = #{​​nome}​​
+	SET nombrelab = #{nLab}, disponible = false
+	WHERE nombre = #{nome};
   </update>
   
   <update parameterType="map" id="desasociarEquipo">
 	UPDATE equipo
-	SET nombreLab = null, disponible = #{​​​​disp}​​​​
-	WHERE nombre = #{​​​​nome}​​​​
+	SET nombrelab = null, disponible = #{disp}
+	WHERE nombre = #{nome};
   </update>
   
   <update parameterType="map" id="cambiarBajaEquipo">

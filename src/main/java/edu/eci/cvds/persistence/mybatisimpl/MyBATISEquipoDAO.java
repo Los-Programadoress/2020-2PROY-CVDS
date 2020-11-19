@@ -117,7 +117,7 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	  */
      public void desasociarEquipo(boolean disponible, String nome) throws PersistenceException{
     	 try{
-    		 System.out.println("MyBatisEquipoDAODesasociar");
+    		 System.out.println(nome);
  			equipoMapper.desasociarEquipo(disponible, nome);
  		}
  		catch(Exception e){
