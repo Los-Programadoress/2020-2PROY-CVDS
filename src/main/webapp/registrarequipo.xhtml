@@ -30,10 +30,10 @@
 			<center>
 				<h1 class="h1" >Registrar Equipo</h1>
 			</center>
-			<img class="imagen" src="https://www.tecnocomprascr.com/wp-content/uploads/2014/06/Lenovo-ThinkCentre-300x202.png"/>
+			<img class="imagenE" src="https://www.tecnocomprascr.com/wp-content/uploads/2014/06/Lenovo-ThinkCentre-300x202.png"/>
+			<p:inputText id="nombre" class="input1" placeholder="Nombre" type="String" value="#{nombre}"/>
 			<p:inputText id="marca" class="input" placeholder="Marca" type="String" value="#{marca}"/>
-			<p:inputText id="idcorreo" class="input2" placeholder="IdCorreo" type="String" value="#{idcorreo}"/>
-			<p:commandButton update="Equipos_Form" actionListener="#{RegistrarEquiposBean.registrarEquipo(marca, idcorreo)}" class="boton1" value="Registrar" onclick="return ConfirmInscription()"/>
+			<p:commandButton update="Equipos_Form" actionListener="#{RegistrarEquiposBean.registrarEquipo(nombre, marca)}" class="boton1" value="Registrar" onclick="return ConfirmInscription()"/>
 			<p:dataTable var="req" value="#{RegistrarEquiposBean.consultarElementosSelected()}" class="tabla">
 				<f:facet name="header" >Elementos Seleccionados</f:facet>	 
 				<p:column class="columna" headerText="Tipo">
