@@ -121,8 +121,10 @@ public class Usuario implements Serializable{
      * Método que permite mostrar la salida como string
      * @return Los atributos relacionados del usuario
      */
-    @Override
-    public String toString() {
-    	return "Usuario {idCorreo: " + idCorreo + ", nombre: " + nombre + ", estado: " + estado + ", correo : " + correo + "}";
-     }
+	@Override
+	public String toString() {
+		return "Usuario {idCorreo=" + idCorreo + ", nombre=" + nombre + ", estado=" + estado + ", correo=" + correo
+				+ ", contrasena=" + contrasena + "}";
+	}
+    
 }

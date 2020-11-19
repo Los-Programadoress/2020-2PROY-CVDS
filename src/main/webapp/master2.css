@@ -39,7 +39,7 @@ body{
 
 .en-sesion1{
   width: 200px;
-  height: 300px;
+  height: 200px;
   position: absolute;
   top: 40%;
   left: 15%;
@@ -48,23 +48,25 @@ body{
 
 .en-sesion1 .imagen{
   position: absolute;
-  height: 60%;
+  height: 100%;
   width: 100%;
 }
 
-.en-sesion1 .boton{
+.boton{
   color: #fff;
   position: absolute;
-  top: 60%;
-  height: 40%;
-  width: 100%;
+  top: 67%;
+  left: 15%;
+  height: 50px;
+  width: 200px;
   background: #900;
   font-size: 20px;
+  border: none;
 }
 
 .en-sesion2{
   width: 200px;
-  height: 300px;
+  height: 200px;
   position: absolute;
   top: 40%;
   left: 35%;
@@ -73,23 +75,25 @@ body{
 
 .en-sesion2 .imagen{
   position: absolute;
-  height: 60%;
+  height: 100%;
   width: 100%;
 }
 
-.en-sesion2 .boton{
+.boton2{
   color: #fff;
   position: absolute;
-  top: 60%;
-  height: 40%;
-  width: 100%;
+  top: 67%;
+  left: 35%;
+  height: 50px;
+  width: 200px;
   background: #900;
   font-size: 20px;
+  border: none;
 }
 
 .en-sesion3{
   width: 200px;
-  height: 300px;
+  height: 200px;
   position: absolute;
   top: 40%;
   left: 55%;
@@ -99,23 +103,25 @@ body{
 .en-sesion3 .imagen{
   position: absolute;
   top: 3%;
-  height: 50%;
+  height: 80%;
   width: 100%;
 }
 
-.en-sesion3 .boton{
+.boton3{
   color: #fff;
   position: absolute;
-  top: 60%;
-  height: 40%;
-  width: 100%;
+  top: 75%;
+  left: 15%;
+  height: 50px;
+  width: 200px;
   background: #900;
   font-size: 20px;
+  border: none;
 }
   
 .en-sesion4{
   width: 200px;
-  height: 300px;
+  height: 200px;
   position: absolute;
   top: 40%;
   left: 75%;
@@ -124,20 +130,57 @@ body{
 
 .en-sesion4 .imagen{
   position: absolute;
-  height: 60%;
-  width: 80%;
+  height: 100%;
+  width: 93%;
   left: 5%;
 }
 
-.en-sesion4 .boton{
+.boton4{
   color: #fff;
   position: absolute;
-  top: 60%;
-  height: 40%;
-  width: 100%;
+  top: 75%;
+  left: 35%;
+  height: 50px;
+  width: 200px;
   background: #900;
   font-size: 20px;
+  border: none;
 }
 
+.boton5{
+  color: #fff;
+  position: absolute;
+  top: 67%;
+  left: 55%;
+  height: 50px;
+  width: 200px;
+  background: #900;
+  font-size: 20px;
+  border: none;
+}
+
+.boton6{
+  color: #fff;
+  position: absolute;
+  top: 75%;
+  left: 55%;
+  height: 50px;
+  width: 200px;
+  background: #900;
+  font-size: 20px;
+  border: none;
+}
+
+.boton7{
+  color: #fff;
+  position: absolute;
+  top: 67%;
+  left: 75%;
+  height: 50px;
+  width: 200px;
+  background: #900;
+  font-size: 20px;
+  border: none;
+}
 
 

@@ -1,8 +1,9 @@
 package edu.eci.cvds.entities;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 /**
 * Clase que define una novedad y los atributos con los que cuenta

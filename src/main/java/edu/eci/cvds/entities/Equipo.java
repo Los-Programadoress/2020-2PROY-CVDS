@@ -29,17 +29,15 @@ public class Equipo implements Serializable{
 	/**
      *Constructor para la clase quipo
      * @param numero: Número que identifica el equipo
-     * @param nombre: Nombre del equipo
      * @param marca: Marca del equipo
      * @param disponible: Disponibilidad del equipo
      * @param usuario: Usuario que registra el equipo
      * @param elementos: Lista de elementos que tiene el equipo
      * @param novedades: Lista de novedades que tiene el equipo
      */
-    public Equipo(int numero, String nombre, String marca, boolean disponible, Usuario usuario, ArrayList<Elemento> elementos, ArrayList<Novedad> novedades) {
+    public Equipo(int numero, String marca, boolean disponible, Usuario usuario, ArrayList<Elemento> elementos, ArrayList<Novedad> novedades) {
 		super();
 		this.numero = numero;
-		this.setNombre(nombre);
 		this.marca = marca;
 		this.disponible = disponible;
 		this.usuario = usuario;
@@ -50,11 +48,10 @@ public class Equipo implements Serializable{
     /**
      *Constructor para la clase equipo
      * @param numero: Número que identifica el equipo
-     * @param nombre: Nombre del equipo
      * @param marca: Marca del equipo
      * @param usuario: Usuario que registra el equipo
      */
-    public Equipo(int numero, String nombre, String marca, Usuario usuario) {
+    public Equipo(int numero, String marca, Usuario usuario) {
   		super();
   		this.numero = numero;
   		this.marca = marca;
@@ -73,7 +70,7 @@ public class Equipo implements Serializable{
 
 	 /**
      * Método que cambia el número que identifica el equipo
-     * @param numero El número que identifica el equipo
+     * @param El número que identifica el equipo
      */
 	public void setNumero(int numero) {
 		this.numero = numero;
@@ -89,7 +86,7 @@ public class Equipo implements Serializable{
 
 	/**
 	 * Método que cambia la marca del equipo
-	 * @param marca La marca del equipo
+	 * @param La marca del equipo
 	 */
 	public void setMarca(String marca) {
 		this.marca = marca;
@@ -105,7 +102,7 @@ public class Equipo implements Serializable{
 	
 	/**
 	 * Método que cambia la disponibilidad del equipo
-	 * @param disponible La disponibilidad del equipo
+	 * @param La disponibilidad del equipo
 	 */
 	public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
@@ -167,7 +164,7 @@ public class Equipo implements Serializable{
     
     /**
 	 * Método que cambia si el equipo es dado de baja
-	 * @param dadoDeBaja Estado del equipo
+	 * @param Estado del equipo
 	 */
 	public void setDadoDeBaja(boolean dadoDeBaja) {
 		this.dadoDeBaja = dadoDeBaja;
@@ -183,10 +180,26 @@ public class Equipo implements Serializable{
 	
 	/**
 	 * Método que cambia las novedades del equipo
-	 * @param novedades Novedades del equipo
+	 * @param Novedades del equipo
 	 */
 	public void setNovedades(ArrayList<Novedad> novedades) {
 		this.novedades = novedades;
+	}
+	
+	/**
+     * Método que devuelve el nombre del equipo registrado
+     * @return nombre del equipo
+     */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * Método que cambia el nombre del equipo
+	 * @param Nombre del equipo
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	/**
@@ -195,24 +208,9 @@ public class Equipo implements Serializable{
     */
 	@Override
 	public String toString() {
-		return "Equipo {numero=" + numero + ", marca=" + marca + ", disponible=" + disponible + ", usuario=" + usuario
-				+ ", dadoDeBaja=" + dadoDeBaja + ", elementos=" + elementos + ", novedades=" + novedades + "}";
-	}
-	
-	/**
-     * Método que devuelve el nombre del equipo
-     * @return Nombre del equipo
-     */
-	public String getNombre() {
-		return nombre;
-	}
-	
-	/**
-	 * Método que cambia el nombre del equipo
-	 * @param Nombre del equipo
-	 */
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		return "Equipo [numero=" + numero + ", nombre=" + nombre + ", marca=" + marca + ", disponible=" + disponible
+				+ ", usuario=" + usuario + ", disponibilidad=" + disponibilidad + ", dadoDeBaja=" + dadoDeBaja
+				+ ", elementos=" + elementos + ", novedades=" + novedades + "]";
 	}
 	
 }

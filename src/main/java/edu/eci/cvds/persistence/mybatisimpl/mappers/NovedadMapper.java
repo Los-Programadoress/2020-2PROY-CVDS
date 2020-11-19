@@ -1,6 +1,7 @@
 package edu.eci.cvds.persistence.mybatisimpl.mappers;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -26,9 +27,9 @@ public interface NovedadMapper {
       * @param fecha: Fecha en la que se registro la novedad
 	  * @param responsable: Identificador del correo del usuario
 	  * @param detalle: Detalle de la novedad del laboratorio
-	  * @param nEquip: Número del equipo que tiene la novedad
+	  * @param nEquip: Nombre del equipo que tiene la novedad
 	  */
-	 public void registrarNovedadEquipo(@Param("titulo")String titulo, @Param("fecha")Date fecha, @Param("resp")String resp, @Param("detalle")String detalle, @Param("nEquip")int nEquip); 
+	 public void registrarNovedadEquipo(@Param("titulo")String titulo, @Param("fecha")Date fecha, @Param("resp")String resp, @Param("detalle")String detalle, @Param("nEquip")String nEquip); 
 	 
 	 /**
       * Método que permite registrar una novedad para el laboratorio
@@ -36,9 +37,9 @@ public interface NovedadMapper {
       * @param fecha: Fecha en la que se registro la novedad
 	  * @param responsable: Identificador del correo del usuario
 	  * @param detalle: Detalle de la novedad del laboratorio
-	  * @param idElem: Identificador del elemento que tiene la novedad
+	  * @param nElem: Nombre del elemento que tiene la novedad
 	  */
-	 public void registrarNovedadElemento(@Param("titulo")String titulo, @Param("fecha")Date fecha, @Param("resp")String resp, @Param("detalle")String detalle, @Param("nidElem")int idElem);
+	 public void registrarNovedadElemento(@Param("titulo")String titulo, @Param("fecha")Date fecha, @Param("resp")String resp, @Param("detalle")String detalle, @Param("nElem")String nElem);
 	 
 	 /**
       * Método que permite consultar la novedad de los laboratorios

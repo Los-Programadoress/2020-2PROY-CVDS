@@ -1,6 +1,7 @@
 package edu.eci.cvds.services;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,14 +52,20 @@ public interface EquiposServices {
  	 public Equipo consultarEquipo(int nequipo) throws EquiposException;
  	 
  	/**
+ 	 * Método que permite la asociacion de un 
+ 	 * @param nLab: Nombre del laboratorio
+ 	 * @param nome: Nombre del equipo
+ 	 * @throws EquiposException Errores con la operación
+ 	*/
+ 	 public void asociacionEquipo(String nLab, String nome) throws EquiposException;
+ 	 
+ 	/**
 	   * Método que permite cambiar el estado de dar de baja a un elemento
-	   * @param user
-	   * @param nombre: Nombre del equipo
 	   * @param dBaja: Cambiar estado de baja al elemento
 	   * @param eId: Identificador del elemento
 	   * @throws EquiposException Errores con la operación
 	  */
-	public void registrarEquipo(String nombre, String marca, String idcorreo) throws EquiposException;
+	public void registrarEquipo(String marca, String idcorreo) throws EquiposException;
  	 
  	/**
       * Método que permite registrar consultar los elementos de un equipo 
@@ -67,22 +74,6 @@ public interface EquiposServices {
       * @return lista de elementos del equipo consultados
       */
  	 public List<Elemento> consultarElementosEquipo(int nequipo) throws EquiposException;
- 	 
- 	/**
- 	  * Método que permite asociar un equipo a un laboratorio
- 	  * @param nLab: Número del laboratorio
-      * @param nume: Identificador del equipo
-      * @throws EquiposException Errores con la operación
-	  */
-	 public void asociarEquipo(String nLab, int nume) throws EquiposException;
- 	 
-	/**
-	 * Método que permite desasociar un equipo a un laboratorio
-     * @param disponible: Permite identificar la disponibilidad del elemento
-	 * @param nLab: Número del laboratorio
-     * @throws EquiposException Errores con la operación
-	 */
-     public void desasociarEquipo(boolean disponible, String nLab) throws EquiposException;
      
      /**
       * Método que permite cambiar el estado de dar de baja a un elemento
@@ -176,10 +167,10 @@ public interface EquiposServices {
       * @param fecha: Fecha en la que se registro la novedad
 	  * @param responsable: Identificador del correo del usuario
 	  * @param detalle: Detalle de la novedad del laboratorio
-	  * @param nEquip: Número del equipo que tiene la novedad
+	  * @param nEquip: Nombre del equipo que tiene la novedad
 	  * @throws EquiposException Errores con la operación
 	  */
-	 public void registrarNovedadEquipo(String titulo, Date fecha, String resp, String detalle, int nEquip) throws EquiposException;
+	 public void registrarNovedadEquipo(String titulo, Date fecha, String resp, String detalle, String nEquip) throws EquiposException;
 	 
 	 /**
       * Método que permite registrar una novedad para el laboratorio
@@ -187,10 +178,10 @@ public interface EquiposServices {
       * @param fecha: Fecha en la que se registro la novedad
 	  * @param responsable: Identificador del correo del usuario
 	  * @param detalle: Detalle de la novedad del laboratorio
-	  * @param idElem: Identificador del elemento que tiene la novedad
+	  * @param nElem: Nombre del elemento que tiene la novedad
 	  * @throws EquiposException Errores con la operación
 	  */
-	 public void registrarNovedadElemento(String titulo, Date fecha, String resp, String detalle, int idElem) throws EquiposException;
+	 public void registrarNovedadElemento(String titulo, Date fecha, String resp, String detalle, String nElem) throws EquiposException;
 	 
 	 /**
       * Método que permite consultar la novedad de los laboratorios
@@ -239,7 +230,5 @@ public interface EquiposServices {
 	* @param elementoSelec: Elemento seleccionado
 	*/
 	public void add(Elemento elementoSelec);
-
-
 
 }

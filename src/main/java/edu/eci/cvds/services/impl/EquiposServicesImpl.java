@@ -1,7 +1,8 @@
 package edu.eci.cvds.services.impl;
 
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
+
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -109,34 +110,7 @@ public class EquiposServicesImpl implements EquiposServices{
  	    }
  	 }
      
- 	/**
-      * Método que permite cambiar el estado de dar de baja a un elemento
-      * @param nombre: Nombre del equipo 
-	  * @param marca: Marca del elemento
-      * @param idCorreo: Usuario que registra el equipo
-      * @throws EquiposException Errores con la operación
-    */
-   @Override
-	 public void registrarEquipo(String nombre, String marca, String idcorreo) throws EquiposException {
-		try {
-			equipoDAO.registrarEquipo(nombre, marca, idcorreo);
-			List<Equipo> equipos = consultarEquipos();
-			
-		    //antes de registrar elementos
-		    Equipo equipoRegistrado = equipos.get(equipos.size()-1);
-		    //asociar elementos
-		    List<Elemento> elementos = getElSelected();
-		    
-		    for(Elemento e: elementos) {
-		    	asociarElemento(equipoRegistrado.getNumero(),e.getId());
-		    }
-		    EquiposServicesImpl.elSelected.clear();
-		}
-		catch (PersistenceException ex) {
-			throw new EquiposException("Error al registrar el equipo", ex);
- 	 	}
-	 }
-   
+ 	 //FALTA REGISTRAR EQUIPO
  	
  	/**
      * Método que permite registrar consultar los elementos de un equipo 
@@ -155,37 +129,50 @@ public class EquiposServicesImpl implements EquiposServices{
 	 }
 	
 	/**
-	 * Método que permite asociar un equipo a un laboratorio
-	 * @param nLab: Número del laboratorio
-     * @param nume: Identificador del equipo
-     * @throws EquiposException Errores con la operación
-	 */
-	 @Override
-	 public void asociarEquipo(String nLab, int nume) throws EquiposException{
-		try{
-			equipoDAO.asociarEquipo(nLab,nume);
-		}
-		catch(PersistenceException e){
-			throw new EquiposException("Error al asociar el equipo",e);            
-		}
-	 }
-	 
-	 /**
-	  * Método que permite desasociar un equipo a un laboratorio
-      * @param disponible: Permite identificar la disponibilidad del elemento
-   	  * @param nLab: Número del laboratorio
-      * @throws EquiposException Errores con la operación
-   	  */
-	  @Override
-	  public void desasociarEquipo(boolean disponible, String nLab) throws EquiposException{
-		  try{
-				equipoDAO.desasociarEquipo(disponible,nLab);
-			}
-			catch(PersistenceException e){
-				throw new EquiposException("Error al desasociar el equipo",e);            
-			}
-	  }
-	 
+	 * Método que permite la asociacion de un 
+	 * @param nLab: Nombre del laboratorio
+	 * @param nome: Nombre del equipo
+	 * @throws EquiposException Errores con la operación
+	*/
+	@Override
+	public void asociacionEquipo(String nLab, String nome) throws EquiposException{
+		try {
+			System.out.println("EntroEquipoServiceImpl");
+			equipoDAO.desasociarEquipo(true,nome);
+			System.out.println("EntroEquipoServiceImpl2");
+			equipoDAO.asociarEquipo(nLab,nome);
+		}catch(PersistenceException e){  
+ 			throw new EquiposException("Error al asociar el equipo: ",e);  
+		}	
+	}
+	  
+	  /**
+       * Método que permite cambiar el estado de dar de baja a un elemento
+	   * @param dBaja: Cambiar estado de baja al elemento
+       * @param eId: Identificador del elemento
+       * @throws EquiposException Errores con la operación
+      */
+     @Override
+ 	 public void registrarEquipo(String marca, String idcorreo) throws EquiposException {
+ 		try {
+ 			equipoDAO.registrarEquipo(marca, idcorreo);
+ 			List<Equipo> equipos = consultarEquipos();
+
+ 		    //antes de registrar elementos
+ 		    Equipo equipoRegistrado = equipos.get(equipos.size()-1);
+ 		    //asociar elementos
+ 		    List<Elemento> elementos = getElSelected();
+ 		    
+ 		    for(Elemento e: elementos) {
+ 		    	asociarElemento(equipoRegistrado.getNumero(),e.getId());
+ 		    }
+ 		    EquiposServicesImpl.elSelected.clear();
+ 		}
+ 		catch (PersistenceException ex) {
+ 			throw new EquiposException("Error al registrar el equipo" + ex.getLocalizedMessage(), ex);
+   	 	}
+ 	 }
+     
 	  public void cambiarBajaEquipo(boolean dBaja,int eId) throws EquiposException{
 		try{
 			equipoDAO.cambiarBajaEquipo(dBaja,eId);
@@ -376,7 +363,7 @@ public class EquiposServicesImpl implements EquiposServices{
      * @param nEquip: Número del equipo que tiene la novedad
      * @throws EquiposException Errores con la operación
      */
-	public void registrarNovedadEquipo(String titulo, Date fecha, String resp, String detalle, int nEquip) throws EquiposException{
+	public void registrarNovedadEquipo(String titulo, Date fecha, String resp, String detalle, String nEquip) throws EquiposException{
 		try{
 			novedadDAO.registrarNovedadEquipo(titulo, fecha, resp, detalle, nEquip);
 		}
@@ -394,9 +381,9 @@ public class EquiposServicesImpl implements EquiposServices{
 	 * @param idElem: Identificador del elemento que tiene la novedad
 	 * @throws EquiposException Errores con la operación
 	 */
-	public void registrarNovedadElemento(String titulo, Date fecha, String resp, String detalle, int idElem) throws EquiposException{
+	public void registrarNovedadElemento(String titulo, Date fecha, String resp, String detalle, String nElem) throws EquiposException{
 		try{
-			novedadDAO.registrarNovedadElemento(titulo, fecha, resp, detalle, idElem);
+			novedadDAO.registrarNovedadElemento(titulo, fecha, resp, detalle, nElem);
 		}
 		catch(PersistenceException e){
 			throw new EquiposException("Error al registrar novedad del elemento: ",e);            
@@ -455,6 +442,9 @@ public class EquiposServicesImpl implements EquiposServices{
 	 @Override
 	 public void registrarLaboratorio(String nombre, String idcorreo) throws EquiposException{ 
     	try{
+    		System.out.println("Service");
+    		System.out.println(nombre);
+    		System.out.println(idcorreo);
     		laboratorioDAO.registrarLaboratorio(nombre, idcorreo);
 		}
 		catch(PersistenceException e){

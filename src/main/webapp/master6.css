@@ -24,7 +24,7 @@ body{
 .en-sesion .imagen{
 	position: absolute;
 	top: 0%;
-	left: 38%;
+	left: 40%;
 	height: 60px;
 	width: 300px;
 }
@@ -142,14 +142,14 @@ body{
 	position: absolute;
 	left: 5%;
 	top: 43%;
-	width: 43%;
+	width: 40%;
 }
 
 .tabla3{
 	position: absolute;
-	left: 53%;
+	left: 59%;
 	top: 43%;
-	width: 43%;
+	width: 30%;
 }
 
 .elemDispo{
@@ -188,5 +188,3 @@ body{
 	background: #900;
 	color: #fff;
 }
-
-

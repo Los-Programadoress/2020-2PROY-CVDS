@@ -1,6 +1,7 @@
 package edu.eci.cvds.persistence.mybatisimpl;
 
-import java.util.Date;
+
+import java.sql.Date;
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -30,7 +31,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
 	    	try{
 	    		novedadMapper.registrarNovedadLaboratorio(titulo, fecha, resp, detalle, nLab);
 			}
-			catch(Exception e){
+			catch(org.apache.ibatis.exceptions.PersistenceException e){
 		        throw new PersistenceException("Error al registrar novedad del laboratorio",e);            
 		    }
 	    }
@@ -41,14 +42,14 @@ public class MyBATISNovedadDAO implements NovedadDAO {
       * @param fecha: Fecha en la que se registro la novedad
 	  * @param responsable: Identificador del correo del usuario
 	  * @param detalle: Detalle de la novedad del laboratorio
-	  * @param nEquip: Número del equipo que tiene la novedad
+	  * @param nEquip: Nombre del equipo que tiene la novedad
 	  * @throws PersistenceException Errores con la base de datos
 	  */
-	 public void registrarNovedadEquipo(String titulo, Date fecha, String resp, String detalle, int nEquip) throws PersistenceException{
+	 public void registrarNovedadEquipo(String titulo, Date fecha, String resp, String detalle, String nEquip) throws PersistenceException{
 		 try{
 	    	novedadMapper.registrarNovedadEquipo(titulo, fecha, resp, detalle, nEquip);
 		}
-		catch(Exception e){
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
 		    throw new PersistenceException("Error al registrar novedad del equipo",e);            
 	    }
 	 }
@@ -59,14 +60,14 @@ public class MyBATISNovedadDAO implements NovedadDAO {
       * @param fecha: Fecha en la que se registro la novedad
 	  * @param responsable: Identificador del correo del usuario
 	  * @param detalle: Detalle de la novedad del laboratorio
-	  * @param idElem: Identificador del elemento que tiene la novedad
+	  * @param nElem: Nombre del elemento que tiene la novedad
 	  * @throws PersistenceException Errores con la base de datos
 	  */
-	 public void registrarNovedadElemento(String titulo, Date fecha, String resp, String detalle, int idElem) throws PersistenceException{
+	 public void registrarNovedadElemento(String titulo, Date fecha, String resp, String detalle, String nElem) throws PersistenceException{
 		 try{
-	    	novedadMapper.registrarNovedadElemento(titulo, fecha, resp, detalle, idElem);
+	    	novedadMapper.registrarNovedadElemento(titulo, fecha, resp, detalle, nElem);
 		}
-		catch(Exception e){
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
 	        throw new PersistenceException("Error al registrar novedad del elemento",e);            
 	    }
 	 }
@@ -80,7 +81,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
 		 try{
 	   		return novedadMapper.consultarNovedadLaboratorios();
 		}
-		catch(Exception e){
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
 	        throw new PersistenceException("Error al consultar las novedades de los laboratorios",e);            
 	    } 
 	 }
@@ -94,7 +95,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
 		 try{
 		   	return novedadMapper.consultarNovedadEquipos();
 		}
-		catch(Exception e){
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
 	        throw new PersistenceException("Error al consultar las novedades de los equipos",e);            
 	    } 
 	 }
@@ -108,7 +109,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
 		 try{
 			 return novedadMapper.consultarNovedadElementos();
 		}
-		catch(Exception e){
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
 	        throw new PersistenceException("Error al consultar las novedades de los elementos",e);            
 	    }  
 	 }

@@ -29,12 +29,12 @@ public interface EquipoDAO {
 	
 	 /**
       * Método que permite registrar un equipo 
-      * @param nombre: Nombre del equipo
+      * @param numero: Número que identifica el equipo
       * @param marca: Marca del equipo
       * @param idcorreo: Identificador del correo del usuario
 	  * @throws PersistenceException Errores con la base de datos 
       */
-	 public void registrarEquipo(String nombre, String marca, String idcorreo) throws PersistenceException;
+	 public void registrarEquipo(String marca, String idcorreo) throws PersistenceException;
 	 
 	 /**
       * Método que permite registrar consultar los elementos de un equipo 
@@ -46,19 +46,19 @@ public interface EquipoDAO {
 	 
 	 /**
  	  * Método que permite asociar un equipo a un laboratorio
- 	  * @param nLab: Número del laboratorio
-      * @param nume: Identificador del equipo
+ 	  * @param nLab: Nombre del laboratorio
+      * @param nome: Nombre del equipo
       * @throws PersistenceException Errores con la base de datos
 	  */
-	 public void asociarEquipo(String nLab, int nume) throws PersistenceException;
+	 public void asociarEquipo(String nLab, String nome) throws PersistenceException;
 	    
 	  /**
 	   * Método que permite desasociar un equipo a un laboratorio
 	   * @param disponible: Permite identificar la disponibilidad del elemento
-	   * @param nLab: Número del laboratorio
+	   * @param nome: Nombre del equipo
 	   * @throws PersistenceException Errores con la base de datos
 	   */
-      public void desasociarEquipo(boolean disponible, String nLab) throws PersistenceException;
+      public void desasociarEquipo(boolean disponible, String nome) throws PersistenceException;
 	 
 	 
 	 /**

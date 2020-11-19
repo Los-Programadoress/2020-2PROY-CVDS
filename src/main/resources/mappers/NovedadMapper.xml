@@ -18,13 +18,13 @@
 	</insert>
 	
 	<insert parameterType="map" id="registrarNovedadEquipo">
-	   INSERT INTO novedad (titulo, fecha, responsable, detalle, numEquipo) 
+	   INSERT INTO novedad (titulo, fecha, responsable, detalle, nombreEq) 
 	   VALUES (#{titulo}, #{fecha}, #{resp}, #{detalle}, #{nEquip});
 	</insert>
 	
 	<insert parameterType="map" id="registrarNovedadElemento">
-	   INSERT INTO novedad (titulo, fecha, responsable, detalle, idElem) 
-	   VALUES (#{titulo}, #{fecha}, #{resp}, #{detalle}, #{idElem});
+	   INSERT INTO novedad (titulo, fecha, responsable, detalle, nombreElem) 
+	   VALUES (#{titulo}, #{fecha}, #{resp}, #{detalle}, #{nElem});
 	</insert>
 	 
   	<select parameterType="map" id="consultarNovedadLaboratorios" resultMap="NovedadResult">
@@ -32,11 +32,13 @@
 	  	n.id,
 	  	n.titulo,
 	  	n.fecha,
-	  	n.responsable,
 	  	n.detalle,
-	  	n.nombreLab
+	  	n.nombreLab,
+	  	u.idcorreo
        FROM novedad AS n
-       WHERE n.nombreLab != null
+       LEFT JOIN usuario AS u
+       ON u.idcorreo = n.responsable
+       WHERE n.nombreLab is not null
    	</select>
    	
    	<select parameterType="map" id="consultarNovedadEquipos" resultMap="NovedadResult">
@@ -44,11 +46,13 @@
 	  	n.id,
 	  	n.titulo,
 	  	n.fecha,
-	  	n.responsable,
 	  	n.detalle,
-	  	n.numEquipo
+	  	n.nombreEq,
+	  	u.idcorreo
        FROM novedad AS n
-       WHERE n.numEquipo != null
+       LEFT JOIN usuario AS u
+       ON u.idcorreo = n.responsable
+       WHERE n.nombreEq is not null
    </select>
    
    <select parameterType="map" id="consultarNovedadElementos" resultMap="NovedadResult">
@@ -56,10 +60,12 @@
 	  	n.id,
 	  	n.titulo,
 	  	n.fecha,
-	  	n.responsable,
 	  	n.detalle,
-	  	n.idElem
+	  	n.nombreElem,
+	  	u.idcorreo
        FROM novedad AS n
-       WHERE n.idElem != null
+       LEFT JOIN usuario AS u
+       ON u.idcorreo = n.responsable
+       WHERE nombreElem is not null
    </select>
 </mapper>

@@ -7,8 +7,8 @@
   <mapper namespace="edu.eci.cvds.persistence.mybatisimpl.mappers.EquipoMapper">
   <resultMap type='Equipo' id='EquipoResult'>
     <id property='numero' column='numero' />
-    <result property='nombre' column='nombre' />
     <result property='marca' column='marca' />
+    <result property='nombre' column='nombre' />
     <result property='disponible' column='disponible' />
     <result property='dadoDeBaja' column='dadoDeBaja' />
     <association property="usuario" resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult'></association>
@@ -17,36 +17,35 @@
   </resultMap>
  
   <select parameterType="map" id="consultarEquipos" resultMap="EquipoResult">
-  	SELECT
+  SELECT
       e.numero,
-      e.nombre,
       e.marca,
+      e.nombre,
       e.disponible,
       e.dadoDeBaja
     FROM equipo AS e
   </select>
   
   <select parameterType="map" id="consultarEquipo" resultMap="EquipoResult">
-  	SELECT
+  SELECT
       e.numero,
-      e.nombre,
       e.marca,
-      e.disponible
+      e.nombre,
+      e.disponible,
       e.dadoDeBaja
     FROM equipo AS e
     WHERE e.numero = #{nequipo}
   </select>
   
   <insert parameterType="map" id="registrarEquipo">
-    INSERT INTO EQUIPO (nombre, marca, disponible, usuario_idCorreo) 
-    VALUES (#{nombre}, #{marca}, #{disponible}, #{uidcorreo});
+    INSERT INTO EQUIPO (marca, disponible, usuario_idCorreo) 
+    VALUES ( #{marca}, #{disponible}, #{uidcorreo});
   </insert>
   
   <select parameterType="map" id="consultarElementosEquipo" resultMap="edu.eci.cvds.persistence.mybatisimpl.mappers.ElementoMapper.ElementoResult">
    SELECT
       el.id,
       el.tipo,
-      e.nombre,
       el.nombre,
       el.disponible
     FROM equipo AS e
@@ -56,14 +55,14 @@
   
   <update parameterType="map" id="asociarEquipo">
  	UPDATE equipo
-  	SET nombreLab = #{nLab}, disponible = #{disponible}
-  	WHERE numero = #{nume}
+	SET nombrelab = #{​​nLab}​​, disponible = false​​
+	WHERE nombre = #{​​nome}​​
   </update>
   
   <update parameterType="map" id="desasociarEquipo">
 	UPDATE equipo
-	SET nombreLab = null, disponible = #{disp}
-	WHERE nombreLab = #{nLab}
+	SET nombreLab = null, disponible = #{​​​​disp}​​​​
+	WHERE nombre = #{​​​​nome}​​​​
   </update>
   
   <update parameterType="map" id="cambiarBajaEquipo">

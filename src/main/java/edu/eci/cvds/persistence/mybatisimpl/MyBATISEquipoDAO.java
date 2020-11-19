@@ -34,7 +34,7 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 		try{
 			return equipoMapper.consultarEquipos();
 		}
-		catch(Exception e){
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
 	        throw new PersistenceException("Error al consultar los equipos",e);            
 	    }
 	 }
@@ -50,14 +50,14 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 		try{
 			return equipoMapper.consultarEquipo(nequipo);
 		}
-		catch(Exception e){
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
 	        throw new PersistenceException("Error al consultar el equipo",e);            
 	    }
 	}
 	 
 	/**
      * Método que permite registrar un equipo 
-     * @param nombre: Nombre del equipo
+     * @param numero: Número que identifica el equipo
      * @param marca: Marca del equipo
      * @param idCorreo: Identificador del usuario
      * @throws PersistenceException Errores con la base de datos
@@ -65,13 +65,13 @@ public class MyBATISEquipoDAO implements EquipoDAO{
      */
 	@Override
 	@Transactional
-	 public void registrarEquipo(String nombre, String marca, String idcorreo) throws PersistenceException{
+	 public void registrarEquipo(String marca, String idcorreo) throws PersistenceException{
 		boolean disponible = true;
 		try{
 			Usuario user = usuarioMapper.consultarUsuario(idcorreo);
-			equipoMapper.registrarEquipo(nombre, marca, disponible, user.getIdCorreo());
+			equipoMapper.registrarEquipo(marca, disponible, user.getIdCorreo());
 		}
-		catch(Exception e){
+		catch(org.apache.ibatis.exceptions.PersistenceException | NullPointerException e){
             throw new PersistenceException("Error al registrar el equipo",e);            
         }
 	 }
@@ -87,21 +87,22 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 		try{
 			return equipoMapper.consultarElementosEquipo(nequipo);
 		}
-		catch(Exception e){
+		catch(org.apache.ibatis.exceptions.PersistenceException e){
 	        throw new PersistenceException("Error al consultar elementos del equipo",e);            
 	    }
 	}
 	
 	/**
 	 * Método que permite asociar un equipo a un laboratorio
-	 * @param nLab: Número del laboratorio
-     * @param nume: Identificador del equipo
+	 * @param nLab: Nombre del laboratorio
+     * @param nome: Nombre del equipo
      * @throws PersistenceException Errores con la base de datos
 	 */
 	@Override
-	 public void asociarEquipo(String nLab, int nume) throws PersistenceException{
+	 public void asociarEquipo(String nLab, String nome) throws PersistenceException{
 		try{
-			equipoMapper.asociarEquipo(nLab, nume);
+			System.out.println("MyBatisEquipoDAO");
+			equipoMapper.asociarEquipo(nLab, nome);
 		}
 		catch(Exception e){
 	        throw new PersistenceException("Error al asociar equipo",e);            
@@ -111,12 +112,13 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	 /**
 	  * Método que permite desasociar un equipo a un laboratorio
 	  * @param disponible: Permite identificar la disponibilidad del elemento
-	  * @param nLab: Número del laboratorio
+	  * @param nome: Nombre del equipo
 	  * @throws PersistenceException Errores con la base de datos
 	  */
-     public void desasociarEquipo(boolean disponible, String nLab) throws PersistenceException{
+     public void desasociarEquipo(boolean disponible, String nome) throws PersistenceException{
     	 try{
- 			equipoMapper.desasociarEquipo(disponible, nLab);
+    		 System.out.println("MyBatisEquipoDAODesasociar");
+ 			equipoMapper.desasociarEquipo(disponible, nome);
  		}
  		catch(Exception e){
  	        throw new PersistenceException("Error al desasociar equipo",e);            
@@ -133,7 +135,7 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 		 try{
 	 		equipoMapper.cambiarBajaEquipo(dBaja,eId);
 	 	}
-	 	catch(Exception e){
+	 	catch(org.apache.ibatis.exceptions.PersistenceException e){
 	        throw new PersistenceException("Error al cambiar baja del equipo",e);            
 	    }
 	}
