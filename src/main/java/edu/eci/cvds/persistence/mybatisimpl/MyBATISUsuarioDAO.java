@@ -33,7 +33,7 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
 		try{
 			return usuarioMapper.consultarUsuario(idCorreo);
 		}
-		catch(org.apache.ibatis.exceptions.PersistenceException e){
+		catch(Exception e){
             throw new PersistenceException("Error al consultar el usuario",e);            
         }
 	}
@@ -50,7 +50,7 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
 		try{
 			usuarioMapper.registrarUsuario(usuario);
 		}
-		catch(org.apache.ibatis.exceptions.PersistenceException | NullPointerException e){
+		catch(Exception e){
             throw new PersistenceException("Error al registrar el usuario",e);            
         }
 	}

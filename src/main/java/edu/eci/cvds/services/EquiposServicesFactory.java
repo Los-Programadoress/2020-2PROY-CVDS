@@ -1,12 +1,15 @@
 package edu.eci.cvds.services;
 
 import com.google.inject.Injector;
-
 import edu.eci.cvds.persistence.ElementoDAO;
 import edu.eci.cvds.persistence.EquipoDAO;
+import edu.eci.cvds.persistence.LaboratorioDAO;
+import edu.eci.cvds.persistence.NovedadDAO;
 import edu.eci.cvds.persistence.UsuarioDAO;
 import edu.eci.cvds.persistence.mybatisimpl.MyBATISElementoDAO;
 import edu.eci.cvds.persistence.mybatisimpl.MyBATISEquipoDAO;
+import edu.eci.cvds.persistence.mybatisimpl.MyBATISLaboratorioDAO;
+import edu.eci.cvds.persistence.mybatisimpl.MyBATISNovedadDAO;
 import edu.eci.cvds.persistence.mybatisimpl.MyBATISUsuarioDAO;
 import edu.eci.cvds.services.impl.EquiposServicesImpl;
 
@@ -35,6 +38,8 @@ public class EquiposServicesFactory {
 	               bind(UsuarioDAO.class).to(MyBATISUsuarioDAO.class);
 	               bind(EquipoDAO.class).to(MyBATISEquipoDAO.class);
 	               bind(ElementoDAO.class).to(MyBATISElementoDAO.class);
+	               bind(LaboratorioDAO.class).to(MyBATISLaboratorioDAO.class);
+	               bind(NovedadDAO.class).to(MyBATISNovedadDAO.class);
 	               bind(EquiposServices.class).to(EquiposServicesImpl.class);
 	           }
 	       });

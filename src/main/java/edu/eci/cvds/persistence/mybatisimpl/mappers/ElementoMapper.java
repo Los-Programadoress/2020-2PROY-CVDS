@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import edu.eci.cvds.entities.Elemento;
-import edu.eci.cvds.persistence.PersistenceException;
 
 public interface ElementoMapper {
 	/**
@@ -50,16 +49,17 @@ public interface ElementoMapper {
 	public List<Elemento> consultarElementos();
 	
 	/**
- 	* Método que permite registrar un elemento
- 	* @return lista de elementos consultados
- 	*/
-	public List<Elemento> consultarElementosDisponibles();
-	
-	/**
      * Método que permite registrar un elemento
      * @param tipo El tipo de elemento
      * @return lista de elementos del tipo consultados
      */
 	public List<Elemento> consultarElemento(@Param("tipo")String tipo);
+	
+	/**
+     * Método que permite cambiar el estado de dar de baja a un elemento
+     * @param dBaja: Cambiar estado de baja al elemento
+     * @param eId: Identificador del elemento
+     */
+	public void cambiarBajaElemento(@Param("dBaja") boolean dBaja, @Param("eId") int eId);
 	
 }

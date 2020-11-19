@@ -1,9 +1,14 @@
 package edu.eci.cvds.services;
 
+
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
+import edu.eci.cvds.entities.Laboratorio;
+import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.persistence.PersistenceException;
 /**
@@ -13,6 +18,7 @@ import edu.eci.cvds.persistence.PersistenceException;
 */
 public interface EquiposServices {
 	
+	 //USUARIO
      /**
       * Método que permite consultar a un usuario 
       * @param idCorreo: Identificador de correo del usuario
@@ -29,6 +35,7 @@ public interface EquiposServices {
       */
      public void registrarUsuario(Usuario usuario) throws EquiposException;
      
+     //EQUIPO
      /**
       * Método que permite consultar los equipos
       * @throws EquiposException Errores con la operación
@@ -43,23 +50,23 @@ public interface EquiposServices {
       * @return Equipo consultado
       */
  	 public Equipo consultarEquipo(int nequipo) throws EquiposException;
- 	
-     /**
-      * Método que permite registrar un equipo 
-      * @param marca: Marca del equipo
-      * @param idcorreo: Identificador del correo del usuario
-      * @throws EquiposException Errores con la operación
-      */
- 	 public void registrarEquipo(String marca, String idcorreo) throws EquiposException;
  	 
  	/**
-      * Método que permite registrar elemento a un equipo
- 	  * @param tipo: Tipo del elemento
- 	  * @param nombre: Nombre del elemento
- 	  * @param nequipo: Número de equipo al que pertenece el elemento
- 	  * @throws EquiposException Errores con la operación
-      */
- 	 public void registrarElementoEquipo(String tipo, String nombre, int nequipo) throws EquiposException;
+ 	 * Método que permite la asociacion de un 
+ 	 * @param nLab: Nombre del laboratorio
+ 	 * @param nome: Nombre del equipo
+ 	 * @throws EquiposException Errores con la operación
+ 	*/
+ 	 public void asociacionEquipo(String nLab, String nome) throws EquiposException;
+ 	 
+ 	/**
+ 	 * Método que permite cambiar el estado de dar de baja a un elemento
+ 	 * @param nombre: Nombre del equipo 
+ 	 * @param marca: Marca del elemento
+ 	 * @param idCorreo: Usuario que registra el equipo
+ 	 * @throws EquiposException Errores con la operación
+ 	*/
+ 	void registrarEquipo(String nombre, String marca, String idcorreo) throws EquiposException;
  	 
  	/**
       * Método que permite registrar consultar los elementos de un equipo 
@@ -68,6 +75,24 @@ public interface EquiposServices {
       * @return lista de elementos del equipo consultados
       */
  	 public List<Elemento> consultarElementosEquipo(int nequipo) throws EquiposException;
+     
+     /**
+      * Método que permite cambiar el estado de dar de baja a un elemento
+      * @param dBaja: Cambiar estado de baja al elemento
+      * @param eId: Identificador del elemento
+      * @throws EquiposException Errores con la operación
+      */
+	 public void cambiarBajaEquipo(boolean dBaja,int eId) throws EquiposException;
+	 
+	//ELEMENTO 
+ 	/**
+      * Método que permite registrar elemento a un equipo
+ 	  * @param tipo: Tipo del elemento
+ 	  * @param nombre: Nombre del elemento
+ 	  * @param nequipo: Número de equipo al que pertenece el elemento
+ 	  * @throws EquiposException Errores con la operación
+      */
+ 	 public void registrarElementoEquipo(String tipo, String nombre, int nequipo) throws EquiposException;
  	 
  	/**
       * Método que permite registrar un elemento
@@ -101,25 +126,12 @@ public interface EquiposServices {
  	public List<Elemento> consultarElemento(String tipo) throws EquiposException;
  	
  	/**
- 	* Método que permite registrar un elemento
- 	* @return lista de elementos consultados
- 	*/
- 	public List<Elemento> consultarElementoDisponibles() throws EquiposException;
- 	
- 	/**
      * Método que permite saber si es un tipo válido
      * @param tipo: Tipo del elemento
      * @throws EquiposException Errores con la operación
      * @return si es un elemento válido
      */
  	public boolean esTipoValido(String tipo) throws EquiposException;
-
-	/**
-	 * Método que permite saber los elementos del ultimo Equipo
-	 * @throws EquiposException Errores con la operación
-	 * @return Lista de elementos del equipo consultado
-	 */
-	public List<Elemento> consultarElementosUltimoEquipo() throws EquiposException;
 	
 	/**
 	* Método que permite desasociar un elemento
@@ -129,4 +141,95 @@ public interface EquiposServices {
 	* @throws EquiposException Errores con la operación
 	*/
 	public void asociacionElemento(int id,int numero,String tipo)throws EquiposException;
+	
+	/**
+     * Método que permite cambiar el estado de dar de baja a un elemento
+     * @param dBaja: Cambiar estado de baja al elemento
+     * @param eId: Identificador del elemento
+     * @throws EquiposException Errores con la operación
+     */
+	public void cambiarBajaElemento(boolean dBaja,int eId) throws EquiposException;
+	
+	//NOVEDAD
+	/**
+     * Método que permite registrar una novedad para el laboratorio
+	 * @param titulo: Titulo de la novedad
+	 * @param fecha: Fecha en la que se registro la novedad
+	 * @param responsable: Identificador del correo del usuario
+	 * @param detalle: Detalle de la novedad del laboratorio
+	 * @param nLab: Nombre del laboratorio que tiene la novedad
+	 * @throws EquiposException Errores con la operación
+     */
+	 public void registrarNovedadLaboratorio(String titulo, Date fecha, String resp, String detalle, String nLab) throws EquiposException;
+	 
+	 /**
+      * Método que permite registrar una novedad para el laboratorio
+	  * @param titulo: Titulo de la novedad
+      * @param fecha: Fecha en la que se registro la novedad
+	  * @param responsable: Identificador del correo del usuario
+	  * @param detalle: Detalle de la novedad del laboratorio
+	  * @param nEquip: Nombre del equipo que tiene la novedad
+	  * @throws EquiposException Errores con la operación
+	  */
+	 public void registrarNovedadEquipo(String titulo, Date fecha, String resp, String detalle, String nEquip) throws EquiposException;
+	 
+	 /**
+      * Método que permite registrar una novedad para el laboratorio
+	  * @param titulo: Titulo de la novedad
+      * @param fecha: Fecha en la que se registro la novedad
+	  * @param responsable: Identificador del correo del usuario
+	  * @param detalle: Detalle de la novedad del laboratorio
+	  * @param nElem: Nombre del elemento que tiene la novedad
+	  * @throws EquiposException Errores con la operación
+	  */
+	 public void registrarNovedadElemento(String titulo, Date fecha, String resp, String detalle, String nElem) throws EquiposException;
+	 
+	 /**
+      * Método que permite consultar la novedad de los laboratorios
+      * @throws EquiposException Errores con la operación
+      * @return lista de novedades del laboratorio
+      */
+	 public List<Novedad> consultarNovedadLaboratorios() throws EquiposException;
+	 
+	 /**
+      * Método que permite consultar la novedad de los laboratorios
+      * @throws EquiposException Errores con la operación
+      * @return lista de novedades del equipo
+      */
+	 public List<Novedad> consultarNovedadEquipos() throws EquiposException;
+	 
+	 /**
+      * Método que permite consultar la novedad de los laboratorios
+      * @throws EquiposException Errores con la operación
+      * @return lista de novedades del elemento
+      */
+	 public List<Novedad> consultarNovedadElementos() throws EquiposException;
+	
+	//LABORATORIO
+	 /**
+      * Método que permite registrar un laboratorio
+      * @param nombre: Nombre que identifica el laboratorio
+      * @param idcorreo: Identificador del correo del usuario
+      * @throws EquiposException Errores con la operación
+     */
+	public void registrarLaboratorio(String nombre, String idcorreo ) throws EquiposException;	 
+	 
+	/**
+     * Método que permite consultar los laboratorios
+     * @return Lista de laboratorios
+     * @throws EquiposException Errores con la operación
+     */
+	 public List<Laboratorio> consultarLaboratorios() throws EquiposException;
+	/**
+	* Método que retorna el conjunto de elementos seleccionados
+	* @return elSelected Lista de elementos seleccionados
+	*/
+	public List<Elemento> getElSelected();
+	
+	/**
+	* Método que agrega elementos a la lista de seleccionados
+	* @param elementoSelec: Elemento seleccionado
+	*/
+	public void add(Elemento elementoSelec);
+
 }

@@ -25,19 +25,18 @@
 			<div class="en-sesion">
 				<a href="/faces/sesion.xhtml"><p:commandButton type="button" class="submit2" update="Equipos_Form" value="Menú"/></a>
 				<p:commandButton class="submit" update="Equipos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
+				<img class="imagen" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
 			</div>
 			<center>
 				<h1 class="h1" >Asociar Elemento</h1>
 			</center>
-			<img class="imagen" src="https://www.tecnocomprascr.com/wp-content/uploads/2014/06/Lenovo-ThinkCentre-300x202.png"/>
-			<p:inputText class="input" placeholder="IdElemento" type="String" value="#{id}"/>
-			<p:inputText class="input2" placeholder="NumeroEquipo" type="String" value="#{numequipo}"/>
-			<p:inputText class="input3" placeholder="Tipo" type="String" value="#{tipo}"/>
-			<p:commandButton update="Equipos_Form" actionListener="#{registrarElementosBean.asociacionElemento(id,numequipo,tipo)}" class="boton" value="Asociar" onclick="return ConfirmInscription()"/>
-			<p:dataTable var="ael" value="#{registrarElementosBean.consultarElementos()}" class="tabla2"
-					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                     rows="6" selectionMode="single" id="documento"
-                     rowKey="#{ael.id}">
+			<img class="imagen3" src="img/pc.png"/>
+			<img class="imagen4" src="img/elementos.png"/>
+			<p:commandButton update="Equipos_Form" onclick="return ConfirmInscription()" actionListener="#{registrarElementosBean.asociacionElemento(registrarElementosBean.elementoSelec.id,RegistrarEquiposBean.equipoSelec.numero,registrarElementosBean.elementoSelec.tipo)}" class="boton2" value="Asociar"/>
+			<p:dataTable var="ael" value="#{registrarElementosBean.consultarElementos()}" class="tabla2" 
+					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
+					 rows="6" selection="#{registrarElementosBean.elementoSelec}"
+                     rowKey="#{ael.id}" >
 				<f:facet name="header" >Elementos Registrados</f:facet>
 				<p:column class="columna" headerText="Tipo">
 					<h:outputText value="#{ael.tipo}" />
@@ -46,23 +45,17 @@
 				<p:column class="columna" headerText="Marca">
 					<h:outputText value="#{ael.nombre}" />
 				</p:column>
-				
-				<p:column class="columna" headerText="Disponible">
-					<h:outputText value="#{ael.disponible}" />
-				</p:column>
+				<p:column selectionMode="single" style="width:16px;text-align:center"/>
 			</p:dataTable>
 			<p:dataTable var="ceq" value="#{RegistrarEquiposBean.consultarEquipos()}" class="tabla3"
 					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                     rows="6" selectionMode="single" id="documento"
+                     rows="6" selection="#{RegistrarEquiposBean.equipoSelec}"
                      rowKey="#{ceq.numero}">
 				<f:facet name="header" >Equipos Registrados</f:facet>
 				<p:column class="columna" headerText="Marca">
 					<h:outputText value="#{ceq.marca}" />
 				</p:column>
-				
-				<p:column class="columna" headerText="Disponible">
-					<h:outputText value="#{ceq.disponible}" />
-				</p:column>
+				<p:column selectionMode="single" style="width:16px;text-align:center"/>
 			</p:dataTable>
 		</h:form>
 	</body>

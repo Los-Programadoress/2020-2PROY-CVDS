@@ -9,6 +9,8 @@
 	  <result property='tipo' column='tipo' />
 	  <result property='nombre' column='nombre' />
 	  <result property='disponible' column='disponible' />
+	  <result property='dadoDeBaja' column='dadoDeBaja' />
+	  <collection property='novedades' ofType='Novedad' resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.NovedadMapper.NovedadResult' columnPrefix='noved_'></collection>   
 	</resultMap>
 
 	<insert parameterType="map" id="registrarElementoEquipo">
@@ -30,8 +32,10 @@
 	<select parameterType="map" id="consultarElemento" resultMap="ElementoResult">
 	 SELECT
 	    el.id,
+	    el.tipo,
 	    el.nombre,
-	    el.disponible
+	    el.disponible,
+	    el.dadoDeBaja
 	  FROM elemento AS el
 	  WHERE el.tipo = #{tipo} AND el.disponible = true;
 	</select>
@@ -47,17 +51,14 @@
 	    el.id,
 	    el.tipo,
 	    el.nombre,
-	    el.disponible
+	    el.disponible,
+	    el.dadoDeBaja
 	  FROM elemento AS el
-	</select>  
+	</select> 
 	
-	<select parameterType="map" id="consultarElementosDisponibles" resultMap="ElementoResult">
-	 SELECT
-	    el.id,
-	    el.tipo,
-	    el.nombre,
-	    el.disponible
-	  FROM elemento AS el
-	  el.disponible = true;
-	</select>
+  	<update parameterType="map" id="cambiarBajaElemento">
+		UPDATE elemento
+		SET dadoDeBaja = #{dBaja}
+		WHERE id = #{eId}
+  	</update> 
 </mapper>

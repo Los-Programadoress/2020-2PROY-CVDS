@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head> 
+		<title>Dar de baja</title>
+		<link rel="stylesheet" href="master7.css"/>
+	</h:head>
+	<body>
+		<h:form id="Equipos_Form">
+			<div class="en-sesion">
+				<a href="/faces/sesion.xhtml"><p:commandButton type="button" class="submit2" update="Equipos_Form" value="Menú"/></a>
+				<p:commandButton class="submit" update="Equipos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
+				<img class="imagen" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
+			</div>
+			<h1 class="h1">Dar de baja Elemento</h1>
+			<p:separator style="width:3px;height:600px" class="separat"/>
+			<p:dataTable var="ael" value="#{registrarElementosBean.consultarElementos()}" class="tabla" 
+					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
+					 rows="8" selection="#{registrarElementosBean.elementoSelec}"
+                     rowKey="#{ael.id}" >
+				<f:facet name="header" >Elementos Registrados</f:facet>
+				<p:column class="columna" headerText="Tipo">
+					<h:outputText value="#{ael.tipo}" />
+				</p:column>
+	 
+				<p:column class="columna" headerText="Marca">
+					<h:outputText value="#{ael.nombre}" />
+				</p:column>
+				<p:column selectionMode="single" style="width:16px;text-align:center"/>
+			</p:dataTable>
+			<p:commandButton class="darBajaEl" update="Equipos_Form" actionListener="#{shiroBean.doLogOut()}" value="Baja Elemento"/>
+		</h:form>
+	</body>
+</html>
