@@ -12,6 +12,7 @@ public class Equipo implements Serializable{
 	//Atributos de la clase
 	private static final long serialVersionUID = 1L;
 	private int numero;
+	private String nombre;
     private String marca;
     private boolean disponible;
     private Usuario usuario;
@@ -184,6 +185,22 @@ public class Equipo implements Serializable{
 	public void setNovedades(ArrayList<Novedad> novedades) {
 		this.novedades = novedades;
 	}
+	
+	/**
+     * Método que devuelve el nombre del equipo registrado
+     * @return nombre del equipo
+     */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * Método que cambia el nombre del equipo
+	 * @param Nombre del equipo
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
 	/**
     * Método que permite mostrar la salida como string
@@ -191,8 +208,9 @@ public class Equipo implements Serializable{
     */
 	@Override
 	public String toString() {
-		return "Equipo {numero=" + numero + ", marca=" + marca + ", disponible=" + disponible + ", usuario=" + usuario
-				+ ", dadoDeBaja=" + dadoDeBaja + ", elementos=" + elementos + ", novedades=" + novedades + "}";
+		return "Equipo [numero=" + numero + ", nombre=" + nombre + ", marca=" + marca + ", disponible=" + disponible
+				+ ", usuario=" + usuario + ", disponibilidad=" + disponibilidad + ", dadoDeBaja=" + dadoDeBaja
+				+ ", elementos=" + elementos + ", novedades=" + novedades + "]";
 	}
 	
 }

@@ -6,12 +6,12 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:head> 
-		<title>Asociar Elemento</title>
-		<link rel="stylesheet" href="master3.css"/>
+		<title>Asociar Equipo</title>
+		<link rel="stylesheet" href="master6.css"/>
 	</h:head>
 	<script type="text/javascript">
 		function ConfirmInscription(){
-			var respuesta = confirm("Estas seguro de asociar el elemento al equipo?");
+			var respuesta = confirm("Estas seguro de asociar el equipo al laboratorio?");
 			if(respuesta){
 				return true;
 			}
@@ -28,32 +28,32 @@
 				<img class="imagen" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
 			</div>
 			<center>
-				<h1 class="h1" >Asociar Elemento</h1>
+				<h1 class="h1" >Asociar Equipo</h1>
 			</center>
 			<img class="imagen3" src="img/pc.png"/>
 			<img class="imagen4" src="img/elementos.png"/>
-			<p:commandButton update="Equipos_Form" onclick="return ConfirmInscription()" actionListener="#{registrarElementosBean.asociacionElemento(registrarElementosBean.elementoSelec.id,RegistrarEquiposBean.equipoSelec.numero,registrarElementosBean.elementoSelec.tipo)}" class="boton2" value="Asociar"/>
-			<p:dataTable var="ael" value="#{registrarElementosBean.consultarElementos()}" class="tabla2" 
+			<p:commandButton update="Equipos_Form" onclick="return ConfirmInscription()" actionListener="#{RegistrarEquiposBean.asociacionEquipo(crearLaboratoriosBean.laboratorioSelec.nombre,RegistrarEquiposBean.equipoSelec.nombre)}" class="boton2" value="Asociar"/>
+			<p:dataTable var="aeq" value="#{RegistrarEquiposBean.consultarEquipos()}" class="tabla2" 
 					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
-					 rows="6" selection="#{registrarElementosBean.elementoSelec}"
-                     rowKey="#{ael.id}" >
-				<f:facet name="header" >Elementos Registrados</f:facet>
-				<p:column class="columna" headerText="Tipo">
-					<h:outputText value="#{ael.tipo}" />
+					 rows="6" selection="#{RegistrarEquiposBean.equipoSelec}"
+                     rowKey="#{aeq.numero}">
+				<f:facet name="header" >Equipos</f:facet>
+				<p:column class="columna" headerText="Nombre">
+					<h:outputText value="#{aeq.nombre}" />
 				</p:column>
-	 
+				
 				<p:column class="columna" headerText="Marca">
-					<h:outputText value="#{ael.nombre}" />
+					<h:outputText value="#{aeq.marca}" />
 				</p:column>
 				<p:column selectionMode="single" style="width:16px;text-align:center"/>
 			</p:dataTable>
-			<p:dataTable var="ceq" value="#{RegistrarEquiposBean.consultarEquipos()}" class="tabla3"
+			<p:dataTable var="lab" value="#{crearLaboratoriosBean.consultarLaboratorios()}" class="tabla3"
 					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                     rows="6" selection="#{RegistrarEquiposBean.equipoSelec}"
-                     rowKey="#{ceq.numero}">
-				<f:facet name="header" >Equipos Registrados</f:facet>
-				<p:column class="columna" headerText="Marca">
-					<h:outputText value="#{ceq.marca}" />
+                     rows="6" selection="#{crearLaboratoriosBean.laboratorioSelec}"
+                     rowKey="#{lab.nombre}">
+				<f:facet name="header" >Laboratorios</f:facet>
+				<p:column class="columna" headerText="Nombre">
+					<h:outputText value="#{lab.nombre}" />
 				</p:column>
 				<p:column selectionMode="single" style="width:16px;text-align:center"/>
 			</p:dataTable>

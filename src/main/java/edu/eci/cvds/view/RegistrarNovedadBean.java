@@ -31,19 +31,13 @@ public class RegistrarNovedadBean extends BasePageBean{
 	private List<Novedad> novedadesEq = null;
 	private List<Novedad> novedadesEl = null;
 	private List<Novedad> novedadesLa = null;
-	private List<Equipo> marcaEquipos;
+	private List<Equipo> nombreEquipos;
 	private List<Elemento> nombreElementos;
 	private List<Laboratorio> nombreLaboratorios;
 	private String user;
 	
 	@Inject
 	private EquiposServices equipoS;
-	
-	public void actualizar_fecha(SelectEvent event) {
-        SimpleDateFormat fecha1 = new SimpleDateFormat("EEEEE dd MMMMM yyyy");
-        StringBuilder cadena_fecha1_11 = new StringBuilder(fecha1.format(event.getObject()));
-        f_seleccionada = cadena_fecha1_11.toString();
-    }
 	
 	 public List<Novedad> consultarNovedadEquipos() throws EquiposException{
 		 try{
@@ -75,34 +69,86 @@ public class RegistrarNovedadBean extends BasePageBean{
 		return novedadesLa;
 	}
 	 
-	public List<Integer> consultarMarcaEquipo() throws EquiposException{
-		List<Integer> marcaEq = new ArrayList<Integer>();
+	public List<String> consultarNombreEquipo() throws EquiposException{
+		List<String> nombreEq = new ArrayList<String>();
 		try {
-			marcaEquipos = equipoS.consultarEquipos();
-			for(Equipo es:marcaEquipos) {
-				marcaEq.add(es.getNumero());
+			nombreEquipos = equipoS.consultarEquipos();
+			for(Equipo es:nombreEquipos) {
+				nombreEq.add(es.getNombre());
 			}
 		}
 		catch(EquiposException e) {
  			e.printStackTrace(); 
 		}
-		return marcaEq;
+		return nombreEq;
 	} 
 
-	public void registrarNovedadEquipo(String titulo, String detalle) throws EquiposException{
+	public void registrarNovedadEquipo(String titulo, String detalle, String nEquipos) throws EquiposException{
 		try{
 			//Capturar el usuario
     		Subject currentUser = SecurityUtils.getSubject();
     		user = currentUser.getPrincipal().toString();
     		Date fecha = new Date(System.currentTimeMillis()); 
-    		System.out.println(fecha);
-			equipoS.registrarNovedadEquipo(titulo, fecha, "maria.alfaro", detalle, 1);
+			equipoS.registrarNovedadEquipo(titulo, fecha, user, detalle, nEquipos);
 		}
 		catch(EquiposException e) {
  			e.printStackTrace();           
 		}
 	}
 	
+	public List<String> consultarNombreElemento() throws EquiposException{
+		List<String> nombreEl = new ArrayList<String>();
+		try {
+			nombreElementos = equipoS.consultarElementos();
+			for(Elemento es:nombreElementos) {
+				nombreEl.add(es.getNombre());
+			}
+		}
+		catch(EquiposException e) {
+ 			e.printStackTrace(); 
+		}
+		return nombreEl;
+	} 
+	
+	public void registrarNovedadElemento(String titulo, String detalle, String nElem) throws EquiposException{
+		try{
+			//Capturar el usuario
+    		Subject currentUser = SecurityUtils.getSubject();
+    		user = currentUser.getPrincipal().toString();
+    		Date fecha = new Date(System.currentTimeMillis());
+			equipoS.registrarNovedadElemento(titulo, fecha, user, detalle, nElem);
+		}
+		catch(EquiposException e) {
+ 			e.printStackTrace();             
+		}
+	}
+	
+	public List<String> consultarNombreLaboratorio() throws EquiposException{
+		List<String> nombreEl = new ArrayList<String>();
+		try {
+			nombreLaboratorios = equipoS.consultarLaboratorios();
+			for(Laboratorio es:nombreLaboratorios) {
+				nombreEl.add(es.getNombre());
+			}
+		}
+		catch(EquiposException e) {
+ 			e.printStackTrace(); 
+		}
+		return nombreEl;
+	} 
+	
+	public void registrarNovedadLaboratorio(String titulo, String detalle, String nLab) throws EquiposException{
+		try{
+			//Capturar el usuario
+    		Subject currentUser = SecurityUtils.getSubject();
+    		user = currentUser.getPrincipal().toString();
+    		Date fecha = new Date(System.currentTimeMillis());
+			equipoS.registrarNovedadLaboratorio(titulo, fecha, user, detalle, nLab);
+		}
+		catch(EquiposException e) {
+ 			e.printStackTrace();           
+		} 
+	 }
 
 	public String getF_seleccionada() {
 		return f_seleccionada;

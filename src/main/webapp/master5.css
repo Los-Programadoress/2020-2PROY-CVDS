@@ -46,6 +46,30 @@ body{
 	left: 41%;
 }
 
+.h2{
+	position: absolute;
+	color: #fff;
+	top: 20%;
+	left: 20%;
+	font-size:22px;
+} 
+
+.h3{
+	position: absolute;
+	color: #fff;
+	top: 20%;
+	left: 44%;
+	font-size:22px;
+}
+
+.h4{
+	position: absolute;
+	color: #fff;
+	top: 20%;
+	left: 68%;
+	font-size:22px;
+}
+
 .imagen{
 	position: absolute;
 	width: 300px;
@@ -57,28 +81,91 @@ body{
 .input{
 	position: absolute;
 	left: 18%;
-	top: 25%;
+	top: 27%;
+	width: 225px;
 }
 
 .input2{
 	position: absolute;
 	left: 18%;
-	top: 30%;
+	top: 32%;
+	width: 225px;
 }
 
 .input3{
 	position: absolute;
 	left: 18%;
-	top: 35%;
+	top: 37%;
 }
 
 .registrarEq{
 	position: absolute;
 	left: 18%;
-	top: 40%;
+	top: 42%;
 	background: #900;
 	color: #fff;
 	border: none;
+	width: 235px;
+}
+
+.input0{
+	position: absolute;
+	left: 43%;
+	top: 27%;
+	width: 225px;
+}
+
+.input20{
+	position: absolute;
+	left: 43%;
+	top: 32%;
+	width: 225px;
+}
+
+.input30{
+	position: absolute;
+	left: 43%;
+	top: 37%;
+}
+
+.registrarEl{
+	position: absolute;
+	left: 43%;
+	top: 42%;
+	background: #900;
+	color: #fff;
+	border: none;
+	width: 235px;
+}
+
+.input01{
+	position: absolute;
+	left: 68%;
+	top: 27%;
+	width: 225px;
+}
+
+.input21{
+	position: absolute;
+	left: 68%;
+	top: 32%;
+	width: 225px;
+}
+
+.input31{
+	position: absolute;
+	left: 68%;
+	top: 37%;
+}
+
+.registrarLab{
+	position: absolute;
+	left: 68%;
+	top: 42%;
+	background: #900;
+	color: #fff;
+	border: none;
+	width: 235px;
 }
 
 .input5{
@@ -136,7 +223,7 @@ body .ui-staticmessage.ui-message {
 
 .tap{
 	position: absolute;
-	top: 50%;
+	top: 51%;
 	left: 15%;
 	width: 70%;
 }

@@ -40,17 +40,17 @@ public interface EquipoMapper {
 	 
 	 /**
 	  * Método que permite asociar un equipo a un laboratorio
- 	  * @param nLab: Número del laboratorio
-      * @param nume: Identificador del equipo
+ 	  * @param nLab: Nombre del laboratorio
+      * @param nome: Nombre del equipo
    	  */
-	public void asociarEquipo(@Param("nLab")String nLab, @Param("nume")int nume); 
+	public void asociarEquipo(@Param("nLab")String nLab, @Param("nome")String nome); 
 	
 	/**
 	 * Método que permite desasociar un equipo a un laboratorio
 	 * @param disponible: Permite identificar la disponibilidad del elemento
-	 * @param nLab: Número del laboratorio
+	 * @param nome: Nombre del equipo
 	 */
-    public void desasociarEquipo(@Param("disponible")boolean disponible, @Param("nLab") String nLab);
+    public void desasociarEquipo(@Param("disp")boolean disponible, @Param("nome") String nome);
     
     /**
      * Método que permite cambiar el estado de dar de baja a un elemento
