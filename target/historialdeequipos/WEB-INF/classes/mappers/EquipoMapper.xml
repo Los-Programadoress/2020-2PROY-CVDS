@@ -9,6 +9,7 @@
     <id property='numero' column='numero' />
     <result property='nombre' column='nombre' />
     <result property='marca' column='marca' />
+    <result property='nombre' column='nombre' />
     <result property='disponible' column='disponible' />
     <result property='dadoDeBaja' column='dadoDeBaja' />
     <association property="usuario" resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult'></association>
@@ -21,6 +22,7 @@
       e.numero,
       e.nombre,
       e.marca,
+      e.nombre,
       e.disponible,
       e.dadoDeBaja
     FROM equipo AS e
@@ -31,7 +33,8 @@
       e.numero,
       e.nombre,
       e.marca,
-      e.disponible
+      e.nombre,
+      e.disponible,
       e.dadoDeBaja
     FROM equipo AS e
     WHERE e.numero = #{nequipo}
@@ -56,14 +59,14 @@
   
   <update parameterType="map" id="asociarEquipo">
  	UPDATE equipo
-  	SET nombreLab = #{nLab}, disponible = #{disponible}
-  	WHERE numero = #{nume}
+	SET nombrelab = #{​​nLab}​​, disponible = false​​
+	WHERE nombre = #{​​nome}​​
   </update>
   
   <update parameterType="map" id="desasociarEquipo">
 	UPDATE equipo
-	SET nombreLab = null, disponible = #{disp}
-	WHERE nombreLab = #{nLab}
+	SET nombreLab = null, disponible = #{​​​​disp}​​​​
+	WHERE nombre = #{​​​​nome}​​​​
   </update>
   
   <update parameterType="map" id="cambiarBajaEquipo">

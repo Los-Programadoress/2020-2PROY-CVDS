@@ -39,7 +39,7 @@ public class Equipo implements Serializable{
     public Equipo(int numero, String nombre, String marca, boolean disponible, Usuario usuario, ArrayList<Elemento> elementos, ArrayList<Novedad> novedades) {
 		super();
 		this.numero = numero;
-		this.setNombre(nombre);
+		this.nombre = nombre;
 		this.marca = marca;
 		this.disponible = disponible;
 		this.usuario = usuario;
@@ -57,6 +57,7 @@ public class Equipo implements Serializable{
     public Equipo(int numero, String nombre, String marca, Usuario usuario) {
   		super();
   		this.numero = numero;
+  		this.nombre = nombre;
   		this.marca = marca;
   		this.disponible = true;
   		this.usuario = usuario;
@@ -214,22 +215,6 @@ public class Equipo implements Serializable{
 		return "Equipo [numero=" + numero + ", nombre=" + nombre + ", marca=" + marca + ", disponible=" + disponible
 				+ ", usuario=" + usuario + ", disponibilidad=" + disponibilidad + ", dadoDeBaja=" + dadoDeBaja
 				+ ", elementos=" + elementos + ", novedades=" + novedades + "]";
-	}
-	
-	/**
-     * Método que devuelve el nombre del equipo
-     * @return Nombre del equipo
-     */
-	public String getNombre() {
-		return nombre;
-	}
-	
-	/**
-	 * Método que cambia el nombre del equipo
-	 * @param Nombre del equipo
-	 */
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
 	}
 	
 }
