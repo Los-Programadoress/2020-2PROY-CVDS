@@ -11,34 +11,6 @@
 	</h:head>
 	
 	<body>
-		<script type="text/javascript">
-            PrimeFaces.locales['es'] = {
-                closeText: 'Cerrar',
-                prevText: 'Anterior',
-                nextText: 'Siguiente',
-                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
-                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-                dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
-                dayNamesMin: ['D', 'L', 'M', 'X', 'J', 'V', 'S'],
-                weekHeader: 'Semana',
-                firstDay: 1,
-                isRTL: false,
-                showMonthAfterYear: false,
-                yearSuffix: '',
-                timeOnlyTitle: 'Sólo hora',
-                timeText: 'Tiempo',
-                hourText: 'Hora',
-                minuteText: 'Minuto',
-                secondText: 'Segundo',
-                currentText: 'Fecha actual',
-                ampm: false,
-                month: 'Mes',
-                week: 'Semana',
-                day: 'Día',
-                allDayText: 'Todo el día'
-            };
-        </script>
 		<h:form id="form">
 			<center>
 				<h1 class="h1">Registrar Novedades</h1>
@@ -48,24 +20,37 @@
 				<p:commandButton class="cerrar" update="form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
 				<img class="logo" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
 			</div>
-			<p:separator style="width:3px;height:160px" class="separat"/>
-			<p:separator style="width:3px;height:160px" class="separat2"/>
+			<h1 class="h2">Novedades Equipo</h1>
+			<h1 class="h3">Novedades Elemento</h1>
+			<h1 class="h4">Novedades Laboratorio</h1>
+			<p:separator style="width:3px;height:190px" class="separat"/>
+			<p:separator style="width:3px;height:190px" class="separat2"/>
 			<p:inputText class="input" placeholder="Titulo" type="String" value="#{titulo}"/>
 			<p:inputText class="input2" placeholder="Detalle" type="String" value="#{detalle}"/>
-			<p:autoComplete class="input3" placeholder="Equipo" dropdown="true" value="#{numeroEquipo}" completeMethod="#{registrarNovedadBean.consultarMarcaEquipo()}" />
-			<p:commandButton class="registrarEq" update="form" actionListener="#{registrarNovedadBean.registrarNovedadEquipo(titulo, detalle)}" value="Registrar"/>
+			<p:autoComplete class="input3" placeholder="Equipo" dropdown="true" value="#{nombreEquipo}" completeMethod="#{registrarNovedadBean.consultarNombreEquipo()}" />
+			<p:commandButton class="registrarEq" update="form" actionListener="#{registrarNovedadBean.registrarNovedadEquipo(titulo, detalle, nombreEquipo)}" value="Registrar"/>
+			
+			<p:inputText class="input0" placeholder="Titulo" type="String" value="#{titulo1}"/>
+			<p:inputText class="input20" placeholder="Detalle" type="String" value="#{detalle1}"/>
+			<p:autoComplete class="input30" placeholder="Elemento" dropdown="true" value="#{nombreElemento1}" completeMethod="#{registrarNovedadBean.consultarNombreElemento()}" />
+            <p:commandButton class="registrarEl" update="form" actionListener="#{registrarNovedadBean.registrarNovedadElemento(titulo1, detalle1, nombreElemento1)}" value="Registrar"/>
+			
+			<p:inputText class="input01" placeholder="Titulo" type="String" value="#{titulo2}"/>
+			<p:inputText class="input21" placeholder="Detalle" type="String" value="#{detalle2}"/>
+			<p:autoComplete class="input31" placeholder="Laboratorio" dropdown="true" value="#{nombreElemento2}" completeMethod="#{registrarNovedadBean.consultarNombreLaboratorio()}" />
+            <p:commandButton class="registrarLab" update="form" actionListener="#{registrarNovedadBean.registrarNovedadLaboratorio(titulo2, detalle2, nombreElemento2)}" value="Registrar"/>
 			<p:tabView class="tap">
 				<p:tab title="Novedades Equipos">
 					<p:dataTable var="nov" value="#{registrarNovedadBean.consultarNovedadEquipos()}"
 					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
-					 rows="6" selection="#{registrarElementosBean.elementoSelec}"
+					 rows="3" selection="#{registrarElementosBean.elementoSelec}"
                      rowKey="#{nov.id}">
 						<f:facet name="header" class="columna">Equipos</f:facet>
 			
 						<p:column class="columna" headerText="Titulo">
 							<h:outputText value="#{nov.titulo}" />
 						</p:column>
-				
+						
 						<p:column class="columna" headerText="Fecha">
 							<h:outputText value="#{nov.fecha}" />
 						</p:column>
@@ -84,7 +69,7 @@
 				<p:tab title="Novedades Elementos">
 					<p:dataTable var="nove" value="#{registrarNovedadBean.consultarNovedadElementos()}"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
-						rows="6" selection="#{registrarElementosBean.elementoSelec}"
+						rows="3" selection="#{registrarElementosBean.elementoSelec}"
 						rowKey="#{nov.id}">
 						<f:facet name="header" class="columna">Elementos</f:facet>
 				
@@ -110,7 +95,7 @@
 				<p:tab title="Novedades Laboratorios">
 					<p:dataTable var="nove" value="#{registrarNovedadBean.consultarNovedadLaboratorios()}"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
-						rows="6" selection="#{registrarElementosBean.elementoSelec}"
+						rows="3" selection="#{registrarElementosBean.elementoSelec}"
 						rowKey="#{nov.id}">
 						<f:facet name="header" class="columna">Laboratorios</f:facet>
 				
@@ -134,8 +119,7 @@
 				</p:tab>
 				
 			</p:tabView>
-			
-            <br />
+			<br />
             <br />
 		</h:form>
 	</body>

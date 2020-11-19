@@ -10,6 +10,7 @@ import com.google.inject.Inject;
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Usuario;
+import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.services.EquiposException;
 import edu.eci.cvds.services.EquiposServices;
 
@@ -43,6 +44,16 @@ public class RegistrarEquipoBean extends BasePageBean{
         }
 	}
 
+	public void asociacionEquipo(String nLab, String nome) throws EquiposException{
+		try{
+			System.out.println("entrooo");
+			System.out.println(nLab);
+			System.out.println(nome);
+			equipoS.asociacionEquipo(nLab,nome);
+		}
+		catch(EquiposException e){        
+		}
+	}
 	
 	public List<Elemento> consultarElementosSelected(){
  		return equipoS.getElSelected();

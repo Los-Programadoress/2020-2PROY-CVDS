@@ -11,6 +11,7 @@ import org.apache.shiro.subject.Subject;
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Elemento;
+import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.persistence.PersistenceException;
@@ -23,6 +24,7 @@ public class CrearLaboratorioBean extends BasePageBean{
 	
 	private List<Laboratorio> laboratorios = null;
 	private String user;
+	private Laboratorio laboratorioSelec;
 	
 	@Inject
 	private EquiposServices equipoS;
@@ -37,10 +39,12 @@ public class CrearLaboratorioBean extends BasePageBean{
 	 }
 
 	public void registrarLaboratorio(String nombre) throws EquiposException{
+		System.out.println(nombre);
     	try {
     		//Capturar el usuario
     		Subject currentUser = SecurityUtils.getSubject();
     		user = currentUser.getPrincipal().toString();
+    		System.out.println(user);
    		 	equipoS.registrarLaboratorio(nombre, user);
  		}catch (EquiposException e) {
  			e.printStackTrace();
@@ -62,5 +66,14 @@ public class CrearLaboratorioBean extends BasePageBean{
 	public void setEquipoS(EquiposServices equipoS) {
 		this.equipoS = equipoS;
 	}
+
+	public Laboratorio getLaboratorioSelec() {
+		return laboratorioSelec;
+	}
+
+	public void setLaboratorioSelec(Laboratorio laboratorioSelec) {
+		this.laboratorioSelec = laboratorioSelec;
+	}
+	
 	
 }

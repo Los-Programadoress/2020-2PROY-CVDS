@@ -42,10 +42,10 @@ public class MyBATISNovedadDAO implements NovedadDAO {
       * @param fecha: Fecha en la que se registro la novedad
 	  * @param responsable: Identificador del correo del usuario
 	  * @param detalle: Detalle de la novedad del laboratorio
-	  * @param nEquip: Número del equipo que tiene la novedad
+	  * @param nEquip: Nombre del equipo que tiene la novedad
 	  * @throws PersistenceException Errores con la base de datos
 	  */
-	 public void registrarNovedadEquipo(String titulo, Date fecha, String resp, String detalle, int nEquip) throws PersistenceException{
+	 public void registrarNovedadEquipo(String titulo, Date fecha, String resp, String detalle, String nEquip) throws PersistenceException{
 		 try{
 	    	novedadMapper.registrarNovedadEquipo(titulo, fecha, resp, detalle, nEquip);
 		}
@@ -60,12 +60,12 @@ public class MyBATISNovedadDAO implements NovedadDAO {
       * @param fecha: Fecha en la que se registro la novedad
 	  * @param responsable: Identificador del correo del usuario
 	  * @param detalle: Detalle de la novedad del laboratorio
-	  * @param idElem: Identificador del elemento que tiene la novedad
+	  * @param nElem: Nombre del elemento que tiene la novedad
 	  * @throws PersistenceException Errores con la base de datos
 	  */
-	 public void registrarNovedadElemento(String titulo, Date fecha, String resp, String detalle, int idElem) throws PersistenceException{
+	 public void registrarNovedadElemento(String titulo, Date fecha, String resp, String detalle, String nElem) throws PersistenceException{
 		 try{
-	    	novedadMapper.registrarNovedadElemento(titulo, fecha, resp, detalle, idElem);
+	    	novedadMapper.registrarNovedadElemento(titulo, fecha, resp, detalle, nElem);
 		}
 		catch(org.apache.ibatis.exceptions.PersistenceException e){
 	        throw new PersistenceException("Error al registrar novedad del elemento",e);            
