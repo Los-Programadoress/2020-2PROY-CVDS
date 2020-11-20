@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="edu.eci.cvds.persistence.mybatisimpl.mappers.ElementoMapper">
+	<resultMap type='Elemento' id='ElementoResult'>
+	  <id property='id' column='id' />
+	  <result property='tipo' column='tipo' />
+	  <result property='nombre' column='nombre' />
+	  <result property='disponible' column='disponible' />
+	  <result property='dadoDeBaja' column='dadoDeBaja' />
+	  <collection property='novedades' ofType='Novedad' resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.NovedadMapper.NovedadResult' columnPrefix='noved_'></collection>   
+	</resultMap>
+
+	<insert parameterType="map" id="registrarElementoEquipo">
+	   INSERT INTO elemento (tipo, nombre, disponible, numEquipo) 
+	   VALUES ( #{tipo}, #{nombre}, #{disponible}, #{nequipo});
+	 </insert>
+	 
+	 <insert parameterType="map" id="registrarElemento">
+	   INSERT INTO elemento (tipo, nombre, disponible) 
+	   VALUES (#{tipo}, #{nombre}, #{disponible});
+	 </insert>
+	 
+	 <update parameterType="map" id="asociarElemento">
+	 	UPDATE elemento
+	  	SET numequipo = #{nume}, disponible = #{disponible}
+	  	WHERE id = #{numel}
+	</update>
+	
+	<select parameterType="map" id="consultarElemento" resultMap="ElementoResult">
+	 SELECT
+	    el.id,
+	    el.tipo,
+	    el.nombre,
+	    el.disponible,
+	    el.dadoDeBaja
+	  FROM elemento AS el
+	  WHERE el.tipo = #{tipo} AND el.disponible = true;
+	</select>
+	
+	<select parameterType="map" id="consultarElementosDisponibles" resultMap="ElementoResult">
+	 SELECT
+	    el.id,
+	    el.tipo,
+	    el.nombre,
+	    el.disponible,
+	    el.dadoDeBaja
+	  FROM elemento AS el
+	  WHERE el.disponible = true;
+	</select>
+	
+	<update parameterType="map" id="desasociarElemento">
+		UPDATE elemento
+		SET numequipo = null, disponible = #{disp}
+		WHERE numequipo = #{nume} AND tipo = #{tipo}
+	</update> 
+	
+	<select parameterType="map" id="consultarElementos" resultMap="ElementoResult">
+	 SELECT
+	    el.id,
+	    el.tipo,
+	    el.nombre,
+	    el.disponible,
+	    el.dadoDeBaja
+	  FROM elemento AS el
+	</select> 
+	
+  	<update parameterType="map" id="cambiarBajaElemento">
+		UPDATE elemento
+		SET dadoDeBaja = #{dBaja}
+		WHERE id = #{eId}
+  	</update> 
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="edu.eci.cvds.persistence.mybatisimpl.mappers.LaboratorioMapper">
+	<resultMap type='Laboratorio' id='LaboratorioResult'>
+	  <id property='nombre' column='nombre' />
+	  <association property="usuario" resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult'></association>
+	  <collection property='equipos' ofType='Equipo' resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.EquipoMapper.EquipoResult' columnPrefix='equi_'></collection>
+	  <collection property='novedades' ofType='Novedad' resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.NovedadMapper.NovedadResult' columnPrefix='noved_'></collection> 
+	</resultMap>
+	
+	<insert parameterType="map" id="registrarLaboratorio">
+	   INSERT INTO laboratorio (nombre, usuario_idcorreo) 
+	   VALUES (#{nombre}, #{idcorreo});
+	</insert>
+	 
+  	<select parameterType="map" id="consultarLaboratorios" resultMap="LaboratorioResult">
+	  SELECT
+        l.nombre,
+        u.idcorreo
+       FROM laboratorio AS l 
+       LEFT JOIN usuario AS u 
+       ON l.usuario_idcorreo = u.idcorreo;
+   </select>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<title>Menú</title>
+		<link rel="stylesheet" href="master2.css"/>
+	</h:head>
+	<body>
+		<h1 class="h1">MENÚ</h1>
+		<div class="en-sesion">
+			<h:form id="form">
+				<p:commandButton class="submit" update="form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
+			</h:form>
+			<img class="imagen" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
+	    </div>
+		<div class="en-sesion1">
+			<img class="imagen" src="https://media.aws.alkosto.com/ymarketingcolcomercio/Alkosto/informatica/contenido/HP/190781987055/190781987055_01.png"/>
+		</div>
+		<a href="/faces/registrarmouse.xhtml"><input type="button" class="boton" value="Registrar Equipo"/></a>
+		<div class="en-sesion2">
+			<img class="imagen" src="img/compus1.png"/>
+		</div>
+		<a href="/faces/registrarelemento.xhtml"><input type="button" class="boton2" value="Registrar Elemento"/></a>
+		<div class="en-sesion3">
+			<img class="imagen" src="https://i.blogs.es/be5bcd/stage_3_img/450_1000.png"/>
+		</div>
+		<a href="/faces/registrarnovedad.xhtml"><input type="button" class="boton3" value="Consultar Equipos"/></a>
+		<div class="en-sesion4">
+			<img class="imagen" src="img/novedades.png"/>
+		</div>
+		<a href="/faces/asociarelemento.xhtml"><input type="button" class="boton4" value="Asociar Elemento"/></a>
+		<a href="/faces/crearlaboratorio.xhtml"><input type="button" class="boton5" value="Registrar Laboratorio"/></a>
+		<a href="/faces/asociarequipo.xhtml"><input type="button" class="boton6" value="Asociar Equipo"/></a>
+		<a href="/faces/registrarnovedad.xhtml"><input type="button" class="boton7" value="Registrar Novedad"/></a>
+		<script src="noBack.js"></script>
+	</body> 
+</html>
