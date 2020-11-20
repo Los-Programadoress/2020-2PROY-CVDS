@@ -50,7 +50,7 @@
       el.disponible
     FROM equipo AS e
     LEFT JOIN elemento AS el ON e.numero = el.numEquipo
-    WHERE e.numero = #{nequipo}
+    WHERE e.nombre = #{nequipo}
   </select>
   
   <update parameterType="map" id="asociarEquipo">
@@ -66,8 +66,8 @@
   </update>
   
   <update parameterType="map" id="cambiarBajaEquipo">
-	UPDATE equipo
-	SET dadoDeBaja = #{dBaja}
-	WHERE numero = #{nume}
+  	UPDATE equipo
+  	SET dadoDeBaja = #{dBaja}
+  	WHERE nombre = #{nome}​​
   </update>
 </mapper>

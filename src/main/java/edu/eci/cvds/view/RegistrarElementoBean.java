@@ -30,6 +30,7 @@ public class RegistrarElementoBean extends BasePageBean{
 	private List<Elemento> elementos = null;
 	private String tipoBoton;
 	private Elemento elementoSelec;
+	private List<Elemento> elementoDispo = null;
 	 
 	 @Inject
 	 private EquiposServices equipoS;
@@ -88,6 +89,34 @@ public class RegistrarElementoBean extends BasePageBean{
 		}	
 	 }
 	 
+	 public void cambiarBajaElemento(String enom) throws EquiposException{
+		try{
+			info2();
+			equipoS.cambiarBajaElemento(true,enom);
+		}
+		catch(EquiposException e){  
+			e.printStackTrace();         
+		}
+	}
+	 
+	 public void desasociarElemento(int nume, String tipo)throws EquiposException{
+		try {
+			equipoS.desasociarElemento(true, nume, tipo);
+		}catch(EquiposException e){  
+			e.printStackTrace(); 
+		}
+	 }
+	 
+	 public List<Elemento> consultarElementosDisponibles() throws EquiposException{
+		try {
+			elementoDispo = equipoS.consultarElementosDisponibles();
+		}
+		catch(EquiposException e){  
+			e.printStackTrace(); 
+		}
+		return elementoDispo;
+	}
+	 
 	 public void add() {
 		 info();		 
 		 equipoS.add(getElementoSelec());
@@ -110,7 +139,12 @@ public class RegistrarElementoBean extends BasePageBean{
 	 }
 	 
 	 public void info() {
-		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro del elemento", "Se registro satisfactoriamente el elemento.");
+		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro del elemento", "Se registró satisfactoriamente el elemento.");
+         PrimeFaces.current().dialog().showMessageDynamic(message);
+	 }
+	 
+	 public void info2() {
+		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "De baja al elemento", "Se dio de baja al elemento satisfactoriamente.");
          PrimeFaces.current().dialog().showMessageDynamic(message);
 	 }
 	 

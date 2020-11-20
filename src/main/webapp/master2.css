@@ -183,4 +183,16 @@ body{
   border: none;
 }
 
+.boton8{
+  color: #fff;
+  position: absolute;
+  top: 75%;
+  left: 75%;
+  height: 50px;
+  width: 200px;
+  background: #900;
+  font-size: 20px;
+  border: none;
+}
+
 

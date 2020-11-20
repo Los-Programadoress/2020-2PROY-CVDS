@@ -78,12 +78,12 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	
 	/**
      * Método que permite registrar consultar los elementos de un equipo 
-     * @param nequipo: Número que identifica el equipo
+     * @param nequipo: Nombre que identifica el equipo
      * @throws PersistenceException Errores con la base de datos
      * @return lista de elementos del equipo consultados
      */
 	@Override
-	 public List<Elemento> consultarElementosEquipo(int nequipo) throws PersistenceException{
+	 public List<Elemento> consultarElementosEquipo(String nequipo) throws PersistenceException{
 		try{
 			return equipoMapper.consultarElementosEquipo(nequipo);
 		}
@@ -117,7 +117,6 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	  */
      public void desasociarEquipo(boolean disponible, String nome) throws PersistenceException{
     	 try{
-    		 System.out.println("MyBatisEquipoDAODesasociar");
  			equipoMapper.desasociarEquipo(disponible, nome);
  		}
  		catch(Exception e){
@@ -126,14 +125,15 @@ public class MyBATISEquipoDAO implements EquipoDAO{
      }
 	 
 	 /**
-      * Método que permite cambiar el estado de dar de baja a un elemento
-      * @param dBaja: Cambiar estado de baja al elemento
-      * @param eId: Identificador del elemento
+      * Método que permite cambiar el estado de dar de baja a un equipo
+      * @param dBaja: Cambiar estado de baja al equipo
+      * @param nome: Nombre del equipo
       * @throws PersistenceException Errores con la base de datos
       */
-	 public void cambiarBajaEquipo(boolean dBaja,int eId) throws PersistenceException {
+	 public void cambiarBajaEquipo(boolean dBaja,String nome) throws PersistenceException {
 		 try{
-	 		equipoMapper.cambiarBajaEquipo(dBaja,eId);
+	 		equipoMapper.cambiarBajaEquipo(dBaja,nome);
+	 		System.out.println("EntroAlDao");
 	 	}
 	 	catch(org.apache.ibatis.exceptions.PersistenceException e){
 	        throw new PersistenceException("Error al cambiar baja del equipo",e);            

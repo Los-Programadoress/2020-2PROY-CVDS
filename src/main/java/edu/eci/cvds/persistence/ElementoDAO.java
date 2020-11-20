@@ -71,8 +71,14 @@ public interface ElementoDAO {
 	/**
      * Método que permite cambiar el estado de dar de baja a un elemento
      * @param dBaja: Cambiar estado de baja al elemento
-     * @param eId: Identificador del elemento
+     * @param enom: Nombre del elemento
      * @throws PersistenceException Errores con la base de datos
      */
-	public void cambiarBajaElemento(boolean dBaja,int eId) throws PersistenceException;
+	public void cambiarBajaElemento(boolean dBaja,String enom) throws PersistenceException;
+	
+	/**
+	* Método que permite consultar los elementos por disponibilidad
+	* @return lista de elementos consultados
+	*/
+	public List<Elemento> consultarElementosDisponibles() throws PersistenceException;
 }

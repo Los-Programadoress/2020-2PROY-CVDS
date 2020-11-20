@@ -33,10 +33,10 @@ public interface EquipoMapper {
 	 
 	 /**
       * Método que permite registrar consultar los elementos de un equipo 
-      * @param nequipo: Número que identifica el equipo
+      * @param nequipo: Nombre que identifica el equipo
       * @return lista de elementos del equipo consultados
       */
-	 public List<Elemento> consultarElementosEquipo(@Param("nequipo")int nequipo);
+	 public List<Elemento> consultarElementosEquipo(@Param("nequipo")String nequipo);
 	 
 	 /**
 	  * Método que permite asociar un equipo a un laboratorio
@@ -53,9 +53,9 @@ public interface EquipoMapper {
     public void desasociarEquipo(@Param("disp")boolean disponible, @Param("nome") String nome);
     
     /**
-     * Método que permite cambiar el estado de dar de baja a un elemento
-     * @param dBaja: Cambiar estado de baja al elemento
-     * @param eId: Identificador del elemento
+     * Método que permite cambiar el estado de dar de baja a un equipo
+     * @param dBaja: Cambiar estado de baja al equipo
+     * @param nome: Nombre del equipo
      */
-	public void cambiarBajaEquipo(@Param("dBaja")boolean dBaja, @Param("eId") int eId);
+	public void cambiarBajaEquipo(@Param("dBaja")boolean dBaja, @Param("nome") String nome);
 }
