@@ -28,8 +28,9 @@ public interface NovedadMapper {
 	  * @param responsable: Identificador del correo del usuario
 	  * @param detalle: Detalle de la novedad del laboratorio
 	  * @param nEquip: Nombre del equipo que tiene la novedad
+	  * @param nLab: Nombre del laboratorio que tiene la novedad
 	  */
-	 public void registrarNovedadEquipo(@Param("titulo")String titulo, @Param("fecha")Date fecha, @Param("resp")String resp, @Param("detalle")String detalle, @Param("nEquip")String nEquip); 
+	 public void registrarNovedadEquipo(@Param("titulo")String titulo, @Param("fecha")Date fecha, @Param("resp")String resp, @Param("detalle")String detalle, @Param("nEquip")String nEquip, @Param("nLab")String nLab); 
 	 
 	 /**
       * Método que permite registrar una novedad para el laboratorio
@@ -38,8 +39,9 @@ public interface NovedadMapper {
 	  * @param responsable: Identificador del correo del usuario
 	  * @param detalle: Detalle de la novedad del laboratorio
 	  * @param nElem: Nombre del elemento que tiene la novedad
+	  * @param nEq: Nombre del equipo que tiene la novedad
 	  */
-	 public void registrarNovedadElemento(@Param("titulo")String titulo, @Param("fecha")Date fecha, @Param("resp")String resp, @Param("detalle")String detalle, @Param("nElem")String nElem);
+	 public void registrarNovedadElemento(@Param("titulo")String titulo, @Param("fecha")Date fecha, @Param("resp")String resp, @Param("detalle")String detalle, @Param("nEq") String nEq, @Param("nElem")String nElem);
 	 
 	 /**
       * Método que permite consultar la novedad de los laboratorios

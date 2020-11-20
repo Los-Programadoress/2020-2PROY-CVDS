@@ -80,9 +80,9 @@ public class RegistrarElementoBean extends BasePageBean{
 		return elementos;
 	 }
 	 
-	 public void asociacionElemento(int id,int numero,String tipo) throws EquiposException{
+	 public void asociacionElemento(int id, int numero, String tipo, String equipoNombre, String elementoNombre) throws EquiposException{
 		try {
-			equipoS.asociacionElemento(id, numero, tipo);
+			equipoS.asociacionElemento(id, numero, tipo, equipoNombre, elementoNombre);
 		}catch(EquiposException e){  
 			e.printStackTrace();
 		}	

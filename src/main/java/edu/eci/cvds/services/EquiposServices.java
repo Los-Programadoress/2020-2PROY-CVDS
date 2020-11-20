@@ -126,6 +126,12 @@ public interface EquiposServices {
  	public List<Elemento> consultarElemento(String tipo) throws EquiposException;
  	
  	/**
+     * Método que permite consultar los elementos por disponibilidad
+     * @return lista de elementos consultados
+     */
+	public List<Elemento> consultarElementosDisponibles() throws EquiposException;
+ 	
+ 	/**
      * Método que permite saber si es un tipo válido
      * @param tipo: Tipo del elemento
      * @throws EquiposException Errores con la operación
@@ -138,9 +144,11 @@ public interface EquiposServices {
 	* @param disponible: Permite identificar la disponibilidad del elemento
 	* @param nume: Identificador del equipo
 	* @param tipo: Tipo del elemento
+	* @param equipoNombre: Nombre del equipo
+	* @param elementoNombre: Nombre del elemento 
 	* @throws EquiposException Errores con la operación
 	*/
-	public void asociacionElemento(int id,int numero,String tipo)throws EquiposException;
+ 	public void asociacionElemento(int id, int numero, String tipo, String equipoNombre, String elementoNombre)throws EquiposException;
 	
 	/**
      * Método que permite cambiar el estado de dar de baja a un elemento
@@ -169,9 +177,10 @@ public interface EquiposServices {
 	  * @param responsable: Identificador del correo del usuario
 	  * @param detalle: Detalle de la novedad del laboratorio
 	  * @param nEquip: Nombre del equipo que tiene la novedad
+	  * @param nLab: Nombre del laboratorio que tiene la novedad
 	  * @throws EquiposException Errores con la operación
 	  */
-	 public void registrarNovedadEquipo(String titulo, Date fecha, String resp, String detalle, String nEquip) throws EquiposException;
+	 public void registrarNovedadEquipo(String titulo, Date fecha, String resp, String detalle, String nEquip, String nLab) throws EquiposException;
 	 
 	 /**
       * Método que permite registrar una novedad para el laboratorio
@@ -180,9 +189,10 @@ public interface EquiposServices {
 	  * @param responsable: Identificador del correo del usuario
 	  * @param detalle: Detalle de la novedad del laboratorio
 	  * @param nElem: Nombre del elemento que tiene la novedad
+	  * @param nEq: Nombre del equipo que tiene la novedad
 	  * @throws EquiposException Errores con la operación
 	  */
-	 public void registrarNovedadElemento(String titulo, Date fecha, String resp, String detalle, String nElem) throws EquiposException;
+	 public void registrarNovedadElemento(String titulo, Date fecha, String resp, String detalle, String nEq, String nElem) throws EquiposException;
 	 
 	 /**
       * Método que permite consultar la novedad de los laboratorios

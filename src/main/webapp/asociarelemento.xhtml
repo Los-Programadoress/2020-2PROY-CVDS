@@ -32,7 +32,7 @@
 			</center>
 			<img class="imagen3" src="img/pc.png"/>
 			<img class="imagen4" src="img/elementos.png"/>
-			<p:commandButton update="Equipos_Form" onclick="return ConfirmInscription()" actionListener="#{registrarElementosBean.asociacionElemento(registrarElementosBean.elementoSelec.id,RegistrarEquiposBean.equipoSelec.numero,registrarElementosBean.elementoSelec.tipo)}" class="boton2" value="Asociar"/>
+			<p:commandButton update="Equipos_Form" onclick="return ConfirmInscription()" actionListener="#{registrarElementosBean.asociacionElemento(registrarElementosBean.elementoSelec.id, RegistrarEquiposBean.equipoSelec.numero, registrarElementosBean.elementoSelec.tipo, RegistrarEquiposBean.equipoSelec.nombre, registrarElementosBean.elementoSelec.nombre)}" class="boton2" value="Asociar"/>
 			<p:dataTable var="ael" value="#{registrarElementosBean.consultarElementos()}" class="tabla2" 
 					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
 					 rows="6" selection="#{registrarElementosBean.elementoSelec}"
