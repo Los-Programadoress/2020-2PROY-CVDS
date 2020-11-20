@@ -134,6 +134,7 @@ public class MyBATISElementoDAO implements ElementoDAO{
       * Método que permite consultar los elementos por disponibilidad
       * @return lista de elementos consultados
       */
+	@Override
    	public List<Elemento> consultarElementosDisponibles() throws PersistenceException{
    		try {
 			 return elementoMapper.consultarElementosDisponibles();
@@ -179,6 +180,7 @@ public class MyBATISElementoDAO implements ElementoDAO{
      * @throws EquiposException Errores con la operación
      */
 	@Override
+	@Transactional
 	public void cambiarBajaElemento(boolean dBaja,String enom) throws PersistenceException{
 		try{
 			elementoMapper.cambiarBajaElemento(dBaja, enom);

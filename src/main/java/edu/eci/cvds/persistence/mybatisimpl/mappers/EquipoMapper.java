@@ -55,6 +55,6 @@ public interface EquipoMapper {
      * @param dBaja: Cambiar estado de baja al equipo
      * @param nome: Nombre del equipo
      */
-	public void cambiarBajaEquipo(@Param("dBaja")boolean dBaja, @Param("nome") String nome);
+	public void cambiarBajaEquipo(@Param("dbaja")boolean dbaja, @Param("nome") String nome);
 
 }

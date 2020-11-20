@@ -77,11 +77,10 @@ public interface EquiposServices {
      
  	/**
       * Método que permite cambiar el estado de dar de baja a un equipo
-      * @param dBaja: Cambiar estado de baja al equipo
       * @param nome: Nombre del equipo
       * @throws EquiposException Errores con la operación
       */
-	 public void cambiarBajaEquipo(boolean dBaja,String nome) throws EquiposException;
+	 public void cambiarBajaEquipo(String nome) throws EquiposException;
 	 
 	//ELEMENTO 
  	/**

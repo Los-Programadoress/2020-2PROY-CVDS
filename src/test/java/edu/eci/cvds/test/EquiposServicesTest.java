@@ -27,7 +27,7 @@ public class EquiposServicesTest {
      * Instancia los Servicios de EquiposServices.
      */
     public EquiposServicesTest() {
-        equiposServices = EquiposServicesFactory.getInstance().getEquiposServicesTesting();
+        equiposServices = EquiposServicesFactory.getInstance().getEquiposServices();
     }
     
     /**
@@ -102,14 +102,38 @@ public class EquiposServicesTest {
 		}
     }*/
     
-    /*@Test
+   /* @Test
     public void deberíaAsociar() {
     	try {
-			//equiposServices.registrarLaboratorio("LABISW A", "maria.alfaro");
-			//equiposServices.registrarLaboratorio("MULTIMEDIA A", "maria.alfaro");
-			//equiposServices.registrarEquipo("SISTEMAS12", "HP", "cesar.ortiz");
-			//equiposServices.asociacionEquipo("LABISW A", "SISTEMAS12");
-			equiposServices.asociacionEquipo("MULTIMEDIA", "SISTEMAS1");
+			equiposServices.asociacionEquipo("PLATAFORMAS", "SISTEMAS12");
+			//equiposServices.asociacionEquipo("MULTIMEDIA", "SISTEMAS1");
+			assertTrue(true);
+			
+		} catch (EquiposException e) {
+			assertFalse(false);
+		}
+    	
+    }*/
+    
+    /*@Test
+    public void deberíaDardeBajaEquipo() {
+    	try {
+			equiposServices.cambiarBajaEquipo("SISTEMAS1");
+			
+			assertTrue(true);
+			
+		} catch (EquiposException e) {
+			assertFalse(false);
+		}
+    	
+    }*/
+    
+    /*@Test
+    public void deberíaDardeBajaElementos() {
+    	try {
+			equiposServices.cambiarBajaElemento(true, "LED");
+			equiposServices.desasociarElemento(true, 1, "Pantalla");
+			
 			assertTrue(true);
 			
 		} catch (EquiposException e) {

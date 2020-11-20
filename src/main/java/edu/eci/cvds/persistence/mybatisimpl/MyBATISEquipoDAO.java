@@ -95,6 +95,7 @@ public class MyBATISEquipoDAO implements EquipoDAO{
      * @throws PersistenceException Errores con la base de datos
 	 */
 	@Override
+	@Transactional
 	 public void asociarEquipo(String nLab, String nome) throws PersistenceException{
 		try{
 			equipoMapper.asociarEquipo(nLab, nome);
@@ -110,6 +111,8 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	  * @param nome: Nombre del equipo
 	  * @throws PersistenceException Errores con la base de datos
 	  */
+	 @Override
+	 @Transactional
      public void desasociarEquipo(boolean disponible, String nome) throws PersistenceException{
     	 try{
     		equipoMapper.desasociarEquipo(disponible, nome);
@@ -121,16 +124,19 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	 
      /**
       * Método que permite cambiar el estado de dar de baja a un equipo
-      * @param dBaja: Cambiar estado de baja al equipo
       * @param nome: Nombre del equipo
       * @throws PersistenceException Errores con la base de datos
       */
-	 public void cambiarBajaEquipo(boolean dBaja,String nome) throws PersistenceException {
-		 try{
-	 		equipoMapper.cambiarBajaEquipo(dBaja,nome);
+     @Override
+     @Transactional
+	 public void cambiarBajaEquipo(String nome) throws PersistenceException {
+    	 boolean dbaja = true; 
+    	try{
+	 		equipoMapper.cambiarBajaEquipo(dbaja, nome);
 	 	}
 	 	catch(Exception e){
 	        throw new PersistenceException("Error al cambiar baja del equipo",e);            
 	    }
 	}
+
 }

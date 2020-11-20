@@ -1,5 +1,6 @@
 package edu.eci.cvds.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,8 +8,9 @@ import java.util.ArrayList;
 * @author: Angélica Alfaro - Laura Izquierdo - César Ortiz
 * @version: 1.0
 */
-public class Elemento {
-	
+public class Elemento implements Serializable{
+
+	private static final long serialVersionUID = 5832999501849461380L;
 	//Atributos de la clase
 	private int id;
 	private String tipo;
@@ -36,7 +38,6 @@ public class Elemento {
 		this.tipo = tipo;
 		this.nombre = nombre;
 		this.disponible = disponible;
-		
 	}
 	
 	/**

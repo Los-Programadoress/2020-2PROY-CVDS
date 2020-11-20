@@ -171,13 +171,10 @@ public class EquiposServicesImpl implements EquiposServices{
 	*/
 	@Override
 	public void asociacionEquipo(String nLab, String nome) throws EquiposException{
-		Subject currentUser = SecurityUtils.getSubject();
-		user = currentUser.getPrincipal().toString();
-		Date fecha = new Date(System.currentTimeMillis());
 		try {
 			equipoDAO.desasociarEquipo(true,nome);
 			equipoDAO.asociarEquipo(nLab,nome);
-			registrarNovedadEquipo("Asociación equipo", fecha, user, "Se  asoció el equipo " + nome + " al laboratorio " + nLab , nome , nLab);
+			//registrarNovedadEquipo("Asociación equipo", fecha, user, "Se  asoció el equipo " + nome + " al laboratorio " + nLab , nome , nLab);
 		}catch(PersistenceException e){  
  			throw new EquiposException("Error al asociar el equipo: ",e);  
 		}	
@@ -185,14 +182,13 @@ public class EquiposServicesImpl implements EquiposServices{
      
     /**
      * Método que permite cambiar el estado de dar de baja a un equipo
-	   * @param dBaja: Cambiar estado de baja al equipo
      * @param nome: Nombre del equipo
      * @throws EquiposException Errores con la operación
     */
 	@Override
-	  public void cambiarBajaEquipo(boolean dBaja,String nome) throws EquiposException{
+	  public void cambiarBajaEquipo(String nome) throws EquiposException{
 		try{
-			equipoDAO.cambiarBajaEquipo(dBaja,nome);
+			equipoDAO.cambiarBajaEquipo(nome);
 		}
 		catch(PersistenceException e){
 			throw new EquiposException("Error al cambiar baja del equipo",e);            

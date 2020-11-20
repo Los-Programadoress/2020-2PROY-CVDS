@@ -65,7 +65,7 @@
 	    el.disponible,
 	    el.dadoDeBaja
 	  FROM elemento AS el
-	</select> 
+	</select>
 	
   	<update parameterType="map" id="cambiarBajaElemento">
 		UPDATE elemento

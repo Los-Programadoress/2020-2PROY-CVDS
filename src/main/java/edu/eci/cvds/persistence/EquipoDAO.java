@@ -63,11 +63,10 @@ public interface EquipoDAO {
 	 
       /**
        * Método que permite cambiar el estado de dar de baja a un equipo
-       * @param dBaja: Cambiar estado de baja al equipo
        * @param nome: Nombre del equipo
        * @throws PersistenceException Errores con la base de datos
        */
- 	  public void cambiarBajaEquipo(boolean dBaja,String nome) throws PersistenceException;
+ 	  public void cambiarBajaEquipo(String nome) throws PersistenceException;
  		
 		 
 }

@@ -81,6 +81,7 @@ public class RegistrarElementoBean extends BasePageBean{
 	 
 	 public void cambiarBajaElemento(String enom) throws EquiposException{
 		try{
+			System.out.println(enom);
 			info2();
 			equipoS.cambiarBajaElemento(true,enom);
 		}
@@ -91,6 +92,7 @@ public class RegistrarElementoBean extends BasePageBean{
 	 
 	 public void desasociarElemento(int nume, String tipo)throws EquiposException{
 		try {
+			System.out.println("eq: "+nume+ " "+ "tipo: "+tipo);
 			equipoS.desasociarElemento(true, nume, tipo);
 		}catch(EquiposException e){  
 			e.printStackTrace(); 

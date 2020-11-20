@@ -1,5 +1,6 @@
 package edu.eci.cvds.view;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -51,8 +52,13 @@ public class RegistrarEquipoBean extends BasePageBean{
 	}
 
 	public void asociacionEquipo(String nLab, String nome) throws EquiposException{
+		Subject currentUser = SecurityUtils.getSubject();
+		user = currentUser.getPrincipal().toString();
+		Date fecha = new Date(System.currentTimeMillis());
 		try{
 			equipoS.asociacionEquipo(nLab,nome);
+			equipoS.registrarNovedadEquipo("Asociación equipo", fecha, user, "Se  asoció el equipo " + nome + " al laboratorio " + nLab , nome , nLab);
+			
 		}
 		catch(EquiposException e){        
 		}
@@ -61,7 +67,7 @@ public class RegistrarEquipoBean extends BasePageBean{
 	public void cambiarBajaEquipo(String nome) throws EquiposException{
 		try{
 			info();
-			equipoS.cambiarBajaEquipo(true,nome);
+			equipoS.cambiarBajaEquipo(nome);
 		}
 		catch(EquiposException e){          
 		} 
