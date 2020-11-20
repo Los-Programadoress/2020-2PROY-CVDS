@@ -22,6 +22,8 @@ import edu.eci.cvds.services.EquiposServices;
 @SessionScoped
 public class CrearLaboratorioBean extends BasePageBean{
 	
+	private static final long serialVersionUID = 1L;
+	
 	private List<Laboratorio> laboratorios = null;
 	private String user;
 	private Laboratorio laboratorioSelec;

@@ -27,6 +27,9 @@ import edu.eci.cvds.services.EquiposServices;
 @ManagedBean(name="registrarNovedadBean")
 @SessionScoped
 public class RegistrarNovedadBean extends BasePageBean{
+
+	private static final long serialVersionUID = 7677787625537645048L;
+	
 	private String f_seleccionada = "";
 	private List<Novedad> novedadesEq = null;
 	private List<Novedad> novedadesEl = null;
