@@ -83,13 +83,13 @@ public class RegistrarNovedadBean extends BasePageBean{
 		return nombreEq;
 	} 
 
-	public void registrarNovedadEquipo(String titulo, String detalle, String nEquipos) throws EquiposException{
+	public void registrarNovedadEquipo(String titulo, String detalle, String nEquipos, String nLab) throws EquiposException{
 		try{
 			//Capturar el usuario
     		Subject currentUser = SecurityUtils.getSubject();
     		user = currentUser.getPrincipal().toString();
     		Date fecha = new Date(System.currentTimeMillis()); 
-			equipoS.registrarNovedadEquipo(titulo, fecha, user, detalle, nEquipos);
+			equipoS.registrarNovedadEquipo(titulo, fecha, user, detalle, nEquipos, nLab);
 		}
 		catch(EquiposException e) {
  			e.printStackTrace();           
@@ -110,13 +110,13 @@ public class RegistrarNovedadBean extends BasePageBean{
 		return nombreEl;
 	} 
 	
-	public void registrarNovedadElemento(String titulo, String detalle, String nElem) throws EquiposException{
+	public void registrarNovedadElemento(String titulo, String detalle, String nEq, String nElem) throws EquiposException{
 		try{
 			//Capturar el usuario
     		Subject currentUser = SecurityUtils.getSubject();
     		user = currentUser.getPrincipal().toString();
     		Date fecha = new Date(System.currentTimeMillis());
-			equipoS.registrarNovedadElemento(titulo, fecha, user, detalle, nElem);
+			equipoS.registrarNovedadElemento(titulo, fecha, user, detalle, nEq, nElem);
 		}
 		catch(EquiposException e) {
  			e.printStackTrace();             

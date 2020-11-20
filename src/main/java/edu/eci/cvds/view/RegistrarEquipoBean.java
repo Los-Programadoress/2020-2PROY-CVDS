@@ -43,7 +43,6 @@ public class RegistrarEquipoBean extends BasePageBean{
 		//Capturar el usuario
 		Subject currentUser = SecurityUtils.getSubject();
 		user = currentUser.getPrincipal().toString();
-		
 		try{
 			equipoS.registrarEquipo(nombre, marca, user);
 		}catch(EquiposException e){           
@@ -52,9 +51,6 @@ public class RegistrarEquipoBean extends BasePageBean{
 
 	public void asociacionEquipo(String nLab, String nome) throws EquiposException{
 		try{
-			System.out.println("entrooo");
-			System.out.println(nLab);
-			System.out.println(nome);
 			equipoS.asociacionEquipo(nLab,nome);
 		}
 		catch(EquiposException e){        
