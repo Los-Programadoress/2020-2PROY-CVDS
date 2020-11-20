@@ -3,7 +3,6 @@ package edu.eci.cvds.persistence;
 import java.sql.Date;
 import java.util.List;
 
-import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Novedad;
 
 /**

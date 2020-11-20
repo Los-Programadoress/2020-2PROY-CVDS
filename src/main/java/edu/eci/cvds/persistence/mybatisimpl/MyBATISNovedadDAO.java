@@ -9,8 +9,6 @@ import com.google.inject.Inject;
 import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.persistence.NovedadDAO;
 import edu.eci.cvds.persistence.PersistenceException;
-import edu.eci.cvds.persistence.UsuarioDAO;
-import edu.eci.cvds.persistence.mybatisimpl.mappers.LaboratorioMapper;
 import edu.eci.cvds.persistence.mybatisimpl.mappers.NovedadMapper;
 
 public class MyBATISNovedadDAO implements NovedadDAO {
@@ -28,13 +26,13 @@ public class MyBATISNovedadDAO implements NovedadDAO {
 	 * @throws PersistenceException Errores con la base de datos
      */
 	 public void registrarNovedadLaboratorio(String titulo, Date fecha, String resp, String detalle, String nLab) throws PersistenceException{
-	    	try{
-	    		novedadMapper.registrarNovedadLaboratorio(titulo, fecha, resp, detalle, nLab);
-			}
-			catch(Exception e){
-		        throw new PersistenceException("Error al registrar novedad del laboratorio",e);            
-		    }
+    	try{
+    		novedadMapper.registrarNovedadLaboratorio(titulo, fecha, resp, detalle, nLab);
+		}
+		catch(Exception e){
+	        throw new PersistenceException("Error al registrar novedad del laboratorio",e);            
 	    }
+	 }
 	 
 	 /**
       * Método que permite registrar una novedad para el laboratorio

@@ -2,14 +2,12 @@ package edu.eci.cvds.view;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -22,16 +20,12 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.Sha256Hash;
-import org.apache.shiro.crypto.hash.Sha512Hash;
 
 @Stateless
 @SessionScoped
 @ManagedBean(name = "shiroBean", eager = true)
 public class ShiroLoginBean implements Serializable{
-
-	private static final long serialVersionUID = -1002703896862316116L;
 
 	private static final Logger log = LoggerFactory.getLogger(ShiroLoginBean.class);
     

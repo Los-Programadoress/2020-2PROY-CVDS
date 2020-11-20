@@ -14,7 +14,6 @@ import edu.eci.cvds.persistence.mybatisimpl.MyBATISUsuarioDAO;
 import edu.eci.cvds.services.impl.EquiposServicesImpl;
 
 import org.mybatis.guice.XMLMyBatisModule;
-import org.mybatis.guice.datasource.helper.JdbcHelper;
 import java.util.Optional;
 import static com.google.inject.Guice.createInjector;
 

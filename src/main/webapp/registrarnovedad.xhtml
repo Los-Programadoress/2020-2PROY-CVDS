@@ -20,30 +20,11 @@
 				<p:commandButton class="cerrar" update="form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
 				<img class="logo" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
 			</div>
-			<h1 class="h2">Novedades Equipo</h1>
-			<h1 class="h3">Novedades Elemento</h1>
-			<h1 class="h4">Novedades Laboratorio</h1>
-			<p:separator style="width:3px;height:190px" class="separat"/>
-			<p:separator style="width:3px;height:190px" class="separat2"/>
-			<p:inputText class="input" placeholder="Titulo" type="String" value="#{titulo}"/>
-			<p:inputText class="input2" placeholder="Detalle" type="String" value="#{detalle}"/>
-			<p:autoComplete class="input3" placeholder="Equipo" dropdown="true" value="#{nombreEquipo}" completeMethod="#{registrarNovedadBean.consultarNombreEquipo()}" />
-			<p:commandButton class="registrarEq" update="form" actionListener="#{registrarNovedadBean.registrarNovedadEquipo(titulo, detalle, nombreEquipo)}" value="Registrar"/>
-			
-			<p:inputText class="input0" placeholder="Titulo" type="String" value="#{titulo1}"/>
-			<p:inputText class="input20" placeholder="Detalle" type="String" value="#{detalle1}"/>
-			<p:autoComplete class="input30" placeholder="Elemento" dropdown="true" value="#{nombreElemento1}" completeMethod="#{registrarNovedadBean.consultarNombreElemento()}" />
-            <p:commandButton class="registrarEl" update="form" actionListener="#{registrarNovedadBean.registrarNovedadElemento(titulo1, detalle1, nombreElemento1)}" value="Registrar"/>
-			
-			<p:inputText class="input01" placeholder="Titulo" type="String" value="#{titulo2}"/>
-			<p:inputText class="input21" placeholder="Detalle" type="String" value="#{detalle2}"/>
-			<p:autoComplete class="input31" placeholder="Laboratorio" dropdown="true" value="#{nombreElemento2}" completeMethod="#{registrarNovedadBean.consultarNombreLaboratorio()}" />
-            <p:commandButton class="registrarLab" update="form" actionListener="#{registrarNovedadBean.registrarNovedadLaboratorio(titulo2, detalle2, nombreElemento2)}" value="Registrar"/>
 			<p:tabView class="tap">
 				<p:tab title="Novedades Equipos">
 					<p:dataTable var="nov" value="#{registrarNovedadBean.consultarNovedadEquipos()}"
 					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
-					 rows="3" selection="#{registrarElementosBean.elementoSelec}"
+					 rows="8" selection="#{registrarElementosBean.elementoSelec}"
                      rowKey="#{nov.id}">
 						<f:facet name="header" class="columna">Equipos</f:facet>
 			
@@ -51,7 +32,7 @@
 							<h:outputText value="#{nov.titulo}" />
 						</p:column>
 						
-						<p:column class="columna" headerText="Fecha">
+						<p:column class="columnaF" headerText="Fecha">
 							<h:outputText value="#{nov.fecha}" />
 						</p:column>
 						
@@ -59,7 +40,7 @@
 							<h:outputText value="#{nov.responsable.idCorreo}" />
 						</p:column>
 						
-						<p:column class="columna" headerText="Detalle">
+						<p:column class="columnaL" headerText="Detalle">
 							<h:outputText value="#{nov.detalle}" />
 						</p:column>
 				
@@ -69,7 +50,7 @@
 				<p:tab title="Novedades Elementos">
 					<p:dataTable var="nove" value="#{registrarNovedadBean.consultarNovedadElementos()}"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
-						rows="3" selection="#{registrarElementosBean.elementoSelec}"
+						rows="8" selection="#{registrarElementosBean.elementoSelec}"
 						rowKey="#{nov.id}">
 						<f:facet name="header" class="columna">Elementos</f:facet>
 				
@@ -77,7 +58,7 @@
 							<h:outputText value="#{nove.titulo}" />
 						</p:column>
 				
-						<p:column class="columna" headerText="Fecha">
+						<p:column class="columnaF" headerText="Fecha">
 							<h:outputText value="#{nove.fecha}" />
 						</p:column>
 						
@@ -85,7 +66,7 @@
 							<h:outputText value="#{nove.responsable.idCorreo}" />
 						</p:column>
 						
-						<p:column class="columna" headerText="Detalle">
+						<p:column class="columnaL" headerText="Detalle">
 							<h:outputText value="#{nove.detalle}" />
 						</p:column>
 				
@@ -95,7 +76,7 @@
 				<p:tab title="Novedades Laboratorios">
 					<p:dataTable var="nove" value="#{registrarNovedadBean.consultarNovedadLaboratorios()}"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
-						rows="3" selection="#{registrarElementosBean.elementoSelec}"
+						rows="8" selection="#{registrarElementosBean.elementoSelec}"
 						rowKey="#{nov.id}">
 						<f:facet name="header" class="columna">Laboratorios</f:facet>
 				
@@ -103,7 +84,7 @@
 							<h:outputText value="#{nove.titulo}" />
 						</p:column>
 						
-						<p:column class="columna" headerText="Fecha">
+						<p:column class="columnaF" headerText="Fecha">
 							<h:outputText value="#{nove.fecha}" />
 						</p:column>
 						
@@ -111,7 +92,7 @@
 							<h:outputText value="#{nove.responsable.idCorreo}" />
 						</p:column>
 						
-						<p:column class="columna" headerText="Detalle">
+						<p:column class="columnaL" headerText="Detalle">
 							<h:outputText value="#{nove.detalle}" />
 						</p:column>
 						

@@ -2,11 +2,13 @@ package edu.eci.cvds.view;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
+import org.primefaces.PrimeFaces;
 
 import com.google.inject.Inject;
 
@@ -21,10 +23,9 @@ import edu.eci.cvds.services.EquiposServices;
 @ManagedBean(name="RegistrarEquiposBean")
 @SessionScoped
 public class RegistrarEquipoBean extends BasePageBean{
-
-	private static final long serialVersionUID = 650984420982868194L;
-
+	
 	private List<Equipo> equipos= null;
+	private List<Elemento> elementosEq = null;
 	private Equipo equipoSelec;
 	private String user;
 
@@ -56,6 +57,29 @@ public class RegistrarEquipoBean extends BasePageBean{
 		catch(EquiposException e){        
 		}
 	}
+	
+	public void cambiarBajaEquipo(String nome) throws EquiposException{
+		try{
+			info();
+			equipoS.cambiarBajaEquipo(true,nome);
+		}
+		catch(EquiposException e){          
+		} 
+	}
+	
+	public List<Elemento> consultarElementosEquipo(String nequipo) throws EquiposException{
+		try{
+			elementosEq = equipoS.consultarElementosEquipo(nequipo);
+		}
+		catch(EquiposException e){          
+		} 
+		return elementosEq;
+	 }
+	
+	public void info() {
+		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "De baja al equipo", "Se dió de baja satisfactoriamente al equipo.");
+		 PrimeFaces.current().dialog().showMessageDynamic(message);
+	 }
 	
 	public List<Elemento> consultarElementosSelected(){
  		return equipoS.getElSelected();

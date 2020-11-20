@@ -154,7 +154,7 @@ public class EquiposServicesImpl implements EquiposServices{
      * @return lista de elementos del equipo consultados
      */
 	@Override
-	 public List<Elemento> consultarElementosEquipo(int nequipo) throws EquiposException{
+	 public List<Elemento> consultarElementosEquipo(String nequipo) throws EquiposException{
 		try{
 			return equipoDAO.consultarElementosEquipo(nequipo);
 		}
@@ -183,14 +183,21 @@ public class EquiposServicesImpl implements EquiposServices{
 		}	
 	}
      
-	public void cambiarBajaEquipo(boolean dBaja,int eId) throws EquiposException{
+    /**
+     * Método que permite cambiar el estado de dar de baja a un equipo
+	   * @param dBaja: Cambiar estado de baja al equipo
+     * @param nome: Nombre del equipo
+     * @throws EquiposException Errores con la operación
+    */
+	@Override
+	  public void cambiarBajaEquipo(boolean dBaja,String nome) throws EquiposException{
 		try{
-			equipoDAO.cambiarBajaEquipo(dBaja,eId);
+			equipoDAO.cambiarBajaEquipo(dBaja,nome);
 		}
 		catch(PersistenceException e){
 			throw new EquiposException("Error al cambiar baja del equipo",e);            
 		} 
-	}
+	  }
 	
 	//ELEMENTO 	 
      /**
@@ -321,6 +328,22 @@ public class EquiposServicesImpl implements EquiposServices{
 	}
 	
 	/**
+	 * Método que permite desasociar un elemento
+	 * @param disponible: Permite identificar la disponibilidad del elemento
+	 * @param nume: Identificador del elemento
+	 * @param tipo: Tipo del elemento
+	 * @throws EquiposException Errores con la operación
+	*/
+	@Override
+	public void desasociarElemento(boolean disponible, int nume, String tipo)throws EquiposException{
+		try {
+			elementoDAO.desasociarElemento(disponible, nume, tipo);
+		}catch(PersistenceException e){
+			throw new EquiposException("Error al asociar un elemento: ",e);
+		}
+	}
+	
+	/**
 	* Método que retorna el conjunto de elementos seleccionados
 	* @return elSelected Lista de elementos seleccionados
 	*/
@@ -351,18 +374,19 @@ public class EquiposServicesImpl implements EquiposServices{
 	/**
      * Método que permite cambiar el estado de dar de baja a un elemento
      * @param dBaja: Cambiar estado de baja al elemento
-     * @param eId: Identificador del elemento
+     * @param enom: Nombre del elemento
      * @throws EquiposException Errores con la operación
      */
 	@Override
-	public void cambiarBajaElemento(boolean dBaja,int eId) throws EquiposException{
+	public void cambiarBajaElemento(boolean dBaja,String enom) throws EquiposException{
 		try{
-			elementoDAO.cambiarBajaElemento(dBaja,eId);
+			elementoDAO.cambiarBajaElemento(dBaja,enom);
 		}
 		catch(PersistenceException e){
 			throw new EquiposException("Error al cambiar baja del elemento",e);            
 		}
 	}
+	
 	
 	//NOVEDAD
 	/**

@@ -3,7 +3,6 @@ package edu.eci.cvds.persistence;
 import java.util.List;
 
 import edu.eci.cvds.entities.Elemento;
-import edu.eci.cvds.services.EquiposException;
 
 /**
 * Interface que permite acceder a datos
@@ -77,8 +76,9 @@ public interface ElementoDAO {
 	/**
      * Método que permite cambiar el estado de dar de baja a un elemento
      * @param dBaja: Cambiar estado de baja al elemento
-     * @param eId: Identificador del elemento
+     * @param enom: Nombre del elemento
      * @throws PersistenceException Errores con la base de datos
      */
-	public void cambiarBajaElemento(boolean dBaja,int eId) throws PersistenceException;
+	public void cambiarBajaElemento(boolean dBaja,String enom) throws PersistenceException;
+
 }

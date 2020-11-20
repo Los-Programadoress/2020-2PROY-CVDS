@@ -66,8 +66,8 @@
   </update>
   
   <update parameterType="map" id="cambiarBajaEquipo">
-	UPDATE equipo
-	SET dadoDeBaja = #{dBaja}
-	WHERE numero = #{nume}
+  	UPDATE equipo
+  	SET dadoDeBaja = #{dBaja}
+  	WHERE nombre = #{nome}​​
   </update>
 </mapper>

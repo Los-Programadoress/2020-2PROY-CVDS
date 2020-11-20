@@ -9,7 +9,6 @@ import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.persistence.UsuarioDAO;
 import edu.eci.cvds.persistence.mybatisimpl.MyBATISUsuarioDAO;
 import edu.eci.cvds.persistence.mybatisimpl.mappers.UsuarioMapper;
-import edu.eci.cvds.services.EquiposException;
 
 /**
 * Clase que permite mapear el acceso a datos

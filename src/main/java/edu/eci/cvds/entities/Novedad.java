@@ -2,7 +2,6 @@ package edu.eci.cvds.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.ArrayList;
 
 
 /**

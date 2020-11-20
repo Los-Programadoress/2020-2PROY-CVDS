@@ -10,11 +10,7 @@ import org.apache.shiro.subject.Subject;
 
 import com.google.inject.Inject;
 
-import edu.eci.cvds.entities.Elemento;
-import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
-import edu.eci.cvds.entities.Novedad;
-import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.services.EquiposException;
 import edu.eci.cvds.services.EquiposServices;
 

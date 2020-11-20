@@ -2,7 +2,6 @@ package edu.eci.cvds.services;
 
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 import edu.eci.cvds.entities.Elemento;
@@ -10,7 +9,7 @@ import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.entities.Usuario;
-import edu.eci.cvds.persistence.PersistenceException;
+
 /**
 * Interface que cuenta con los servicios
 * @author: Angélica Alfaro - Laura Izquierdo - César Ortiz
@@ -66,7 +65,7 @@ public interface EquiposServices {
  	 * @param idCorreo: Usuario que registra el equipo
  	 * @throws EquiposException Errores con la operación
  	*/
- 	void registrarEquipo(String nombre, String marca, String idcorreo) throws EquiposException;
+ 	public void registrarEquipo(String nombre, String marca, String idcorreo) throws EquiposException;
  	 
  	/**
       * Método que permite registrar consultar los elementos de un equipo 
@@ -74,15 +73,15 @@ public interface EquiposServices {
       * @throws EquiposException Errores con la operación
       * @return lista de elementos del equipo consultados
       */
- 	 public List<Elemento> consultarElementosEquipo(int nequipo) throws EquiposException;
+ 	 public List<Elemento> consultarElementosEquipo(String nequipo) throws EquiposException;
      
-     /**
-      * Método que permite cambiar el estado de dar de baja a un elemento
-      * @param dBaja: Cambiar estado de baja al elemento
-      * @param eId: Identificador del elemento
+ 	/**
+      * Método que permite cambiar el estado de dar de baja a un equipo
+      * @param dBaja: Cambiar estado de baja al equipo
+      * @param nome: Nombre del equipo
       * @throws EquiposException Errores con la operación
       */
-	 public void cambiarBajaEquipo(boolean dBaja,int eId) throws EquiposException;
+	 public void cambiarBajaEquipo(boolean dBaja,String nome) throws EquiposException;
 	 
 	//ELEMENTO 
  	/**
@@ -151,12 +150,33 @@ public interface EquiposServices {
  	public void asociacionElemento(int id, int numero, String tipo, String equipoNombre, String elementoNombre)throws EquiposException;
 	
 	/**
+	 * Método que permite desasociar un elemento
+	 * @param disponible: Permite identificar la disponibilidad del elemento
+	 * @param nume: Identificador del elemento
+	 * @param tipo: Tipo del elemento
+	 * @throws EquiposException Errores con la operación
+	*/
+	public void desasociarElemento(boolean disponible, int nume, String tipo) throws EquiposException;
+	
+ 	/**
      * Método que permite cambiar el estado de dar de baja a un elemento
      * @param dBaja: Cambiar estado de baja al elemento
-     * @param eId: Identificador del elemento
+     * @param enom: Nombre del elemento
      * @throws EquiposException Errores con la operación
      */
-	public void cambiarBajaElemento(boolean dBaja,int eId) throws EquiposException;
+	public void cambiarBajaElemento(boolean dBaja,String enom) throws EquiposException;
+	
+	/**
+	* Método que retorna el conjunto de elementos seleccionados
+	* @return elSelected Lista de elementos seleccionados
+	*/
+	public List<Elemento> getElSelected();
+	
+	/**
+	* Método que agrega elementos a la lista de seleccionados
+	* @param elementoSelec: Elemento seleccionado
+	*/
+	public void add(Elemento elementoSelec);
 	
 	//NOVEDAD
 	/**
@@ -230,16 +250,5 @@ public interface EquiposServices {
      * @throws EquiposException Errores con la operación
      */
 	 public List<Laboratorio> consultarLaboratorios() throws EquiposException;
-	/**
-	* Método que retorna el conjunto de elementos seleccionados
-	* @return elSelected Lista de elementos seleccionados
-	*/
-	public List<Elemento> getElSelected();
-	
-	/**
-	* Método que agrega elementos a la lista de seleccionados
-	* @param elementoSelec: Elemento seleccionado
-	*/
-	public void add(Elemento elementoSelec);
 
 }

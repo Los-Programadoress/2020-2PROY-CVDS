@@ -1,18 +1,14 @@
 package edu.eci.cvds.view;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-import org.primefaces.PrimeFaces;
-import org.primefaces.event.SelectEvent;
 
 import com.google.inject.Inject;
 
@@ -20,15 +16,12 @@ import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.entities.Novedad;
-import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.services.EquiposException;
 import edu.eci.cvds.services.EquiposServices;
 
 @ManagedBean(name="registrarNovedadBean")
 @SessionScoped
 public class RegistrarNovedadBean extends BasePageBean{
-
-	private static final long serialVersionUID = 7677787625537645048L;
 	
 	private String f_seleccionada = "";
 	private List<Novedad> novedadesEq = null;

@@ -175,18 +175,16 @@ public class MyBATISElementoDAO implements ElementoDAO{
 	/**
      * Método que permite cambiar el estado de dar de baja a un elemento
      * @param dBaja: Cambiar estado de baja al elemento
-     * @param eId: Identificador del elemento
+     * @param : Identificador del elemento
      * @throws EquiposException Errores con la operación
      */
 	@Override
-	public void cambiarBajaElemento(boolean dBaja,int eId) throws PersistenceException{
+	public void cambiarBajaElemento(boolean dBaja,String enom) throws PersistenceException{
 		try{
-			elementoMapper.cambiarBajaElemento(dBaja, eId);
+			elementoMapper.cambiarBajaElemento(dBaja, enom);
 		}
 		catch(Exception e){
            throw new PersistenceException("Error al cambiar la baja del elemento",e);            
        }
 	}
-	
-
 }

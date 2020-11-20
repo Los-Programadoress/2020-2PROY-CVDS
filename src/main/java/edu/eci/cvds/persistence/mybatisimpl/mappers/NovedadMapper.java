@@ -3,11 +3,8 @@ package edu.eci.cvds.persistence.mybatisimpl.mappers;
 
 import java.sql.Date;
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
-
 import edu.eci.cvds.entities.Novedad;
-import edu.eci.cvds.persistence.PersistenceException;
 
 public interface NovedadMapper {
 	

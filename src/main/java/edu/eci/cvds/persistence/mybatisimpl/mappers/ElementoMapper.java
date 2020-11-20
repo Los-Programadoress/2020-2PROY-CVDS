@@ -64,8 +64,8 @@ public interface ElementoMapper {
 	/**
      * Método que permite cambiar el estado de dar de baja a un elemento
      * @param dBaja: Cambiar estado de baja al elemento
-     * @param eId: Identificador del elemento
+     * @param enom: Nombre del elemento
      */
-	public void cambiarBajaElemento(@Param("dBaja") boolean dBaja, @Param("eId") int eId);
+	public void cambiarBajaElemento(@Param("dBaja") boolean dBaja, @Param("enom") String enom);
 	
 }
