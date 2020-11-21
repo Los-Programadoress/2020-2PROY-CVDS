@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head> 
+		<title>Registro Novedad</title>
+		<link rel="stylesheet" href="master5.css"/>
+	</h:head>
+	
+	<body>
+		<h:form id="form">
+			<center>
+<<<<<<< HEAD
+				<h1 class="h1">Registrar Novedades</h1>
+=======
+				<h1 class="h1">Registro de Novedades</h1>
+>>>>>>> develop
+			</center>
+			<div class="en-sesion">
+				<a href="/faces/sesion.xhtml"><p:commandButton type="button" class="menu" update="Equipos_Form" value="Menú"/></a>
+				<p:commandButton class="cerrar" update="form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
+				<img class="logo" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
+			</div>
+			<p:tabView class="tap">
+				<p:tab title="Novedades Equipos">
+					<p:dataTable var="nov" value="#{registrarNovedadBean.consultarNovedadEquipos()}"
+					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
+<<<<<<< HEAD
+					 rows="8" selection="#{registrarElementosBean.elementoSelec}"
+=======
+					 rows="10" selection="#{registrarElementosBean.elementoSelec}"
+>>>>>>> develop
+                     rowKey="#{nov.id}">
+						<f:facet name="header" class="columna">Equipos</f:facet>
+			
+						<p:column class="columna" headerText="Titulo">
+							<h:outputText value="#{nov.titulo}" />
+						</p:column>
+						
+						<p:column class="columnaF" headerText="Fecha">
+							<h:outputText value="#{nov.fecha}" />
+						</p:column>
+						
+						<p:column class="columna" headerText="Responsable">
+							<h:outputText value="#{nov.responsable.idCorreo}" />
+						</p:column>
+						
+						<p:column class="columnaL" headerText="Detalle">
+							<h:outputText value="#{nov.detalle}" />
+						</p:column>
+				
+					</p:dataTable>
+				</p:tab>
+				
+				<p:tab title="Novedades Elementos">
+					<p:dataTable var="nove" value="#{registrarNovedadBean.consultarNovedadElementos()}"
+						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
+<<<<<<< HEAD
+						rows="8" selection="#{registrarElementosBean.elementoSelec}"
+=======
+						rows="10" selection="#{registrarElementosBean.elementoSelec}"
+>>>>>>> develop
+						rowKey="#{nov.id}">
+						<f:facet name="header" class="columna">Elementos</f:facet>
+				
+						<p:column class="columna" headerText="Titulo">
+							<h:outputText value="#{nove.titulo}" />
+						</p:column>
+				
+						<p:column class="columnaF" headerText="Fecha">
+							<h:outputText value="#{nove.fecha}" />
+						</p:column>
+						
+						<p:column class="columna" headerText="Responsable">
+							<h:outputText value="#{nove.responsable.idCorreo}" />
+						</p:column>
+						
+						<p:column class="columnaL" headerText="Detalle">
+							<h:outputText value="#{nove.detalle}" />
+						</p:column>
+				
+					</p:dataTable>
+				</p:tab>
+				
+				<p:tab title="Novedades Laboratorios">
+					<p:dataTable var="nove" value="#{registrarNovedadBean.consultarNovedadLaboratorios()}"
+						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
+<<<<<<< HEAD
+						rows="8" selection="#{registrarElementosBean.elementoSelec}"
+=======
+						rows="10" selection="#{registrarElementosBean.elementoSelec}"
+>>>>>>> develop
+						rowKey="#{nov.id}">
+						<f:facet name="header" class="columna">Laboratorios</f:facet>
+				
+						<p:column class="columna" headerText="Titulo">
+							<h:outputText value="#{nove.titulo}" />
+						</p:column>
+						
+						<p:column class="columnaF" headerText="Fecha">
+							<h:outputText value="#{nove.fecha}" />
+						</p:column>
+						
+						<p:column class="columna" headerText="Responsable">
+							<h:outputText value="#{nove.responsable.idCorreo}" />
+						</p:column>
+						
+						<p:column class="columnaL" headerText="Detalle">
+							<h:outputText value="#{nove.detalle}" />
+						</p:column>
+						
+					</p:dataTable>
+				</p:tab>
+				
+			</p:tabView>
+			<br />
+            <br />
+		</h:form>
+	</body>
+</html>
