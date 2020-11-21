@@ -42,6 +42,14 @@ public interface EquiposServices {
       */
  	 public List<Equipo> consultarEquipos() throws EquiposException;
  	 
+ 	/**
+      * Método que permite consultar los equipos que no están dados de baja
+      * @throws EquiposException Errores con la operación
+      * @return lista de equipos consultados
+      */
+ 	 public List<Equipo> consultarEquiposNoDadosBaja() throws EquiposException;
+ 	
+ 	 
  	 /**
       * Método que permite consultar un equipo
       * @param numero: Número que identifica el equipo

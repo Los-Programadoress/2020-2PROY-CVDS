@@ -19,6 +19,14 @@ public interface EquipoDAO {
       */
 	 public List<Equipo> consultarEquipos() throws PersistenceException;
 	 
+	 
+	 /**
+     * Método que permite consultar los equipos no dados de baja
+     * @throws PersistenceException Errores con la base de datos
+     * @return lista de equipos consultados
+     */
+	 public  List<Equipo> consultarEquiposNoDadosBaja() throws PersistenceException;
+	 
 	 /**
       * Método que permite consultar un equipo
       * @param numero: Número que identifica el equipo

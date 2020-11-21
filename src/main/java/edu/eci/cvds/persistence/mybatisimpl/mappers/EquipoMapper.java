@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
+import edu.eci.cvds.persistence.PersistenceException;
 
 public interface EquipoMapper {
 	
@@ -14,6 +15,13 @@ public interface EquipoMapper {
       */
 	 public List<Equipo> consultarEquipos();
 	 
+	 /**
+     * Método que permite consultar los equipos no dados de baja
+     * @throws PersistenceException Errores con la base de datos
+     * @return lista de equipos consultados
+     */
+	 public List<Equipo> consultarEquiposNoDadosBaja();
+		
 	 /**
       * Método que permite consultar un equipo
       * @param numero: Número que identifica el equipo

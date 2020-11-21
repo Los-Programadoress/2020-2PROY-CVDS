@@ -36,6 +36,21 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	 }
 	 
 	 /**
+     * Método que permite consultar los equipos no dados de baja
+     * @throws PersistenceException Errores con la base de datos
+     * @return lista de equipos consultados
+     */
+	 @Override
+	 public  List<Equipo> consultarEquiposNoDadosBaja() throws PersistenceException{
+		try{
+			return equipoMapper.consultarEquiposNoDadosBaja();
+		}
+		catch(Exception e){
+	        throw new PersistenceException("Error al consultar los equipos",e);            
+	    }
+	 }
+	 
+	 /**
      * Método que permite consultar un equipo
      * @param numero: Número que identifica el equipo
      * @throws PersistenceException Errores con la base de datos

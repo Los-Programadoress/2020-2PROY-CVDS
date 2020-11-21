@@ -95,6 +95,21 @@ public class EquiposServicesImpl implements EquiposServices{
  	    }
  	 }
  	 
+ 	/**
+      * Método que permite consultar los equipos que no están dados de baja
+      * @throws EquiposException Errores con la operación
+      * @return lista de equipos consultados
+      */
+ 	 @Override
+ 	 public  List<Equipo> consultarEquiposNoDadosBaja() throws EquiposException{
+ 		try{
+ 			return equipoDAO.consultarEquiposNoDadosBaja();
+ 		}
+ 		catch(PersistenceException e){
+ 	        throw new EquiposException("Error al consultar los equipos",e);            
+ 	    }
+ 	 }
+ 	 
  	 /**
       * Método que permite consultar un equipo
       * @param numero: Número que identifica el equipo
@@ -123,7 +138,6 @@ public class EquiposServicesImpl implements EquiposServices{
 
 		try {
 			equipoDAO.registrarEquipo(nombre, marca, idcorreo);
-			registrarNovedadEquipo("Registro de equipo", fecha, idcorreo, "Se registró el equipo " + nombre, nombre, null);
 			List<Equipo> equipos = consultarEquipos();
 			
 		    //antes de registrar elementos
@@ -136,6 +150,8 @@ public class EquiposServicesImpl implements EquiposServices{
 		    	registrarNovedadElemento("Asociación de elemento a equipo", fecha , idcorreo , "Se asoció el elemento " + e.getNombre() + " al equipo " + equipoRegistrado.getNombre(), equipoRegistrado.getNombre(), e.getNombre());
 		    }
 		    EquiposServicesImpl.elSelected.clear();
+		    registrarNovedadEquipo("Registro de equipo", fecha, idcorreo, "Se registró el equipo " + nombre, nombre, null);
+			
 		}
 		catch (PersistenceException ex) {
 			throw new EquiposException("Error al registrar el equipo", ex);

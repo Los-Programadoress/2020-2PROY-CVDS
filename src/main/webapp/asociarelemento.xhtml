@@ -47,7 +47,7 @@
 				</p:column>
 				<p:column selectionMode="single" style="width:16px;text-align:center"/>
 			</p:dataTable>
-			<p:dataTable var="ceq" value="#{RegistrarEquiposBean.consultarEquipos()}" class="tabla3"
+			<p:dataTable var="ceq" value="#{RegistrarEquiposBean.consultarEquiposNoDadosBaja()}" class="tabla3"
 					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                      rows="6" selection="#{RegistrarEquiposBean.equipoSelec}"
                      rowKey="#{ceq.numero}">
