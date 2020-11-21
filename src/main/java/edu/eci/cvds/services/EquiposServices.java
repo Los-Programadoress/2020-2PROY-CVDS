@@ -76,15 +76,6 @@ public interface EquiposServices {
  	public void registrarEquipo(String nombre, String marca, String idcorreo) throws EquiposException;
  	 
  	/**
- 	 * Método que permite cambiar el estado de dar de baja a un elemento
- 	 * @param nombre: Nombre del equipo 
- 	 * @param marca: Marca del elemento
- 	 * @param idCorreo: Usuario que registra el equipo
- 	 * @throws EquiposException Errores con la operación
- 	*/
- 	public void registrarEquipo(String nombre, String marca, String idcorreo) throws EquiposException;
- 	 
- 	/**
       * Método que permite registrar consultar los elementos de un equipo 
       * @param nequipo: Número que identifica el equipo
       * @throws EquiposException Errores con la operación
