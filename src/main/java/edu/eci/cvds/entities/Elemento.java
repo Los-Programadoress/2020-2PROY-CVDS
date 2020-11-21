@@ -18,6 +18,7 @@ public class Elemento implements Serializable{
     private boolean disponible;
     private String disponibilidad;
     private boolean dadoDeBaja;
+    private String bajado;
     private ArrayList<Novedad> novedades;
 
     /**
@@ -123,7 +124,7 @@ public class Elemento implements Serializable{
      * @return La disponibilidad del elemento
      */
 	public String getDisponibilidad() {
-		if (isDisponible() == true) {
+		if (isDisponible()) {
 			this.disponibilidad = "Si";
 		}
 		else {
@@ -138,6 +139,20 @@ public class Elemento implements Serializable{
      */
 	public boolean isDadoDeBaja() {
 		return dadoDeBaja;
+	}
+	
+	/**
+     * Método que cambia el dado de baja del elemento para mostrarlo como Si o No
+     * @return El estado dado de baja del elemento
+     */
+	public String getBajado() {
+		if (isDadoDeBaja()) {
+			this.bajado = "Si";
+		}
+		else {
+			this.bajado = "No";
+		}
+		return bajado;
 	}
 	
 	/**
@@ -173,6 +188,6 @@ public class Elemento implements Serializable{
 		return "Elemento {id=" + id + ", tipo=" + tipo + ", nombre=" + nombre + ", disponible=" + disponible
 				+ ", dadoDeBaja=" + dadoDeBaja + ", novedades=" + novedades + "}";
 	}
-	
+
 	
 }

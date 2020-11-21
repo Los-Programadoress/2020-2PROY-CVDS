@@ -1,6 +1,5 @@
 package edu.eci.cvds.view;
 
-import java.sql.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -15,8 +14,6 @@ import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
-import edu.eci.cvds.entities.Usuario;
-import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.services.EquiposException;
 import edu.eci.cvds.services.EquiposServices;
 
@@ -54,20 +51,17 @@ public class RegistrarEquipoBean extends BasePageBean{
 	public void asociacionEquipo(String nLab, String nome) throws EquiposException{
 		Subject currentUser = SecurityUtils.getSubject();
 		user = currentUser.getPrincipal().toString();
-		Date fecha = new Date(System.currentTimeMillis());
 		try{
-			equipoS.asociacionEquipo(nLab,nome);
-			equipoS.registrarNovedadEquipo("Asociación equipo", fecha, user, "Se  asoció el equipo " + nome + " al laboratorio " + nLab , nome , nLab);
-			
+			equipoS.asociacionEquipo(nLab,nome, user);
+			info2();
 		}
 		catch(EquiposException e){        
 		}
 	}
 	
-	public void cambiarBajaEquipo(String nome) throws EquiposException{
+	public void cambiarBajaEquipo(String nome, String user) throws EquiposException{
 		try{
-			info();
-			equipoS.cambiarBajaEquipo(nome);
+			equipoS.cambiarBajaEquipo(nome, user);
 		}
 		catch(EquiposException e){          
 		} 
@@ -83,9 +77,15 @@ public class RegistrarEquipoBean extends BasePageBean{
 	 }
 	
 	public void info() {
-		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "De baja al equipo", "Se dió de baja satisfactoriamente al equipo.");
+		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Equipo dado de baja", "Se dió de baja satisfactoriamente.");
 		 PrimeFaces.current().dialog().showMessageDynamic(message);
 	 }
+	
+	public void info2() {
+		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Asociación de Equipo", "Se asoció satisfactoriamente a el Laboratorio.");
+		 PrimeFaces.current().dialog().showMessageDynamic(message);
+	 }
+	
 	
 	public List<Elemento> consultarElementosSelected(){
  		return equipoS.getElSelected();

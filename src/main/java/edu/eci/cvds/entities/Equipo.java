@@ -18,6 +18,7 @@ public class Equipo implements Serializable{
     private Usuario usuario;
     private String disponibilidad;
     private boolean dadoDeBaja;
+    private String bajado;
     private ArrayList<Elemento> elementos;
     private ArrayList<Novedad> novedades;
     
@@ -149,7 +150,7 @@ public class Equipo implements Serializable{
      * @return La disponibilidad del equipo
      */
 	public String getDisponibilidad() {
-		if (isDisponible() == true) {
+		if (isDisponible()) {
 			this.disponibilidad = "Si";
 		}
 		else {
@@ -164,6 +165,20 @@ public class Equipo implements Serializable{
      */
     public boolean isDadoDeBaja() {
 		return dadoDeBaja;
+	}
+	
+	/**
+     * Método que cambia el dado de baja del equipo para mostrarlo como Si o No
+     * @return El estado dado de baja del equipo
+     */
+	public String getBajado() {
+		if (isDadoDeBaja()) {
+			this.bajado = "Si";
+		}
+		else {
+			this.bajado = "No";
+		}
+		return bajado;
 	}
     
     /**

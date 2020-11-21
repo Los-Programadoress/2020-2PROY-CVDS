@@ -5,9 +5,6 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
-
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Elemento;
@@ -33,6 +30,7 @@ public class EquiposServicesImpl implements EquiposServices{
 	
 	static final ArrayList<Elemento> elSelected = new ArrayList<>();
 	private String user;
+	private Date fecha = new Date(System.currentTimeMillis());
 
 	@Inject
     UsuarioDAO usuarioDAO;
@@ -123,12 +121,9 @@ public class EquiposServicesImpl implements EquiposServices{
    */
  	 @Override
 	 public void registrarEquipo(String nombre, String marca, String idcorreo) throws EquiposException {
- 		Subject currentUser = SecurityUtils.getSubject();
-		user = currentUser.getPrincipal().toString();
-		Date fecha = new Date(System.currentTimeMillis());
 		try {
 			equipoDAO.registrarEquipo(nombre, marca, idcorreo);
-			registrarNovedadEquipo("Registro de equipo", fecha, user, "Se registró el equipo " + nombre, nombre, null);
+			registrarNovedadEquipo("Registro de equipo", fecha, idcorreo, "Se registró el equipo " + nombre, nombre, null);
 			List<Equipo> equipos = consultarEquipos();
 			
 		    //antes de registrar elementos
@@ -138,7 +133,7 @@ public class EquiposServicesImpl implements EquiposServices{
 		    
 		    for(Elemento e: elementos) {
 		    	asociarElemento(equipoRegistrado.getNumero(),e.getId());
-		    	registrarNovedadElemento("Elemento asociado al equipo", fecha , user, "Se  asoció el elemento " + e.getNombre() + " al equipo " + equipoRegistrado.getNombre(), equipoRegistrado.getNombre(), e.getNombre());
+		    	registrarNovedadElemento("Asociación de elemento a equipo", fecha , idcorreo , "Se  asoció el elemento " + e.getNombre() + " al equipo " + equipoRegistrado.getNombre(), equipoRegistrado.getNombre(), e.getNombre());
 		    }
 		    EquiposServicesImpl.elSelected.clear();
 		}
@@ -164,17 +159,17 @@ public class EquiposServicesImpl implements EquiposServices{
 	 }
 	
 	/**
-	 * Método que permite la asociacion de un 
+	 * Método que permite la asociacion de un Laboratorio y un Equipo
 	 * @param nLab: Nombre del laboratorio
 	 * @param nome: Nombre del equipo
 	 * @throws EquiposException Errores con la operación
 	*/
 	@Override
-	public void asociacionEquipo(String nLab, String nome) throws EquiposException{
+	public void asociacionEquipo(String nLab, String nome, String user) throws EquiposException{
 		try {
 			equipoDAO.desasociarEquipo(true,nome);
 			equipoDAO.asociarEquipo(nLab,nome);
-			//registrarNovedadEquipo("Asociación equipo", fecha, user, "Se  asoció el equipo " + nome + " al laboratorio " + nLab , nome , nLab);
+			registrarNovedadEquipo("Asociación de equipo a laboratorio", fecha, user,"Se asoció el equipo "+nome+" al laboratorio "+nLab , nome, nLab);
 		}catch(PersistenceException e){  
  			throw new EquiposException("Error al asociar el equipo: ",e);  
 		}	
@@ -186,9 +181,10 @@ public class EquiposServicesImpl implements EquiposServices{
      * @throws EquiposException Errores con la operación
     */
 	@Override
-	  public void cambiarBajaEquipo(String nome) throws EquiposException{
+	  public void cambiarBajaEquipo(String nome, String user) throws EquiposException{
 		try{
 			equipoDAO.cambiarBajaEquipo(nome);
+			registrarNovedadEquipo("Equipo dado de baja", fecha, user,"Se dió de baja a el equipo "+nome, nome, null);	
 		}
 		catch(PersistenceException e){
 			throw new EquiposException("Error al cambiar baja del equipo",e);            
@@ -206,7 +202,7 @@ public class EquiposServicesImpl implements EquiposServices{
      @Override
  	 public void registrarElementoEquipo(String tipo, String nombre, int nequipo) throws EquiposException{
     	try {
-   		 elementoDAO.registrarElementoEquipo(tipo,nombre,nequipo);
+    		elementoDAO.registrarElementoEquipo(tipo,nombre,nequipo);
  		}
  		catch (PersistenceException ex) {
  			throw new EquiposException("Error al registrar elemento del equipo" + ex.getLocalizedMessage(), ex);
@@ -217,12 +213,15 @@ public class EquiposServicesImpl implements EquiposServices{
      * Método que permite registrar un elemento
 	 * @param tipo: Tipo del elemento
 	 * @param nombre: Nombre del elemento
+	 * @param idCorreo: Nombre del Usuario en sesión
 	 * @throws EquiposException Errores con la operación
      */
 	@Override
-	 public void registrarElemento(String tipo, String nombre) throws EquiposException{
+	 public void registrarElemento(String tipo, String nombre, String user) throws EquiposException{
 		try{
 			elementoDAO.registrarElemento(tipo, nombre);
+			registrarNovedadElemento("Registro de Elemento", fecha, user, "Se registró un " + tipo +" "+ nombre, null, nombre);
+			
 		}
 		catch(PersistenceException e){
 			throw new EquiposException("Error al registrar el elemento",e);            
@@ -301,19 +300,17 @@ public class EquiposServicesImpl implements EquiposServices{
 	}
 	
 	/**
-	 * Método que permite desasociar un elemento
-	 * @param disponible: Permite identificar la disponibilidad del elemento
-	 * @param nume: Identificador del equipo
+	 * Método que permite asociar un elemento a un equipo
+	 * @param id: Identificador del elemento
+	 * @param numero: Identificador del equipo
 	 * @param tipo: Tipo del elemento
 	 * @param equipoNombre: Nombre del equipo
 	 * @param elementoNombre: Nombre del elemento 
+	 * @param user: Nombre del usuario
 	 * @throws EquiposException Errores con la operación
 	*/
 	@Override
-	public void asociacionElemento(int id, int numero, String tipo, String equipoNombre, String elementoNombre) throws EquiposException{
-		Subject currentUser = SecurityUtils.getSubject();
-		user = currentUser.getPrincipal().toString();
-		Date fecha = new Date(System.currentTimeMillis());
+	public void asociacionElemento(int id, int numero, String tipo, String equipoNombre, String elementoNombre, String user) throws EquiposException{
 		try {
 			elementoDAO.desasociarElemento(true, numero, tipo);
 			elementoDAO.asociarElemento(numero, id);
@@ -374,9 +371,10 @@ public class EquiposServicesImpl implements EquiposServices{
      * @throws EquiposException Errores con la operación
      */
 	@Override
-	public void cambiarBajaElemento(boolean dBaja,String enom) throws EquiposException{
+	public void cambiarBajaElemento(boolean dBaja, String enom, String user) throws EquiposException{
 		try{
 			elementoDAO.cambiarBajaElemento(dBaja,enom);
+			registrarNovedadElemento("Elemento dado de baja ", fecha , user, "Se dió de baja a el elemento " + enom, null, enom);
 		}
 		catch(PersistenceException e){
 			throw new EquiposException("Error al cambiar baja del elemento",e);            
@@ -491,7 +489,6 @@ public class EquiposServicesImpl implements EquiposServices{
       */
 	 @Override
 	 public void registrarLaboratorio(String nombre, String idcorreo) throws EquiposException{
-		Date fecha = new Date(System.currentTimeMillis());
     	try{
     		laboratorioDAO.registrarLaboratorio(nombre, idcorreo);
     		registrarNovedadLaboratorio("Registro de laboratorio", fecha, idcorreo, "Se registró el laboratorio " + nombre, nombre);

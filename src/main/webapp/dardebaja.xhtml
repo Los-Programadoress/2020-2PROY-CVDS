@@ -9,6 +9,17 @@
 		<title>Dar de baja</title>
 		<link rel="stylesheet" href="master7.css"/>
 	</h:head>
+	<script type="text/javascript">
+		function ConfirmInscription(){
+			var respuesta = confirm("Estas seguro de dar de baja a el elemento?");
+			if(respuesta){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+	</script >
 	<body>
 		<h:form id="Equipos_Form">
 			<div class="en-sesion">
@@ -22,7 +33,7 @@
 					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
 					 rows="8" selection="#{registrarElementosBean.elementoSelec}"
                      rowKey="#{ael.id}" >
-				<f:facet name="header" >Elementos Registrados</f:facet>
+				<f:facet name="header" >Elementos Disponibles</f:facet>
 				<p:column class="columna" headerText="Tipo">
 					<h:outputText value="#{ael.tipo}" />
 				</p:column>
@@ -32,7 +43,7 @@
 				</p:column>
 				<p:column selectionMode="single" style="width:16px;text-align:center"/>
 			</p:dataTable>
-			<p:commandButton class="darBajaEl" update="Equipos_Form" actionListener="#{registrarElementosBean.cambiarBajaElemento(registrarElementosBean.elementoSelec.nombre)}" value="Baja Elemento"/>
+			<p:commandButton class="darBajaEl" update="Equipos_Form" onclick="return ConfirmInscription()" actionListener="#{registrarElementosBean.cambiarBajaElemento(registrarElementosBean.elementoSelec.nombre)}" value="Baja Elemento"/>
 			<h1 class="h2">Dar de baja Equipo</h1>
 			<p:autoComplete class="despliegue" placeholder="Equipo" dropdown="true" value="#{nombreEquipo}" completeMethod="#{registrarNovedadBean.consultarNombreEquipo()}"/>
 			<p:commandButton class="botonBajaEq" update="Equipos_Form" actionListener="#{RegistrarEquiposBean.cambiarBajaEquipo(nombreEquipo)}" value="Baja Equipo"/>
@@ -47,7 +58,7 @@
 				</p:column>
 				
 				<p:column class="columna" headerText="Dar de baja">
-					<p:commandButton class="botonTabla" update="Equipos_Form" actionListener="#{registrarElementosBean.cambiarBajaElemento(eleq.nombre)}" value="Baja Elemento"/>
+					<p:commandButton class="botonTabla" update="Equipos_Form" onclick="return ConfirmInscription()" actionListener="#{registrarElementosBean.cambiarBajaElemento(eleq.nombre)}" value="Baja Elemento"/>
 				</p:column>
 	 
 				<p:column class="columna" headerText="Asociacion">

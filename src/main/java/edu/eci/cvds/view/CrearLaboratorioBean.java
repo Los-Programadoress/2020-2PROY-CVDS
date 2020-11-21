@@ -37,7 +37,6 @@ public class CrearLaboratorioBean extends BasePageBean{
 	 }
 
 	public void registrarLaboratorio(String nombre) throws EquiposException{
-		System.out.println(nombre);
     	try {
     		//Capturar el usuario
     		Subject currentUser = SecurityUtils.getSubject();

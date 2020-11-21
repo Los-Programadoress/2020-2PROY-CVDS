@@ -51,12 +51,12 @@ public interface EquiposServices {
  	 public Equipo consultarEquipo(int nequipo) throws EquiposException;
  	 
  	/**
- 	 * Método que permite la asociacion de un 
+ 	 * Método que permite la asociacion de un laboratorio
  	 * @param nLab: Nombre del laboratorio
  	 * @param nome: Nombre del equipo
  	 * @throws EquiposException Errores con la operación
  	*/
- 	 public void asociacionEquipo(String nLab, String nome) throws EquiposException;
+ 	 public void asociacionEquipo(String nLab, String nome, String user) throws EquiposException;
  	 
  	/**
  	 * Método que permite cambiar el estado de dar de baja a un elemento
@@ -80,7 +80,7 @@ public interface EquiposServices {
       * @param nome: Nombre del equipo
       * @throws EquiposException Errores con la operación
       */
-	 public void cambiarBajaEquipo(String nome) throws EquiposException;
+	 public void cambiarBajaEquipo(String nome, String user) throws EquiposException;
 	 
 	//ELEMENTO 
  	/**
@@ -96,9 +96,10 @@ public interface EquiposServices {
       * Método que permite registrar un elemento
  	  * @param tipo: Tipo del elemento
  	  * @param nombre: Nombre del elemento
+ 	  * @param idCorreo: Nombre del Usuario en sesión
  	  * @throws EquiposException Errores con la operación
       */
- 	 public void registrarElemento(String tipo, String nombre) throws EquiposException;
+ 	 public void registrarElemento(String tipo, String nombre, String user) throws EquiposException;
  	 
  	/**
  	 * Método que permite asociar un elemento a un equipo
@@ -146,7 +147,7 @@ public interface EquiposServices {
 	* @param elementoNombre: Nombre del elemento 
 	* @throws EquiposException Errores con la operación
 	*/
- 	public void asociacionElemento(int id, int numero, String tipo, String equipoNombre, String elementoNombre)throws EquiposException;
+ 	public void asociacionElemento(int id, int numero, String tipo, String equipoNombre, String elementoNombre, String user)throws EquiposException;
 	
 	/**
 	 * Método que permite desasociar un elemento
@@ -163,7 +164,7 @@ public interface EquiposServices {
      * @param enom: Nombre del elemento
      * @throws EquiposException Errores con la operación
      */
-	public void cambiarBajaElemento(boolean dBaja,String enom) throws EquiposException;
+	public void cambiarBajaElemento(boolean dBaja, String enom, String user) throws EquiposException;
 	
 	/**
 	* Método que retorna el conjunto de elementos seleccionados
