@@ -24,6 +24,7 @@
       e.disponible,
       e.dadoDeBaja
     FROM equipo AS e
+    WHERE e.dadoDeBaja = false;
   </select>
   
   <select parameterType="map" id="consultarEquipo" resultMap="EquipoResult">

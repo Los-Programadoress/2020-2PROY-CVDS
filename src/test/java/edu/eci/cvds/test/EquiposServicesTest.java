@@ -49,7 +49,7 @@ public class EquiposServicesTest {
      * Debe permitir registrar un equipo con sus elementos.
      * Registro Válido: Debe existir el usuario para relacionarlo con el nuevo equipo.
      */
-    /*@Test
+    @Test
     public void deberiaRegistrarEquipo() {
     	try {
     		//elementos sin asociar
@@ -72,13 +72,13 @@ public class EquiposServicesTest {
     	} catch (EquiposException e) {
     		assertFalse(false);
     	}
-    }*/
+    }
     
     /**
      * No debe permitir registrar un equipo.
      * Registro Inválido: No debe existir el usuario para relacionarlo con el nuevo equipo.
      */
-    /*@Test
+    @Test
     public void noDeberiaRegistrarElementoEquipo() {
     	try {
     		//elementos sin asociar
@@ -100,12 +100,12 @@ public class EquiposServicesTest {
 		} catch (EquiposException e) {
     		assertTrue(true);
 		}
-    }*/
+    }
     
-   /* @Test
+    @Test
     public void deberíaAsociar() {
     	try {
-			equiposServices.asociacionEquipo("PLATAFORMAS", "SISTEMAS12");
+			equiposServices.asociacionEquipo("PLATAFORMAS", "SISTEMAS12", "maria.alfaro");
 			//equiposServices.asociacionEquipo("MULTIMEDIA", "SISTEMAS1");
 			assertTrue(true);
 			
@@ -113,25 +113,24 @@ public class EquiposServicesTest {
 			assertFalse(false);
 		}
     	
-    }*/
+    }
     
-    /*@Test
+    @Test
     public void deberíaDardeBajaEquipo() {
     	try {
-			equiposServices.cambiarBajaEquipo("SISTEMAS1");
-			
+			equiposServices.cambiarBajaEquipo("SISTEMAS1", "maria.alfaro");
 			assertTrue(true);
 			
 		} catch (EquiposException e) {
 			assertFalse(false);
 		}
     	
-    }*/
+    }
     
-    /*@Test
+    @Test
     public void deberíaDardeBajaElementos() {
     	try {
-			equiposServices.cambiarBajaElemento(true, "LED");
+			equiposServices.cambiarBajaElemento(true, "LED", "maria.alfaro");
 			equiposServices.desasociarElemento(true, 1, "Pantalla");
 			
 			assertTrue(true);
@@ -140,5 +139,5 @@ public class EquiposServicesTest {
 			assertFalse(false);
 		}
     	
-    }*/
+    }
 }

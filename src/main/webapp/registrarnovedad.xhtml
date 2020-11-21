@@ -24,7 +24,7 @@
 				<p:tab title="Novedades Equipos">
 					<p:dataTable var="nov" value="#{registrarNovedadBean.consultarNovedadEquipos()}"
 					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
-					 rows="8" selection="#{registrarElementosBean.elementoSelec}"
+					 rows="10" selection="#{registrarElementosBean.elementoSelec}"
                      rowKey="#{nov.id}">
 						<f:facet name="header" class="columna">Equipos</f:facet>
 			
@@ -50,7 +50,7 @@
 				<p:tab title="Novedades Elementos">
 					<p:dataTable var="nove" value="#{registrarNovedadBean.consultarNovedadElementos()}"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
-						rows="8" selection="#{registrarElementosBean.elementoSelec}"
+						rows="10" selection="#{registrarElementosBean.elementoSelec}"
 						rowKey="#{nov.id}">
 						<f:facet name="header" class="columna">Elementos</f:facet>
 				
@@ -76,7 +76,7 @@
 				<p:tab title="Novedades Laboratorios">
 					<p:dataTable var="nove" value="#{registrarNovedadBean.consultarNovedadLaboratorios()}"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
-						rows="8" selection="#{registrarElementosBean.elementoSelec}"
+						rows="10" selection="#{registrarElementosBean.elementoSelec}"
 						rowKey="#{nov.id}">
 						<f:facet name="header" class="columna">Laboratorios</f:facet>
 				

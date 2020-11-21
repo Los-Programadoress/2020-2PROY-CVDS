@@ -133,7 +133,7 @@ public class EquiposServicesImpl implements EquiposServices{
 		    
 		    for(Elemento e: elementos) {
 		    	asociarElemento(equipoRegistrado.getNumero(),e.getId());
-		    	registrarNovedadElemento("Asociación de elemento a equipo", fecha , idcorreo , "Se  asoció el elemento " + e.getNombre() + " al equipo " + equipoRegistrado.getNombre(), equipoRegistrado.getNombre(), e.getNombre());
+		    	registrarNovedadElemento("Asociación de elemento a equipo", fecha , idcorreo , "Se asoció el elemento " + e.getNombre() + " al equipo " + equipoRegistrado.getNombre(), equipoRegistrado.getNombre(), e.getNombre());
 		    }
 		    EquiposServicesImpl.elSelected.clear();
 		}
@@ -374,7 +374,7 @@ public class EquiposServicesImpl implements EquiposServices{
 	public void cambiarBajaElemento(boolean dBaja, String enom, String user) throws EquiposException{
 		try{
 			elementoDAO.cambiarBajaElemento(dBaja,enom);
-			registrarNovedadElemento("Elemento dado de baja ", fecha , user, "Se dió de baja a el elemento " + enom, null, enom);
+			//registrarNovedadElemento("Elemento dado de baja ", fecha , user, "Se dió de baja a el elemento " + enom, null, enom);
 		}
 		catch(PersistenceException e){
 			throw new EquiposException("Error al cambiar baja del elemento",e);            

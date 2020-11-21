@@ -88,7 +88,19 @@ body{
 	font-size: 16px;
 }
 
-.tabla2 .botonTabla{
+.botonTabla{
+	position: absolute;
+	top: 80%;
+	left: 41%;
+	background: #900;
+	color: #fff;
+	border: none;
+}
+
+.botonTabla2{
+	position: absolute;
+	top: 80%;
+	left: 71%;
 	background: #900;
 	color: #fff;
 	border: none;

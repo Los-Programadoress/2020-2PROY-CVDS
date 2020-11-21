@@ -59,7 +59,7 @@ public class RegistrarEquipoBean extends BasePageBean{
 		}
 	}
 	
-	public void cambiarBajaEquipo(String nome, String user) throws EquiposException{
+	public void cambiarBajaEquipo(String nome) throws EquiposException{
 		try{
 			equipoS.cambiarBajaEquipo(nome, user);
 		}
