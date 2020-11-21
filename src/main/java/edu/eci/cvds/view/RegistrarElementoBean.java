@@ -92,7 +92,6 @@ public class RegistrarElementoBean extends BasePageBean{
 			Subject currentUser = SecurityUtils.getSubject();
 			user = currentUser.getPrincipal().toString();
 			
-			System.out.println(enom);
 			equipoS.cambiarBajaElemento(true, enom, user);
 			info2();
 		}
@@ -103,7 +102,6 @@ public class RegistrarElementoBean extends BasePageBean{
 	 
 	 public void desasociarElemento(int nume, String tipo)throws EquiposException{
 		try {
-			System.out.println("eq: "+nume+ " "+ "tipo: "+tipo);
 			equipoS.desasociarElemento(true, nume, tipo);
 		}catch(EquiposException e){  
 			e.printStackTrace(); 

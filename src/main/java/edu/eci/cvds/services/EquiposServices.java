@@ -42,6 +42,14 @@ public interface EquiposServices {
       */
  	 public List<Equipo> consultarEquipos() throws EquiposException;
  	 
+ 	/**
+      * Método que permite consultar los equipos que no están dados de baja
+      * @throws EquiposException Errores con la operación
+      * @return lista de equipos consultados
+      */
+ 	 public List<Equipo> consultarEquiposNoDadosBaja() throws EquiposException;
+ 	
+ 	 
  	 /**
       * Método que permite consultar un equipo
       * @param numero: Número que identifica el equipo
@@ -57,6 +65,15 @@ public interface EquiposServices {
  	 * @throws EquiposException Errores con la operación
  	*/
  	 public void asociacionEquipo(String nLab, String nome, String user) throws EquiposException;
+ 	 
+ 	/**
+ 	 * Método que permite cambiar el estado de dar de baja a un elemento
+ 	 * @param nombre: Nombre del equipo 
+ 	 * @param marca: Marca del elemento
+ 	 * @param idCorreo: Usuario que registra el equipo
+ 	 * @throws EquiposException Errores con la operación
+ 	*/
+ 	public void registrarEquipo(String nombre, String marca, String idcorreo) throws EquiposException;
  	 
  	/**
  	 * Método que permite cambiar el estado de dar de baja a un elemento
@@ -96,7 +113,7 @@ public interface EquiposServices {
       * Método que permite registrar un elemento
  	  * @param tipo: Tipo del elemento
  	  * @param nombre: Nombre del elemento
- 	  * @param idCorreo: Nombre del Usuario en sesión
+ 	  * @param user: Nombre del Usuario en sesión
  	  * @throws EquiposException Errores con la operación
       */
  	 public void registrarElemento(String tipo, String nombre, String user) throws EquiposException;

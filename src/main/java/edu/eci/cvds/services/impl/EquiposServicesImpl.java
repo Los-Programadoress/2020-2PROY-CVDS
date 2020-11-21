@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import java.util.List;
-
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Elemento;
@@ -96,6 +95,21 @@ public class EquiposServicesImpl implements EquiposServices{
  	    }
  	 }
  	 
+ 	/**
+      * Método que permite consultar los equipos que no están dados de baja
+      * @throws EquiposException Errores con la operación
+      * @return lista de equipos consultados
+      */
+ 	 @Override
+ 	 public  List<Equipo> consultarEquiposNoDadosBaja() throws EquiposException{
+ 		try{
+ 			return equipoDAO.consultarEquiposNoDadosBaja();
+ 		}
+ 		catch(PersistenceException e){
+ 	        throw new EquiposException("Error al consultar los equipos",e);            
+ 	    }
+ 	 }
+ 	 
  	 /**
       * Método que permite consultar un equipo
       * @param numero: Número que identifica el equipo
@@ -121,9 +135,9 @@ public class EquiposServicesImpl implements EquiposServices{
    */
  	 @Override
 	 public void registrarEquipo(String nombre, String marca, String idcorreo) throws EquiposException {
+
 		try {
 			equipoDAO.registrarEquipo(nombre, marca, idcorreo);
-			registrarNovedadEquipo("Registro de equipo", fecha, idcorreo, "Se registró el equipo " + nombre, nombre, null);
 			List<Equipo> equipos = consultarEquipos();
 			
 		    //antes de registrar elementos
@@ -136,6 +150,8 @@ public class EquiposServicesImpl implements EquiposServices{
 		    	registrarNovedadElemento("Asociación de elemento a equipo", fecha , idcorreo , "Se asoció el elemento " + e.getNombre() + " al equipo " + equipoRegistrado.getNombre(), equipoRegistrado.getNombre(), e.getNombre());
 		    }
 		    EquiposServicesImpl.elSelected.clear();
+		    registrarNovedadEquipo("Registro de equipo", fecha, idcorreo, "Se registró el equipo " + nombre, nombre, null);
+			
 		}
 		catch (PersistenceException ex) {
 			throw new EquiposException("Error al registrar el equipo", ex);
@@ -178,12 +194,13 @@ public class EquiposServicesImpl implements EquiposServices{
     /**
      * Método que permite cambiar el estado de dar de baja a un equipo
      * @param nome: Nombre del equipo
+     * @param user Usuario
      * @throws EquiposException Errores con la operación
     */
 	@Override
 	  public void cambiarBajaEquipo(String nome, String user) throws EquiposException{
 		try{
-			equipoDAO.cambiarBajaEquipo(nome);
+			equipoDAO.cambiarBajaEquipo(true, nome);
 			registrarNovedadEquipo("Equipo dado de baja", fecha, user,"Se dió de baja a el equipo "+nome, nome, null);	
 		}
 		catch(PersistenceException e){
@@ -221,7 +238,6 @@ public class EquiposServicesImpl implements EquiposServices{
 		try{
 			elementoDAO.registrarElemento(tipo, nombre);
 			registrarNovedadElemento("Registro de Elemento", fecha, user, "Se registró un " + tipo +" "+ nombre, null, nombre);
-			
 		}
 		catch(PersistenceException e){
 			throw new EquiposException("Error al registrar el elemento",e);            
@@ -374,7 +390,7 @@ public class EquiposServicesImpl implements EquiposServices{
 	public void cambiarBajaElemento(boolean dBaja, String enom, String user) throws EquiposException{
 		try{
 			elementoDAO.cambiarBajaElemento(dBaja,enom);
-			//registrarNovedadElemento("Elemento dado de baja ", fecha , user, "Se dió de baja a el elemento " + enom, null, enom);
+			registrarNovedadElemento("Elemento dado de baja ", fecha , user, "Se dió de baja a el elemento " + enom, null, enom);
 		}
 		catch(PersistenceException e){
 			throw new EquiposException("Error al cambiar baja del elemento",e);            

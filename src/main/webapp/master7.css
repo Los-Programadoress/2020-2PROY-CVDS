@@ -48,7 +48,7 @@ body{
 
 .separat{
 	position: absolute;
-	top: 13%;
+	top: 15%;
 	left: 50%;
 }
 
@@ -90,8 +90,8 @@ body{
 
 .botonTabla{
 	position: absolute;
-	top: 80%;
-	left: 41%;
+	top: 85%;
+	left: 63%;
 	background: #900;
 	color: #fff;
 	border: none;
@@ -99,8 +99,8 @@ body{
 
 .botonTabla2{
 	position: absolute;
-	top: 80%;
-	left: 71%;
+	top: 85%;
+	left: 74%;
 	background: #900;
 	color: #fff;
 	border: none;

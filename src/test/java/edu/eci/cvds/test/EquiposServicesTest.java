@@ -27,7 +27,7 @@ public class EquiposServicesTest {
      * Instancia los Servicios de EquiposServices.
      */
     public EquiposServicesTest() {
-        equiposServices = EquiposServicesFactory.getInstance().getEquiposServices();
+        equiposServices = EquiposServicesFactory.getInstance().getEquiposServicesTesting();
     }
     
     /**

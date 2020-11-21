@@ -86,7 +86,6 @@ public class RegistrarEquipoBean extends BasePageBean{
 		 PrimeFaces.current().dialog().showMessageDynamic(message);
 	 }
 	
-	
 	public List<Elemento> consultarElementosSelected(){
  		return equipoS.getElSelected();
  	}
