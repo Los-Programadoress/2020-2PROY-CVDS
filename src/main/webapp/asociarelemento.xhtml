@@ -33,19 +33,11 @@
 			<img class="imagen3" src="img/pc.png"/>
 			<img class="imagen4" src="img/elementos.png"/>
 			<p:commandButton update="Equipos_Form" onclick="return ConfirmInscription()" actionListener="#{registrarElementosBean.asociacionElemento(registrarElementosBean.elementoSelec.id, RegistrarEquiposBean.equipoSelec.numero, registrarElementosBean.elementoSelec.tipo, RegistrarEquiposBean.equipoSelec.nombre, registrarElementosBean.elementoSelec.nombre)}" class="boton2" value="Asociar"/>
-<<<<<<< HEAD
-			<p:dataTable var="ael" value="#{registrarElementosBean.consultarElementos()}" class="tabla2" 
-					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
-					 rows="6" selection="#{registrarElementosBean.elementoSelec}"
-                     rowKey="#{ael.id}" >
-				<f:facet name="header" >Elementos Registrados</f:facet>
-=======
 			<p:dataTable var="ael" value="#{registrarElementosBean.consultarElementosDisponibles()}" class="tabla2" 
 					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
 					 rows="6" selection="#{registrarElementosBean.elementoSelec}"
                      rowKey="#{ael.id}" >
 				<f:facet name="header" >Elementos Disponibles</f:facet>
->>>>>>> develop
 				<p:column class="columna" headerText="Tipo">
 					<h:outputText value="#{ael.tipo}" />
 				</p:column>

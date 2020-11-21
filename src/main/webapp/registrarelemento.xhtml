@@ -28,11 +28,7 @@
 			<p:inputText class="input" placeholder="Modelo" type="String" value="#{modelo}"/>
 			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento(modelo, modelo)}" class="boton" value="Registrar" />
 			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElementos()}" class="tabla"
-<<<<<<< HEAD
-			paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-=======
 				paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
->>>>>>> develop
                      rows="8" selectionMode="single"
                      rowKey="#{rel.id}">
 				<f:facet name="header" class="columna">Elementos Registrados</f:facet>
@@ -48,13 +44,10 @@
 				<p:column class="columna" headerText="Disponible">
 					<h:outputText value="#{rel.disponibilidad}" />
 				</p:column>
-<<<<<<< HEAD
-=======
 				
 				<p:column class="columna" headerText="Dado de Baja">
 					<h:outputText value="#{rel.bajado}" />
 				</p:column>
->>>>>>> develop
 			</p:dataTable>
 			
 		</h:form>

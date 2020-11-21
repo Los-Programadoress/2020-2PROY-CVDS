@@ -13,11 +13,7 @@
 	<body>
 		<h:form id="form">
 			<center>
-<<<<<<< HEAD
-				<h1 class="h1">Registrar Novedades</h1>
-=======
 				<h1 class="h1">Registro de Novedades</h1>
->>>>>>> develop
 			</center>
 			<div class="en-sesion">
 				<a href="/faces/sesion.xhtml"><p:commandButton type="button" class="menu" update="Equipos_Form" value="Menú"/></a>
@@ -28,11 +24,7 @@
 				<p:tab title="Novedades Equipos">
 					<p:dataTable var="nov" value="#{registrarNovedadBean.consultarNovedadEquipos()}"
 					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
-<<<<<<< HEAD
-					 rows="8" selection="#{registrarElementosBean.elementoSelec}"
-=======
 					 rows="10" selection="#{registrarElementosBean.elementoSelec}"
->>>>>>> develop
                      rowKey="#{nov.id}">
 						<f:facet name="header" class="columna">Equipos</f:facet>
 			
@@ -58,11 +50,7 @@
 				<p:tab title="Novedades Elementos">
 					<p:dataTable var="nove" value="#{registrarNovedadBean.consultarNovedadElementos()}"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
-<<<<<<< HEAD
-						rows="8" selection="#{registrarElementosBean.elementoSelec}"
-=======
 						rows="10" selection="#{registrarElementosBean.elementoSelec}"
->>>>>>> develop
 						rowKey="#{nov.id}">
 						<f:facet name="header" class="columna">Elementos</f:facet>
 				
@@ -88,11 +76,7 @@
 				<p:tab title="Novedades Laboratorios">
 					<p:dataTable var="nove" value="#{registrarNovedadBean.consultarNovedadLaboratorios()}"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
-<<<<<<< HEAD
-						rows="8" selection="#{registrarElementosBean.elementoSelec}"
-=======
 						rows="10" selection="#{registrarElementosBean.elementoSelec}"
->>>>>>> develop
 						rowKey="#{nov.id}">
 						<f:facet name="header" class="columna">Laboratorios</f:facet>
 				
