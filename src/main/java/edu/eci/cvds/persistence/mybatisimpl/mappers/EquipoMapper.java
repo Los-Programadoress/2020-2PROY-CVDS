@@ -15,6 +15,13 @@ public interface EquipoMapper {
 	 public List<Equipo> consultarEquipos();
 	 
 	 /**
+     * Método que permite consultar los equipos no dados de baja
+     * @throws PersistenceException Errores con la base de datos
+     * @return lista de equipos consultados
+     */
+	 public List<Equipo> consultarEquiposNoDadosBaja();
+		
+	 /**
       * Método que permite consultar un equipo
       * @param numero: Número que identifica el equipo
       * @return Equipo consultado
@@ -34,7 +41,7 @@ public interface EquipoMapper {
       * @param nequipo: Número que identifica el equipo
       * @return lista de elementos del equipo consultados
       */
-	 public List<Elemento> consultarElementosEquipo(@Param("nequipo")int nequipo);
+	 public List<Elemento> consultarElementosEquipo(@Param("nequipo")String nequipo);
 	 
 	 /**
 	  * Método que permite asociar un equipo a un laboratorio
@@ -51,9 +58,10 @@ public interface EquipoMapper {
     public void desasociarEquipo(@Param("disp")boolean disponible, @Param("nome")String nome);
     
     /**
-     * Método que permite cambiar el estado de dar de baja a un elemento
-     * @param dBaja: Cambiar estado de baja al elemento
-     * @param eId: Identificador del elemento
+     * Método que permite cambiar el estado de dar de baja a un equipo
+     * @param dBaja: Cambiar estado de baja al equipo
+     * @param nome: Nombre del equipo
      */
-	public void cambiarBajaEquipo(@Param("dBaja")boolean dBaja, @Param("eId")int eId);
+	public void cambiarBajaEquipo(@Param("dbaja")boolean dbaja, @Param("nome") String nome);
+
 }

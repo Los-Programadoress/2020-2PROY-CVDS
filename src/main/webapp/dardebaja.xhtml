@@ -9,6 +9,17 @@
 		<title>Dar de baja</title>
 		<link rel="stylesheet" href="master7.css"/>
 	</h:head>
+	<script type="text/javascript">
+		function ConfirmInscription(){
+			var respuesta = confirm("Estas seguro de dar de baja a el elemento?");
+			if(respuesta){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+	</script >
 	<body>
 		<h:form id="Equipos_Form">
 			<div class="en-sesion">
@@ -18,11 +29,11 @@
 			</div>
 			<h1 class="h1">Dar de baja Elemento</h1>
 			<p:separator style="width:3px;height:600px" class="separat"/>
-			<p:dataTable var="ael" value="#{registrarElementosBean.consultarElementos()}" class="tabla" 
+			<p:dataTable var="ael" value="#{registrarElementosBean.consultarElementosDisponibles()}" class="tabla" 
 					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
 					 rows="8" selection="#{registrarElementosBean.elementoSelec}"
                      rowKey="#{ael.id}" >
-				<f:facet name="header" >Elementos Registrados</f:facet>
+				<f:facet name="header" >Elementos Disponibles</f:facet>
 				<p:column class="columna" headerText="Tipo">
 					<h:outputText value="#{ael.tipo}" />
 				</p:column>
@@ -32,7 +43,26 @@
 				</p:column>
 				<p:column selectionMode="single" style="width:16px;text-align:center"/>
 			</p:dataTable>
-			<p:commandButton class="darBajaEl" update="Equipos_Form" actionListener="#{shiroBean.doLogOut()}" value="Baja Elemento"/>
+			<p:commandButton class="darBajaEl" update="Equipos_Form" onclick="return ConfirmInscription()" actionListener="#{registrarElementosBean.cambiarBajaElemento(registrarElementosBean.elementoSelec.nombre)}" value="Baja Elemento"/>
+			 <h1 class="h2">Dar de baja Equipo</h1>
+			<p:autoComplete class="despliegue" placeholder="Equipo" dropdown="true" value="#{nombreEquipo}" completeMethod="#{registrarNovedadBean.consultarNombreEquipo()}"/>
+			<p:commandButton class="botonBajaEq" update="Equipos_Form" actionListener="#{RegistrarEquiposBean.cambiarBajaEquipo(nombreEquipo)}" value="Baja Equipo"/>
+			
+			<p:dataTable var="eleq" value="#{RegistrarEquiposBean.consultarElementosEquipo(nombreEquipo)}" class="tabla3" selection="#{registrarElementosBean.elementoSelec}"
+				rowKey="#{eleq.id}">
+				<f:facet name="header" >Elementos del Equipo</f:facet>
+				<p:column class="columna" headerText="Tipo">
+					<h:outputText value="#{eleq.tipo}" />
+				</p:column>
+	 
+				<p:column class="columna" headerText="Marca">
+					<h:outputText value="#{eleq.nombre}" />
+				</p:column>
+				<p:column selectionMode="single" style="width:16px;text-align:center"/>
+			</p:dataTable>
+			<p:commandButton class="botonTabla" update="Equipos_Form" onclick="return ConfirmInscription()" actionListener="#{registrarElementosBean.cambiarBajaElemento('LED')}" value="Dar de Baja"/>
+			<p:commandButton class="botonTabla2" update="Equipos_Form" actionListener="#{registrarElementosBean.desasociarElemento(registrarElementosBean.elementoSelec.id,registrarElementosBean.elementoSelec.tipo)}" value="Eliminar Asociación"/>
+			
 		</h:form>
 	</body>
 </html>

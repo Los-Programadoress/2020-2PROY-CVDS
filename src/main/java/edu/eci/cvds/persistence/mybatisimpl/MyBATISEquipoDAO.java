@@ -3,18 +3,14 @@ package edu.eci.cvds.persistence.mybatisimpl;
 import java.util.List;
 
 import org.mybatis.guice.transactional.Transactional;
-
 import com.google.inject.Inject;
-
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.persistence.EquipoDAO;
 import edu.eci.cvds.persistence.PersistenceException;
-import edu.eci.cvds.persistence.mybatisimpl.mappers.ElementoMapper;
 import edu.eci.cvds.persistence.mybatisimpl.mappers.EquipoMapper;
 import edu.eci.cvds.persistence.mybatisimpl.mappers.UsuarioMapper;
-import edu.eci.cvds.services.EquiposException;
 
 public class MyBATISEquipoDAO implements EquipoDAO{
 	
@@ -33,6 +29,21 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	 public  List<Equipo> consultarEquipos() throws PersistenceException{
 		try{
 			return equipoMapper.consultarEquipos();
+		}
+		catch(Exception e){
+	        throw new PersistenceException("Error al consultar los equipos",e);            
+	    }
+	 }
+	 
+	 /**
+     * Método que permite consultar los equipos no dados de baja
+     * @throws PersistenceException Errores con la base de datos
+     * @return lista de equipos consultados
+     */
+	 @Override
+	 public  List<Equipo> consultarEquiposNoDadosBaja() throws PersistenceException{
+		try{
+			return equipoMapper.consultarEquiposNoDadosBaja();
 		}
 		catch(Exception e){
 	        throw new PersistenceException("Error al consultar los equipos",e);            
@@ -83,7 +94,7 @@ public class MyBATISEquipoDAO implements EquipoDAO{
      * @return lista de elementos del equipo consultados
      */
 	@Override
-	 public List<Elemento> consultarElementosEquipo(int nequipo) throws PersistenceException{
+	 public List<Elemento> consultarElementosEquipo(String nequipo) throws PersistenceException{
 		try{
 			return equipoMapper.consultarElementosEquipo(nequipo);
 		}
@@ -99,6 +110,7 @@ public class MyBATISEquipoDAO implements EquipoDAO{
      * @throws PersistenceException Errores con la base de datos
 	 */
 	@Override
+	@Transactional
 	 public void asociarEquipo(String nLab, String nome) throws PersistenceException{
 		try{
 			equipoMapper.asociarEquipo(nLab, nome);
@@ -114,6 +126,8 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	  * @param nome: Nombre del equipo
 	  * @throws PersistenceException Errores con la base de datos
 	  */
+	 @Override
+	 @Transactional
      public void desasociarEquipo(boolean disponible, String nome) throws PersistenceException{
     	 try{
     		equipoMapper.desasociarEquipo(disponible, nome);
@@ -123,18 +137,21 @@ public class MyBATISEquipoDAO implements EquipoDAO{
  	    }
      }
 	 
-	 /**
-      * Método que permite cambiar el estado de dar de baja a un elemento
-      * @param dBaja: Cambiar estado de baja al elemento
-      * @param eId: Identificador del elemento
+     /**
+      * Método que permite cambiar el estado de dar de baja a un equipo
+      * @param dBaja: Cambiar estado de baja al equipo
+      * @param nome: Nombre del equipo
       * @throws PersistenceException Errores con la base de datos
       */
-	 public void cambiarBajaEquipo(boolean dBaja,int eId) throws PersistenceException {
+     @Override
+     @Transactional
+	 public void cambiarBajaEquipo(boolean dBaja,String nome) throws PersistenceException {
 		 try{
-	 		equipoMapper.cambiarBajaEquipo(dBaja,eId);
+	 		equipoMapper.cambiarBajaEquipo(dBaja,nome);
 	 	}
 	 	catch(Exception e){
 	        throw new PersistenceException("Error al cambiar baja del equipo",e);            
 	    }
 	}
+
 }

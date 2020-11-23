@@ -114,11 +114,11 @@ public class MyBATISElementoDAO implements ElementoDAO{
 	 }
 	 
 	 /**
-     * Método que permite registrar un elemento
-     * @param tipo El tipo de elemento
-     * @throws PersistenceException Errores con la base de datos
-     * @return lista de elementos del tipo consultados
-     */
+      * Método que permite registrar un elemento
+      * @param tipo El tipo de elemento
+      * @throws PersistenceException Errores con la base de datos
+      * @return lista de elementos del tipo consultados
+      */
 	 @Override
 	 public List<Elemento> consultarElemento(String tipo) throws PersistenceException {
 		 String tipoC = convertToFormat(tipo);
@@ -129,6 +129,20 @@ public class MyBATISElementoDAO implements ElementoDAO{
 			 throw new PersistenceException("Error al consultar elementos de tipo: "+ tipoC,e);
 		 }
 	 }
+	 
+	 /**
+      * Método que permite consultar los elementos por disponibilidad
+      * @return lista de elementos consultados
+      */
+	@Override
+   	public List<Elemento> consultarElementosDisponibles() throws PersistenceException{
+   		try {
+			 return elementoMapper.consultarElementosDisponibles();
+		 }
+		 catch(Exception e){
+			 throw new PersistenceException("Error al consultar los elementos disponibles ",e);
+		 }
+   	}
 
 	 /**
      * Método que permite saber si es un tipo válido
@@ -162,18 +176,17 @@ public class MyBATISElementoDAO implements ElementoDAO{
 	/**
      * Método que permite cambiar el estado de dar de baja a un elemento
      * @param dBaja: Cambiar estado de baja al elemento
-     * @param eId: Identificador del elemento
+     * @param : Identificador del elemento
      * @throws EquiposException Errores con la operación
      */
 	@Override
-	public void cambiarBajaElemento(boolean dBaja,int eId) throws PersistenceException{
+	@Transactional
+	public void cambiarBajaElemento(boolean dBaja,String enom) throws PersistenceException{
 		try{
-			elementoMapper.cambiarBajaElemento(dBaja, eId);
+			elementoMapper.cambiarBajaElemento(dBaja, enom);
 		}
 		catch(Exception e){
            throw new PersistenceException("Error al cambiar la baja del elemento",e);            
        }
 	}
-	
-
 }

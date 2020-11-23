@@ -17,7 +17,7 @@
   </resultMap>
  
   <select parameterType="map" id="consultarEquipos" resultMap="EquipoResult">
-  SELECT
+  	SELECT
       e.numero,
       e.marca,
       e.nombre,
@@ -25,6 +25,17 @@
       e.dadoDeBaja
     FROM equipo AS e
   </select>
+  
+    <select parameterType="map" id="consultarEquiposNoDadosBaja" resultMap="EquipoResult">
+  	SELECT
+      e.numero,
+      e.marca,
+      e.nombre,
+      e.disponible,
+      e.dadoDeBaja
+    FROM equipo AS e
+    WHERE e.dadoDeBaja = false;
+  	</select>
   
   <select parameterType="map" id="consultarEquipo" resultMap="EquipoResult">
   SELECT
@@ -50,7 +61,7 @@
       el.disponible
     FROM equipo AS e
     LEFT JOIN elemento AS el ON e.numero = el.numEquipo
-    WHERE e.numero = #{nequipo}
+    WHERE e.nombre = #{nequipo}
   </select>
   
   <update parameterType="map" id="asociarEquipo">
@@ -66,8 +77,8 @@
   </update>
   
   <update parameterType="map" id="cambiarBajaEquipo">
-	UPDATE equipo
-	SET dadoDeBaja = #{dBaja}
-	WHERE numero = #{nume}
+  	UPDATE equipo
+	SET dadoDeBaja = #{dbaja}
+	WHERE nombre = #{nome};
   </update>
 </mapper>

@@ -40,6 +40,17 @@
 	  WHERE el.tipo = #{tipo} AND el.disponible = true;
 	</select>
 	
+	<select parameterType="map" id="consultarElementosDisponibles" resultMap="ElementoResult">
+	 SELECT
+	    el.id,
+	    el.tipo,
+	    el.nombre,
+	    el.disponible,
+	    el.dadoDeBaja
+	  FROM elemento AS el
+	  WHERE el.disponible = true;
+	</select>
+	
 	<update parameterType="map" id="desasociarElemento">
 		UPDATE elemento
 		SET numequipo = null, disponible = #{disp}
@@ -54,11 +65,11 @@
 	    el.disponible,
 	    el.dadoDeBaja
 	  FROM elemento AS el
-	</select> 
+	</select>
 	
   	<update parameterType="map" id="cambiarBajaElemento">
 		UPDATE elemento
-		SET dadoDeBaja = #{dBaja}
-		WHERE id = #{eId}
-  	</update> 
+	    SET dadoDeBaja = #{dBaja}
+	    WHERE nombre = #{enom};
+	</update>
 </mapper>

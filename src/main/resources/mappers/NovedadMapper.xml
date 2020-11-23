@@ -18,13 +18,13 @@
 	</insert>
 	
 	<insert parameterType="map" id="registrarNovedadEquipo">
-	   INSERT INTO novedad (titulo, fecha, responsable, detalle, nombreEq) 
-	   VALUES (#{titulo}, #{fecha}, #{resp}, #{detalle}, #{nEquip});
+	   INSERT INTO novedad (titulo, fecha, responsable, detalle, nombreEq, nombreLab) 
+	   VALUES (#{titulo}, #{fecha}, #{resp}, #{detalle}, #{nEquip}, #{nLab});
 	</insert>
 	
 	<insert parameterType="map" id="registrarNovedadElemento">
-	   INSERT INTO novedad (titulo, fecha, responsable, detalle, nombreElem) 
-	   VALUES (#{titulo}, #{fecha}, #{resp}, #{detalle}, #{nElem});
+	   INSERT INTO novedad (titulo, fecha, responsable, detalle, nombreEq, nombreElem) 
+	   VALUES (#{titulo}, #{fecha}, #{resp}, #{detalle}, #{nEq}, #{nElem});
 	</insert>
 	 
   	<select parameterType="map" id="consultarNovedadLaboratorios" resultMap="NovedadResult">

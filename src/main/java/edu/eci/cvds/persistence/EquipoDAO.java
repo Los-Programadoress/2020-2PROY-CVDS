@@ -19,6 +19,14 @@ public interface EquipoDAO {
       */
 	 public List<Equipo> consultarEquipos() throws PersistenceException;
 	 
+	 
+	 /**
+     * Método que permite consultar los equipos no dados de baja
+     * @throws PersistenceException Errores con la base de datos
+     * @return lista de equipos consultados
+     */
+	 public  List<Equipo> consultarEquiposNoDadosBaja() throws PersistenceException;
+	 
 	 /**
       * Método que permite consultar un equipo
       * @param numero: Número que identifica el equipo
@@ -42,7 +50,7 @@ public interface EquipoDAO {
       * @throws PersistenceException Errores con la base de datos
       * @return lista de elementos del equipo consultados
       */
-	 public List<Elemento> consultarElementosEquipo(int nequipo) throws PersistenceException;
+	 public List<Elemento> consultarElementosEquipo(String nequipo) throws PersistenceException;
 	 
 	 /**
  	  * Método que permite asociar un equipo a un laboratorio
@@ -61,12 +69,12 @@ public interface EquipoDAO {
       public void desasociarEquipo(boolean disponible, String nome) throws PersistenceException;
 	 
 	 
-	 /**
-      * Método que permite cambiar el estado de dar de baja a un elemento
-      * @param dBaja: Cambiar estado de baja al elemento
-      * @param eId: Identificador del elemento
-      * @throws PersistenceException Errores con la base de datos
-      */
-	 public void cambiarBajaEquipo(boolean dBaja,int eId) throws PersistenceException;
+      /**
+       * Método que permite cambiar el estado de dar de baja a un equipo
+       * @param dBaja: Cambiar estado de baja al equipo
+       * @param nome: Nombre del equipo
+       * @throws PersistenceException Errores con la base de datos
+       */
+ 	  public void cambiarBajaEquipo(boolean dBaja,String nome) throws PersistenceException;
 		 
 }

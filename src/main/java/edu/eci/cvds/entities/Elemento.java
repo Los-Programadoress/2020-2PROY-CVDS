@@ -1,5 +1,6 @@
 package edu.eci.cvds.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,16 +8,17 @@ import java.util.ArrayList;
 * @author: Angélica Alfaro - Laura Izquierdo - César Ortiz
 * @version: 1.0
 */
-public class Elemento {
-	
+public class Elemento implements Serializable{
+
+	private static final long serialVersionUID = 5832999501849461380L;
 	//Atributos de la clase
-	private static final long serialVersionUID = 1L;
 	private int id;
 	private String tipo;
 	private String nombre;
     private boolean disponible;
     private String disponibilidad;
     private boolean dadoDeBaja;
+    private String bajado;
     private ArrayList<Novedad> novedades;
 
     /**
@@ -37,7 +39,6 @@ public class Elemento {
 		this.tipo = tipo;
 		this.nombre = nombre;
 		this.disponible = disponible;
-		
 	}
 	
 	/**
@@ -123,7 +124,7 @@ public class Elemento {
      * @return La disponibilidad del elemento
      */
 	public String getDisponibilidad() {
-		if (isDisponible() == true) {
+		if (isDisponible()) {
 			this.disponibilidad = "Si";
 		}
 		else {
@@ -138,6 +139,20 @@ public class Elemento {
      */
 	public boolean isDadoDeBaja() {
 		return dadoDeBaja;
+	}
+	
+	/**
+     * Método que cambia el dado de baja del elemento para mostrarlo como Si o No
+     * @return El estado dado de baja del elemento
+     */
+	public String getBajado() {
+		if (isDadoDeBaja()) {
+			this.bajado = "Si";
+		}
+		else {
+			this.bajado = "No";
+		}
+		return bajado;
 	}
 	
 	/**
@@ -173,6 +188,6 @@ public class Elemento {
 		return "Elemento {id=" + id + ", tipo=" + tipo + ", nombre=" + nombre + ", disponible=" + disponible
 				+ ", dadoDeBaja=" + dadoDeBaja + ", novedades=" + novedades + "}";
 	}
-	
+
 	
 }

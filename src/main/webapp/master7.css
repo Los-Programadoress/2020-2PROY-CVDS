@@ -23,9 +23,8 @@ body{
 
 .en-sesion .imagen{
 	position: absolute;
-	top: 0%;
 	left: 40%;
-	height: 60px;
+	height: 65px;
 	width: 300px;
 }
 
@@ -49,7 +48,7 @@ body{
 
 .separat{
 	position: absolute;
-	top: 13%;
+	top: 15%;
 	left: 50%;
 }
 
@@ -65,15 +64,66 @@ body{
 	color: #fff;
 }
 
-.ui-datatable-header{
-	background: #900;
-	color: #fff;
-}
-
 .darBajaEl{
 	position: absolute;
 	top: 85%;
 	left: 20%;
+	background: #900;
+	color: #fff;
+	border: none;
+}
+
+.h2{
+	position: absolute;
+	top: 15%;
+	left: 66%;
+	color: #fff;
+}
+
+.tabla2{
+	position: absolute;
+	top: 30%;
+	left: 55%;
+	width: 40%;
+	font-size: 16px;
+}
+
+.botonTabla{
+	position: absolute;
+	top: 85%;
+	left: 63%;
+	background: #900;
+	color: #fff;
+	border: none;
+}
+
+.botonTabla2{
+	position: absolute;
+	top: 85%;
+	left: 74%;
+	background: #900;
+	color: #fff;
+	border: none;
+}
+
+.tabla3{
+	position: absolute;
+	top: 50%;
+	left: 55%;
+	width: 40%;
+	font-size: 16px;
+}
+
+.despliegue{
+	position: absolute;
+	top: 30%;
+	left: 67%;
+}
+
+.botonBajaEq{
+	position: absolute;
+	top: 40%;
+	left: 71%;
 	background: #900;
 	color: #fff;
 	border: none;

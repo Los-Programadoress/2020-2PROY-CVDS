@@ -223,15 +223,26 @@ body .ui-staticmessage.ui-message {
 
 .tap{
 	position: absolute;
-	top: 51%;
-	left: 15%;
-	width: 70%;
+	top: 24%;
+	left: 10%;
+	width: 80%;
 }
 
 .tap .columna{
 	background: #900;
 	color: #fff;
-	font-size: 15px;
+}
+
+.tap .columnaF{
+	background: #900;
+	color: #fff;
+	width: 17%;
+}
+
+.tap .columnaL{
+	background: #900;
+	color: #fff;
+	width: 37%;
 }
 
 .tap .ui-datatable-header{

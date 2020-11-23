@@ -1,7 +1,6 @@
 package edu.eci.cvds.persistence;
 
 import edu.eci.cvds.entities.Usuario;
-import edu.eci.cvds.services.EquiposException;
 
 /**
 * Interface que permite acceder a datos

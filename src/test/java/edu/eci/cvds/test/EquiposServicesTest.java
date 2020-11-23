@@ -14,7 +14,6 @@ import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.services.EquiposException;
 import edu.eci.cvds.services.EquiposServices;
 import edu.eci.cvds.services.EquiposServicesFactory;
-
 public class EquiposServicesTest {
     
     @Inject
@@ -106,11 +105,34 @@ public class EquiposServicesTest {
     @Test
     public void deberíaAsociar() {
     	try {
-			//equiposServices.registrarLaboratorio("LABISW A", "maria.alfaro");
-			//equiposServices.registrarLaboratorio("MULTIMEDIA A", "maria.alfaro");
-			//equiposServices.registrarEquipo("SISTEMAS12", "HP", "cesar.ortiz");
-			//equiposServices.asociacionEquipo("LABISW A", "SISTEMAS12");
-			equiposServices.asociacionEquipo("MULTIMEDIA", "SISTEMAS1");
+			equiposServices.asociacionEquipo("PLATAFORMAS", "SISTEMAS12", "maria.alfaro");
+			//equiposServices.asociacionEquipo("MULTIMEDIA", "SISTEMAS1");
+			assertTrue(true);
+			
+		} catch (EquiposException e) {
+			assertFalse(false);
+		}
+    	
+    }
+    
+    @Test
+    public void deberíaDardeBajaEquipo() {
+    	try {
+			equiposServices.cambiarBajaEquipo("SISTEMAS1", "maria.alfaro");
+			assertTrue(true);
+			
+		} catch (EquiposException e) {
+			assertFalse(false);
+		}
+    	
+    }
+    
+    @Test
+    public void deberíaDardeBajaElementos() {
+    	try {
+			equiposServices.cambiarBajaElemento(true, "LED", "maria.alfaro");
+			equiposServices.desasociarElemento(true, 1, "Pantalla");
+			
 			assertTrue(true);
 			
 		} catch (EquiposException e) {

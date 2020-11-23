@@ -49,17 +49,23 @@ public interface ElementoMapper {
 	public List<Elemento> consultarElementos();
 	
 	/**
-     * Método que permite registrar un elemento
+     * Método que permite consultar un elemento
      * @param tipo El tipo de elemento
      * @return lista de elementos del tipo consultados
      */
 	public List<Elemento> consultarElemento(@Param("tipo")String tipo);
 	
 	/**
+     * Método que permite consultar los elementos por disponibilidad
+     * @return lista de elementos consultados
+     */
+	public List<Elemento> consultarElementosDisponibles();
+	
+	/**
      * Método que permite cambiar el estado de dar de baja a un elemento
      * @param dBaja: Cambiar estado de baja al elemento
-     * @param eId: Identificador del elemento
+     * @param enom: Nombre del elemento
      */
-	public void cambiarBajaElemento(@Param("dBaja") boolean dBaja, @Param("eId") int eId);
+	public void cambiarBajaElemento(@Param("dBaja") boolean dBaja, @Param("enom") String enom);
 	
 }
