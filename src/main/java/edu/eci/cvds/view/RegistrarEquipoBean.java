@@ -69,6 +69,7 @@ public class RegistrarEquipoBean extends BasePageBean{
 	
 	public List<Elemento> consultarElementosEquipo(String nequipo) throws EquiposException{
 		try{
+			
 			elementosEq = equipoS.consultarElementosEquipo(nequipo);
 		}
 		catch(EquiposException e){          

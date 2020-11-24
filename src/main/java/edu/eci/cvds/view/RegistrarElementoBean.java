@@ -89,9 +89,9 @@ public class RegistrarElementoBean extends BasePageBean{
 	 
 	 public void cambiarBajaElemento(String enom) throws EquiposException{
 		try{
+			System.out.println("HOLA: "+enom);
 			Subject currentUser = SecurityUtils.getSubject();
 			user = currentUser.getPrincipal().toString();
-			
 			equipoS.cambiarBajaElemento(true, enom, user);
 			info2();
 		}

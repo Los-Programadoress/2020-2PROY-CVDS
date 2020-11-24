@@ -67,6 +67,7 @@ public class RegistrarNovedadBean extends BasePageBean{
 	 
 	public List<String> consultarNombreEquipo() throws EquiposException{
 		List<String> nombreEq = new ArrayList<String>();
+		nombreEq.clear();
 		try {
 			nombreEquipos = equipoS.consultarEquipos();
 			for(Equipo es:nombreEquipos) {
