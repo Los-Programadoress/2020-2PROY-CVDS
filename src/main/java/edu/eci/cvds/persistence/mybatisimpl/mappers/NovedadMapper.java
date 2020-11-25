@@ -47,16 +47,37 @@ public interface NovedadMapper {
 	 public List<Novedad> consultarNovedadLaboratorios(); 
 	 
 	 /**
-      * Método que permite consultar la novedad de los laboratorios
+      * Método que permite consultar la novedad de los equipo
       * @return lista de novedades del equipo
       */
 	 public List<Novedad> consultarNovedadEquipos(); 
 	 
 	 /**
-      * Método que permite consultar la novedad de los laboratorios
+      * Método que permite consultar la novedad de los elementos
       * @return lista de novedades del elemento
       */
 	 public List<Novedad> consultarNovedadElementos(); 
+	 
+	 /**
+      * Método que permite consultar la novedad un equipo
+      * @param equipoNombre: Nombre del equipo a consultar
+      * @return lista de novedades del equipo
+      */
+	 public List<Novedad> consultarNovedadesEquipo(@Param("equipoNombre")String equipoNombre);
+	 
+	 /**
+      * Método que permite consultar la novedad un elemento
+      * @param elementoNombre: Nombre del elemento a consultar
+      * @return lista de novedades del elemento
+      */
+	 public List<Novedad> consultarNovedadesElemento(@Param("elementoNombre")String elementoNombre);
+	 
+	 /**
+      * Método que permite consultar la novedad un laboratorio
+      * @param laboratorioNombre: Nombre del laboratorio a consultar
+      * @return lista de novedades del laboratorio
+      */
+	 public List<Novedad> consultarNovedadesLaboratorio(@Param("laboratorioNombre")String laboratorioNombre);
 	 
 	 
 	 

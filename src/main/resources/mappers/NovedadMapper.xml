@@ -68,4 +68,46 @@
        ON u.idcorreo = n.responsable
        WHERE nombreElem is not null
    </select>
+   
+   <select parameterType="map" id="consultarNovedadesEquipo" resultMap="NovedadResult">
+	  SELECT
+	  	n.id,
+	  	n.titulo,
+	  	n.fecha,
+	  	n.detalle,
+	  	n.nombreEq,
+	  	u.idcorreo
+       FROM novedad AS n
+       LEFT JOIN usuario AS u
+       ON u.idcorreo = n.responsable
+       WHERE n.nombreEq = #{equipoNombre}
+   </select>
+   
+   <select parameterType="map" id="consultarNovedadesElemento" resultMap="NovedadResult">
+	  SELECT
+	  	n.id,
+	  	n.titulo,
+	  	n.fecha,
+	  	n.detalle,
+	  	n.nombreelem,
+	  	u.idcorreo
+       FROM novedad AS n
+       LEFT JOIN usuario AS u
+       ON u.idcorreo = n.responsable
+       WHERE n.nombreelem = #{elementoNombre}
+   </select>
+   
+    <select parameterType="map" id="consultarNovedadesElemento" resultMap="NovedadResult">
+	  SELECT
+	  	n.id,
+	  	n.titulo,
+	  	n.fecha,
+	  	n.detalle,
+	  	n.nombrelab,
+	  	u.idcorreo
+       FROM novedad AS n
+       LEFT JOIN usuario AS u
+       ON u.idcorreo = n.responsable
+       WHERE n.nombrelab = #{laboratorioNombre}
+   </select>
 </mapper>

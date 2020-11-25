@@ -4,6 +4,8 @@ package edu.eci.cvds.persistence.mybatisimpl;
 import java.sql.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Novedad;
@@ -25,6 +27,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
 	 * @param nLab: Nombre del laboratorio que tiene la novedad
 	 * @throws PersistenceException Errores con la base de datos
      */
+	@Override
 	 public void registrarNovedadLaboratorio(String titulo, Date fecha, String resp, String detalle, String nLab) throws PersistenceException{
     	try{
     		novedadMapper.registrarNovedadLaboratorio(titulo, fecha, resp, detalle, nLab);
@@ -44,6 +47,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
 	  * @param nLab: Nombre del laboratorio que tiene la novedad
 	  * @throws PersistenceException Errores con la base de datos
 	  */
+	 @Override
 	 public void registrarNovedadEquipo(String titulo, Date fecha, String resp, String detalle, String nEquip, String nLab) throws PersistenceException{
 		 try{
 	    	novedadMapper.registrarNovedadEquipo(titulo, fecha, resp, detalle, nEquip, nLab);
@@ -63,6 +67,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
 	  * @param nEq: Nombre del equipo que tiene la novedad
 	  * @throws PersistenceException Errores con la base de datos
 	  */
+	 @Override
 	 public void registrarNovedadElemento(String titulo, Date fecha, String resp, String detalle, String nEq, String nElem) throws PersistenceException{
 		 try{
 	    	novedadMapper.registrarNovedadElemento(titulo, fecha, resp, detalle, nEq, nElem);
@@ -77,6 +82,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
       * @throws PersistenceException Errores con la base de datos
       * @return lista de novedades del laboratorio
       */
+	 @Override
 	 public List<Novedad> consultarNovedadLaboratorios() throws PersistenceException{
 		 try{
 	   		return novedadMapper.consultarNovedadLaboratorios();
@@ -91,6 +97,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
       * @throws PersistenceException Errores con la base de datos
       * @return lista de novedades del equipo
       */
+	 @Override
 	 public List<Novedad> consultarNovedadEquipos() throws PersistenceException{
 		 try{
 		   	return novedadMapper.consultarNovedadEquipos();
@@ -105,6 +112,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
       * @throws PersistenceException Errores con la base de datos
       * @return lista de novedades del elemento
       */
+	 @Override
 	 public List<Novedad> consultarNovedadElementos() throws PersistenceException{
 		 try{
 			 return novedadMapper.consultarNovedadElementos();
@@ -112,5 +120,50 @@ public class MyBATISNovedadDAO implements NovedadDAO {
 		catch(Exception e){
 	        throw new PersistenceException("Error al consultar las novedades de los elementos",e);            
 	    }  
+	 }
+	 
+	 /**
+      * Método que permite consultar la novedad un equipo
+      * @param equipoNombre: Nombre del equipo a consultar
+      * @return lista de novedades del equipo
+      */
+	 @Override
+	 public List<Novedad> consultarNovedadesEquipo(String equipoNombre) throws PersistenceException{
+		 try{
+			 return novedadMapper.consultarNovedadesEquipo(equipoNombre);
+		}
+		catch(Exception e){
+	        throw new PersistenceException("Error al consultar las novedades del equipo",e);            
+	    }   
+	 }
+	 
+	 /**
+      * Método que permite consultar la novedad un elemento
+      * @param elementoNombre: Nombre del elemento a consultar
+      * @return lista de novedades del elemento
+      */
+	 @Override
+	 public List<Novedad> consultarNovedadesElemento(String elementoNombre) throws PersistenceException{
+		try{
+			 return novedadMapper.consultarNovedadesElemento(elementoNombre);
+		}
+		catch(Exception e){
+	        throw new PersistenceException("Error al consultar las novedades del elemento",e);    
+	    } 
+	 }
+	 
+	 /**
+      * Método que permite consultar la novedad un laboratorio
+      * @param laboratorioNombre: Nombre del laboratorio a consultar
+      * @return lista de novedades del laboratorio
+      */
+	 @Override
+	 public List<Novedad> consultarNovedadesLaboratorio(String laboratorioNombre) throws PersistenceException{
+		try{
+			 return novedadMapper.consultarNovedadesLaboratorio(laboratorioNombre);
+		}
+		catch(Exception e){
+	        throw new PersistenceException("Error al consultar las novedades del laboratorio",e);            
+	    } 
 	 }
 }

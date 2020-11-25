@@ -25,5 +25,10 @@ public interface LaboratorioDAO {
      * @throws PersistenceException Errores con la base de datos
      */
 	 public List<Laboratorio> consultarLaboratorios() throws PersistenceException;
-
+	 
+	 /**
+	  * Método que permite cerrar un laboratorio
+	  * @param nombreLab: Nombre del laboratorio que va a cerrarse
+	  */
+	 public void cerrarLaboratorio(String nombreLab) throws PersistenceException;
 }

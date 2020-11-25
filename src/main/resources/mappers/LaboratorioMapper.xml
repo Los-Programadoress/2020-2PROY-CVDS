@@ -24,4 +24,10 @@
        LEFT JOIN usuario AS u 
        ON l.usuario_idcorreo = u.idcorreo;
    </select>
+   
+   <update parameterType="map" id="cerrarLaboratorio">
+		UPDATE laboratorio
+	    SET estaCerrado = true
+	    WHERE nombre = #{nombreLab};
+	</update>
 </mapper>

@@ -9,6 +9,7 @@ import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.entities.Usuario;
+import edu.eci.cvds.persistence.PersistenceException;
 
 /**
 * Interface que cuenta con los servicios
@@ -242,6 +243,27 @@ public interface EquiposServices {
       * @return lista de novedades del elemento
       */
 	 public List<Novedad> consultarNovedadElementos() throws EquiposException;
+	 
+	/**
+     * Método que permite consultar la novedad un equipo
+     * @param equipoNombre: Nombre del equipo a consultar
+     * @return lista de novedades del equipo
+     */
+	 public List<Novedad> consultarNovedadesEquipo(String equipoNombre) throws EquiposException;
+
+	 /**
+      * Método que permite consultar la novedad un elemento
+      * @param elementoNombre: Nombre del elemento a consultar
+      * @return lista de novedades del elemento
+      */
+	 public List<Novedad> consultarNovedadesElemento(String elementoNombre) throws EquiposException;
+	 
+	 /**
+      * Método que permite consultar la novedad un laboratorio
+      * @param laboratorioNombre: Nombre del laboratorio a consultar
+      * @return lista de novedades del laboratorio
+      */
+	 public List<Novedad> consultarNovedadesLaboratorio(String laboratorioNombre) throws EquiposException;
 	
 	//LABORATORIO
 	 /**
@@ -250,7 +272,7 @@ public interface EquiposServices {
       * @param idcorreo: Identificador del correo del usuario
       * @throws EquiposException Errores con la operación
      */
-	public void registrarLaboratorio(String nombre, String idcorreo ) throws EquiposException;	 
+	public void registrarLaboratorio(String nombre, String idcorreo) throws EquiposException;	 
 	 
 	/**
      * Método que permite consultar los laboratorios
@@ -258,5 +280,11 @@ public interface EquiposServices {
      * @throws EquiposException Errores con la operación
      */
 	 public List<Laboratorio> consultarLaboratorios() throws EquiposException;
+	 
+	 /**
+	  * Método que permite cerrar un laboratorio
+	  * @param nombreLab: Nombre del laboratorio que va a cerrarse
+	  */
+	 public void cerrarLaboratorio(String nombreLab) throws EquiposException;
 
 }

@@ -14,6 +14,8 @@ public class Laboratorio  implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private Usuario usuario;
+	private boolean estaCerrado;
+	private String cerrado;
 	private ArrayList<Equipo> equipos;
 	private ArrayList<Novedad> novedades;
 	
@@ -107,6 +109,36 @@ public class Laboratorio  implements Serializable{
 		this.novedades = novedades;
 	}
 	
+	/**
+     * Método que devuelve si el laboratorio esta cerrado
+     * @return Si el laboratorio esta o no cerrado
+     */
+	public boolean isEstaCerrado() {
+		return estaCerrado;
+	}
+	
+	/**
+	 * Método que cambia el cerrado del laboratorio para mostrarlo como Si o No
+	 * @return El estado de cerrado del laboratorio
+    */
+	public String getCerrado() {
+		if (isEstaCerrado()) {
+			this.cerrado = "Si";
+		}
+		else {
+			this.cerrado = "No";
+		}
+		return cerrado;
+	}
+	
+	/**
+	 * Método que cambia el estado cerrado del laboratorio
+	 * @param Estado del laboratorio
+	 */
+	public void setEstaCerrado(boolean estaCerrado) {
+		this.estaCerrado = estaCerrado;
+	}
+
 	/**
      * Método que permite mostrar la salida como string
      * @return Los atributos relacionados del equipo

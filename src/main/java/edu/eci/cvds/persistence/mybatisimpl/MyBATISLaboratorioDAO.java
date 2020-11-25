@@ -2,6 +2,8 @@ package edu.eci.cvds.persistence.mybatisimpl;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Laboratorio;
@@ -42,6 +44,20 @@ public class MyBATISLaboratorioDAO implements LaboratorioDAO{
 		}
 		catch(Exception e){
 			throw new PersistenceException("Error al consultar los laboratorios",e);            
+	    }
+	}
+	
+	/**
+     * Método que permite cerrar un laboratorio
+     * @param nombreLab: Nombre del laboratorio que va a cerrarse
+     */
+	@Override
+	public void cerrarLaboratorio(String nombreLab) throws PersistenceException{
+		try{
+			laboratorioMapper.cerrarLaboratorio(nombreLab);
+		}
+		catch(Exception e){
+			throw new PersistenceException("Error al cerrar el laboratorio",e);            
 	    }
 	}
 }
