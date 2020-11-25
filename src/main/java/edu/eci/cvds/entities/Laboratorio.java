@@ -106,14 +106,14 @@ public class Laboratorio  implements Serializable{
 	public void setNovedades(ArrayList<Novedad> novedades) {
 		this.novedades = novedades;
 	}
-	
+
 	/**
      * Método que permite mostrar la salida como string
      * @return Los atributos relacionados del equipo
      */
 	@Override
 	public String toString() {
-		return "Laboratorio {nombre=" + nombre + ", usuario=" + usuario + ", equipos=" + equipos + ", novedades="
-				+ novedades + "}";
+		return "Laboratorio [nombre=" + nombre + ", usuario=" + usuario + ", equipos=" + equipos + ", novedades="
+				+ novedades + "]";
 	}
 }

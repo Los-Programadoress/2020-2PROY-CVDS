@@ -15,6 +15,16 @@
     <collection property='elementos' ofType='Elemento' resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.ElementoMapper.ElementoResult' columnPrefix='elem_'></collection>
     <collection property='novedades' ofType='Novedad' resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.NovedadMapper.NovedadResult' columnPrefix='noved_'></collection>      
   </resultMap>
+  
+  <resultMap type='ReporteEquipoDTO' id='ReporteEquipoResult'>
+    <id property='id' column='numero' />
+    <result property='estado' column='dadoDeBaja' />
+    <result property='laboratorio' column='nombrelab' />
+    <result property='nombre' column='nombre' />
+  </resultMap>
+ 
+ <select parameterType="map" id="reporteEquipos" resultMap="ReporteEquipoResult">
+ </select>
  
   <select parameterType="map" id="consultarEquipos" resultMap="EquipoResult">
   	SELECT
@@ -22,8 +32,10 @@
       e.marca,
       e.nombre,
       e.disponible,
-      e.dadoDeBaja
+      e.dadoDeBaja,
+      la.nombre
     FROM equipo AS e
+    LEFT JOIN laboratorio AS la ON e.nombrelab = la.nombre
   </select>
   
     <select parameterType="map" id="consultarEquiposNoDadosBaja" resultMap="EquipoResult">
@@ -55,6 +67,7 @@
   
   <select parameterType="map" id="consultarElementosEquipo" resultMap="edu.eci.cvds.persistence.mybatisimpl.mappers.ElementoMapper.ElementoResult">
    SELECT
+   	  e.nombre,
       el.id,
       el.tipo,
       el.nombre,

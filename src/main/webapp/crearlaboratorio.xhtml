@@ -25,12 +25,20 @@
 			<p:dataTable var="lab" value="#{crearLaboratoriosBean.consultarLaboratorios()}" class="tabla" rows="6" rowKey="#{lab.nombre}">
 				<f:facet name="header" class="columna">Laboratorios creados</f:facet>
 				
-				<p:column class="columna" headerText="Nombre">
+				<p:column filterBy="#{lab.nombre}" class="columna" headerText="Nombre">
 					<h:outputText value="#{lab.nombre}" />
 				</p:column>
 				
-				<p:column class="columna" headerText="Responsable">
-					<h:outputText value="#{lab.usuario.idCorreo}" />
+				<p:column class="columna" headerText="Equipos asociados">
+				</p:column>
+				
+				<p:column class="columna" headerText="Estado">
+				</p:column>
+				
+				<p:column class="columna" headerText="Fecha Inicio">
+				</p:column>
+				
+				<p:column class="columna" headerText="Fecha Fin">
 				</p:column>
 				
 			</p:dataTable>

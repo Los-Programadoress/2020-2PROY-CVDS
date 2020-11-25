@@ -221,15 +221,15 @@ public class Equipo implements Serializable{
 		this.nombre = nombre;
 	}
 
+
 	/**
-    * Método que permite mostrar la salida como string
-    * @return Los atributos relacionados del equipo
-    */
+	    * Método que permite mostrar la salida como string
+	    * @return Los atributos relacionados del equipo
+	    */
 	@Override
 	public String toString() {
 		return "Equipo [numero=" + numero + ", nombre=" + nombre + ", marca=" + marca + ", disponible=" + disponible
 				+ ", usuario=" + usuario + ", disponibilidad=" + disponibilidad + ", dadoDeBaja=" + dadoDeBaja
-				+ ", elementos=" + elementos + ", novedades=" + novedades + "]";
+				+ ", bajado=" + bajado + ", elementos=" + elementos + ", novedades=" + novedades +"]";
 	}
-	
 }

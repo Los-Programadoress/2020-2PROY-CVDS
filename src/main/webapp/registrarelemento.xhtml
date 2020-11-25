@@ -29,24 +29,31 @@
 			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento(modelo, modelo)}" class="boton" value="Registrar" />
 			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElementos()}" class="tabla"
 				paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                     rows="8" selectionMode="single"
+                     rows="5" 
                      rowKey="#{rel.id}">
 				<f:facet name="header" class="columna">Elementos Registrados</f:facet>
+				<p:column filterBy="#{rel.id}" class="columna" headerText="Identificador">
+					<h:outputText value="#{rel.id}" />
+				</p:column>
 				
-				<p:column class="columna" headerText="Tipo">
+				<p:column filterBy="#{rel.nombre}" class="columna" headerText="Modelo">
+					<h:outputText value="#{rel.nombre}" />
+				</p:column>
+				
+				<p:column filterBy="#{rel.tipo}" class="columna" headerText="Tipo">
 					<h:outputText value="#{rel.tipo}" />
 				</p:column>
 	 
-				<p:column class="columna" headerText="Modelo">
-					<h:outputText value="#{rel.nombre}" />
-				</p:column>
-	 
-				<p:column class="columna" headerText="Disponible">
+				<p:column filterBy="#{rel.disponibilidad}" class="columna" headerText="Disponible">
 					<h:outputText value="#{rel.disponibilidad}" />
 				</p:column>
 				
-				<p:column class="columna" headerText="Dado de Baja">
+				<p:column filterBy="#{rel.bajado}" class="columna" headerText="Dado de Baja">
 					<h:outputText value="#{rel.bajado}" />
+				</p:column>
+				
+				<p:column class="columna" headerText="Reporte de novedades">
+					<a href="/faces/novedadeselementos.xhtml"><p:commandButton type="button" update="Elementos_Form" value="Novedad de elemento"/></a>
 				</p:column>
 			</p:dataTable>
 			
