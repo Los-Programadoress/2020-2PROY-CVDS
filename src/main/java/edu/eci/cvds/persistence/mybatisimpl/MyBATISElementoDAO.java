@@ -189,4 +189,18 @@ public class MyBATISElementoDAO implements ElementoDAO{
            throw new PersistenceException("Error al cambiar la baja del elemento",e);            
        }
 	}
+	
+	/**
+    * Método que permite consultar un reporte del elemento
+    * @return lista de elementos consultados
+    */
+	@Override
+   	public List<Elemento> reporteElementos() throws PersistenceException{
+   		try {
+			 return elementoMapper.reporteElementos();
+		 }
+		 catch(Exception e){
+			 throw new PersistenceException("Error al consultar el reporte de elementos ",e);
+		 }
+   	}
 }

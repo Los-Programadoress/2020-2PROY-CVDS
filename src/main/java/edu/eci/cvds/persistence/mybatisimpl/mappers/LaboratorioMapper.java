@@ -21,4 +21,9 @@ public interface LaboratorioMapper {
      */
 	public List<Laboratorio> consultarLaboratorios(); 
 
+	/**
+     * Método que permite cerrar un laboratorio
+     * @param nombreLab: Nombre del laboratorio que va a cerrarse
+     */
+	public void cerrarLaboratorio(@Param("nombreLab")String nombreLab);
 }

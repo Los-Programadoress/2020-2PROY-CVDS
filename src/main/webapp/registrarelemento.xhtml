@@ -25,18 +25,18 @@
 				<p:commandButton update="Elementos_Form" class="boton3" actionListener="#{registrarElementosBean.botonTeclado()}"/>
 				<p:commandButton update="Elementos_Form" class="boton4" actionListener="#{registrarElementosBean.botonPantalla()}"/>
 			</div>
-			<p:inputText class="input" placeholder="Modelo" type="String" value="#{modelo}"/>
-			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento(modelo, modelo)}" class="boton" value="Registrar" />
+			<p:inputText class="input" placeholder="Nombre" type="String" value="#{nombre}"/>
+			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento(nombre, nombre)}" class="boton" value="Registrar" />
 			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElementos()}" class="tabla"
 				paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                      rows="5" 
                      rowKey="#{rel.id}">
 				<f:facet name="header" class="columna">Elementos Registrados</f:facet>
-				<p:column filterBy="#{rel.id}" class="columna" headerText="Identificador">
+				<p:column filterBy="#{rel.id}" class="columna" headerText="Id">
 					<h:outputText value="#{rel.id}" />
 				</p:column>
 				
-				<p:column filterBy="#{rel.nombre}" class="columna" headerText="Modelo">
+				<p:column filterBy="#{rel.nombre}" class="columna" headerText="Nombre">
 					<h:outputText value="#{rel.nombre}" />
 				</p:column>
 				
@@ -52,8 +52,15 @@
 					<h:outputText value="#{rel.bajado}" />
 				</p:column>
 				
+				<p:column filterBy="#{rel.bajado}" class="columna" headerText="Equipo">
+				</p:column>
+				
+				<p:column class="columna" headerText="Administración">
+					<p:commandButton type="button" update="Elementos_Form" value="Administrar"/>
+				</p:column>
+				
 				<p:column class="columna" headerText="Reporte de novedades">
-					<a href="/faces/novedadeselementos.xhtml"><p:commandButton type="button" update="Elementos_Form" value="Novedad de elemento"/></a>
+					<a href="/faces/novedadeselementos.xhtml"><p:commandButton type="button" update="Elementos_Form" value="Consultar novedades"/></a>
 				</p:column>
 			</p:dataTable>
 			

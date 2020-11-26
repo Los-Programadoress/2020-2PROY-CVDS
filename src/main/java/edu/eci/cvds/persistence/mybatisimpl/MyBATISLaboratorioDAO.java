@@ -44,4 +44,18 @@ public class MyBATISLaboratorioDAO implements LaboratorioDAO{
 			throw new PersistenceException("Error al consultar los laboratorios",e);            
 	    }
 	}
+	
+	/**
+     * Método que permite cerrar un laboratorio
+     * @param nombreLab: Nombre del laboratorio que va a cerrarse
+     */
+	@Override
+	public void cerrarLaboratorio(String nombreLab) throws PersistenceException{
+		try{
+			laboratorioMapper.cerrarLaboratorio(nombreLab);
+		}
+		catch(Exception e){
+			throw new PersistenceException("Error al cerrar el laboratorio",e);            
+	    }
+	}
 }

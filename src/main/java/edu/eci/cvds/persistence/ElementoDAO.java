@@ -81,4 +81,10 @@ public interface ElementoDAO {
      */
 	public void cambiarBajaElemento(boolean dBaja,String enom) throws PersistenceException;
 
+	
+	/**
+    * Método que permite consultar un reporte del elemento
+    * @return lista de elementos consultados
+    */
+   	public List<Elemento> reporteElementos() throws PersistenceException;
 }

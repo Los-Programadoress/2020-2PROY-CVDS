@@ -77,4 +77,11 @@ public interface EquipoDAO {
        */
  	  public void cambiarBajaEquipo(boolean dBaja,String nome) throws PersistenceException;
 		 
+ 	 /**
+       * Método que permite consultar el reporte de equipos 
+       * @throws PersistenceException Errores con la base de datos
+       * @return lista de equipos
+       */
+  	  public List<Equipo> reporteEquipos() throws PersistenceException;
+ 	  
 }

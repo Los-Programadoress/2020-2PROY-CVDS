@@ -208,6 +208,21 @@ public class EquiposServicesImpl implements EquiposServices{
 		} 
 	  }
 	
+	/**
+     * Método que permite consultar el reporte de equipos 
+     * @throws PersistenceException Errores con la base de datos
+     * @return lista de equipos
+     */
+    @Override
+	public List<Equipo> reporteEquipos() throws EquiposException {
+		try{
+	 		return equipoDAO.reporteEquipos();
+	 	}
+	 	catch(PersistenceException e){
+	        throw new EquiposException("Error al consultar el reporte de equipos",e);            
+	    }
+	}
+	
 	//ELEMENTO 	 
      /**
       * Método que permite registrar elemento a un equipo
@@ -397,7 +412,19 @@ public class EquiposServicesImpl implements EquiposServices{
 		}
 	}
 	
-	
+	/**
+    * Método que permite consultar un reporte del elemento
+    * @return lista de elementos consultados
+    */
+	@Override
+   	public List<Elemento> reporteElementos() throws EquiposException{
+   		try {
+			 return elementoDAO.reporteElementos();
+		 }
+		 catch(PersistenceException e){
+			 throw new EquiposException("Error al consultar el reporte de elementos ",e);
+		 }
+   	}
 	//NOVEDAD
 	/**
      * Método que permite registrar una novedad para el laboratorio
@@ -495,6 +522,48 @@ public class EquiposServicesImpl implements EquiposServices{
 			throw new EquiposException("Error al consultar las novedades de los elementos: ",e);            
 		}  
 	 }
+	 
+	 /**
+      * Método que permite consultar la novedad un equipo
+      * @param equipoNombre: Nombre del equipo a consultar
+      * @return lista de novedades del equipo
+      */
+	 public List<Novedad> consultarNovedadesEquipo(String equipoNombre) throws EquiposException{
+		 try{
+			 return novedadDAO.consultarNovedadesEquipo(equipoNombre);
+		}
+		catch(Exception e){
+	        throw new EquiposException("Error al consultar las novedades del equipo",e);            
+	    }   
+	 }
+
+	 /**
+      * Método que permite consultar la novedad un elemento
+      * @param elementoNombre: Nombre del elemento a consultar
+      * @return lista de novedades del elemento
+      */
+	 public List<Novedad> consultarNovedadesElemento(String elementoNombre) throws EquiposException{
+		 try{
+			 return novedadDAO.consultarNovedadesElemento(elementoNombre);
+		}
+		catch(Exception e){
+	        throw new EquiposException("Error al consultar las novedades del elemento",e);            
+	    }   
+	 }
+	 
+	 /**
+      * Método que permite consultar la novedad un laboratorio
+      * @param laboratorioNombre: Nombre del laboratorio a consultar
+      * @return lista de novedades del laboratorio
+      */
+	 public List<Novedad> consultarNovedadesLaboratorio(String laboratorioNombre) throws EquiposException{
+		 try{
+			 return novedadDAO.consultarNovedadesLaboratorio(laboratorioNombre);
+		}
+		catch(Exception e){
+	        throw new EquiposException("Error al consultar las novedades del elemento",e);            
+	    }   
+	 }
 	
 	//LABORATORIO 
 	 /**
@@ -526,6 +595,20 @@ public class EquiposServicesImpl implements EquiposServices{
 		}
 		catch(PersistenceException e){
 			throw new EquiposException("Error al consultar los laboratorios",e);            
+	    }
+	}
+	
+	/**
+     * Método que permite cerrar un laboratorio
+     * @param nombreLab: Nombre del laboratorio que va a cerrarse
+     */
+	@Override
+	public void cerrarLaboratorio(String nombreLab) throws EquiposException{
+		try{
+			laboratorioDAO.cerrarLaboratorio(nombreLab);
+		}
+		catch(PersistenceException e){
+			throw new EquiposException("Error al cerrar el laboratorio",e);            
 	    }
 	}
 }

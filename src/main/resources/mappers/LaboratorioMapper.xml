@@ -24,4 +24,19 @@
        LEFT JOIN usuario AS u 
        ON l.usuario_idcorreo = u.idcorreo;
    </select>
+   
+   <update parameterType="map" id="cerrarLaboratorio">
+		UPDATE laboratorio
+	    SET estaCerrado = true
+	    WHERE nombre = #{nombreLab};
+	</update>
+	
+	<select parameterType="map" id="consultarLaboratorio" resultMap="LaboratorioResult">
+		SELECT
+		e.nombre
+	 	COUNT(e.nombre),
+	 	
+	 	FROM equipo AS e
+	 	where e.nombrelab = 'REDES'
+ 	</select>
 </mapper>

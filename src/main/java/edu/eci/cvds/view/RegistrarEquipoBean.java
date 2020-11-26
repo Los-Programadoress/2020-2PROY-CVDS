@@ -107,6 +107,15 @@ public class RegistrarEquipoBean extends BasePageBean{
  		return equipos;
  	 }
 	
+	public List<Equipo> reporteEquipos() throws EquiposException {
+		try{
+	 		equipos = equipoS.reporteEquipos();
+	 	}
+		catch(EquiposException e){          
+		}
+		return equipos;
+	}
+	
 	public void info() {
 		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Equipo dado de baja", "Se dió de baja satisfactoriamente.");
 		 PrimeFaces.current().dialog().showMessageDynamic(message);

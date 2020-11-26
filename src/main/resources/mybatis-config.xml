@@ -13,7 +13,7 @@
         <typeAlias type='edu.eci.cvds.entities.Laboratorio' alias='Laboratorio'/>
         <typeAlias type='edu.eci.cvds.entities.Novedad' alias='Novedad'/>
         <typeAlias type='edu.eci.cvds.entities.ReporteEquipoDTO' alias='ReporteEquipoDTO'/>
-
+		<typeAlias type='edu.eci.cvds.entities.ReporteElementoDTO' alias='ReporteElementoDTO'/>
     </typeAliases>
 
     <environments default="development">

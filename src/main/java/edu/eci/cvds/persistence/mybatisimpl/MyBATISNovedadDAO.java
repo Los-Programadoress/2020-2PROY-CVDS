@@ -113,4 +113,49 @@ public class MyBATISNovedadDAO implements NovedadDAO {
 	        throw new PersistenceException("Error al consultar las novedades de los elementos",e);            
 	    }  
 	 }
+	 
+	 /**
+      * Método que permite consultar la novedad un equipo
+      * @param equipoNombre: Nombre del equipo a consultar
+      * @return lista de novedades del equipo
+      */
+	 @Override
+	 public List<Novedad> consultarNovedadesEquipo(String equipoNombre) throws PersistenceException{
+		 try{
+			 return novedadMapper.consultarNovedadesEquipo(equipoNombre);
+		}
+		catch(Exception e){
+	        throw new PersistenceException("Error al consultar las novedades del equipo",e);            
+	    }   
+	 }
+	 
+	 /**
+      * Método que permite consultar la novedad un elemento
+      * @param elementoNombre: Nombre del elemento a consultar
+      * @return lista de novedades del elemento
+      */
+	 @Override
+	 public List<Novedad> consultarNovedadesElemento(String elementoNombre) throws PersistenceException{
+		try{
+			 return novedadMapper.consultarNovedadesElemento(elementoNombre);
+		}
+		catch(Exception e){
+	        throw new PersistenceException("Error al consultar las novedades del elemento",e);    
+	    } 
+	 }
+	 
+	 /**
+      * Método que permite consultar la novedad un laboratorio
+      * @param laboratorioNombre: Nombre del laboratorio a consultar
+      * @return lista de novedades del laboratorio
+      */
+	 @Override
+	 public List<Novedad> consultarNovedadesLaboratorio(String laboratorioNombre) throws PersistenceException{
+		try{
+			 return novedadMapper.consultarNovedadesLaboratorio(laboratorioNombre);
+		}
+		catch(Exception e){
+	        throw new PersistenceException("Error al consultar las novedades del laboratorio",e);            
+	    } 
+	 }
 }

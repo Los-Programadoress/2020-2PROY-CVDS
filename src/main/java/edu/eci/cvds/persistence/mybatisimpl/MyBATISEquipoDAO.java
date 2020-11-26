@@ -154,4 +154,18 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	    }
 	}
 
+     /**
+      * Método que permite consultar el reporte de equipos 
+      * @throws PersistenceException Errores con la base de datos
+      * @return lista de equipos
+      */
+     @Override
+ 	public List<Equipo> reporteEquipos() throws PersistenceException {
+ 		try{
+	 		return equipoMapper.reporteEquipos();
+	 	}
+	 	catch(Exception e){
+	        throw new PersistenceException("Error al consultar el reporte de equipos",e);            
+	    }
+ 	}
 }

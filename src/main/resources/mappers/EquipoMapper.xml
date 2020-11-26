@@ -24,6 +24,12 @@
   </resultMap>
  
  <select parameterType="map" id="reporteEquipos" resultMap="ReporteEquipoResult">
+ 	SELECT
+ 	  e.numero,
+ 	  e.dadodebaja,
+ 	  e.nombrelab,
+ 	  e.nombre
+ 	FROM equipo AS e
  </select>
  
   <select parameterType="map" id="consultarEquipos" resultMap="EquipoResult">

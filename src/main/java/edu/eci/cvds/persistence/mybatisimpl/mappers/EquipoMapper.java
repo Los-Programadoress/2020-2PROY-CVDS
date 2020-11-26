@@ -16,7 +16,6 @@ public interface EquipoMapper {
 	 
 	 /**
      * Método que permite consultar los equipos no dados de baja
-     * @throws PersistenceException Errores con la base de datos
      * @return lista de equipos consultados
      */
 	 public List<Equipo> consultarEquiposNoDadosBaja();
@@ -64,4 +63,9 @@ public interface EquipoMapper {
      */
 	public void cambiarBajaEquipo(@Param("dbaja")boolean dbaja, @Param("nome") String nome);
 
+	/**
+     * Método que permite consultar el reporte de equipos 
+     * @return lista de equipos
+     */
+	public List<Equipo> reporteEquipos();
 }
