@@ -41,8 +41,8 @@ El sistema, más allá de facilitar el registro de los equipos y novedades, es u
 + PostgreSQL (Motor de bases de datos)
 + myBatis (mappea sentencias SQL)
 
-**📎Enlace a la aplicación en Heroku:** [Aplicación Historial de Equipos](https://historialdeequipo.herokuapp.com)
-**⭕ Enlace al sistema de integración continua:** [![CircleCI](https://circleci.com/gh/Los-Programadoress/2020-2PROY-CVDS.svg?style=svg)](https://circleci.com/gh/Los-Programadoress/2020-2PROY-CVDS)
+#### 📎Enlace a la aplicación en Heroku: [Aplicación Historial de Equipos](https://historialdeequipo.herokuapp.com)
+#### ⭕ Enlace al sistema de integración continua: [![CircleCI](https://circleci.com/gh/Los-Programadoress/2020-2PROY-CVDS.svg?style=svg)](https://circleci.com/gh/Los-Programadoress/2020-2PROY-CVDS)
 
 
 
