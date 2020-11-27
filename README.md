@@ -1,4 +1,4 @@
-## Escuela Colombiana de Ingeniería Julio Garavito 
+# Escuela Colombiana de Ingeniería Julio Garavito 
 # Proyecto Final CVDS 2020-2
 
 ## 📍 HISTORIAL DE EQUIPOS
