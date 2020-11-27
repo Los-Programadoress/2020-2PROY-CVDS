@@ -56,6 +56,7 @@ El sistema, más allá de facilitar el registro de los equipos y novedades, es u
 + myBatis (*mappeo de sentencias SQL*)
 
 #### 📎Enlace a la aplicación en Heroku: [Aplicación Historial de Equipos](https://historialdeequipo.herokuapp.com)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/28943fef35e1475fba40ae9a7ac1ce07)](https://app.codacy.com/gh/Los-Programadoress/2020-2PROY-CVDS?utm_source=github.com&utm_medium=referral&utm_content=Los-Programadoress/2020-2PROY-CVDS&utm_campaign=Badge_Grade_Settings)
 #### ⭕ Enlace al sistema de integración continua: [![CircleCI](https://circleci.com/gh/Los-Programadoress/2020-2PROY-CVDS.svg?style=svg)](https://circleci.com/gh/Los-Programadoress/2020-2PROY-CVDS)
 #### Enlace al análisis de código en Codacy: 
 
