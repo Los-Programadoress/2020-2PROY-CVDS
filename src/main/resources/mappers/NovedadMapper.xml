@@ -40,6 +40,34 @@
        ON u.idcorreo = n.responsable
        WHERE n.nombreLab is not null
    	</select>
+   	
+   	<select parameterType="map" id="consultarNovedadEquipos" resultMap="NovedadResult">
+	  SELECT
+	  	n.id,
+	  	n.titulo,
+	  	n.fecha,
+	  	n.detalle,
+	  	n.nombreeq,
+	  	u.idcorreo
+       FROM novedad AS n
+       LEFT JOIN usuario AS u
+       ON u.idcorreo = n.responsable
+       WHERE n.nombreeq is not null
+   	</select>
+   	
+    <select parameterType="map" id="consultarNovedadElementos" resultMap="NovedadResult">
+	  SELECT
+	  	n.id,
+	  	n.titulo,
+	  	n.fecha,
+	  	n.detalle,
+	  	n.nombreelem,
+	  	u.idcorreo
+       FROM novedad AS n
+       LEFT JOIN usuario AS u
+       ON u.idcorreo = n.responsable
+       WHERE n.nombreelem is not null
+   	</select>
    
    <select parameterType="map" id="consultarNovedadesEquipo" resultMap="NovedadResult">
 	  SELECT

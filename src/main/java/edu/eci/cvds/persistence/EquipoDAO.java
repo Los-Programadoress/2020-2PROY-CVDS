@@ -83,5 +83,17 @@ public interface EquipoDAO {
        * @return lista de equipos
        */
   	  public List<Equipo> reporteEquipos() throws PersistenceException;
- 	  
+  	  
+  	 /**
+       * Método que permite consultar el nombre del equipo por ID
+       * @throws PersistenceException Errores con la base de datos
+       * @return nombre del equipo
+       */
+  	  public String nombreEquipoPorId(int nequipo) throws PersistenceException;
+  	  
+  	 /**
+       * Método que permite consultar el nombre del laboratorio del equipo
+       * @return nombre del laboratorio
+       */
+ 	  public String nombreLabDelEquipo(String nombreEq) throws PersistenceException;
 }

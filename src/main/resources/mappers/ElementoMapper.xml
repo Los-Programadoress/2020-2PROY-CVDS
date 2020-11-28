@@ -19,7 +19,7 @@
   	  <result property='tipo' column='tipo' />
   	  <result property='disponible' column='disponible' />
   	  <result property='dadoDeBaja' column='dadoDeBaja' />
-  	  <result property='equipo' column='nombreEq' />
+  	  <result property='equipo' column='numEquipo' />
  	 </resultMap>
  	 
 	 <select parameterType="map" id="reporteElementos" resultMap="ReporteElementoResult">
@@ -28,8 +28,8 @@
 	 	  el.nombre,
 	 	  el.tipo,
 	 	  el.disponible,
-	 	  el.dadoDeBaja.
-	 	  el.nombreEq
+	 	  el.dadoDeBaja,
+	 	  el.numEquipo
 	 	FROM elemento AS el
 	 </select>
 
@@ -93,5 +93,10 @@
 	    WHERE nombre = #{enom};
 	</update>
 	
-	
+	<select parameterType="map" id="numEquipoDelElemento" resultType="Integer">
+	 SELECT
+ 	   el.numequipo 
+ 	 FROM elemento AS el
+ 	 WHERE el.nombre = #{nombreElem}
+ 	</select>
 </mapper>

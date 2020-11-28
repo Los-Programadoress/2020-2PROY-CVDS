@@ -2,6 +2,7 @@ package edu.eci.cvds.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.sql.Date;
 
 /**
 * Clase que define a un laboratorio y los atributos con los que cuenta
@@ -16,6 +17,8 @@ public class Laboratorio  implements Serializable{
 	private Usuario usuario;
 	private boolean estaCerrado;
 	private String cerrado;
+	private Date fechaCreacion;
+	private Date fechaFin;
 	private ArrayList<Equipo> equipos;
 	private ArrayList<Novedad> novedades;
 	
@@ -118,7 +121,7 @@ public class Laboratorio  implements Serializable{
 	}
 	
 	/**
-	 * Método que cambia el cerrado del laboratorio para mostrarlo como Si o No
+	 * Método que devuelve el cerrado del laboratorio para mostrarlo como Si o No
 	 * @return El estado de cerrado del laboratorio
     */
 	public String getCerrado() {
@@ -138,6 +141,38 @@ public class Laboratorio  implements Serializable{
 	public void setEstaCerrado(boolean estaCerrado) {
 		this.estaCerrado = estaCerrado;
 	}
+	
+	/**
+	 * Método que devuelve la fecha de creación del laboratorio
+	 * @return Fecha de creación del laboratorio
+	 */
+	public Date getFechaCreacion() {
+		return fechaCreacion;
+	}
+	
+	/**
+	 * Método que cambia la fecha de creación del laboratorio
+	 * @param Fecha de creación del laboratorio
+	 */
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+	
+	/**
+	 * Método que devuelve la fecha fin del laboratorio
+	 * @return Fecha de fin del laboratorio
+	 */
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+	
+	/**
+	 * Método que cambia la fecha fin del laboratorio
+	 * @param Fecha fin del laboratorio
+	 */
+	public void setFechaFin(Date fechafin) {
+		this.fechaFin = fechafin;
+	}
 
 	/**
      * Método que permite mostrar la salida como string
@@ -145,7 +180,8 @@ public class Laboratorio  implements Serializable{
      */
 	@Override
 	public String toString() {
-		return "Laboratorio [nombre=" + nombre + ", usuario=" + usuario + ", equipos=" + equipos + ", novedades="
-				+ novedades + "]";
+		return "Laboratorio {nombre=" + nombre + ", usuario=" + usuario + ", estaCerrado=" + estaCerrado
+				+ ", fechaCreacion=" + fechaCreacion + ", fechafin=" + fechaFin + ", equipos=" + equipos
+				+ ", novedades=" + novedades + "}";
 	}
 }

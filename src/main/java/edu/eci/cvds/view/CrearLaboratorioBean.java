@@ -1,5 +1,6 @@
 package edu.eci.cvds.view;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -11,6 +12,7 @@ import org.apache.shiro.subject.Subject;
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Laboratorio;
+import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.services.EquiposException;
 import edu.eci.cvds.services.EquiposServices;
 
@@ -41,12 +43,34 @@ public class CrearLaboratorioBean extends BasePageBean{
     		//Capturar el usuario
     		Subject currentUser = SecurityUtils.getSubject();
     		user = currentUser.getPrincipal().toString();
-    		System.out.println(user);
    		 	equipoS.registrarLaboratorio(nombre, user);
  		}catch (EquiposException e) {
  			e.printStackTrace();
    	 	}
 	 }
+	
+	public void cerrarLaboratorio(String nombreLab) throws EquiposException{
+		try{
+			//Capturar el usuario
+    		Subject currentUser = SecurityUtils.getSubject();
+    		user = currentUser.getPrincipal().toString();
+    		equipoS.cerrarLaboratorio(nombreLab, user);
+		}
+		catch (EquiposException e){
+			e.printStackTrace();          
+	    }
+	}
+	
+	public int cantidadEquiposLab(String nombreLab) throws EquiposException{
+		int cantidad = 0;
+		try{
+			cantidad = equipoS.cantidadEquiposLab(nombreLab);
+		}
+		catch(Exception e){
+			e.printStackTrace();              
+	    }
+		return cantidad;
+	}
 	
 	public List<Laboratorio> getLaboratorios() {
 		return laboratorios;

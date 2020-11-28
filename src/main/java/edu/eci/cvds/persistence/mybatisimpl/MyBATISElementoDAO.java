@@ -2,6 +2,7 @@ package edu.eci.cvds.persistence.mybatisimpl;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.mybatis.guice.transactional.Transactional;
 
 import com.google.inject.Inject;
@@ -191,9 +192,9 @@ public class MyBATISElementoDAO implements ElementoDAO{
 	}
 	
 	/**
-    * Método que permite consultar un reporte del elemento
-    * @return lista de elementos consultados
-    */
+     * Método que permite consultar un reporte del elemento
+     * @return lista de elementos consultados
+     */
 	@Override
    	public List<Elemento> reporteElementos() throws PersistenceException{
    		try {
@@ -203,4 +204,18 @@ public class MyBATISElementoDAO implements ElementoDAO{
 			 throw new PersistenceException("Error al consultar el reporte de elementos ",e);
 		 }
    	}
+	
+	/**
+     * Método que permite consultar el número del equipo del elemento
+     * @return número del equipo
+     */
+	@Override
+	public int numEquipoDelElemento(String nombreElem) throws PersistenceException{
+		try {
+			 return elementoMapper.numEquipoDelElemento(nombreElem);
+		 }
+		 catch(Exception e){
+			 throw new PersistenceException("Error al consultar el número de equipo del elemento ",e);
+		 }
+	}
 }

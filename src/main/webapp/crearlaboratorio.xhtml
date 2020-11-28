@@ -22,23 +22,29 @@
 			<img class="imagen" src="img/plataformas.png"/>
 			<p:inputText class="input6" placeholder="Nombre" type="String" value="#{nombre}"/>
 			<p:commandButton update="Elementos_Form" actionListener="#{crearLaboratoriosBean.registrarLaboratorio(nombre)}" class="boton" value="Registrar" />
-			<p:dataTable var="lab" value="#{crearLaboratoriosBean.consultarLaboratorios()}" class="tabla" rows="6" rowKey="#{lab.nombre}">
+			<p:dataTable var="lab" value="#{crearLaboratoriosBean.consultarLaboratorios()}" class="tabla" 
+				paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+				rows="6" rowKey="#{lab.nombre}">
 				<f:facet name="header" class="columna">Laboratorios creados</f:facet>
 				
 				<p:column filterBy="#{lab.nombre}" class="columna" headerText="Nombre">
 					<h:outputText value="#{lab.nombre}" />
 				</p:column>
 				
-				<p:column class="columna" headerText="Cantidad de equipos">
+				<p:column filterBy="#{crearLaboratoriosBean.cantidadEquiposLab(lab.nombre)}" class="columna" headerText="Cantidad de equipos">
+				    <h:outputText value="#{crearLaboratoriosBean.cantidadEquiposLab(lab.nombre)}" />
 				</p:column>
 				
-				<p:column class="columna" headerText="Cerrado">
+				<p:column filterBy="#{lab.cerrado}" class="columna" headerText="Cerrado">
+					<h:outputText value="#{lab.cerrado}" />
 				</p:column>
 				
-				<p:column class="columna" headerText="Fecha creación">
+				<p:column filterBy="#{lab.fechaCreacion}" class="columna" headerText="Fecha creación">
+					<h:outputText value="#{lab.fechaCreacion}" />
 				</p:column>
 				
-				<p:column class="columna" headerText="Fecha cierre">
+				<p:column filterBy="#{lab.fechaFin}" class="columna" headerText="Fecha cierre">
+					<h:outputText value="#{lab.fechaFin}" />
 				</p:column>
 				
 			</p:dataTable>

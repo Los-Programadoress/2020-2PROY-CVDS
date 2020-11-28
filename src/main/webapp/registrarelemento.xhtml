@@ -27,7 +27,7 @@
 			</div>
 			<p:inputText class="input" placeholder="Nombre" type="String" value="#{nombre}"/>
 			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento(nombre, nombre)}" class="boton" value="Registrar" />
-			<p:dataTable var="rel" value="#{registrarElementosBean.consultarElementos()}" class="tabla"
+			<p:dataTable var="rel" value="#{registrarElementosBean.reporteElementos()}" class="tabla"
 				paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                      rows="5" 
                      rowKey="#{rel.id}">
@@ -52,7 +52,8 @@
 					<h:outputText value="#{rel.bajado}" />
 				</p:column>
 				
-				<p:column filterBy="#{rel.bajado}" class="columna" headerText="Equipo">
+				<p:column filterBy="#{RegistrarEquiposBean.nombreEquipoPorId(rel.equipo)}" class="columna" headerText="Equipo">
+					<h:outputText value="#{RegistrarEquiposBean.nombreEquipoPorId(rel.equipo)}" />
 				</p:column>
 				
 				<p:column class="columna" headerText="Administración">

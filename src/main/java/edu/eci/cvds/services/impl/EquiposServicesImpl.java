@@ -223,6 +223,35 @@ public class EquiposServicesImpl implements EquiposServices{
 	    }
 	}
 	
+    /**
+     * Método que permite consultar el nombre del equipo por ID
+     * @throws PersistenceException Errores con la base de datos
+     * @return nombre del equipo
+     */
+    @Override
+	  public String nombreEquipoPorId(int nequipo) throws EquiposException{
+   	 try{
+	 		return equipoDAO.nombreEquipoPorId(nequipo);
+	 	}
+	 	catch(Exception e){
+	        throw new EquiposException("Error al consultar el nombre del equipo",e);            
+	    }  
+	  }
+    
+	/**
+     * Método que permite consultar el nombre del laboratorio del equipo
+     * @return nombre del laboratorio
+     */
+    @Override
+	  public String nombreLabDelEquipo(String nombreEq) throws EquiposException{
+		 try{
+	 		return equipoDAO.nombreLabDelEquipo(nombreEq);
+		 }
+	 	catch(Exception e){
+	        throw new EquiposException("Error al consultar el nombre del laboratorio del equipo",e);            
+	     }  
+    } 
+    
 	//ELEMENTO 	 
      /**
       * Método que permite registrar elemento a un equipo
@@ -413,9 +442,9 @@ public class EquiposServicesImpl implements EquiposServices{
 	}
 	
 	/**
-    * Método que permite consultar un reporte del elemento
-    * @return lista de elementos consultados
-    */
+     * Método que permite consultar un reporte del elemento
+     * @return lista de elementos consultados
+     */
 	@Override
    	public List<Elemento> reporteElementos() throws EquiposException{
    		try {
@@ -425,6 +454,21 @@ public class EquiposServicesImpl implements EquiposServices{
 			 throw new EquiposException("Error al consultar el reporte de elementos ",e);
 		 }
    	}
+	
+	/**
+     * Método que permite consultar el número del equipo del elemento
+     * @return número del equipo
+     */
+	@Override
+	public int numEquipoDelElemento(String nombreElem) throws EquiposException{
+		try {
+			 return elementoDAO.numEquipoDelElemento(nombreElem);
+		 }
+		 catch(Exception e){
+			 throw new EquiposException("Error al consultar el número de equipo del elemento ",e);
+		 }
+	}
+	
 	//NOVEDAD
 	/**
      * Método que permite registrar una novedad para el laboratorio
@@ -574,9 +618,10 @@ public class EquiposServicesImpl implements EquiposServices{
       */
 	 @Override
 	 public void registrarLaboratorio(String nombre, String idcorreo) throws EquiposException{
+		Date fechacreacion = fecha;
     	try{
-    		laboratorioDAO.registrarLaboratorio(nombre, idcorreo);
-    		registrarNovedadLaboratorio("Registro de laboratorio", fecha, idcorreo, "Se registró el laboratorio " + nombre, nombre);
+    		laboratorioDAO.registrarLaboratorio(nombre, idcorreo, fechacreacion);
+    		registrarNovedadLaboratorio("Registro de laboratorio", fechacreacion, idcorreo, "Se registró el laboratorio " + nombre, nombre);
 		}
 		catch(PersistenceException e){
 	        throw new EquiposException("Error al registrar el laboratorio",e);            
@@ -601,14 +646,31 @@ public class EquiposServicesImpl implements EquiposServices{
 	/**
      * Método que permite cerrar un laboratorio
      * @param nombreLab: Nombre del laboratorio que va a cerrarse
+     * @param idcorreo: Identificador del correo del usuario
      */
 	@Override
-	public void cerrarLaboratorio(String nombreLab) throws EquiposException{
+	public void cerrarLaboratorio(String nombreLab, String idcorreo) throws EquiposException{
+		Date fechafin = fecha;
 		try{
-			laboratorioDAO.cerrarLaboratorio(nombreLab);
+			laboratorioDAO.cerrarLaboratorio(nombreLab, fechafin);
+			registrarNovedadLaboratorio("Cierre de laboratorio", fechafin, idcorreo, "Se cerró el laboratorio " + nombreLab, nombreLab);
 		}
 		catch(PersistenceException e){
 			throw new EquiposException("Error al cerrar el laboratorio",e);            
 	    }
 	}
+	
+	/**
+	 * Método que permite contar cuantos equipos tiene un laboratorio
+	 * @param nombreLab: Nombre del laboratorio
+	 */
+	@Override
+	 public int cantidadEquiposLab(String nombreLab) throws EquiposException{
+		try{
+			return laboratorioDAO.cantidadEquiposLab(nombreLab);
+		}
+		catch(Exception e){
+			throw new EquiposException("Error al consultar cantidad de equipos",e);            
+	    }
+	} 
 }

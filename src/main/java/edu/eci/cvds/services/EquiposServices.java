@@ -4,6 +4,8 @@ package edu.eci.cvds.services;
 import java.sql.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
@@ -97,6 +99,12 @@ public interface EquiposServices {
       * @return lista de equipos
       */
  	  public List<Equipo> reporteEquipos() throws EquiposException;
+ 	  
+ 	 /**
+      * Método que permite consultar el nombre del equipo por ID
+      * @return nombre del equipo
+      */
+ 	  public String nombreEquipoPorId(int nequipo) throws EquiposException;
 	 
 	//ELEMENTO 
  	/**
@@ -199,6 +207,12 @@ public interface EquiposServices {
     * @return lista de elementos consultados
     */
    	public List<Elemento> reporteElementos() throws EquiposException;
+   	
+   	/**
+     * Método que permite consultar el número del equipo del elemento
+     * @return número del equipo
+     */
+	public int numEquipoDelElemento(String nombreElem) throws EquiposException;;
 	
 	//NOVEDAD
 	/**
@@ -283,6 +297,7 @@ public interface EquiposServices {
       * Método que permite registrar un laboratorio
       * @param nombre: Nombre que identifica el laboratorio
       * @param idcorreo: Identificador del correo del usuario
+      * @param idcorreo: Identificador del correo del usuario
       * @throws EquiposException Errores con la operación
      */
 	public void registrarLaboratorio(String nombre, String idcorreo ) throws EquiposException;	 
@@ -298,5 +313,17 @@ public interface EquiposServices {
 	  * Método que permite cerrar un laboratorio
 	  * @param nombreLab: Nombre del laboratorio que va a cerrarse
 	  */
-	 public void cerrarLaboratorio(String nombreLab) throws EquiposException;
+	 public void cerrarLaboratorio(String nombreLab, String idcorreo) throws EquiposException;
+	 
+	 /**
+	  * Método que permite contar cuantos equipos tiene un laboratorio
+	  * @param nombreLab: Nombre del laboratorio
+	  */
+	 public int cantidadEquiposLab(String nombreLab) throws EquiposException;
+	 
+	 /**
+      * Método que permite consultar el nombre del laboratorio del equipo
+      * @return nombre del laboratorio
+      */
+	  public String nombreLabDelEquipo(String nombreEq) throws EquiposException;
 }

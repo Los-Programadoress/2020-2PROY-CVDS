@@ -69,9 +69,15 @@ public interface ElementoMapper {
 	public void cambiarBajaElemento(@Param("dBaja") boolean dBaja, @Param("enom") String enom);
 	
 	/**
-    * Método que permite consultar un reporte del elemento
-    * @return lista de elementos consultados
-    */
+     * Método que permite consultar un reporte del elemento
+     * @return lista de elementos consultados
+     */
 	public List<Elemento> reporteElementos();
+	
+	/**
+     * Método que permite consultar el número del equipo del elemento
+     * @return número del equipo
+     */
+	public int numEquipoDelElemento(@Param("nombreElem") String nombreElem);
 	
 }

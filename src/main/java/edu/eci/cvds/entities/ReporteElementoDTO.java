@@ -8,7 +8,7 @@ public class ReporteElementoDTO {
 	private String disponibilidad;
 	private boolean dadoDeBaja;
 	private String bajado;
-	private String equipo;
+	private int equipo;
 	public int getId() {
 		return id;
 	}
@@ -74,10 +74,10 @@ public class ReporteElementoDTO {
 	public void setBajado(String bajado) {
 		this.bajado = bajado;
 	}
-	public String getEquipo() {
+	public int getEquipo() {
 		return equipo;
 	}
-	public void setEquipo(String equipo) {
+	public void setEquipo(int equipo) {
 		this.equipo = equipo;
 	}
 
