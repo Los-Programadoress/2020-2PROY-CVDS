@@ -6,7 +6,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<h:head> 
-		<title>Dar de baja</title>
+		<title>Dar de baja equipos</title>
 		<link rel="stylesheet" href="master7.css"/>
 	</h:head>
 	<script type="text/javascript">
@@ -27,9 +27,8 @@
 				<p:commandButton class="submit" update="Equipos_Form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
 				<img class="imagen" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
 			</div>
-			<h1 class="h1">Equipos</h1>
-			<p:separator style="width:3px;height:600px" class="separat"/>
-			<p:dataTable var="equi" value="#{RegistrarEquiposBean.consultarEquiposNoDadosBaja()}" class="tabla"
+			<h1 class="h2">Equipos</h1>
+			<p:dataTable id="checkboxDT" var="equi" value="#{RegistrarEquiposBean.consultarEquiposNoDadosBaja()}" class="tabla2"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 						rows="8" selection="#{RegistrarEquiposBean.equiposSelec}" rowKey="#{equi.numero}">
 				<f:facet name="header">Equipos Registrados</f:facet>
@@ -41,20 +40,8 @@
 					</p:column>
 					<p:column selectionMode="multiple" style="width:16px;text-align:center"/>
 			</p:dataTable>		
-			<p:commandButton class="darBajaEl" update="Equipos_Form" onclick="return ConfirmInscription()" actionListener="#{RegistrarEquiposBean.cambiarBajaEquipo(RegistrarEquiposBean.equiposSelec)}" value="Dar de Baja Equipo"/>
-			 <h1 class="h2">Elementos</h1>
-			<p:dataTable var="elequi" value="#{RegistrarEquiposBean.consultarElementos()}" class="tabla3"
-						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-						rows="8" selection="#{registrarElementosBean.elementosSelec}" rowKey="#{elequi.id}">
-				<f:facet name="header">Equipos Registrados</f:facet>
-					<p:column class="columna" headerText="Nombre">
-						<h:outputText value="#{elequi.nombre}"/>
-					</p:column>
-					<p:column class="columna" headerText="Tipo">
-						<h:outputText value="#{elequi.tipo}"/>
-					</p:column>
-					<p:column selectionMode="multiple" style="width:16px;text-align:center"/>
-			</p:dataTable>	
+			<p:commandButton class="botonBajaEq" update="Equipos_Form" onclick="return ConfirmInscription()" actionListener="#{RegistrarEquiposBean.cambiarBajaEquipo(RegistrarEquiposBean.equiposSelec)}" value="Dar de Baja Equipo"/>
+			<a href="/faces/dardebajaelementoequipo.xhtml"><p:commandButton type="button" class="siguiente" update="Equipos_Form" value="siguiente"/></a>
 		</h:form>
 	</body>
 </html>

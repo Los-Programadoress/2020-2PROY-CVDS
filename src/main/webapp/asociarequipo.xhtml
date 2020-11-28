@@ -30,8 +30,8 @@
 			<center>
 				<h1 class="h1" >Asociar Equipo</h1>
 			</center>
-			<img class="imagen3" src="img/pc.png"/>
-			<img class="imagen4" src="img/elementos.png"/>
+			<img class="imagen3" src="img/redes.png"/>
+			<img class="imagen4" src="img/pc.png"/>
 			<p:commandButton update="Equipos_Form" onclick="return ConfirmInscription()" actionListener="#{RegistrarEquiposBean.asociacionEquipo(crearLaboratoriosBean.laboratorioSelec.nombre,RegistrarEquiposBean.equipoSelec.nombre)}" class="boton2" value="Asociar"/>
 			<p:dataTable var="aeq" value="#{RegistrarEquiposBean.consultarEquipos()}" class="tabla2" 
 					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
