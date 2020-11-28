@@ -4,11 +4,14 @@ package edu.eci.cvds.services;
 import java.sql.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.entities.Usuario;
+import edu.eci.cvds.persistence.PersistenceException;
 
 /**
 * Interface que cuenta con los servicios
@@ -89,6 +92,19 @@ public interface EquiposServices {
       * @throws EquiposException Errores con la operación
       */
 	 public void cambiarBajaEquipo(String nome, String user) throws EquiposException;
+	 
+	 /**
+      * Método que permite consultar el reporte de equipos 
+      * @throws PersistenceException Errores con la base de datos
+      * @return lista de equipos
+      */
+ 	  public List<Equipo> reporteEquipos() throws EquiposException;
+ 	  
+ 	 /**
+      * Método que permite consultar el nombre del equipo por ID
+      * @return nombre del equipo
+      */
+ 	  public String nombreEquipoPorId(int nequipo) throws EquiposException;
 	 
 	//ELEMENTO 
  	/**
@@ -186,6 +202,18 @@ public interface EquiposServices {
 	*/
 	public void add(Elemento elementoSelec);
 	
+	/**
+    * Método que permite consultar un reporte del elemento
+    * @return lista de elementos consultados
+    */
+   	public List<Elemento> reporteElementos() throws EquiposException;
+   	
+   	/**
+     * Método que permite consultar el número del equipo del elemento
+     * @return número del equipo
+     */
+	public int numEquipoDelElemento(String nombreElem) throws EquiposException;;
+	
 	//NOVEDAD
 	/**
      * Método que permite registrar una novedad para el laboratorio
@@ -243,10 +271,32 @@ public interface EquiposServices {
       */
 	 public List<Novedad> consultarNovedadElementos() throws EquiposException;
 	
+	 /**
+     * Método que permite consultar la novedad un equipo
+     * @param equipoNombre: Nombre del equipo a consultar
+     * @return lista de novedades del equipo
+     */
+	 public List<Novedad> consultarNovedadesEquipo(String equipoNombre) throws EquiposException;
+
+	 /**
+      * Método que permite consultar la novedad un elemento
+      * @param elementoNombre: Nombre del elemento a consultar
+      * @return lista de novedades del elemento
+      */
+	 public List<Novedad> consultarNovedadesElemento(String elementoNombre) throws EquiposException;
+	 
+	 /**
+      * Método que permite consultar la novedad un laboratorio
+      * @param laboratorioNombre: Nombre del laboratorio a consultar
+      * @return lista de novedades del laboratorio
+      */
+	 public List<Novedad> consultarNovedadesLaboratorio(String laboratorioNombre) throws EquiposException;
+	 
 	//LABORATORIO
 	 /**
       * Método que permite registrar un laboratorio
       * @param nombre: Nombre que identifica el laboratorio
+      * @param idcorreo: Identificador del correo del usuario
       * @param idcorreo: Identificador del correo del usuario
       * @throws EquiposException Errores con la operación
      */
@@ -259,4 +309,21 @@ public interface EquiposServices {
      */
 	 public List<Laboratorio> consultarLaboratorios() throws EquiposException;
 
+	 /**
+	  * Método que permite cerrar un laboratorio
+	  * @param nombreLab: Nombre del laboratorio que va a cerrarse
+	  */
+	 public void cerrarLaboratorio(String nombreLab, String idcorreo) throws EquiposException;
+	 
+	 /**
+	  * Método que permite contar cuantos equipos tiene un laboratorio
+	  * @param nombreLab: Nombre del laboratorio
+	  */
+	 public int cantidadEquiposLab(String nombreLab) throws EquiposException;
+	 
+	 /**
+      * Método que permite consultar el nombre del laboratorio del equipo
+      * @return nombre del laboratorio
+      */
+	  public String nombreLabDelEquipo(String nombreEq) throws EquiposException;
 }

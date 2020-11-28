@@ -6,22 +6,41 @@
 	<mapper namespace="edu.eci.cvds.persistence.mybatisimpl.mappers.LaboratorioMapper">
 	<resultMap type='Laboratorio' id='LaboratorioResult'>
 	  <id property='nombre' column='nombre' />
+	  <result property='estaCerrado' column='estaCerrado' />
+	  <result property='fechaCreacion' column='fechaCreacion' />
+	   <result property='fechaFin' column='fechaFin' />
 	  <association property="usuario" resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult'></association>
 	  <collection property='equipos' ofType='Equipo' resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.EquipoMapper.EquipoResult' columnPrefix='equi_'></collection>
 	  <collection property='novedades' ofType='Novedad' resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.NovedadMapper.NovedadResult' columnPrefix='noved_'></collection> 
 	</resultMap>
 	
 	<insert parameterType="map" id="registrarLaboratorio">
-	   INSERT INTO laboratorio (nombre, usuario_idcorreo) 
-	   VALUES (#{nombre}, #{idcorreo});
+	   INSERT INTO laboratorio (nombre, usuario_idcorreo, fechacreacion) 
+	   VALUES (#{nombre}, #{idcorreo}, #{fechacreacion});
 	</insert>
 	 
   	<select parameterType="map" id="consultarLaboratorios" resultMap="LaboratorioResult">
 	  SELECT
         l.nombre,
+        l.fechacreacion,
+        l.estacerrado,
+        l.fechafin,
         u.idcorreo
        FROM laboratorio AS l 
        LEFT JOIN usuario AS u 
        ON l.usuario_idcorreo = u.idcorreo;
    </select>
+   
+   <update parameterType="map" id="cerrarLaboratorio">
+		UPDATE laboratorio
+	    SET estaCerrado = true, fechafin = #{fechafin}
+	    WHERE nombre = #{nombreLab};
+	</update>
+	
+	<select parameterType="map" id="cantidadEquiposLab" resultType="Integer">
+		SELECT
+	 	COUNT(e.nombre)
+	 	FROM equipo AS e
+	 	where e.nombrelab = #{nombreLab};
+ 	</select>
 </mapper>

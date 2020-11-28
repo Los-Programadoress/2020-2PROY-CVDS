@@ -68,5 +68,25 @@ public interface NovedadDAO {
       */
 	 public List<Novedad> consultarNovedadElementos() throws PersistenceException;
 	 
+	 /**
+      * Método que permite consultar la novedad un equipo
+      * @param equipoNombre: Nombre del equipo a consultar
+      * @return lista de novedades del equipo
+      */
+	 public List<Novedad> consultarNovedadesEquipo(String equipoNombre) throws PersistenceException;
+	 
+	 /**
+      * Método que permite consultar la novedad un elemento
+      * @param elementoNombre: Nombre del elemento a consultar
+      * @return lista de novedades del elemento
+      */
+	 public List<Novedad> consultarNovedadesElemento(String elementoNombre) throws PersistenceException;
+	 
+	 /**
+      * Método que permite consultar la novedad un laboratorio
+      * @param laboratorioNombre: Nombre del laboratorio a consultar
+      * @return lista de novedades del laboratorio
+      */
+	 public List<Novedad> consultarNovedadesLaboratorio(String laboratorioNombre) throws PersistenceException;
 	 
 }

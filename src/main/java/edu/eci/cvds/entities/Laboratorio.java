@@ -2,6 +2,7 @@ package edu.eci.cvds.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.sql.Date;
 
 /**
 * Clase que define a un laboratorio y los atributos con los que cuenta
@@ -14,6 +15,10 @@ public class Laboratorio  implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private Usuario usuario;
+	private boolean estaCerrado;
+	private String cerrado;
+	private Date fechaCreacion;
+	private Date fechaFin;
 	private ArrayList<Equipo> equipos;
 	private ArrayList<Novedad> novedades;
 	
@@ -108,12 +113,75 @@ public class Laboratorio  implements Serializable{
 	}
 	
 	/**
+     * Método que devuelve si el laboratorio esta cerrado
+     * @return Si el laboratorio esta o no cerrado
+     */
+	public boolean isEstaCerrado() {
+		return estaCerrado;
+	}
+	
+	/**
+	 * Método que devuelve el cerrado del laboratorio para mostrarlo como Si o No
+	 * @return El estado de cerrado del laboratorio
+    */
+	public String getCerrado() {
+		if (isEstaCerrado()) {
+			this.cerrado = "Si";
+		}
+		else {
+			this.cerrado = "No";
+		}
+		return cerrado;
+	}
+	
+	/**
+	 * Método que cambia el estado cerrado del laboratorio
+	 * @param Estado del laboratorio
+	 */
+	public void setEstaCerrado(boolean estaCerrado) {
+		this.estaCerrado = estaCerrado;
+	}
+	
+	/**
+	 * Método que devuelve la fecha de creación del laboratorio
+	 * @return Fecha de creación del laboratorio
+	 */
+	public Date getFechaCreacion() {
+		return fechaCreacion;
+	}
+	
+	/**
+	 * Método que cambia la fecha de creación del laboratorio
+	 * @param Fecha de creación del laboratorio
+	 */
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+	
+	/**
+	 * Método que devuelve la fecha fin del laboratorio
+	 * @return Fecha de fin del laboratorio
+	 */
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+	
+	/**
+	 * Método que cambia la fecha fin del laboratorio
+	 * @param Fecha fin del laboratorio
+	 */
+	public void setFechaFin(Date fechafin) {
+		this.fechaFin = fechafin;
+	}
+
+	/**
      * Método que permite mostrar la salida como string
      * @return Los atributos relacionados del equipo
      */
 	@Override
 	public String toString() {
-		return "Laboratorio {nombre=" + nombre + ", usuario=" + usuario + ", equipos=" + equipos + ", novedades="
-				+ novedades + "}";
+		return "Laboratorio {nombre=" + nombre + ", usuario=" + usuario + ", estaCerrado=" + estaCerrado
+				+ ", fechaCreacion=" + fechaCreacion + ", fechafin=" + fechaFin + ", equipos=" + equipos
+				+ ", novedades=" + novedades + "}";
 	}
 }
