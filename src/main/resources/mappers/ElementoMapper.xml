@@ -13,6 +13,26 @@
 	  <collection property='novedades' ofType='Novedad' resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.NovedadMapper.NovedadResult' columnPrefix='noved_'></collection>   
 	</resultMap>
 
+	<resultMap type='ReporteElementoDTO' id='ReporteElementoResult'>
+   	  <id property='id' column='id' />
+  	  <result property='nombre' column='nombre' />
+  	  <result property='tipo' column='tipo' />
+  	  <result property='disponible' column='disponible' />
+  	  <result property='dadoDeBaja' column='dadoDeBaja' />
+  	  <result property='equipo' column='numEquipo' />
+ 	 </resultMap>
+ 	 
+	 <select parameterType="map" id="reporteElementos" resultMap="ReporteElementoResult">
+	 	SELECT
+	 	  el.id,
+	 	  el.nombre,
+	 	  el.tipo,
+	 	  el.disponible,
+	 	  el.dadoDeBaja,
+	 	  el.numEquipo
+	 	FROM elemento AS el
+	 </select>
+
 	<insert parameterType="map" id="registrarElementoEquipo">
 	   INSERT INTO elemento (tipo, nombre, disponible, numEquipo) 
 	   VALUES ( #{tipo}, #{nombre}, #{disponible}, #{nequipo});
@@ -72,4 +92,11 @@
 	    SET dadoDeBaja = #{dBaja}
 	    WHERE nombre = #{enom};
 	</update>
+	
+	<select parameterType="map" id="numEquipoDelElemento" resultType="Integer">
+	 SELECT
+ 	   el.numequipo 
+ 	 FROM elemento AS el
+ 	 WHERE el.nombre = #{nombreElem}
+ 	</select>
 </mapper>

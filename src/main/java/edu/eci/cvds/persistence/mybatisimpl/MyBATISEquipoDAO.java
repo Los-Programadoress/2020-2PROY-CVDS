@@ -2,6 +2,7 @@ package edu.eci.cvds.persistence.mybatisimpl;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.mybatis.guice.transactional.Transactional;
 import com.google.inject.Inject;
 import edu.eci.cvds.entities.Elemento;
@@ -154,4 +155,47 @@ public class MyBATISEquipoDAO implements EquipoDAO{
 	    }
 	}
 
+     /**
+      * Método que permite consultar el reporte de equipos 
+      * @throws PersistenceException Errores con la base de datos
+      * @return lista de equipos
+      */
+     @Override
+ 	public List<Equipo> reporteEquipos() throws PersistenceException {
+ 		try{
+	 		return equipoMapper.reporteEquipos();
+	 	}
+	 	catch(Exception e){
+	        throw new PersistenceException("Error al consultar el reporte de equipos",e);            
+	    }
+ 	}
+     
+     /**
+      * Método que permite consultar el nombre del equipo por ID
+      * @throws PersistenceException Errores con la base de datos
+      * @return nombre del equipo
+      */
+     @Override
+ 	  public String nombreEquipoPorId(int nequipo) throws PersistenceException{
+    	 try{
+ 	 		return equipoMapper.nombreEquipoPorId(nequipo);
+ 	 	}
+ 	 	catch(Exception e){
+ 	        throw new PersistenceException("Error al consultar el nombre del equipo",e);            
+ 	    }  
+ 	  }
+     
+     /**
+      * Método que permite consultar el nombre del laboratorio del equipo
+      * @return nombre del laboratorio
+      */
+     @Override
+	  public String nombreLabDelEquipo(String nombreEq) throws PersistenceException{
+		 try{
+ 	 		return equipoMapper.nombreLabDelEquipo(nombreEq);
+		 }
+ 	 	catch(Exception e){
+ 	        throw new PersistenceException("Error al consultar el nombre del laboratorio del equipo",e);            
+ 	     }  	  
+	  }
 }

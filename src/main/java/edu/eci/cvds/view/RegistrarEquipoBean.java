@@ -1,5 +1,6 @@
 package edu.eci.cvds.view;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -14,6 +15,7 @@ import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
+import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.services.EquiposException;
 import edu.eci.cvds.services.EquiposServices;
 
@@ -25,6 +27,7 @@ public class RegistrarEquipoBean extends BasePageBean{
 	private List<Equipo> equipos= null;
 	private List<Elemento> elementosEq = null;
 	private Equipo equipoSelec;
+	private List<Equipo> equiposSelec;
 	private String user;
 
 	@Inject
@@ -59,23 +62,69 @@ public class RegistrarEquipoBean extends BasePageBean{
 		}
 	}
 	
-	public void cambiarBajaEquipo(String nome) throws EquiposException{
+	public void cambiarBajaEquipo(List<Equipo> equipo) throws EquiposException{
+		System.out.println(equiposSelec.size()+" tamaño");
 		try{
-			equipoS.cambiarBajaEquipo(nome, user);
+			for(Equipo eq:equipo) {
+				equipoS.cambiarBajaEquipo(eq.getNombre(), user);
+			}
 		}
 		catch(EquiposException e){          
-		} 
+		}
 	}
 	
 	public List<Elemento> consultarElementosEquipo(String nequipo) throws EquiposException{
 		try{
-			
 			elementosEq = equipoS.consultarElementosEquipo(nequipo);
 		}
 		catch(EquiposException e){          
 		} 
 		return elementosEq;
 	 }
+	
+	public List<Elemento> consultarElementos() throws EquiposException{
+		List<Elemento> consultaElemen = new ArrayList<Elemento>();
+		try{
+			System.out.println(equiposSelec.size()+" tamaño");
+			for(Equipo eq:equiposSelec) {
+				List<Elemento> element = equipoS.consultarElementosEquipo(eq.getNombre());
+				for(Elemento el:element) {
+					consultaElemen.add(el);
+				}
+			}
+		}
+		catch(EquiposException e){          
+		} 
+		return consultaElemen;
+	 }
+	
+	public  List<Equipo> consultarEquiposNoDadosBaja() throws EquiposException{
+ 		try{
+ 			equipos = equipoS.consultarEquiposNoDadosBaja();
+ 		}
+ 		catch(EquiposException e){          
+		}
+ 		return equipos;
+ 	 }
+	
+	public List<Equipo> reporteEquipos() throws EquiposException {
+		try{
+	 		equipos = equipoS.reporteEquipos();
+	 	}
+		catch(EquiposException e){          
+		}
+		return equipos;
+	}
+	
+	 public String nombreEquipoPorId(int nequipo) throws EquiposException{
+		 String nombreEquipo = "";
+    	 try{
+ 	 		nombreEquipo = equipoS.nombreEquipoPorId(nequipo);
+ 	 	}
+ 	 	catch(Exception e){        
+ 	    } 
+    	return nombreEquipo; 
+ 	  }
 	
 	public void info() {
 		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Equipo dado de baja", "Se dió de baja satisfactoriamente.");
@@ -106,6 +155,15 @@ public class RegistrarEquipoBean extends BasePageBean{
 	public void setEquipoSelec(Equipo equipoSelec) {
 		this.equipoSelec = equipoSelec;
 	}
+
+	public List<Equipo> getEquiposSelec() {
+		return equiposSelec;
+	}
+
+	public void setEquiposSelec(List<Equipo> equiposSelec) {
+		this.equiposSelec = equiposSelec;
+	}
+	
 	
 	
 }

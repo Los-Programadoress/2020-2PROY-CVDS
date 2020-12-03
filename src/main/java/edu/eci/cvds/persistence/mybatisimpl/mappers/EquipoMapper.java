@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
+import edu.eci.cvds.persistence.PersistenceException;
 
 public interface EquipoMapper {
 	
@@ -16,7 +17,6 @@ public interface EquipoMapper {
 	 
 	 /**
      * Método que permite consultar los equipos no dados de baja
-     * @throws PersistenceException Errores con la base de datos
      * @return lista de equipos consultados
      */
 	 public List<Equipo> consultarEquiposNoDadosBaja();
@@ -64,4 +64,21 @@ public interface EquipoMapper {
      */
 	public void cambiarBajaEquipo(@Param("dbaja")boolean dbaja, @Param("nome") String nome);
 
+	/**
+     * Método que permite consultar el reporte de equipos 
+     * @return lista de equipos
+     */
+	public List<Equipo> reporteEquipos();
+	
+	 /**
+      * Método que permite consultar el nombre del equipo por ID
+      * @return nombre del equipo
+      */
+	  public String nombreEquipoPorId(@Param("nequipo") int nequipo);
+	  
+	  /**
+       * Método que permite consultar el nombre del laboratorio del equipo
+       * @return nombre del laboratorio
+       */ 
+	  public String nombreLabDelEquipo(@Param("nombreEq") String nombreEq);
 }

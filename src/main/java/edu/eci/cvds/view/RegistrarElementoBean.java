@@ -13,6 +13,7 @@ import org.primefaces.PrimeFaces;
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Elemento;
+import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.services.EquiposException;
 import edu.eci.cvds.services.EquiposServices;
 
@@ -25,6 +26,7 @@ public class RegistrarElementoBean extends BasePageBean{
 	private Elemento elementoSelec;
 	private List<Elemento> elementoDispo = null;
 	private String user;
+	private List<Elemento> elementosSelec;
 	 
 	 @Inject
 	 private EquiposServices equipoS;
@@ -87,12 +89,13 @@ public class RegistrarElementoBean extends BasePageBean{
 		}	
 	 }
 	 
-	 public void cambiarBajaElemento(String enom) throws EquiposException{
+	 public void cambiarBajaElemento(List<Elemento> elemento) throws EquiposException{
 		try{
-			System.out.println("HOLA: "+enom);
 			Subject currentUser = SecurityUtils.getSubject();
 			user = currentUser.getPrincipal().toString();
-			equipoS.cambiarBajaElemento(true, enom, user);
+			for(Elemento ele:elemento) {
+				equipoS.cambiarBajaElemento(true, ele.getNombre(), user);
+			}
 			info2();
 		}
 		catch(EquiposException e){  
@@ -117,6 +120,16 @@ public class RegistrarElementoBean extends BasePageBean{
 		}
 		return elementoDispo;
 	}
+	 
+	 public List<Elemento> reporteElementos() throws EquiposException{
+   		try {
+			 elementos = equipoS.reporteElementos();
+		 }
+   		catch(EquiposException e){  
+			e.printStackTrace(); 
+		}
+   		return elementos;
+   	}
 	 
 	 public void add() {		 
 		 equipoS.add(getElementoSelec());
@@ -177,5 +190,16 @@ public class RegistrarElementoBean extends BasePageBean{
 	public void setElementoSelec(Elemento elementoSelec) {
 		this.elementoSelec = elementoSelec;
 	}
+
+
+	public List<Elemento> getElementosSelec() {
+		return elementosSelec;
+	}
+
+
+	public void setElementosSelec(List<Elemento> elementosSelec) {
+		this.elementosSelec = elementosSelec;
+	}
+	
 	
 }
