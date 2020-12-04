@@ -308,6 +308,13 @@ public interface EquiposServices {
      * @throws EquiposException Errores con la operación
      */
 	 public List<Laboratorio> consultarLaboratorios() throws EquiposException;
+	 
+	 /**
+     * Método que permite consultar los laboratorios
+     * @return Lista de laboratorios
+     * @throws EquiposException Errores con la operación
+     */
+	 public List<Laboratorio> consultarLaboratoriosNoCerrados() throws EquiposException;
 
 	 /**
 	  * Método que permite cerrar un laboratorio
@@ -320,6 +327,7 @@ public interface EquiposServices {
 	  * @param nombreLab: Nombre del laboratorio
 	  */
 	 public int cantidadEquiposLab(String nombreLab) throws EquiposException;
+	 
 	 
 	 /**
       * Método que permite consultar el nombre del laboratorio del equipo

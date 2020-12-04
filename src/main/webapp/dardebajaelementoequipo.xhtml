@@ -18,10 +18,10 @@
 			</div>
 			
 			 <h1 class="h2">Elementos</h1>
+			 <image class="elementoimg" src="img/elementosEquipo.png"/>
 			<p:dataTable var="elequi" value="#{RegistrarEquiposBean.consultarElementos()}" class="tabla3" rowKey="#{elequi.id}"
 				selection="#{registrarElementosBean.elementosSelec}">
 				<f:facet name="header">Elementos asociados al equipo</f:facet>
-			
 					<p:column class="columna" headerText="Nombre">
 						<h:outputText value="#{elequi.nombre}"/>
 					</p:column>
@@ -30,8 +30,8 @@
 					</p:column>
 					<p:column selectionMode="multiple" style="width:16px;text-align:center"/>
 			</p:dataTable>	
-			<p:commandButton class="darBajaEl" update="Equipos_Form" onclick="return ConfirmInscription()" actionListener="#{registrarElementosBean.cambiarBajaElemento(registrarElementosBean.elementosSelec)}" value="Baja Elemento"/>
-			<p:commandButton class="quitarasociacion" update="Equipos_Form"  value="Eliminar Asociación"/>
+			<p:commandButton class="darBajaEl" update="Equipos_Form" actionListener="#{registrarElementosBean.cambiarBajaElemento(registrarElementosBean.elementosSelec)}" value="Baja Elemento"/>
+			<p:commandButton class="quitarasociacion" update="Equipos_Form" actionListener="#{registrarElementosBean.desasociarElemento(registrarElementosBean.elementosSelec)}" value="Eliminar Asociación"/>
 		</h:form>
 	</body>
 </html>

@@ -11,6 +11,9 @@
 	</h:head>
 	
 	<body>
+		<f:metadata>
+			<f:viewParam name="nombreElemento" value="#{registrarNovedadBean.nombreEl}" />
+		</f:metadata>
 		<h:form id="form">
 			<center>
 				<h1 class="h1">Novedades de los elementos</h1>
@@ -20,7 +23,7 @@
 				<p:commandButton class="cerrar" update="form" actionListener="#{shiroBean.doLogOut()}" value="Cerrar sesión"/>
 				<img class="logo" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
 			</div>
-			<p:dataTable var="nove" class="tabla" value="#{registrarNovedadBean.consultarNovedadElementos()}"
+			<p:dataTable var="nove" class="tabla" value="#{registrarNovedadBean.consultarNovedadesElemento(registrarNovedadBean.nombreEl)}"
 				paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
 				rows="8" selection="#{registrarElementosBean.elementoSelec}"
 				rowKey="#{nov.id}">

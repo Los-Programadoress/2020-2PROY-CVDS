@@ -3,6 +3,7 @@ package edu.eci.cvds.persistence;
 import java.sql.Date;
 import java.util.List;
 
+import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 
 /**
@@ -29,6 +30,13 @@ public interface LaboratorioDAO {
 	 public List<Laboratorio> consultarLaboratorios() throws PersistenceException;
 	 
 	 /**
+     * Método que permite consultar los laboratorios no cerrados
+     * @return Lista de laboratorios no cerrados
+     * @throws PersistenceException Errores con la base de datos
+     */
+	 public List<Laboratorio> consultarLaboratoriosNoCerrados() throws PersistenceException;
+	 
+	 /**
 	  * Método que permite cerrar un laboratorio
 	  * @param nombreLab: Nombre del laboratorio que va a cerrarse
 	  * @param fechafin: Fecha de cierre del laboratorio
@@ -40,4 +48,10 @@ public interface LaboratorioDAO {
 	  * @param nombreLab: Nombre del laboratorio
 	  */
 	 public int cantidadEquiposLab(String nombreLab) throws PersistenceException;
+	 
+	 /**
+	  * Método que permite contar consultar el nombre de los equipos que tiene un laboratorio
+	  * @return lista de de los nombres de los equipos
+	  */
+	 public List<Equipo> nombreEquiposLab(String nombreLab) throws PersistenceException;
 }

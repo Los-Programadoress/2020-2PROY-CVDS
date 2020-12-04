@@ -47,7 +47,7 @@
 				</p:column>
 				<p:column selectionMode="single" style="width:16px;text-align:center"/>
 			</p:dataTable>
-			<p:dataTable var="lab" value="#{crearLaboratoriosBean.consultarLaboratorios()}" class="tabla3"
+			<p:dataTable var="lab" value="#{crearLaboratoriosBean.consultarLaboratoriosNoCerrados()}" class="tabla3"
 					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                      rows="6" selection="#{crearLaboratoriosBean.laboratorioSelec}"
                      rowKey="#{lab.nombre}">

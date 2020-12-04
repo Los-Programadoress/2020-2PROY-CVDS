@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -20,7 +21,7 @@ import edu.eci.cvds.services.EquiposException;
 import edu.eci.cvds.services.EquiposServices;
 
 @ManagedBean(name="registrarNovedadBean")
-@SessionScoped
+@ApplicationScoped
 public class RegistrarNovedadBean extends BasePageBean{
 	
 	private String f_seleccionada = "";
@@ -31,6 +32,8 @@ public class RegistrarNovedadBean extends BasePageBean{
 	private List<Elemento> nombreElementos;
 	private List<Laboratorio> nombreLaboratorios;
 	private String user;
+	private String nombreEq;
+	private String nombreEl;
 	
 	@Inject
 	private EquiposServices equipoS;
@@ -152,6 +155,36 @@ public class RegistrarNovedadBean extends BasePageBean{
  			e.printStackTrace();           
 		} 
 	 }
+	
+	public List<Novedad> consultarNovedadesEquipo(String equipoNombre) throws EquiposException{
+		 try{
+			 novedadesEq = equipoS.consultarNovedadesEquipo(equipoNombre);
+		}
+		 catch(EquiposException e) {
+	 			e.printStackTrace(); 
+		}
+		 return novedadesEq;
+	 }
+
+	 public List<Novedad> consultarNovedadesElemento(String elementoNombre) throws EquiposException{
+		 try{
+			 novedadesEl = equipoS.consultarNovedadesElemento(elementoNombre);
+		}
+		 catch(EquiposException e) {
+	 			e.printStackTrace(); 
+		} 
+		 return novedadesEl;
+	 }
+	 
+	 public List<Novedad> consultarNovedadesLaboratorio(String laboratorioNombre) throws EquiposException{
+		 try{
+			 novedadesLa = equipoS.consultarNovedadesLaboratorio(laboratorioNombre);
+		}
+		 catch(EquiposException e) {
+	 			e.printStackTrace(); 
+		}
+		 return novedadesLa;
+	 }
 
 	public String getF_seleccionada() {
 		return f_seleccionada;
@@ -160,4 +193,22 @@ public class RegistrarNovedadBean extends BasePageBean{
 	public void setF_seleccionada(String f_seleccionada) {
 		this.f_seleccionada = f_seleccionada;
 	}
+
+	public String getNombreEq() {
+		return nombreEq;
+	}
+
+	public void setNombreEq(String nombreEq) {
+		this.nombreEq = nombreEq;
+	}
+
+	public String getNombreEl() {
+		return nombreEl;
+	}
+
+	public void setNombreEl(String nombreEl) {
+		this.nombreEl = nombreEl;
+	}
+
+	
 }

@@ -43,7 +43,7 @@ body{
 	position: absolute;
 	color: #fff;
 	top: 10%;
-	left: 41%;
+	left: 43%;
 }
 
 .h2{
@@ -72,8 +72,8 @@ body{
 
 .imagen{
 	position: absolute;
-	width: 300px;
-	height: 200px;
+	width: 270px;
+	height: 170px;
 	top: 21%;
 	left: 22%;
 }
@@ -177,14 +177,28 @@ body{
 
 .input6{
 	position: absolute;
-	left: 59%;
+	left: 45%;
 	top: 28%;
 }
 
+.desplegable{
+	position: absolute;
+	left: 63%;
+	top: 28%;
+}
+
+.cerrarLab{
+	position: absolute;
+	left: 68%;
+	top: 35%;
+	background: #900;
+	color: #fff;
+	border: none;
+}
 
 .boton{
 	position: absolute;
-	left: 62%;
+	left: 48%;
 	top: 35%;
 	background: #900;
 	color: #fff;
@@ -207,14 +221,14 @@ body .ui-staticmessage.ui-message {
 	width: 670px;
 	height: 30px;
 	position: absolute;
-	top: 85%;
+	top: 88%;
 	left:16%;
 	font-size:20px;
 }
 
 .asociarEquipo{
 	position:absolute;
-	top: 85%;
+	top: 88%;
 	left: 70%;
 	background: #900;
 	color: #fff; 
@@ -260,4 +274,26 @@ body .ui-staticmessage.ui-message {
 	position: absolute;
 	left: 65%;
 	top: 22%;
+}
+
+.botonExcel{
+	position: absolute;
+	left: 15%;
+	top: 42%;
+	height: 50px;
+	width: 55px;
+	background: url(img/excel.png) center;
+	background-size: 100% 100%;
+	color: #0000;
+}
+
+.tap .botonExcel2{
+	position: absolute;
+	left: 94.5%;
+	top: 20%;
+	height: 30px;
+	width: 35px;
+	background: url(img/excel.png) center;
+	background-size: 100% 100%;
+	color: #0000;
 }

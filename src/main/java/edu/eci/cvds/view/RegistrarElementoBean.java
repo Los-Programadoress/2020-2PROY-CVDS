@@ -103,9 +103,11 @@ public class RegistrarElementoBean extends BasePageBean{
 		}
 	}
 	 
-	 public void desasociarElemento(int nume, String tipo)throws EquiposException{
+	 public void desasociarElemento(List<Elemento> elemento)throws EquiposException{
 		try {
-			equipoS.desasociarElemento(true, nume, tipo);
+			for(Elemento ele:elemento) {
+				equipoS.desasociarElemento(true, equipoS.numEquipoDelElemento(ele.getNombre()), ele.getTipo());
+			}
 		}catch(EquiposException e){  
 			e.printStackTrace(); 
 		}

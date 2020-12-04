@@ -74,7 +74,7 @@
 	<update parameterType="map" id="desasociarElemento">
 		UPDATE elemento
 		SET numequipo = null, disponible = #{disp}
-		WHERE numequipo = #{nume} AND tipo = #{tipo}
+		WHERE numequipo = #{nume} AND tipo = #{tipo};
 	</update> 
 	
 	<select parameterType="map" id="consultarElementos" resultMap="ElementoResult">

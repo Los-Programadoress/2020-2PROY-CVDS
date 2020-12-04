@@ -41,7 +41,7 @@
             <p:commandButton class="registrarLab" update="form" actionListener="#{registrarNovedadBean.registrarNovedadLaboratorio(titulo2, detalle2, nombreElemento2)}" value="Registrar"/>
 			<p:tabView class="tap">
 				<p:tab title="Novedades Equipos">
-					<p:dataTable var="nov" value="#{registrarNovedadBean.consultarNovedadEquipos()}"
+					<p:dataTable id="novedadEquipo" var="nov" value="#{registrarNovedadBean.consultarNovedadEquipos()}"
 					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
 					 rows="3" selection="#{registrarElementosBean.elementoSelec}"
                      rowKey="#{nov.id}">
@@ -64,10 +64,13 @@
 						</p:column>
 				
 					</p:dataTable>
+					<p:commandButton value="" ajax="false" class="botonExcel2" onclick="PrimeFaces.monitorDownload(start, stop);">
+						<p:dataExporter type="xls" target="novedadEquipo" fileName="NovedadesEquipo"/>
+					</p:commandButton>
 				</p:tab>
 				
 				<p:tab title="Novedades Elementos">
-					<p:dataTable var="nove" value="#{registrarNovedadBean.consultarNovedadElementos()}"
+					<p:dataTable id="novedadElemento" var="nove" value="#{registrarNovedadBean.consultarNovedadElementos()}"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
 						rows="3" selection="#{registrarElementosBean.elementoSelec}"
 						rowKey="#{nov.id}">
@@ -90,10 +93,13 @@
 						</p:column>
 				
 					</p:dataTable>
+					<p:commandButton value="" ajax="false" class="botonExcel2" onclick="PrimeFaces.monitorDownload(start, stop);">
+						<p:dataExporter type="xls" target="novedadElemento" fileName="NovedadesElemento"/>
+					</p:commandButton>
 				</p:tab>
 				
 				<p:tab title="Novedades Laboratorios">
-					<p:dataTable var="nove" value="#{registrarNovedadBean.consultarNovedadLaboratorios()}"
+					<p:dataTable id="novedadLaboratorio" var="nove" value="#{registrarNovedadBean.consultarNovedadLaboratorios()}"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
 						rows="3" selection="#{registrarElementosBean.elementoSelec}"
 						rowKey="#{nov.id}">
@@ -114,8 +120,10 @@
 						<p:column class="columna" headerText="Detalle">
 							<h:outputText value="#{nove.detalle}" />
 						</p:column>
-						
 					</p:dataTable>
+					<p:commandButton value="" ajax="false" class="botonExcel2" onclick="PrimeFaces.monitorDownload(start, stop);">
+							<p:dataExporter type="xls" target="novedadLaboratorio" fileName="NovedadesLaboratorio"/>
+					</p:commandButton>
 				</p:tab>
 				
 			</p:tabView>

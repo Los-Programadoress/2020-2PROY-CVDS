@@ -201,7 +201,7 @@ public class EquiposServicesImpl implements EquiposServices{
 	  public void cambiarBajaEquipo(String nome, String user) throws EquiposException{
 		try{
 			equipoDAO.cambiarBajaEquipo(true, nome);
-			//registrarNovedadEquipo("Equipo dado de baja", fecha, user,"Se dió de baja a el equipo "+nome, nome, null);	
+			registrarNovedadEquipo("Equipo dado de baja", fecha, user,"Se dió de baja a el equipo "+nome, nome, null);	
 		}
 		catch(PersistenceException e){
 			throw new EquiposException("Error al cambiar baja del equipo",e);            
@@ -434,7 +434,7 @@ public class EquiposServicesImpl implements EquiposServices{
 	public void cambiarBajaElemento(boolean dBaja, String enom, String user) throws EquiposException{
 		try{
 			elementoDAO.cambiarBajaElemento(dBaja,enom);
-			//registrarNovedadElemento("Elemento dado de baja ", fecha , user, "Se dió de baja a el elemento " + enom, null, enom);
+			registrarNovedadElemento("Elemento dado de baja ", fecha , user, "Se dió de baja a el elemento " + enom, null, enom);
 		}
 		catch(PersistenceException e){
 			throw new EquiposException("Error al cambiar baja del elemento",e);            
@@ -644,6 +644,21 @@ public class EquiposServicesImpl implements EquiposServices{
 	}
 	
 	/**
+	 * Método que permite consultar los laboratorios no cerrados
+	 * @return Lista de laboratorios no cerrados
+	 * @throws EquiposException Errores con la operación
+     */
+	@Override
+	public List<Laboratorio> consultarLaboratoriosNoCerrados() throws EquiposException{
+		try{
+			return laboratorioDAO.consultarLaboratoriosNoCerrados();
+		}
+		catch(PersistenceException e){
+			throw new EquiposException("Error al consultar los laboratorios",e);            
+	    }
+	}
+	
+	/**
      * Método que permite cerrar un laboratorio
      * @param nombreLab: Nombre del laboratorio que va a cerrarse
      * @param idcorreo: Identificador del correo del usuario
@@ -651,8 +666,13 @@ public class EquiposServicesImpl implements EquiposServices{
 	@Override
 	public void cerrarLaboratorio(String nombreLab, String idcorreo) throws EquiposException{
 		Date fechafin = fecha;
+		List<Equipo> equiposLab = new ArrayList<Equipo>(); 
 		try{
 			laboratorioDAO.cerrarLaboratorio(nombreLab, fechafin);
+			equiposLab = laboratorioDAO.nombreEquiposLab(nombreLab);
+			for(Equipo e : equiposLab) {
+				equipoDAO.desasociarEquipo(true,e.getNombre());
+			}
 			registrarNovedadLaboratorio("Cierre de laboratorio", fechafin, idcorreo, "Se cerró el laboratorio " + nombreLab, nombreLab);
 		}
 		catch(PersistenceException e){
@@ -673,4 +693,5 @@ public class EquiposServicesImpl implements EquiposServices{
 			throw new EquiposException("Error al consultar cantidad de equipos",e);            
 	    }
 	} 
+	
 }

@@ -28,20 +28,36 @@
 				<img class="imagen" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
 			</div>
 			<h1 class="h2">Equipos</h1>
-			<p:dataTable id="checkboxDT" var="equi" value="#{RegistrarEquiposBean.consultarEquiposNoDadosBaja()}" class="tabla2"
+			<p:dataTable id="tablaeq" var="equi" value="#{RegistrarEquiposBean.consultarEquiposNoDadosBaja()}" class="tabla2"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 						rows="8" selection="#{RegistrarEquiposBean.equiposSelec}" rowKey="#{equi.numero}">
 				<f:facet name="header">Equipos Registrados</f:facet>
+				<p:column class="columna" headerText="Tipo">
+					<h:outputText value="#{equi.nombre}"/>
+				</p:column>
+				<p:column class="columna" headerText="Marca">
+					<h:outputText value="#{equi.marca}"/>
+				</p:column>
+				<p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+			</p:dataTable>		
+			<p:commandButton class="botonBajaEq" update="tablaeq" onclick="return ConfirmInscription()" actionListener="#{RegistrarEquiposBean.cambiarBajaEquipo(RegistrarEquiposBean.equiposSelec)}" value="Dar de Baja Equipo"/>
+			<a href="/faces/dardebajaelementoequipo.xhtml"><p:commandButton type="button" class="siguiente" value="siguiente"/></a>
+			
+			<p:separator style="width:3px;height:350px" class="separat"/>
+			
+			<p:dataTable id="tablael" var="ael" value="#{registrarElementosBean.consultarElementosDisponibles()}" class="tabla4"
+						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+						rows="8" selection="#{registrarElementosBean.elementosSelec}" rowKey="#{ael.id}">
+				<f:facet name="header">Elementos Disponibles</f:facet>
 					<p:column class="columna" headerText="Tipo">
-						<h:outputText value="#{equi.nombre}"/>
+						<h:outputText value="#{ael.tipo}"/>
 					</p:column>
 					<p:column class="columna" headerText="Marca">
-						<h:outputText value="#{equi.marca}"/>
+						<h:outputText value="#{ael.nombre}"/>
 					</p:column>
 					<p:column selectionMode="multiple" style="width:16px;text-align:center"/>
 			</p:dataTable>		
-			<p:commandButton class="botonBajaEq" update="Equipos_Form" onclick="return ConfirmInscription()" actionListener="#{RegistrarEquiposBean.cambiarBajaEquipo(RegistrarEquiposBean.equiposSelec)}" value="Dar de Baja Equipo"/>
-			<a href="/faces/dardebajaelementoequipo.xhtml"><p:commandButton type="button" class="siguiente" update="Equipos_Form" value="siguiente"/></a>
+			<p:commandButton class="darBajaEl" update="tablael" onclick="return ConfirmInscription()" actionListener="#{registrarElementosBean.cambiarBajaElemento(registrarElementosBean.elementosSelec)}" value="Baja Elemento"/>
 		</h:form>
 	</body>
 </html>
