@@ -4,8 +4,6 @@ package edu.eci.cvds.services;
 import java.sql.Date;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
@@ -105,6 +103,12 @@ public interface EquiposServices {
       * @return nombre del equipo
       */
  	  public String nombreEquipoPorId(int nequipo) throws EquiposException;
+ 	  
+ 	 /**
+       * Método que permite consultar el nombre del equipo por el nombre del elemento
+       * @return nombre del equipo
+       */
+  	  public String nombreEquipoPorElemento(String nombreElemento) throws EquiposException;
 	 
 	//ELEMENTO 
  	/**
@@ -308,6 +312,13 @@ public interface EquiposServices {
      * @throws EquiposException Errores con la operación
      */
 	 public List<Laboratorio> consultarLaboratorios() throws EquiposException;
+	 
+	 /**
+     * Método que permite consultar los laboratorios
+     * @return Lista de laboratorios
+     * @throws EquiposException Errores con la operación
+     */
+	 public List<Laboratorio> consultarLaboratoriosNoCerrados() throws EquiposException;
 
 	 /**
 	  * Método que permite cerrar un laboratorio
@@ -320,6 +331,7 @@ public interface EquiposServices {
 	  * @param nombreLab: Nombre del laboratorio
 	  */
 	 public int cantidadEquiposLab(String nombreLab) throws EquiposException;
+	 
 	 
 	 /**
       * Método que permite consultar el nombre del laboratorio del equipo

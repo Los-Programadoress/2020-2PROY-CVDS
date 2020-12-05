@@ -13,7 +13,6 @@ import org.primefaces.PrimeFaces;
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Elemento;
-import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.services.EquiposException;
 import edu.eci.cvds.services.EquiposServices;
 
@@ -103,9 +102,11 @@ public class RegistrarElementoBean extends BasePageBean{
 		}
 	}
 	 
-	 public void desasociarElemento(int nume, String tipo)throws EquiposException{
+	 public void desasociarElemento(List<Elemento> elemento)throws EquiposException{
 		try {
-			equipoS.desasociarElemento(true, nume, tipo);
+			for(Elemento ele:elemento) {
+				equipoS.desasociarElemento(true, equipoS.numEquipoDelElemento(ele.getNombre()), ele.getTipo());
+			}
 		}catch(EquiposException e){  
 			e.printStackTrace(); 
 		}

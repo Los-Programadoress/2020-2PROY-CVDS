@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 
 public interface LaboratorioMapper {
@@ -22,6 +23,12 @@ public interface LaboratorioMapper {
      * @return lista de laboratorios consultados
      */
 	public List<Laboratorio> consultarLaboratorios(); 
+	
+	/**
+     * Método que permite consultar los laboratorios no cerrados
+     * @return lista de laboratorios no cerrados consultados
+     */
+	public List<Laboratorio> consultarLaboratoriosNoCerrados(); 
 
 	/**
      * Método que permite cerrar un laboratorio
@@ -34,4 +41,10 @@ public interface LaboratorioMapper {
 	 * @param nombreLab: Nombre del laboratorio
 	 */
 	public int cantidadEquiposLab(@Param("nombreLab")String nombreLab);
+	
+	/**
+	 * Método que permite contar consultar el nombre de los equipos que tiene un laboratorio
+	 * @return lista de de los nombres de los equipos
+	 */
+	public List<Equipo> nombreEquiposLab(@Param("nombreLab")String nombreLab);
 }

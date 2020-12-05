@@ -1,9 +1,6 @@
 package edu.eci.cvds.persistence;
 
 import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import edu.eci.cvds.entities.Elemento;
 
 /**

@@ -1,16 +1,16 @@
-body{
+body {
   background: url(bg.jpg) no-repeat fixed center;
   margin: 0;
   padding: 0;
   background-size: 100% 100%;
 }
 
-.en-sesion{
+.en-sesion {
   height: 65px;
   background: #900;
 }
 
-.en-sesion .submit{
+.en-sesion .submit {
   background: #900;
   outline: none;
   border: none;
@@ -21,21 +21,21 @@ body{
   left: 90%;
 }
 
-.en-sesion .imagen{
-	position: absolute;
-	left: 38%;
-	height: 65px;
-	width: 300px;
+.en-sesion .imagen {
+  position: absolute;
+  left: 38%;
+  height: 65px;
+  width: 300px;
 }
 
-.en-sesion .imagenLogo{
-	position: absolute;
-	left: 39%;
-	height: 65px;
-	width: 260px;
+.en-sesion .imagenLogo {
+  position: absolute;
+  left: 39%;
+  height: 65px;
+  width: 260px;
 }
 
-.h1{
+.h1 {
   color: #fff;
   position: absolute;
   top: 10%;
@@ -44,7 +44,7 @@ body{
   font-size: 80px;
 }
 
-.en-sesion1{
+.en-sesion1 {
   width: 200px;
   height: 200px;
   position: absolute;
@@ -53,13 +53,13 @@ body{
   background: #900;
 }
 
-.en-sesion1 .imagen{
+.en-sesion1 .imagen {
   position: absolute;
   height: 100%;
   width: 100%;
 }
 
-.boton{
+.boton {
   color: #fff;
   position: absolute;
   top: 67%;
@@ -71,7 +71,7 @@ body{
   border: none;
 }
 
-.en-sesion2{
+.en-sesion2 {
   width: 200px;
   height: 200px;
   position: absolute;
@@ -80,13 +80,13 @@ body{
   background: #900;
 }
 
-.en-sesion2 .imagen{
+.en-sesion2 .imagen {
   position: absolute;
   height: 100%;
   width: 100%;
 }
 
-.boton2{
+.boton2 {
   color: #fff;
   position: absolute;
   top: 67%;
@@ -98,7 +98,7 @@ body{
   border: none;
 }
 
-.en-sesion3{
+.en-sesion3 {
   width: 200px;
   height: 200px;
   position: absolute;
@@ -107,14 +107,14 @@ body{
   background: #900;
 }
 
-.en-sesion3 .imagen{
+.en-sesion3 .imagen {
   position: absolute;
   top: 3%;
   height: 80%;
   width: 100%;
 }
 
-.boton3{
+.boton3 {
   color: #fff;
   position: absolute;
   top: 75%;
@@ -125,8 +125,8 @@ body{
   font-size: 20px;
   border: none;
 }
-  
-.en-sesion4{
+
+.en-sesion4 {
   width: 200px;
   height: 200px;
   position: absolute;
@@ -135,14 +135,14 @@ body{
   background: #900;
 }
 
-.en-sesion4 .imagen{
+.en-sesion4 .imagen {
   position: absolute;
   height: 100%;
   width: 93%;
   left: 5%;
 }
 
-.boton4{
+.boton4 {
   color: #fff;
   position: absolute;
   top: 75%;
@@ -154,7 +154,7 @@ body{
   border: none;
 }
 
-.boton5{
+.boton5 {
   color: #fff;
   position: absolute;
   top: 67%;
@@ -166,7 +166,7 @@ body{
   border: none;
 }
 
-.boton6{
+.boton6 {
   color: #fff;
   position: absolute;
   top: 75%;
@@ -178,7 +178,7 @@ body{
   border: none;
 }
 
-.boton7{
+.boton7 {
   color: #fff;
   position: absolute;
   top: 67%;
@@ -190,7 +190,7 @@ body{
   border: none;
 }
   
-.boton8{
+.boton8 {
   color: #fff;
   position: absolute;
   top: 75%;
@@ -201,5 +201,3 @@ body{
   font-size: 20px;
   border: none;
 }
-
-

@@ -41,7 +41,7 @@
             <p:commandButton class="registrarLab" update="form" actionListener="#{registrarNovedadBean.registrarNovedadLaboratorio(titulo2, detalle2, nombreElemento2)}" value="Registrar"/>
 			<p:tabView class="tap">
 				<p:tab title="Novedades Equipos">
-					<p:dataTable var="nov" value="#{registrarNovedadBean.consultarNovedadEquipos()}"
+					<p:dataTable id="novedadEquipo" var="nov" value="#{registrarNovedadBean.consultarNovedadEquipos()}"
 					 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
 					 rows="3" selection="#{registrarElementosBean.elementoSelec}"
                      rowKey="#{nov.id}">
@@ -55,8 +55,12 @@
 							<h:outputText value="#{nov.fecha}" />
 						</p:column>
 						
-						<p:column class="columna" headerText="Responsable">
-							<h:outputText value="#{nov.responsable.idCorreo}" />
+						<p:column class="columna" headerText="Nombre Equipo">
+							<h:outputText value="#{nov.nombreEq}" />
+						</p:column>
+						
+						<p:column class="columna" headerText="Nombre Elemento">
+							<h:outputText value="#{nov.nombreElem}" />
 						</p:column>
 						
 						<p:column class="columna" headerText="Detalle">
@@ -64,10 +68,13 @@
 						</p:column>
 				
 					</p:dataTable>
+					<p:commandButton value="" ajax="false" class="botonExcel2" onclick="PrimeFaces.monitorDownload(start, stop);">
+						<p:dataExporter type="xls" target="novedadEquipo" fileName="NovedadesEquipo"/>
+					</p:commandButton>
 				</p:tab>
 				
 				<p:tab title="Novedades Elementos">
-					<p:dataTable var="nove" value="#{registrarNovedadBean.consultarNovedadElementos()}"
+					<p:dataTable id="novedadElemento" var="nove" value="#{registrarNovedadBean.consultarNovedadElementos()}"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
 						rows="3" selection="#{registrarElementosBean.elementoSelec}"
 						rowKey="#{nov.id}">
@@ -81,8 +88,8 @@
 							<h:outputText value="#{nove.fecha}" />
 						</p:column>
 						
-						<p:column class="columna" headerText="Responsable">
-							<h:outputText value="#{nove.responsable.idCorreo}" />
+						<p:column class="columna" headerText="Nombre Elemento">
+							<h:outputText value="#{nove.nombreElem}" />
 						</p:column>
 						
 						<p:column class="columna" headerText="Detalle">
@@ -90,10 +97,13 @@
 						</p:column>
 				
 					</p:dataTable>
+					<p:commandButton value="" ajax="false" class="botonExcel2" onclick="PrimeFaces.monitorDownload(start, stop);">
+						<p:dataExporter type="xls" target="novedadElemento" fileName="NovedadesElemento"/>
+					</p:commandButton>
 				</p:tab>
 				
 				<p:tab title="Novedades Laboratorios">
-					<p:dataTable var="nove" value="#{registrarNovedadBean.consultarNovedadLaboratorios()}"
+					<p:dataTable id="novedadLaboratorio" var="nove" value="#{registrarNovedadBean.consultarNovedadLaboratorios()}"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}" 
 						rows="3" selection="#{registrarElementosBean.elementoSelec}"
 						rowKey="#{nov.id}">
@@ -107,15 +117,17 @@
 							<h:outputText value="#{nove.fecha}" />
 						</p:column>
 						
-						<p:column class="columna" headerText="Responsable">
-							<h:outputText value="#{nove.responsable.idCorreo}" />
+						<p:column class="columna" headerText="Nombre Laboratorio">
+							<h:outputText value="#{nove.nombreLab}" />
 						</p:column>
 						
 						<p:column class="columna" headerText="Detalle">
 							<h:outputText value="#{nove.detalle}" />
 						</p:column>
-						
 					</p:dataTable>
+					<p:commandButton value="" ajax="false" class="botonExcel2" onclick="PrimeFaces.monitorDownload(start, stop);">
+							<p:dataExporter type="xls" target="novedadLaboratorio" fileName="NovedadesLaboratorio"/>
+					</p:commandButton>
 				</p:tab>
 				
 			</p:tabView>

@@ -1,16 +1,16 @@
-body{
-	background: url(bg.jpg) no-repeat fixed center;
-	margin: 0;
-	padding: 0;
-	background-size: 100% 100%;
+body {
+  background: url(bg.jpg) no-repeat fixed center;
+  margin: 0;
+  padding: 0;
+  background-size: 100% 100%;
 }
 
-.en-sesion{
+.en-sesion {
   height: 65px;
   background: #900;
 }
 
-.en-sesion .cerrar{
+.en-sesion .cerrar {
   background: #900;
   outline: none;
   border: none;
@@ -21,14 +21,14 @@ body{
   left: 90%;
 }
 
-.en-sesion .logo{
-	position: absolute;
-	left: 38%;
-	height: 65px;
-	width: 300px;
+.en-sesion .logo {
+  position: absolute;
+  left: 38%;
+  height: 65px;
+  width: 300px;
 }
 
-.en-sesion .menu{
+.en-sesion .menu {
   background: #900;
   outline: none;
   border: none;
@@ -39,21 +39,26 @@ body{
   left: 84%;
 }
 
-.h1{
-	position: absolute;
-	color: #fff;
-	top: 10%;
-	left: 38%;
+.h1 {
+  position: absolute;
+  color: #fff;
+  top: 10%;
+  left: 38%;
 }
 
-.oolumna{
-	background: #900;
-	color: #fff;
+.columna {
+  background: #900;
+  color: #fff;
+ }
+ 
+.ui-datatable-header{
+  background: #900;
+  color: #fff;
 }
 
-.tabla{
-	position: absolute;
-	left: 15%;
-	top: 20%;
-	width: 70%;
+.tabla {
+  position: absolute;
+  left: 15%;
+  top: 20%;
+  width: 70%;
 }

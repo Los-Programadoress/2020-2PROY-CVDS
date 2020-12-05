@@ -7,7 +7,6 @@ import com.google.inject.Inject;
 import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.persistence.UsuarioDAO;
-import edu.eci.cvds.persistence.mybatisimpl.MyBATISUsuarioDAO;
 import edu.eci.cvds.persistence.mybatisimpl.mappers.UsuarioMapper;
 
 /**
@@ -28,7 +27,7 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
      * @return Usuario consultado
      */
 	@Override
-	public Usuario consultarUsuario(String idCorreo) throws PersistenceException {;
+	public Usuario consultarUsuario(String idCorreo) throws PersistenceException{;
 		try{
 			return usuarioMapper.consultarUsuario(idCorreo);
 		}

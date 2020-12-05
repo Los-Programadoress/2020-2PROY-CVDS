@@ -9,6 +9,17 @@
 		<title>Creación Laboratorio</title>
 		<link rel="stylesheet" href="master5.css"/>
 	</h:head>
+	<script type="text/javascript">
+		function ConfirmInscription(){
+			var respuesta = confirm("¿Estás seguro de cerrar el laboratorio?");
+			if(respuesta){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+	</script >
 	<body>
 		<h:form id="Elementos_Form">
 			<div class="en-sesion">
@@ -17,12 +28,14 @@
 				<img class="logo" src="https://gestorpasswd.escuelaing.edu.co/assets/content/img/imgCliente/escuela/banner.png"/>
 			</div>
 			<center>
-				<h1 class="h1">Registrar Laboratorio</h1>
+				<h1 class="h1">Laboratorios</h1>
 			</center>
 			<img class="imagen" src="img/plataformas.png"/>
+			<p:autoComplete class="desplegable" placeholder="Laboratorio" dropdown="true" value="#{nombreLaboratorio}" completeMethod="#{crearLaboratoriosBean.consultarLaboratoriosNombre()}" />
+			<p:commandButton update="Elementos_Form" onclick="return ConfirmInscription()" actionListener="#{crearLaboratoriosBean.cerrarLaboratorio(nombreLaboratorio)}" class="cerrarLab" value="Cerrar" />
 			<p:inputText class="input6" placeholder="Nombre" type="String" value="#{nombre}"/>
 			<p:commandButton update="Elementos_Form" actionListener="#{crearLaboratoriosBean.registrarLaboratorio(nombre)}" class="boton" value="Registrar" />
-			<p:dataTable var="lab" value="#{crearLaboratoriosBean.consultarLaboratorios()}" class="tabla" 
+			<p:dataTable id="reporteLa" var="lab" value="#{crearLaboratoriosBean.consultarLaboratorios()}" class="tabla" 
 				paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 				rows="6" rowKey="#{lab.nombre}">
 				<f:facet name="header" class="columna">Laboratorios creados</f:facet>
@@ -50,6 +63,9 @@
 			</p:dataTable>
 			<a href="/faces/asociarequipo.xhtml"><p:commandButton class="asociarEquipo" type="button" update="Elementos_Form" value="Asociar equipo"/></a>
 			<p:staticMessage severity="info" summary="INFO!" detail="Para asociar un equipo al laboratorio creado seleccione el botón" />
+			<p:commandButton value="" ajax="false" class="botonExcel" onclick="PrimeFaces.monitorDownload(start, stop);">
+				<p:dataExporter type="xls" target="reporteLa" fileName="ReporteEquipos"/>
+			</p:commandButton>
 		</h:form>
 	</body>
 </html>

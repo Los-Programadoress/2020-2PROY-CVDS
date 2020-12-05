@@ -12,7 +12,7 @@
 	<script type="text/javascript">
 		function ConfirmInscription()
 		{
-			var respuesta = confirm("Estas seguro de registrar el equipo?");
+			var respuesta = confirm("¿Está seguro de registrar el equipo?");
 			if(respuesta)
 			{
 				return true;
@@ -36,8 +36,8 @@
 			<img class="imagenE" src="https://www.tecnocomprascr.com/wp-content/uploads/2014/06/Lenovo-ThinkCentre-300x202.png"/>
 			<p:inputText id="nombre" class="input1" placeholder="Nombre" type="String" value="#{nombre}"/>
 			<p:inputText id="marca" class="input" placeholder="Marca" type="String" value="#{marca}"/>
-			<p:commandButton update="Equipos_Form" actionListener="#{RegistrarEquiposBean.registrarEquipo(nombre, marca)}" class="boton1" value="Registrar" onclick="return ConfirmInscription()"/>
-			<p:dataTable var="req" value="#{RegistrarEquiposBean.consultarElementosSelected()}" class="tabla">
+			<p:commandButton update="Equipos_Form" onclick="return ConfirmInscription()" actionListener="#{RegistrarEquiposBean.registrarEquipo(nombre, marca)}" class="boton1" value="Registrar"/>
+			<p:dataTable var="req" value="#{RegistrarEquiposBean.consultarElementosSelected()}" class="tabla4">
 				<f:facet name="header" >Elementos Seleccionados</f:facet>	 
 				<p:column class="columna" headerText="Tipo">
 					<h:outputText value="#{req.tipo}" />

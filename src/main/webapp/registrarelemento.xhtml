@@ -20,10 +20,10 @@
 				<h1 class="h1">Registrar Elemento</h1>
 			</center>
 			<div class="grupoBotones">
-				<p:commandButton update="Elementos_Form" class="boton" actionListener="#{registrarElementosBean.botonMouse()}"/>
-				<p:commandButton update="Elementos_Form" class="boton2" actionListener="#{registrarElementosBean.botonTorre()}"/>
-				<p:commandButton update="Elementos_Form" class="boton3" actionListener="#{registrarElementosBean.botonTeclado()}"/>
-				<p:commandButton update="Elementos_Form" class="boton4" actionListener="#{registrarElementosBean.botonPantalla()}"/>
+				<p:commandButton value="" update="Elementos_Form" class="boton" actionListener="#{registrarElementosBean.botonMouse()}"/>
+				<p:commandButton value="" update="Elementos_Form" class="boton2" actionListener="#{registrarElementosBean.botonTorre()}"/>
+				<p:commandButton value="" update="Elementos_Form" class="boton3" actionListener="#{registrarElementosBean.botonTeclado()}"/>
+				<p:commandButton value="" update="Elementos_Form" class="boton4" actionListener="#{registrarElementosBean.botonPantalla()}"/>
 			</div>
 			<p:inputText class="input" placeholder="Nombre" type="String" value="#{nombre}"/>
 			<p:commandButton update="Elementos_Form" actionListener="#{registrarElementosBean.registrarElemento(nombre, nombre)}" class="boton" value="Registrar" />
@@ -57,14 +57,45 @@
 				</p:column>
 				
 				<p:column class="columna" headerText="Administración">
-					<p:commandButton type="button" update="Elementos_Form" value="Administrar"/>
+					<a href="/faces/dardebajaequipo.xhtml"><p:commandButton type="button" update="Elementos_Form" value="Administrar"/></a>
 				</p:column>
 				
 				<p:column class="columna" headerText="Reporte de novedades">
-					<a href="/faces/novedadeselementos.xhtml"><p:commandButton type="button" update="Elementos_Form" value="Consultar novedades"/></a>
+					<a href="/faces/novedadeselementos.xhtml?nombreElemento=#{rel.nombre}"><p:commandButton type="button" update="Elementos_Form" value="Consultar novedades"/></a>
 				</p:column>
 			</p:dataTable>
-			
+			<p:dataTable id="reporteEl" var="rel" value="#{registrarElementosBean.reporteElementos()}" style="display:none"
+				paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     rows="5" 
+                     rowKey="#{rel.id}">
+				<f:facet name="header" class="columna">Elementos Registrados</f:facet>
+				<p:column filterBy="#{rel.id}" class="columna" headerText="Id">
+					<h:outputText value="#{rel.id}" />
+				</p:column>
+				
+				<p:column filterBy="#{rel.nombre}" class="columna" headerText="Nombre">
+					<h:outputText value="#{rel.nombre}" />
+				</p:column>
+				
+				<p:column filterBy="#{rel.tipo}" class="columna" headerText="Tipo">
+					<h:outputText value="#{rel.tipo}" />
+				</p:column>
+	 
+				<p:column filterBy="#{rel.disponibilidad}" class="columna" headerText="Disponible">
+					<h:outputText value="#{rel.disponibilidad}" />
+				</p:column>
+				
+				<p:column filterBy="#{rel.bajado}" class="columna" headerText="Dado de Baja">
+					<h:outputText value="#{rel.bajado}" />
+				</p:column>
+				
+				<p:column filterBy="#{RegistrarEquiposBean.nombreEquipoPorId(rel.equipo)}" class="columna" headerText="Equipo">
+					<h:outputText value="#{RegistrarEquiposBean.nombreEquipoPorId(rel.equipo)}" />
+				</p:column>
+			</p:dataTable>
+			<p:commandButton value="" ajax="false" class="botonExcel" onclick="PrimeFaces.monitorDownload(start, stop);">
+					<p:dataExporter type="xls" target="reporteEl" fileName="ReporteElementos"/>
+			</p:commandButton>
 		</h:form>
 	</body>
 </html>

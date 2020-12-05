@@ -31,6 +31,19 @@
        ON l.usuario_idcorreo = u.idcorreo;
    </select>
    
+   <select parameterType="map" id="consultarLaboratoriosNoCerrados" resultMap="LaboratorioResult">
+	  SELECT
+        l.nombre,
+        l.fechacreacion,
+        l.estacerrado,
+        l.fechafin,
+        u.idcorreo
+       FROM laboratorio AS l 
+       LEFT JOIN usuario AS u 
+       ON l.usuario_idcorreo = u.idcorreo
+       WHERE l.estacerrado = false;
+   </select>
+   
    <update parameterType="map" id="cerrarLaboratorio">
 		UPDATE laboratorio
 	    SET estaCerrado = true, fechafin = #{fechafin}
@@ -40,6 +53,12 @@
 	<select parameterType="map" id="cantidadEquiposLab" resultType="Integer">
 		SELECT
 	 	COUNT(e.nombre)
+	 	FROM equipo AS e
+	 	where e.nombrelab = #{nombreLab};
+ 	</select>
+ 	
+ 	<select parameterType="map" id="nombreEquiposLab" resultMap="edu.eci.cvds.persistence.mybatisimpl.mappers.EquipoMapper.EquipoResult">
+		SELECT e.nombre
 	 	FROM equipo AS e
 	 	where e.nombrelab = #{nombreLab};
  	</select>

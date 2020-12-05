@@ -12,6 +12,16 @@
 	  <association property="responsable" resultMap='edu.eci.cvds.persistence.mybatisimpl.mappers.UsuarioMapper.UsuarioResult'></association>
 	</resultMap>
 	
+	<resultMap type='ReporteNovedadDTO' id='ReporteNovedadResult'>
+      <id property='id' column='id' />
+      <result property='titulo' column='titulo' />
+      <result property='fecha' column='fecha' />
+      <result property='detalle' column='detalle' />
+      <result property='nombreEq' column='nombreEq' />
+      <result property='nombreElem' column='nombreElem' />
+      <result property='nombreLab' column='nombreLab' />
+  	</resultMap>
+	
 	<insert parameterType="map" id="registrarNovedadLaboratorio">
 	   INSERT INTO novedad (titulo, fecha, responsable, detalle, nombreLab) 
 	   VALUES (#{titulo}, #{fecha}, #{resp}, #{detalle}, #{nLab});
@@ -27,7 +37,7 @@
 	   VALUES (#{titulo}, #{fecha}, #{resp}, #{detalle}, #{nEq}, #{nElem});
 	</insert>
 	 
-  	<select parameterType="map" id="consultarNovedadLaboratorios" resultMap="NovedadResult">
+  	<select parameterType="map" id="consultarNovedadLaboratorios" resultMap="ReporteNovedadResult">
 	  SELECT
 	  	n.id,
 	  	n.titulo,
@@ -41,21 +51,23 @@
        WHERE n.nombreLab is not null
    	</select>
    	
-   	<select parameterType="map" id="consultarNovedadEquipos" resultMap="NovedadResult">
+   	<select parameterType="map" id="consultarNovedadEquipos" resultMap="ReporteNovedadResult">
 	  SELECT
 	  	n.id,
 	  	n.titulo,
 	  	n.fecha,
 	  	n.detalle,
 	  	n.nombreeq,
+	  	n.nombreelem,
 	  	u.idcorreo
        FROM novedad AS n
        LEFT JOIN usuario AS u
        ON u.idcorreo = n.responsable
        WHERE n.nombreeq is not null
+       ORDER BY n.id DESC;
    	</select>
    	
-    <select parameterType="map" id="consultarNovedadElementos" resultMap="NovedadResult">
+    <select parameterType="map" id="consultarNovedadElementos" resultMap="ReporteNovedadResult">
 	  SELECT
 	  	n.id,
 	  	n.titulo,
@@ -67,6 +79,7 @@
        LEFT JOIN usuario AS u
        ON u.idcorreo = n.responsable
        WHERE n.nombreelem is not null
+       ORDER BY n.id DESC;
    	</select>
    
    <select parameterType="map" id="consultarNovedadesEquipo" resultMap="NovedadResult">
@@ -81,6 +94,7 @@
        LEFT JOIN usuario AS u
        ON u.idcorreo = n.responsable
        WHERE n.nombreEq = #{equipoNombre}
+       ORDER BY n.id DESC;
    </select>
    
    <select parameterType="map" id="consultarNovedadesElemento" resultMap="NovedadResult">

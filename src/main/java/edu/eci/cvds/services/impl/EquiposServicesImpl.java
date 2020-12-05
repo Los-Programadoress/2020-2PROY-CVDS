@@ -28,7 +28,6 @@ import edu.eci.cvds.services.EquiposServices;
 public class EquiposServicesImpl implements EquiposServices{
 	
 	static final ArrayList<Elemento> elSelected = new ArrayList<>();
-	private String user;
 	private Date fecha = new Date(System.currentTimeMillis());
 
 	@Inject
@@ -208,7 +207,7 @@ public class EquiposServicesImpl implements EquiposServices{
 	  public void cambiarBajaEquipo(String nome, String user) throws EquiposException{
 		try{
 			equipoDAO.cambiarBajaEquipo(true, nome);
-			//registrarNovedadEquipo("Equipo dado de baja", fecha, user,"Se dió de baja a el equipo "+nome, nome, null);	
+			registrarNovedadEquipo("Equipo dado de baja", fecha, user,"Se dió de baja a el equipo "+nome, nome, null);	
 		}
 		catch(PersistenceException e){
 			throw new EquiposException("Error al cambiar baja del equipo",e);            
@@ -236,7 +235,7 @@ public class EquiposServicesImpl implements EquiposServices{
      * @return nombre del equipo
      */
     @Override
-	  public String nombreEquipoPorId(int nequipo) throws EquiposException{
+	public String nombreEquipoPorId(int nequipo) throws EquiposException{
    	 try{
 	 		return equipoDAO.nombreEquipoPorId(nequipo);
 	 	}
@@ -244,6 +243,22 @@ public class EquiposServicesImpl implements EquiposServices{
 	        throw new EquiposException("Error al consultar el nombre del equipo",e);            
 	    }  
 	  }
+    
+    /**
+     * Método que permite consultar el nombre del equipo por el nombre del elemento
+     * @return nombre del equipo
+     */
+    @Override
+    public String nombreEquipoPorElemento(String nombreElemento) throws EquiposException{
+	    int numEquipo = 0;
+       try{
+    	   numEquipo = numEquipoDelElemento(nombreElemento);
+    	   return nombreEquipoPorId(numEquipo);
+ 	 	}
+ 	 	catch(Exception e){   
+ 	 		throw new EquiposException("Error al consultar el nombre del equipo",e);            
+ 	    } 
+ 	  }
     
 	/**
      * Método que permite consultar el nombre del laboratorio del equipo
@@ -445,7 +460,7 @@ public class EquiposServicesImpl implements EquiposServices{
 	public void cambiarBajaElemento(boolean dBaja, String enom, String user) throws EquiposException{
 		try{
 			elementoDAO.cambiarBajaElemento(dBaja,enom);
-			//registrarNovedadElemento("Elemento dado de baja ", fecha , user, "Se dió de baja a el elemento " + enom, null, enom);
+			registrarNovedadElemento("Elemento dado de baja ", fecha , user, "Se dió de baja a el elemento " + enom, null, enom);
 		}
 		catch(PersistenceException e){
 			throw new EquiposException("Error al cambiar baja del elemento",e);            
@@ -655,6 +670,21 @@ public class EquiposServicesImpl implements EquiposServices{
 	}
 	
 	/**
+	 * Método que permite consultar los laboratorios no cerrados
+	 * @return Lista de laboratorios no cerrados
+	 * @throws EquiposException Errores con la operación
+     */
+	@Override
+	public List<Laboratorio> consultarLaboratoriosNoCerrados() throws EquiposException{
+		try{
+			return laboratorioDAO.consultarLaboratoriosNoCerrados();
+		}
+		catch(PersistenceException e){
+			throw new EquiposException("Error al consultar los laboratorios",e);            
+	    }
+	}
+	
+	/**
      * Método que permite cerrar un laboratorio
      * @param nombreLab: Nombre del laboratorio que va a cerrarse
      * @param idcorreo: Identificador del correo del usuario
@@ -662,8 +692,13 @@ public class EquiposServicesImpl implements EquiposServices{
 	@Override
 	public void cerrarLaboratorio(String nombreLab, String idcorreo) throws EquiposException{
 		Date fechafin = fecha;
+		List<Equipo> equiposLab = new ArrayList<Equipo>(); 
 		try{
 			laboratorioDAO.cerrarLaboratorio(nombreLab, fechafin);
+			equiposLab = laboratorioDAO.nombreEquiposLab(nombreLab);
+			for(Equipo e : equiposLab) {
+				equipoDAO.desasociarEquipo(true,e.getNombre());
+			}
 			registrarNovedadLaboratorio("Cierre de laboratorio", fechafin, idcorreo, "Se cerró el laboratorio " + nombreLab, nombreLab);
 		}
 		catch(PersistenceException e){
@@ -684,4 +719,5 @@ public class EquiposServicesImpl implements EquiposServices{
 			throw new EquiposException("Error al consultar cantidad de equipos",e);            
 	    }
 	} 
+	
 }

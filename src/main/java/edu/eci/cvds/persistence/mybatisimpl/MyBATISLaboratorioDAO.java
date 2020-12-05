@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.google.inject.Inject;
 
+import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.persistence.LaboratorioDAO;
 import edu.eci.cvds.persistence.PersistenceException;
@@ -48,6 +49,21 @@ public class MyBATISLaboratorioDAO implements LaboratorioDAO{
 	}
 	
 	/**
+     * Método que permite consultar los laboratorios no cerrados
+     * @throws PersistenceException Errores con la base de datos
+     * @return Lista de laboratorios no cerrados
+     */
+	@Override
+	 public List<Laboratorio> consultarLaboratoriosNoCerrados() throws PersistenceException{
+		try{
+			return laboratorioMapper.consultarLaboratoriosNoCerrados();
+		}
+		catch(Exception e){
+			throw new PersistenceException("Error al consultar los laboratorios",e);            
+	    }
+	}
+	
+	/**
      * Método que permite cerrar un laboratorio
      * @param nombreLab: Nombre del laboratorio que va a cerrarse
      * @param fechafin: Fecha de cierre del laboratorio
@@ -73,6 +89,20 @@ public class MyBATISLaboratorioDAO implements LaboratorioDAO{
 		}
 		catch(Exception e){
 			throw new PersistenceException("Error al consultar cantidad de equipos",e);            
+	    }
+	}
+	
+	/**
+	 * Método que permite contar consultar el nombre de los equipos que tiene un laboratorio
+	 * @return lista de de los nombres de los equipos
+	 */
+	@Override
+	public List<Equipo> nombreEquiposLab(String nombreLab) throws PersistenceException{
+		try{
+			return laboratorioMapper.nombreEquiposLab(nombreLab);
+		}
+		catch(Exception e){
+			throw new PersistenceException("Error al consultar el nombre de equipos del laboratorio",e);            
 	    }
 	}
 }

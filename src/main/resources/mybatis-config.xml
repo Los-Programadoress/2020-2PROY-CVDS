@@ -14,6 +14,7 @@
         <typeAlias type='edu.eci.cvds.entities.Novedad' alias='Novedad'/>
         <typeAlias type='edu.eci.cvds.entities.ReporteEquipoDTO' alias='ReporteEquipoDTO'/>
 		<typeAlias type='edu.eci.cvds.entities.ReporteElementoDTO' alias='ReporteElementoDTO'/>
+		<typeAlias type='edu.eci.cvds.entities.ReporteNovedadDTO' alias='ReporteNovedadDTO'/>
     </typeAliases>
 
     <environments default="development">
