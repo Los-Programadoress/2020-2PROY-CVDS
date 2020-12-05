@@ -1,8 +1,8 @@
 body {
-	background: url(bg.jpg) no-repeat fixed center;
-	margin: 0;
-	padding: 0;
-	background-size: 100% 100%;
+  background: url(bg.jpg) no-repeat fixed center;
+  margin: 0;
+  padding: 0;
+  background-size: 100% 100%;
 }
 
 .en-sesion {
@@ -22,10 +22,10 @@ body {
 }
 
 .en-sesion .logo {
-	position: absolute;
-	left: 38%;
-	height: 65px;
-	width: 300px;
+  position: absolute;
+  left: 38%;
+  height: 65px;
+  width: 300px;
 }
 
 .en-sesion .menu {
@@ -40,260 +40,259 @@ body {
 }
 
 .h1 {
-	position: absolute;
-	color: #fff;
-	top: 10%;
-	left: 43%;
+  position: absolute;
+  color: #fff;
+  top: 10%;
+  left: 43%;
 }
 
 .h2 {
-	position: absolute;
-	color: #fff;
-	top: 20%;
-	left: 20%;
-	font-size:22px;
+  position: absolute;
+  color: #fff;
+  top: 20%;
+  left: 20%;
+  font-size:22px;
 } 
 
 .h3 {
-	position: absolute;
-	color: #fff;
-	top: 20%;
-	left: 44%;
-	font-size:22px;
+  position: absolute;
+  color: #fff;
+  top: 20%;
+  left: 44%;
+  font-size:22px;
 }
 
 .h4 {
-	position: absolute;
-	color: #fff;
-	top: 20%;
-	left: 68%;
-	font-size:22px;
+  position: absolute;
+  color: #fff;
+  top: 20%;
+  left: 68%;
+  font-size:22px;
 }
 
 .imagen {
-	position: absolute;
-	width: 270px;
-	height: 170px;
-	top: 21%;
-	left: 22%;
+  position: absolute;
+  width: 270px;
+  height: 170px;
+  top: 21%;
+  left: 22%;
 }
 
 .input {
-	position: absolute;
-	left: 18%;
-	top: 27%;
-	width: 225px;
+  position: absolute;
+  left: 18%;
+  top: 27%;
+  width: 225px;
 }
 
 .input2 {
-	position: absolute;
-	left: 18%;
-	top: 32%;
-	width: 225px;
+  position: absolute;
+  left: 18%;
+  top: 32%;
+  width: 225px;
 }
 
 .input3 {
-	position: absolute;
-	left: 18%;
-	top: 37%;
+  position: absolute;
+  left: 18%;
+  top: 37%;
 }
 
 .registrarEq {
-	position: absolute;
-	left: 18%;
-	top: 42%;
-	background: #900;
-	color: #fff;
-	border: none;
-	width: 235px;
+  position: absolute;
+  left: 18%;
+  top: 42%;
+  background: #900;
+  color: #fff;
+  border: none;
+  width: 235px;
 }
 
 .input0 {
-	position: absolute;
-	left: 43%;
-	top: 27%;
-	width: 225px;
+  position: absolute;
+  left: 43%;
+  top: 27%;
+  width: 225px;
 }
 
 .input20 {
-	position: absolute;
-	left: 43%;
-	top: 32%;
-	width: 225px;
+  position: absolute;
+  left: 43%;
+  top: 32%;
+  width: 225px;
 }
-
 .input30 {
-	position: absolute;
-	left: 43%;
-	top: 37%;
+  position: absolute;
+  left: 43%;
+  top: 37%;
 }
 
 .registrarEl {
-	position: absolute;
-	left: 43%;
-	top: 42%;
-	background: #900;
-	color: #fff;
-	border: none;
-	width: 235px;
+  position: absolute;
+  left: 43%;
+  top: 42%;
+  background: #900;
+  color: #fff;
+  border: none;
+  width: 235px;
 }
 
 .input01 {
-	position: absolute;
-	left: 68%;
-	top: 27%;
-	width: 225px;
+  position: absolute;
+  left: 68%;
+  top: 27%;
+  width: 225px;
 }
 
 .input21 {
-	position: absolute;
-	left: 68%;
-	top: 32%;
-	width: 225px;
+  position: absolute;
+  left: 68%;
+  top: 32%;
+  width: 225px;
 }
 
 .input31 {
-	position: absolute;
-	left: 68%;
-	top: 37%;
+  position: absolute;
+  left: 68%;
+  top: 37%;
 }
 
 .registrarLab {
-	position: absolute;
-	left: 68%;
-	top: 42%;
-	background: #900;
-	color: #fff;
-	border: none;
-	width: 235px;
+  position: absolute;
+  left: 68%;
+  top: 42%;
+  background: #900;
+  color: #fff;
+  border: none;
+  width: 235px;
 }
 
 .input5 {
-	position: absolute;
-	left: 60%;
-	top: 72%;
-	color: #fff; 
+  position: absolute;
+  left: 60%;
+  top: 72%;
+  color: #fff; 
 }
 
 .input6 {
-	position: absolute;
-	left: 45%;
-	top: 28%;
+  position: absolute;
+  left: 45%;
+  top: 28%;
 }
 
 .desplegable {
-	position: absolute;
-	left: 63%;
-	top: 28%;
+  position: absolute;
+  left: 63%;
+  top: 28%;
 }
 
 .cerrarLab {
-	position: absolute;
-	left: 68%;
-	top: 35%;
-	background: #900;
-	color: #fff;
-	border: none;
+  position: absolute;
+  left: 68%;
+  top: 35%;
+  background: #900;
+  color: #fff;
+  border: none;
 }
 
 .boton {
-	position: absolute;
-	left: 48%;
-	top: 35%;
-	background: #900;
-	color: #fff;
-	border: none;
+  position: absolute;
+  left: 48%;
+  top: 35%;
+  background: #900;
+  color: #fff;
+  border: none;
 }
 
 .columna {
-	background: #900;
-	color: #fff;
+  background: #900;
+  color: #fff;
 }
 
 .tabla {
-	position: absolute;
-	left: 15%;
-	top: 50%;
-	width: 70%;
+  position: absolute;
+  left: 15%;
+  top: 50%;
+  width: 70%;
 }
 
 body .ui-staticmessage.ui-message {
-	width: 670px;
-	height: 30px;
-	position: absolute;
-	top: 88%;
-	left:16%;
-	font-size:20px;
+  width: 670px;
+  height: 30px;
+  position: absolute;
+  top: 88%;
+  left:16%;
+  font-size:20px;
 }
 
 .asociarEquipo {
-	position:absolute;
-	top: 88%;
-	left: 70%;
-	background: #900;
-	color: #fff; 
-	border: none;
+  position:absolute;
+  top: 88%;
+  left: 70%;
+  background: #900;
+  color: #fff; 
+  border: none;
 }
 
 .tap {
-	position: absolute;
-	top: 50%;
-	left: 10%;
-	width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  width: 80%;
 }
 
 .tap .columna {
-	background: #900;
-	color: #fff;
+  background: #900;
+  color: #fff;
 }
 
 .tap .columnaF {
-	background: #900;
-	color: #fff;
-	width: 17%;
+  background: #900;
+  color: #fff;
+  width: 17%;
 }
 
 .tap .columnaL {
-	background: #900;
-	color: #fff;
-	width: 37%;
+  background: #900;
+  color: #fff;
+  width: 37%;
 }
 
 .tap .ui-datatable-header {
-	background: #900;
-	color: #fff;
+  background: #900;
+  color: #fff;
 }
 
 .separat {
-	position: absolute;
-	left: 35%;
-	top: 22%;
+  position: absolute;
+  left: 35%;
+  top: 22%;
 }
 
 .separat2 {
-	position: absolute;
-	left: 65%;
-	top: 22%;
+  position: absolute;
+  left: 65%;
+  top: 22%;
 }
 
 .botonExcel {
-	position: absolute;
-	left: 15%;
-	top: 42%;
-	height: 50px;
-	width: 55px;
-	background: url(img/excel.png) center;
-	background-size: 100% 100%;
-	color: #0000;
+  position: absolute;
+  left: 15%;
+  top: 42%;
+  height: 50px;
+  width: 55px;
+  background: url(img/excel.png) center;
+  background-size: 100% 100%;
+  color: #0000;
 }
 
 .tap .botonExcel2 {
-	position: absolute;
-	left: 94.5%;
-	top: 20%;
-	height: 30px;
-	width: 35px;
-	background: url(img/excel.png) center;
-	background-size: 100% 100%;
-	color: #0000;
+  position: absolute;
+  left: 94.5%;
+  top: 20%;
+  height: 30px;
+  width: 35px;
+  background: url(img/excel.png) center;
+  background-size: 100% 100%;
+  color: #0000;
 }

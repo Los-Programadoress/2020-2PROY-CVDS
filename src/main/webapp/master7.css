@@ -1,8 +1,8 @@
 body {
-	background: url(bg.jpg) no-repeat fixed center;
-	margin: 0;
-	padding: 0;
-	background-size: 100% 100%;
+  background: url(bg.jpg) no-repeat fixed center;
+  margin: 0;
+  padding: 0;
+  background-size: 100% 100%;
 }
 
 .en-sesion {
@@ -22,10 +22,10 @@ body {
 }
 
 .en-sesion .imagen {
-	position: absolute;
-	left: 40%;
-	height: 65px;
-	width: 300px;
+  position: absolute;
+  left: 40%;
+  height: 65px;
+  width: 300px;
 }
 
 .en-sesion .submit2 {
@@ -40,122 +40,122 @@ body {
 }
 
 .h1 {
-	position: absolute;
-	top: 15%;
-	left: 55%;
-	color: #fff;
+  position: absolute;
+  top: 15%;
+  left: 55%;
+  color: #fff;
 }
 
 .separat {
-	position: absolute;
-	top: 25%;
-	left: 50%;
+  position: absolute;
+  top: 25%;
+  left: 50%;
 }
 
 .tabla {
-	position: absolute;
-	top: 30%;
-	left: 27%;
-	width: 45%;
+  position: absolute;
+  top: 30%;
+  left: 27%;
+  width: 45%;
 }
 
 .columna {
-	background: #900;
-	color: #fff;
+  background: #900;
+  color: #fff;
 }
 
 .h2 {
-	position: absolute;
-	top: 15%;
-	left: 60%;
-	color: #fff;
+  position: absolute;
+  top: 15%;
+  left: 60%;
+  color: #fff;
 }
 
 .tabla2 {
-	position: absolute;
-	top: 30%;
-	left: 10%;
-	width: 30%;
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  width: 30%;
 }
 
 .botonTabla {
-	position: absolute;
-	top: 85%;
-	left: 63%;
-	background: #900;
-	color: #fff;
-	border: none;
+  position: absolute;
+  top: 85%;
+  left: 63%;
+  background: #900;
+  color: #fff;
+  border: none;
 }
 
 .botonTabla2 {
-	position: absolute;
-	top: 85%;
-	left: 74%;
-	background: #900;
-	color: #fff;
-	border: none;
+  position: absolute;
+  top: 85%;
+  left: 74%;
+  background: #900;
+  color: #fff;
+  border: none;
 }
 
 .elementoimg {
-	position: absolute;
-	left: 8%;
-	top: 25%;
-	height: 400px;
-	width: 380px;
+  position: absolute;
+  left: 8%;
+  top: 25%;
+  height: 400px;
+  width: 380px;
 }
 
 .tabla3 {
-	position: absolute;
-	top: 30%;
-	left: 42%;
-	width: 45%;
+  position: absolute;
+  top: 30%;
+  left: 42%;
+  width: 45%;
 }
 
 .tabla4 {
-	position: absolute;
-	top: 30%;
-	left: 60%;
-	width: 30%;
+  position: absolute;
+  top: 30%;
+  left: 60%;
+  width: 30%;
 }
 
 .despliegue {
-	position: absolute;
-	top: 30%;
-	left: 67%;
+  position: absolute;
+  top: 30%;
+  left: 67%;
 }
 
 .botonBajaEq {
-	position: absolute;
-	top: 75%;
-	left: 20%;
-	background: #900;
-	color: #fff;
-	border: none;
+  position: absolute;
+  top: 75%;
+  left: 20%;
+  background: #900;
+  color: #fff;
+  border: none;
 }
 
 .siguiente {
-	position: absolute;
-	top: 85%;
-	left: 22.5%;
-	background: #900;
-	color: #fff;
-	border: none;
+  position: absolute;
+  top: 85%;
+  left: 22.5%;
+  background: #900;
+  color: #fff;
+  border: none;
 }
 
 .darBajaEl {
-	position: absolute;
-	top: 75%;
-	left: 70%;
-	background: #900;
-	color: #fff;
-	border: none;
+  position: absolute;
+  top: 75%;
+  left: 70%;
+  background: #900;
+  color: #fff;
+  border: none;
 }
 
 .quitarasociacion {
-	position: absolute;
-	top: 75%;
-	left: 50%;
-	background: #900;
-	color: #fff;
-	border: none;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  background: #900;
+  color: #fff;
+  border: none;
 }
