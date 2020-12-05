@@ -123,12 +123,53 @@
 	    <artifactId>h2</artifactId>
 	    <version>1.4.193</version>
 	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+	<dependency>
+	    <groupId>org.jacoco</groupId>
+	    <artifactId>jacoco-maven-plugin</artifactId>
+	    <version>0.8.6</version>
+	</dependency>
   </dependencies>
   
   <build>
     <finalName>historialdeequipos</finalName>
     
     <plugins>
+    	<!-- Plugin Jacoco. -->
+    	<plugin>
+		  <groupId>org.jacoco</groupId>
+		  <artifactId>jacoco-maven-plugin</artifactId>
+		  <version>0.8.6</version>
+		  <configuration>
+	          <destfile>${basedir}/target/coverage-reports/jacoco-unit.exec</destfile>
+	          <datafile>${basedir}/target/coverage-reports/jacoco-unit.exec</datafile>
+	      </configuration>
+        	<executions>
+        		<execution>
+        			<id>default-prepare-agent</id>
+        			<goals>
+        				<goal>prepare-agent</goal>
+        			</goals>
+        		</execution>
+        		<execution>
+        			<id>default-report</id>
+        			<phase>prepare-package</phase>
+        			<goals>
+        				<goal>report</goal>
+        			</goals>
+        		</execution>
+        	</executions>
+        </plugin>
+        
+        <plugin>
+	       <groupId>org.apache.maven.plugins</groupId>
+	       <artifactId>maven-surefire-plugin</artifactId>
+	       <configuration>
+		    <argLine>${argLine} -Xmx2048m</argLine>
+		  </configuration>
+     	</plugin>
+			
         <plugin>
         	<groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
@@ -146,6 +187,7 @@
                 <failOnMissingWebXml>false</failOnMissingWebXml>
             </configuration>
        </plugin>
+       
        <!-- Plugin configuration for Heroku compatibility. -->
        <plugin>
             <groupId>org.apache.maven.plugins</groupId>
