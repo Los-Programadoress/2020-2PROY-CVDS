@@ -214,15 +214,7 @@ También puede **asociar un equipo** al laboratorio ingresado, de la siguiente f
     </body>
 </html>
 
-Obtendrá un mensaje de confirmación, como el siguiente:
-
-<!DOCTYPE html>
-<html>
-    <head></head>
-    <body>
-        <img src="https://github.com/Los-Programadoress/2020-2PROY-CVDS/blob/main/img/asociarEq2.png" alt="ER" width="600"/>
-    </body>
-</html>
+> Obtendrá un mensaje de confirmación de asociación exitosa.
 
 #### Reporte Novedades
 Las Novedades presentarán cualquier operación: *registro*, *asociación*, *dado de baja* que se realice sobre cada elemento de forma automática.
