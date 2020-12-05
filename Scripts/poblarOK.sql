@@ -4,22 +4,25 @@ INSERT INTO usuario VALUES('cesar.ortiz','cesar.ortiz@mail.escuelaing.edu.co','C
 INSERT INTO usuario VALUES('julian.velasco','julian.velasco-b@escuelaing.edu.co', 'Julian Velasco','Activo','aa3bf762374446a04335e72f2d075cfc414ebe7fb7ad9bcd9c9704a775f965e0');
 INSERT INTO usuario VALUES('pedro.gutierrez','pedro.gutierrez@mail.escuelaing.edu.co','Pedro Gutierrez','Inactivo','bba44acd2f6fac34bd6ed2cbd9bc07d0e78db88679287e142e70b2730677144e');
 
-INSERT INTO laboratorio (nombre , usuario_idcorreo) VALUES ('REDES','maria.alfaro');
-INSERT INTO laboratorio (nombre , usuario_idcorreo) VALUES ('PLATAFORMAS','cesar.ortiz');
+INSERT INTO laboratorio (nombre , usuario_idcorreo, fechaCreacion, fechaFin) VALUES ('REDES','maria.alfaro',TO_DATE('2020/11/17','yyyy/mm/dd'), TO_DATE('2020/12/17','yyyy/mm/dd'));
+INSERT INTO laboratorio (nombre , usuario_idcorreo, fechaCreacion) VALUES ('PLATAFORMAS','cesar.ortiz', TO_DATE('2020/11/17','yyyy/mm/dd'));
 
-INSERT INTO equipo (nombre, marca, disponible, usuario_idcorreo, nombrelab, dadodebaja) VALUES ('SISTEMAS1','DELL', true, 'maria.alfaro', 'REDES', false);
+INSERT INTO equipo (nombre, marca, disponible, usuario_idcorreo, nombrelab) VALUES ('SISTEMAS1','DELL', false, 'maria.alfaro', 'REDES');
 
-INSERT INTO elemento (tipo, nombre, disponible, dadodebaja) VALUES ('Torre', 'V530 AIO', true, false);
-INSERT INTO elemento (tipo, nombre, disponible, dadodebaja) VALUES ('Torre', 'E-ATX', true, false);
-INSERT INTO elemento (tipo, nombre, disponible, dadodebaja) VALUES ('Mouse', 'Vertical Inalámbrico', true, false);
-INSERT INTO elemento (tipo, nombre, disponible, dadodebaja) VALUES ('Mouse', 'Multitáctil', true, false);
-INSERT INTO elemento (tipo, nombre, disponible, dadodebaja) VALUES ('Mouse', 'Óptico', true, false);
-INSERT INTO elemento (tipo, nombre, disponible, dadodebaja) VALUES ('Teclado', 'Gamer', true, false);
-INSERT INTO elemento (tipo, nombre, disponible, dadodebaja) VALUES ('Pantalla', 'LCD', true, false);
-INSERT INTO elemento (tipo, nombre, disponible, numequipo, dadodebaja) VALUES ('Pantalla', 'LED', false,1, false);
-INSERT INTO elemento (tipo, nombre, disponible, numequipo, dadodebaja) VALUES ('Torre', 'FEX', false,1, false);
-INSERT INTO elemento (tipo, nombre, disponible, numequipo, dadodebaja) VALUES ('Teclado', 'Flexible', false,1, false);
-INSERT INTO elemento (tipo, nombre, disponible, numequipo, dadodebaja) VALUES ('Mouse', 'Gamer+', false,1, false);
+INSERT INTO elemento (tipo, nombre) VALUES ('Torre', 'V530 AIO');
+INSERT INTO elemento (tipo, nombre) VALUES ('Torre', 'E-ATX');
+INSERT INTO elemento (tipo, nombre) VALUES ('Mouse', 'Vertical Inalámbrico');
+INSERT INTO elemento (tipo, nombre) VALUES ('Mouse', 'Multitáctil');
+INSERT INTO elemento (tipo, nombre) VALUES ('Mouse', 'Óptico');
+INSERT INTO elemento (tipo, nombre) VALUES ('Teclado', 'Gamer');
+INSERT INTO elemento (tipo, nombre) VALUES ('Pantalla', 'LCD');
+INSERT INTO elemento (tipo, nombre) VALUES ('Mouse', 'Laser');
+INSERT INTO elemento (tipo, nombre) VALUES ('Pantalla', 'Multi-touch');
+INSERT INTO elemento (tipo, nombre) VALUES ('Teclado', 'Ergonómico');
+INSERT INTO elemento (tipo, nombre, disponible, numequipo) VALUES ('Pantalla', 'LED', false, 1);
+INSERT INTO elemento (tipo, nombre, disponible, numequipo) VALUES ('Torre', 'FEX', false, 1);
+INSERT INTO elemento (tipo, nombre, disponible, numequipo) VALUES ('Teclado', 'Flexible', false, 1);
+INSERT INTO elemento (tipo, nombre, disponible, numequipo) VALUES ('Mouse', 'Inalámbrico', false, 1);
 
 INSERT INTO Novedad (titulo, fecha, responsable , detalle, nombrelab) VALUES ('Registro de laboratorio', TO_DATE('2020/11/17','yyyy/mm/dd'), 'laura.izquierdo','Se registró el laboratorio REDES', 'REDES');
 INSERT INTO Novedad (titulo, fecha, responsable , detalle, nombrelab) VALUES ('Registro de laboratorio', TO_DATE('2020/11/17','yyyy/mm/dd'), 'cesar.ortiz','Se registró el laboratorio PLATAFORMAS', 'PLATAFORMAS');
@@ -31,6 +34,9 @@ INSERT INTO Novedad (titulo, fecha, responsable , detalle, nombreelem) VALUES ('
 INSERT INTO Novedad (titulo, fecha, responsable , detalle, nombreelem) VALUES ('Registro de Elemento', TO_DATE('2020/11/19','yyyy/mm/dd'), 'laura.izquierdo','Se registró un Teclado Gamer','Gamer');
 INSERT INTO Novedad (titulo, fecha, responsable , detalle, nombreelem) VALUES ('Registro de Elemento', TO_DATE('2020/11/19','yyyy/mm/dd'), 'maria.alfaro','Se registró una Pantalla LCD','LCD');
 INSERT INTO Novedad (titulo, fecha, responsable , detalle, nombreelem) VALUES ('Registro de Elemento', TO_DATE('2020/11/19','yyyy/mm/dd'), 'laura.izquierdo','Se registró un Mouse Óptico','Óptico');
+INSERT INTO Novedad (titulo, fecha, responsable , detalle, nombreelem) VALUES ('Registro de Elemento', TO_DATE('2020/11/19','yyyy/mm/dd'), 'laura.izquierdo','Se registró un Mouse Laser','Laser');
+INSERT INTO Novedad (titulo, fecha, responsable , detalle, nombreelem) VALUES ('Registro de Elemento', TO_DATE('2020/11/19','yyyy/mm/dd'), 'maria.alfaro','Se registró una Pantalla Multi-touch','Multi-touch');
+INSERT INTO Novedad (titulo, fecha, responsable , detalle, nombreelem) VALUES ('Registro de Elemento', TO_DATE('2020/11/19','yyyy/mm/dd'), 'laura.izquierdo','Se registró un Teclado Ergonómico','Ergonómico');
 
 INSERT INTO Novedad (titulo, fecha, responsable , detalle, nombreeq, nombreelem) VALUES ('Asociación de elemento a equipo', TO_DATE('2020/11/20','yyyy/mm/dd'), 'cesar.ortiz','Se asoció el elemento LED al equipo SISTEMAS1','SISTEMAS1','LED');
 INSERT INTO Novedad (titulo, fecha, responsable , detalle, nombreeq, nombreelem) VALUES ('Asociación de elemento a equipo', TO_DATE('2020/11/20','yyyy/mm/dd'), 'cesar.ortiz','Se asoció el elemento FEX al equipo SISTEMAS1','SISTEMAS1','FEX');

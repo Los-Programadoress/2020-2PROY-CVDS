@@ -140,7 +140,14 @@ public class EquiposServicesImpl implements EquiposServices{
 			List<Equipo> equipos = consultarEquipos();
 			
 		    //antes de registrar elementos
-		    Equipo equipoRegistrado = equipos.get(equipos.size()-1);
+			Equipo equipoRegistrado = null;
+			
+			for (Equipo re : equipos) {
+				if(re.getNombre().equals(nombre)) {
+					equipoRegistrado = re;
+				}
+			}
+			
 		    //asociar elementos
 		    List<Elemento> elementos = getElSelected();
 		    
@@ -305,7 +312,7 @@ public class EquiposServicesImpl implements EquiposServices{
 	
 	/**
  	 * Método que permite asociar un elemento a un equipo
- 	 * @param nume: Identificador del numero
+ 	 * @param nume: Identificador del equipo
  	 * @param numElemento: Identificador del elemento
  	 * @throws EquiposException Errores con la operación
  	*/
@@ -427,14 +434,18 @@ public class EquiposServicesImpl implements EquiposServices{
 	@Override
 	public void add(Elemento elementoSelec) {
 		boolean exist = false;
+		Elemento el = elementoSelec;
+		
+		//elimina duplicado de tipos
 		for(Elemento e : elSelected) {
 			if (e.getTipo().equals(elementoSelec.getTipo())) {
-				exist = true;
+				elSelected.remove(e);
+				el = elementoSelec;
 				break;
 			}
 		}
 		if (elSelected.size() <= 3 && !exist){
-			EquiposServicesImpl.elSelected.add(elementoSelec);
+			EquiposServicesImpl.elSelected.add(el);
 		}
 	}
 	

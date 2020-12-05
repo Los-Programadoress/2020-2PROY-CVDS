@@ -1,16 +1,16 @@
-body {
-  background: url(bg.jpg) no-repeat fixed center;
-  margin: 0;
-  padding: 0;
-  background-size: 100% 100%;
+body{
+	background: url(bg.jpg) no-repeat fixed center;
+	margin: 0;
+	padding: 0;
+	background-size: 100% 100%;
 }
 
-.en-sesion {
+.en-sesion{
   height: 65px;
   background: #900;
 }
 
-.en-sesion .submit {
+.en-sesion .submit{
   background: #900;
   outline: none;
   border: none;
@@ -21,14 +21,14 @@ body {
   left: 90%;
 }
 
-.en-sesion .imagen {
-  position: absolute;
-  left: 38%;
-  height: 65px;
-  width: 300px;
+.en-sesion .imagen{
+	position: absolute;
+	left: 38%;
+	height: 65px;
+	width: 300px;
 }
 
-.en-sesion .submit2 {
+.en-sesion .submit2{
   background: #900;
   outline: none;
   border: none;
@@ -39,119 +39,97 @@ body {
   left: 84%;
 }
 
-.h1 {
-  color: #fff;
+.h1{
+	color: #fff;
 }
 
-.grupoBotones {
-  position: absolute;
-  width: 260px;
-  height: 60px;
-  top: 18%;
-  left: 18%;
-  background: #900;
-}
-
-.grupoBotones .boton {
-  position: absolute;
-  left: 5%;
-  top: 5%;
-  height: 50px;
-  width: 50px;
-  background: url(img/boton.jpg) center;
-  background-size: 100% 100%;
-  color: #0000;
-}
-
-.grupoBotones .boton2 {
-  position: absolute;
-  left: 28%;
-  top: 5%;
-  height: 50px;
-  width: 50px;
-  background: url(img/boton1.jpg) center;
-  background-size: 100% 100%;
-  color: #0000;
-}
-
-.grupoBotones .boton3 {
-  position: absolute;
-  left: 51%;
-  top: 5%;
-  height: 50px;
-  width: 50px;
-  background: url(img/boton2.jpg) center;
-  background-size: 100% 100%;
-  color: #0000;
-}
-
-.grupoBotones .boton4 {
-  position: absolute;
-  left: 74%;
-  top: 5%;
-  height: 50px;
-  width: 50px;
-  background: url(img/boton3.jpg) center;
-  background-size: 100% 100%;
-  color: #0000;
-}
-
-.input {
-  position: absolute;
-  left: 43%;
-  top: 20%;
-}
-
-.input1 {
-  position: absolute;
-  left: 43%;
-  top: 25%;
-}
-
-.boton {
-  position: absolute;
-  left: 70%;
-  top: 20%;
-  background: #900;
-  color: #fff;
-  border: none;
-}
-
-.tabla {
-  position: absolute;
-  left: 10%;
-  top: 35%;
-  width: 80%;
-}
-
-.ui-datatable-header {
-  background: #900;
-  color: #fff;
-}
-
-.columna {
-  background: #900;
-  color: #fff;
-}
-
-.botonExcel {
-  position: absolute;
-  left: 10%;
-  top: 28%;
-  height: 50px;
-  width: 55px;
-  background: url(img/excel.png) center;
-  background-size: 100% 100%;
-  color: #0000;
-}
-
-.botonExcel{
+.grupoBotones{
 	position: absolute;
-	left: 10%;
-	top: 28%;
+	width: 260px;
+	height: 60px;
+	top: 18%;
+	left: 18%;
+	background: #900;
+}
+
+.grupoBotones .boton{
+	position: absolute;
+	left: 5%;
+	top: 5%;
 	height: 50px;
-	width: 55px;
-	background: url(img/excel.png) center;
+	width: 50px;
+	background: url(img/boton.jpg) center;
 	background-size: 100% 100%;
 	color: #0000;
+}
+
+.grupoBotones .boton2{
+	position: absolute;
+	left: 28%;
+	top: 5%;
+	height: 50px;
+	width: 50px;
+	background: url(img/boton1.jpg) center;
+	background-size: 100% 100%;
+	color: #0000;
+}
+
+.grupoBotones .boton3{
+	position: absolute;
+	left: 51%;
+	top: 5%;
+	height: 50px;
+	width: 50px;
+	background: url(img/boton2.jpg) center;
+	background-size: 100% 100%;
+	color: #0000;
+}
+
+.grupoBotones .boton4{
+	position: absolute;
+	left: 74%;
+	top: 5%;
+	height: 50px;
+	width: 50px;
+	background: url(img/boton3.jpg) center;
+	background-size: 100% 100%;
+	color: #0000;
+}
+
+.input{
+	position: absolute;
+	left: 43%;
+	top: 20%;
+}
+
+.input1{
+	position: absolute;
+	left: 43%;
+	top: 25%;
+}
+
+.boton{
+	position: absolute;
+	left: 70%;
+	top: 20%;
+	background: #900;
+	color: #fff;
+	border: none;
+}
+
+.tabla{
+	position: absolute;
+	left: 15%;
+	top: 35%;
+	width: 70%;
+}
+
+.ui-datatable-header{
+	background: #900;
+	color: #fff;
+}
+
+.columna{
+	background: #900;
+	color: #fff;
 }
