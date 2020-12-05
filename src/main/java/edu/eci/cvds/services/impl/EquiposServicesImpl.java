@@ -290,7 +290,7 @@ public class EquiposServicesImpl implements EquiposServices{
 	
 	/**
  	 * Método que permite asociar un elemento a un equipo
- 	 * @param nume: Identificador del numero
+ 	 * @param nume: Identificador del equipo
  	 * @param numElemento: Identificador del elemento
  	 * @throws EquiposException Errores con la operación
  	*/
