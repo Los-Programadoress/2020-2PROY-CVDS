@@ -1,10 +1,10 @@
-body{
+body {
   background: url(https://gtdconsultoria.com/images/servicios/servicio_tecnico.jpg) no-repeat fixed center;
   margin: 0;
   padding: 0;
   background-size: 100% 100%;
 }
-.inicio-sesion{
+.inicio-sesion {
   width: 320px;
   height: 400px;
   background: #900;
@@ -17,7 +17,7 @@ body{
   border-radius: 20px;
 }
 
-.inicio-sesion .avatar{
+.inicio-sesion .avatar {
   width: 240px;
   height: 100px;
   border-radius: 20px;
@@ -26,7 +26,7 @@ body{
   left: calc(28% - 50px);
 }
 
-.inicio-sesion .h1{
+.inicio-sesion .h1 {
   color: #fff;
   margin: 0;
   padding: 5px 0 20px;
@@ -34,7 +34,7 @@ body{
   font-size: 30px;
 }
 
-.inicio-sesion .label{
+.inicio-sesion .label {
   color: #fff;
   margin: 0;
   padding: 0;
@@ -42,13 +42,13 @@ body{
   display: block;
 }
 
-.inicio-sesion .input{
+.inicio-sesion .input {
   width: 100%;
   margin-bottom: 10px;
 }
 
 .inicio-sesion .input[type="text"],
-.inicio-sesion .input[type="password"]{
+.inicio-sesion .input[type="password"] {
   color: #fff;
   border: none;
   border-bottom: 1px solid #FF0001;
@@ -58,7 +58,7 @@ body{
   font-size: 15px;
 }
 
-.inicio-sesion .input[type="submit"]{
+.inicio-sesion .input[type="submit"] {
   border: none;
   outline: none;
   height: 40px;
@@ -68,11 +68,9 @@ body{
   border-radius: 20px;
 }
 
-.inicio-sesion .fallo{
+.inicio-sesion .fallo {
   position: absolute;
   width: 80%;
   left: 10%;
   top: 75%;
 }
-
-

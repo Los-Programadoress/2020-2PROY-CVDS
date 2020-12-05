@@ -1,16 +1,16 @@
-body{
+body {
 	background: url(bg.jpg) no-repeat fixed center;
 	margin: 0;
 	padding: 0;
 	background-size: 100% 100%;
 }
 
-.en-sesion{
+.en-sesion {
   height: 65px;
   background: #900;
 }
 
-.en-sesion .submit{
+.en-sesion .submit {
   background: #900;
   outline: none;
   border: none;
@@ -21,14 +21,14 @@ body{
   left: 90%;
 }
 
-.en-sesion .imagen{
+.en-sesion .imagen {
 	position: absolute;
 	left: 40%;
 	height: 65px;
 	width: 300px;
 }
 
-.en-sesion .submit2{
+.en-sesion .submit2 {
   background: #900;
   outline: none;
   border: none;
@@ -39,46 +39,46 @@ body{
   left: 84%;
 }
 
-.h1{
+.h1 {
 	position: absolute;
 	top: 15%;
 	left: 55%;
 	color: #fff;
 }
 
-.separat{
+.separat {
 	position: absolute;
 	top: 25%;
 	left: 50%;
 }
 
-.tabla{
+.tabla {
 	position: absolute;
 	top: 30%;
 	left: 27%;
 	width: 45%;
 }
 
-.columna{
+.columna {
 	background: #900;
 	color: #fff;
 }
 
-.h2{
+.h2 {
 	position: absolute;
 	top: 15%;
 	left: 60%;
 	color: #fff;
 }
 
-.tabla2{
+.tabla2 {
 	position: absolute;
 	top: 30%;
 	left: 10%;
 	width: 30%;
 }
 
-.botonTabla{
+.botonTabla {
 	position: absolute;
 	top: 85%;
 	left: 63%;
@@ -87,7 +87,7 @@ body{
 	border: none;
 }
 
-.botonTabla2{
+.botonTabla2 {
 	position: absolute;
 	top: 85%;
 	left: 74%;
@@ -96,7 +96,7 @@ body{
 	border: none;
 }
 
-.elementoimg{
+.elementoimg {
 	position: absolute;
 	left: 8%;
 	top: 25%;
@@ -104,27 +104,27 @@ body{
 	width: 380px;
 }
 
-.tabla3{
+.tabla3 {
 	position: absolute;
 	top: 30%;
 	left: 42%;
 	width: 45%;
 }
 
-.tabla4{
+.tabla4 {
 	position: absolute;
 	top: 30%;
 	left: 60%;
 	width: 30%;
 }
 
-.despliegue{
+.despliegue {
 	position: absolute;
 	top: 30%;
 	left: 67%;
 }
 
-.botonBajaEq{
+.botonBajaEq {
 	position: absolute;
 	top: 75%;
 	left: 20%;
@@ -133,7 +133,7 @@ body{
 	border: none;
 }
 
-.siguiente{
+.siguiente {
 	position: absolute;
 	top: 85%;
 	left: 22.5%;
@@ -142,7 +142,7 @@ body{
 	border: none;
 }
 
-.darBajaEl{
+.darBajaEl {
 	position: absolute;
 	top: 75%;
 	left: 70%;
@@ -151,7 +151,7 @@ body{
 	border: none;
 }
 
-.quitarasociacion{
+.quitarasociacion {
 	position: absolute;
 	top: 75%;
 	left: 50%;
