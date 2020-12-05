@@ -34,6 +34,7 @@ Puede usar algunas de las siguientes credenciales para iniciar sesión como **Ad
 - *Opción 1*
   - **Email:** maria.alfaro   
   - **Contraseña:** eciAngelica
+  
 - *Opción 2*
   - **Email:** julian.velasco
   - **Contraseña:** eciJulian
@@ -50,7 +51,7 @@ Una vez ingrese con una credencial válida visualizará el siguiente menú:
 
 #### Registro de Equipos
 Para registrar un equipo usted deberá ingresar por la opción con el mismo nombre.
->   Nota: Para el registro existoso debe ingresar los 4 elementos
+>    Nota: Para el registro existoso debe ingresar los 4 elementos
 
 <!DOCTYPE html>
 <html>
@@ -64,7 +65,6 @@ Ahora podrá empezar a registrar cada elemento que hará parte del equipo.
 -   Tiene dos opciones: 
     -   **Registrar** un nuevo elemento
     -   **Seleccionar** uno de los que hay disponibles antes del registro del equipo. 
-
 
 >  Nota: En caso de elegir la segunda opción, posterior a elegir el elemento deseado, deberá dar clic en el icono inferior derecho como este ☑️ para confirmar y luego clic en **siguiente**.
 
@@ -123,7 +123,8 @@ Una vez seleccione los elementos encontrará la siguiente ventana donde podrá v
 </html>
 
 Una vez lo registré le aparecerá una ventana de confirmación, done en caso de dar **OK** se hará el registro, de lo contrario no. 
-> Podrá salir de la ventana a través de el botón superior derecho **Menu**
+
+>  Podrá salir de la ventana a través de el botón superior derecho **Menu**
 
 <!DOCTYPE html>
 <html>
@@ -265,6 +266,7 @@ Las Novedades presentarán cualquier operación: *registro*, *asociación*, *dad
 -  Dar de baja a elementos y equipos
 -  Obtener reportes de equipos, elementos e histórico de novedades
 -  Obtener reportes laboratorios y cerrar laboratorios
+
 >  Exportar reportes a Excel
 
 ### 📜 Arquitectura y Diseño detallado
@@ -292,17 +294,17 @@ Las Novedades presentarán cualquier operación: *registro*, *asociación*, *dad
 #### Stack de tecnologías utilizado (capas)
 
 #### Capa de presentación
--  Primefaces
+-   Primefaces
 
 #### Capa de aplicación
--  Java
--  Google Guice(*Inyección de dependencias*)
--  Maven(*Gestión de dependencias*)
--  Apache Shiro(*Autenticación*)
+-   Java
+-   Google Guice(*Inyección de dependencias*)
+-   Maven(*Gestión de dependencias*)
+-   Apache Shiro(*Autenticación*)
 
 #### Capa de persistencia de datos
--  PostgreSQL(*Motor de bases de datos*)
--  myBatis(*Mappeo de sentencias SQL*)
+-   PostgreSQL(*Motor de bases de datos*)
+-   myBatis(*Mappeo de sentencias SQL*)
 
 #### 📎Enlace a la aplicación en Heroku: [Aplicación Historial de Equipos](https://historialdeequipo.herokuapp.com)
 #### ⭕ Enlace al sistema de integración continua: [![CircleCI](https://circleci.com/gh/Los-Programadoress/2020-2PROY-CVDS.svg?style=svg)](https://circleci.com/gh/Los-Programadoress/2020-2PROY-CVDS)
