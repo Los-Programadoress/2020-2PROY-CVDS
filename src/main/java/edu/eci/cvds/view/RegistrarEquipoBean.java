@@ -63,7 +63,6 @@ public class RegistrarEquipoBean extends BasePageBean{
 	}
 	
 	public void cambiarBajaEquipo(List<Equipo> equipo) throws EquiposException{
-		System.out.println(equiposSelec.size()+" tamaño");
 		try{
 			for(Equipo eq:equipo) {
 				equipoS.cambiarBajaEquipo(eq.getNombre(), user);
@@ -85,7 +84,6 @@ public class RegistrarEquipoBean extends BasePageBean{
 	public List<Elemento> consultarElementos() throws EquiposException{
 		List<Elemento> consultaElemen = new ArrayList<Elemento>();
 		try{
-			System.out.println(equiposSelec.size()+" tamaño");
 			for(Equipo eq:equiposSelec) {
 				List<Elemento> element = equipoS.consultarElementosEquipo(eq.getNombre());
 				for(Elemento el:element) {
