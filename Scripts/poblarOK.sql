@@ -7,7 +7,7 @@ INSERT INTO usuario VALUES('pedro.gutierrez','pedro.gutierrez@mail.escuelaing.ed
 INSERT INTO laboratorio (nombre , usuario_idcorreo, fechaCreacion, fechaFin) VALUES ('REDES','maria.alfaro',TO_DATE('2020/11/17','yyyy/mm/dd'), TO_DATE('2020/12/17','yyyy/mm/dd'));
 INSERT INTO laboratorio (nombre , usuario_idcorreo, fechaCreacion) VALUES ('PLATAFORMAS','cesar.ortiz', TO_DATE('2020/11/17','yyyy/mm/dd'));
 
-INSERT INTO equipo (nombre, marca, usuario_idcorreo, nombrelab) VALUES ('SISTEMAS1','DELL','maria.alfaro', 'REDES');
+INSERT INTO equipo (nombre, marca, disponible, usuario_idcorreo, nombrelab) VALUES ('SISTEMAS1','DELL', false, 'maria.alfaro', 'REDES');
 
 INSERT INTO elemento (tipo, nombre) VALUES ('Torre', 'V530 AIO');
 INSERT INTO elemento (tipo, nombre) VALUES ('Torre', 'E-ATX');
@@ -16,13 +16,13 @@ INSERT INTO elemento (tipo, nombre) VALUES ('Mouse', 'Multitáctil');
 INSERT INTO elemento (tipo, nombre) VALUES ('Mouse', 'Óptico');
 INSERT INTO elemento (tipo, nombre) VALUES ('Teclado', 'Gamer');
 INSERT INTO elemento (tipo, nombre) VALUES ('Pantalla', 'LCD');
+INSERT INTO elemento (tipo, nombre) VALUES ('Mouse', 'Laser');
+INSERT INTO elemento (tipo, nombre) VALUES ('Pantalla', 'Multi-touch');
+INSERT INTO elemento (tipo, nombre) VALUES ('Teclado', 'Ergonómico');
 INSERT INTO elemento (tipo, nombre, disponible, numequipo) VALUES ('Pantalla', 'LED', false, 1);
 INSERT INTO elemento (tipo, nombre, disponible, numequipo) VALUES ('Torre', 'FEX', false, 1);
 INSERT INTO elemento (tipo, nombre, disponible, numequipo) VALUES ('Teclado', 'Flexible', false, 1);
 INSERT INTO elemento (tipo, nombre, disponible, numequipo) VALUES ('Mouse', 'Inalámbrico', false, 1);
-INSERT INTO elemento (tipo, nombre) VALUES ('Mouse', 'Laser');
-INSERT INTO elemento (tipo, nombre) VALUES ('Pantalla', 'Multi-touch');
-INSERT INTO elemento (tipo, nombre) VALUES ('Teclado', 'Ergonómico');
 
 INSERT INTO Novedad (titulo, fecha, responsable , detalle, nombrelab) VALUES ('Registro de laboratorio', TO_DATE('2020/11/17','yyyy/mm/dd'), 'laura.izquierdo','Se registró el laboratorio REDES', 'REDES');
 INSERT INTO Novedad (titulo, fecha, responsable , detalle, nombrelab) VALUES ('Registro de laboratorio', TO_DATE('2020/11/17','yyyy/mm/dd'), 'cesar.ortiz','Se registró el laboratorio PLATAFORMAS', 'PLATAFORMAS');
