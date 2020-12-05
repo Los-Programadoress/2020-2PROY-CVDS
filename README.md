@@ -261,11 +261,11 @@ Las Novedades presentarán cualquier operación: *registro*, *asociación*, *dad
 
 #### Otras funcionalidades presentes en la aplicación
 
-- Asociar elementos a Equipos
-- Dar de baja a elementos y equipos
-- Obtener reportes de equipos, elementos e histórico de novedades
-- Obtener reportes laboratorios y cerrar laboratorios
-> Exportar reportes a Excel
+-  Asociar elementos a Equipos
+-  Dar de baja a elementos y equipos
+-  Obtener reportes de equipos, elementos e histórico de novedades
+-  Obtener reportes laboratorios y cerrar laboratorios
+>  Exportar reportes a Excel
 
 ### 📜 Arquitectura y Diseño detallado
 
@@ -301,8 +301,8 @@ Las Novedades presentarán cualquier operación: *registro*, *asociación*, *dad
 -  Apache Shiro (*Autenticación*)
 
 #### Capa de persistencia de datos
-- PostgreSQL (*Motor de bases de datos*)
-- myBatis (*Mappeo de sentencias SQL*)
+-  PostgreSQL (*Motor de bases de datos*)
+-  myBatis (*Mappeo de sentencias SQL*)
 
 #### 📎Enlace a la aplicación en Heroku: [Aplicación Historial de Equipos](https://historialdeequipo.herokuapp.com)
 #### ⭕ Enlace al sistema de integración continua: [![CircleCI](https://circleci.com/gh/Los-Programadoress/2020-2PROY-CVDS.svg?style=svg)](https://circleci.com/gh/Los-Programadoress/2020-2PROY-CVDS)
