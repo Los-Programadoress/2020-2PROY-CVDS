@@ -108,25 +108,7 @@ Cada registro o selección exitosa se mostrará a través de un mensaje de confi
     </body>
 </html>
 
-#### Teclado
-
-<!DOCTYPE html>
-<html>
-    <head></head>
-    <body>
-        <img src="https://github.com/Los-Programadoress/2020-2PROY-CVDS/blob/main/img/teclado.png" alt="ER" width="600"/>
-    </body>
-</html>
-
-#### Torre
-
-<!DOCTYPE html>
-<html>
-    <head></head>
-    <body>
-        <img src="https://github.com/Los-Programadoress/2020-2PROY-CVDS/blob/main/img/torre.png" alt="ER" width="600"/>
-    </body>
-</html>
+> Ejemplo de registro de elemento
 
 #### Registro de Equipo con sus elementos
 
@@ -200,7 +182,7 @@ Para el ejemplo, registraremos una **torre**. Una vez se registre aparecerá un 
 </html>
 
 #### Registro de Laboratorios
-Para registrar un laboratorio usted deberá ingresar por la opción con el mismo nombre.
+Para registrar un laboratorio usted deberá ingresar por la opción con el nombre **laboratorios**.
 
 <!DOCTYPE html>
 <html>
@@ -212,7 +194,7 @@ Para registrar un laboratorio usted deberá ingresar por la opción con el mismo
 
 También puede **asociar un equipo** al laboratorio ingresado, de la siguiente forma:
 
-> Al momento de registrar usted verá en la parte inferior que el usuario que registró corresponde al que inicio sesión.
+> En está ventana también será posible cerrar un laboratorio.
 
 <!DOCTYPE html>
 <html>
@@ -290,7 +272,9 @@ Las Novedades presentarán cualquier operación: *registro*, *asociación*, *dad
 
 * Asociar elementos a Equipos
 * Dar de baja a elementos y equipos
-* Obtener reportes de equipos, elementos y laboratorios
+* Obtener reportes de equipos, elementos e histórico de novedades
+* Obtener reportes laboratorios y cerrar laboratorios
+> Exportar reportes a Excel
 
 ### 📜 Arquitectura y Diseño detallado
 
@@ -331,13 +315,21 @@ Las Novedades presentarán cualquier operación: *registro*, *asociación*, *dad
 
 #### 📎Enlace a la aplicación en Heroku: [Aplicación Historial de Equipos](https://historialdeequipo.herokuapp.com)
 #### ⭕ Enlace al sistema de integración continua: [![CircleCI](https://circleci.com/gh/Los-Programadoress/2020-2PROY-CVDS.svg?style=svg)](https://circleci.com/gh/Los-Programadoress/2020-2PROY-CVDS)
-#### ⚠️Enlace al análisis de código en Codacy: [![Codacy Badge](https://app.codacy.com/project/badge/Grade/c096c8f88fc347a0b478ac44d4409c0c)](https://www.codacy.com/gh/Los-Programadoress/2020-2PROY-CVDS/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Los-Programadoress/2020-2PROY-CVDS&amp;utm_campaign=Badge_Grade)
 
 ### 📋 Descripción del proceso
 #### Descripción de la Metodología.
 La aplicación se desarrolló mediante la metodología ágil Scrum. Se realizaron por cada sprint las ceremonias de la metodología: sprint planning, daily scrum y sprint review en un periodo de 2 semanas, en compañia del product owner.
 #### Enlace a Taiga. [Herramienta de gestión del proyecto](https://tree.taiga.io/project/cesar-ortiz-historial-de-equipos-labinfo/backlog)
 #### Release-burndown chart del proyecto 
+
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <img src="https://github.com/Los-Programadoress/2020-2PROY-CVDS/blob/main/img/Release-burndown.png" alt="ER" width="800"/>
+    </body>
+</html>
+
 #### 📈Sprint 1  [Burndown chart](https://tree.taiga.io/project/cesar-ortiz-historial-de-equipos-labinfo/taskboard/sprint-1-14429)
 **sprint-backlog**  
 
@@ -364,10 +356,26 @@ Al principio del sprint se presentaron inconvenientes con el manejo de Shiro, pe
 En general fue un sprint de completitud de las funcionalidades base, con colaboración del equipo y el profesor se mejoraron estrategias de las mismas y realizaron pruebas de lo desarrollado hasta el momento.
 
 #### 📈Sprint 3  [Burndown chart](https://tree.taiga.io/project/cesar-ortiz-historial-de-equipos-labinfo/taskboard/sprint-3-5033)
-**sprint-backlog**  
+**sprint-backlog**
+
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <img src="https://github.com/Los-Programadoress/2020-2PROY-CVDS/blob/main/img/BacklogSprint3.png" alt="ER" width="800"/>
+    </body>
+</html>
 
 Finalmente el último sprint fue de completitud de funcionalidades del proyecto, solucionando bugs del Sprint 2, mejorando experiencia de usuario, y organizando detalles para finalizar con éxito la entrega presente.
 
 #### Reporte de Pruebas
 
-#### Reporte de de Análisis estático de código
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <img src="https://github.com/Los-Programadoress/2020-2PROY-CVDS/blob/main/img/jacocoReport.png" alt="ER" width="800"/>
+    </body>
+</html>
+
+#### ⚠️Reporte de de Análisis estático de código: [![Codacy Badge](https://app.codacy.com/project/badge/Grade/c096c8f88fc347a0b478ac44d4409c0c)](https://www.codacy.com/gh/Los-Programadoress/2020-2PROY-CVDS/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Los-Programadoress/2020-2PROY-CVDS&amp;utm_campaign=Badge_Grade)
