@@ -4,12 +4,12 @@
 ## 📍 HISTORIAL DE EQUIPOS
 
 #### Product Owner 💥 
-> - Julián Mauricio Velasco Briceño
+>  - Julián Mauricio Velasco Briceño
 
 #### Team 👤👤👤
-> - María Angélica Alfaro Fandiño (Design)
-> - César Fernando Ortiz Rocha (Front)
-> - Laura Alejandra Izquierdo Castro (Back)
+>  - María Angélica Alfaro Fandiño (Design)
+>  - César Fernando Ortiz Rocha (Front)
+>  - Laura Alejandra Izquierdo Castro (Back)
 
 ### 🔎 Descripción del producto 
 **Descripción general:** La Plataforma Historial de Equipo, es una herramienta donde el personal administrativo del laboratorio de informática (LabInfo) pertenecientes a la decanatura de Ingeniería de Sistemas podrán hacer el registro y seguimiento de las novedades que han sido realizadas sobre los equipos de cómputo pertenecientes al Laboratorio de Informática. 
@@ -31,12 +31,12 @@ Al ingresar al enlace de Heroku visualizará la siguiente ventana en el browser
 
 Puede usar algunas de las siguientes credenciales para iniciar sesión como **Administrador** :
 
-* *Opción 1*
-    * **Email:** maria.alfaro   
-    * **Contraseña:** eciAngelica
-* *Opción 2*
-    * **Email:** julian.velasco
-    * **Contraseña:** eciJulian
+-  *Opción 1*
+    - **Email:** maria.alfaro   
+    - **Contraseña:** eciAngelica
+-  *Opción 2*
+    - **Email:** julian.velasco
+    - **Contraseña:** eciJulian
 
 Una vez ingrese con una credencial válida visualizará el siguiente menú:
 
@@ -62,9 +62,9 @@ Para registrar un equipo usted deberá ingresar por la opción con el mismo nomb
 </html>
 
 Ahora podrá empezar a registrar cada elemento que hará parte del equipo. 
-* Tiene dos opciones: 
-    * **Registrar** un nuevo elemento
-    * **Seleccionar** uno de los que hay disponibles antes del registro del equipo. 
+-  Tiene dos opciones: 
+    -  **Registrar** un nuevo elemento
+    -  **Seleccionar** uno de los que hay disponibles antes del registro del equipo. 
 
 > Nota: En caso de elegir la segunda opción, posterior a elegir el elemento deseado, deberá dar clic en el icono inferior derecho como este ☑️ para confirmar y luego clic en **siguiente**.
 
@@ -259,13 +259,12 @@ Las Novedades presentarán cualquier operación: *registro*, *asociación*, *dad
 
 > También se puede **registrar una novedad**
 
-
 #### Otras funcionalidades presentes en la aplicación
 
-* Asociar elementos a Equipos
-* Dar de baja a elementos y equipos
-* Obtener reportes de equipos, elementos e histórico de novedades
-* Obtener reportes laboratorios y cerrar laboratorios
+- Asociar elementos a Equipos
+- Dar de baja a elementos y equipos
+- Obtener reportes de equipos, elementos e histórico de novedades
+- Obtener reportes laboratorios y cerrar laboratorios
 > Exportar reportes a Excel
 
 ### 📜 Arquitectura y Diseño detallado
@@ -293,23 +292,23 @@ Las Novedades presentarán cualquier operación: *registro*, *asociación*, *dad
 #### Stack de tecnologías utilizado (capas)
 
 #### Capa de presentación
-+  Primefaces
+-  Primefaces
 
 #### Capa de aplicación
-+  Java
-+  Google Guice  (*Inyección de dependencias*)
-+  Maven (*Gestión de dependencias*)
-+  Apache Shiro (*Autenticación*)
+-  Java
+-  Google Guice  (*Inyección de dependencias*)
+-  Maven (*Gestión de dependencias*)
+-  Apache Shiro (*Autenticación*)
 
 #### Capa de persistencia de datos
-+ PostgreSQL (*Motor de bases de datos*)
-+ myBatis (*Mappeo de sentencias SQL*)
+- PostgreSQL (*Motor de bases de datos*)
+- myBatis (*Mappeo de sentencias SQL*)
 
 #### 📎Enlace a la aplicación en Heroku: [Aplicación Historial de Equipos](https://historialdeequipo.herokuapp.com)
 #### ⭕ Enlace al sistema de integración continua: [![CircleCI](https://circleci.com/gh/Los-Programadoress/2020-2PROY-CVDS.svg?style=svg)](https://circleci.com/gh/Los-Programadoress/2020-2PROY-CVDS)
 
 ### 📋 Descripción del proceso
-#### Descripción de la Metodología.
+#### Descripción de la Metodología
 La aplicación se desarrolló mediante la metodología ágil Scrum. Se realizaron por cada sprint las ceremonias de la metodología: sprint planning, daily scrum y sprint review en un periodo de 2 semanas, en compañia del product owner.
 #### Enlace a Taiga. [Herramienta de gestión del proyecto](https://tree.taiga.io/project/cesar-ortiz-historial-de-equipos-labinfo/backlog)
 #### Release-burndown chart del proyecto 
