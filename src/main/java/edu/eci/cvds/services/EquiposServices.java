@@ -4,8 +4,6 @@ package edu.eci.cvds.services;
 import java.sql.Date;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;

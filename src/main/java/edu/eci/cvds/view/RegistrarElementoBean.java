@@ -13,7 +13,6 @@ import org.primefaces.PrimeFaces;
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Elemento;
-import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.services.EquiposException;
 import edu.eci.cvds.services.EquiposServices;
 

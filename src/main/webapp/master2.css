@@ -22,17 +22,17 @@ body {
 }
 
 .en-sesion .imagen {
-	position: absolute;
-	left: 38%;
-	height: 65px;
-	width: 300px;
+  position: absolute;
+  left: 38%;
+  height: 65px;
+  width: 300px;
 }
 
 .en-sesion .imagenLogo {
-	position: absolute;
-	left: 39%;
-	height: 65px;
-	width: 260px;
+  position: absolute;
+  left: 39%;
+  height: 65px;
+  width: 260px;
 }
 
 .h1 {
@@ -125,7 +125,7 @@ body {
   font-size: 20px;
   border: none;
 }
-  
+
 .en-sesion4 {
   width: 200px;
   height: 200px;

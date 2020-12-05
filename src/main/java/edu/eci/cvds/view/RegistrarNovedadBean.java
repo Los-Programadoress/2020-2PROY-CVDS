@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -24,7 +23,6 @@ import edu.eci.cvds.services.EquiposServices;
 @ApplicationScoped
 public class RegistrarNovedadBean extends BasePageBean{
 	
-	private String f_seleccionada = "";
 	private List<Novedad> novedadesEq = null;
 	private List<Novedad> novedadesEl = null;
 	private List<Novedad> novedadesLa = null;
@@ -185,14 +183,6 @@ public class RegistrarNovedadBean extends BasePageBean{
 		}
 		 return novedadesLa;
 	 }
-
-	public String getF_seleccionada() {
-		return f_seleccionada;
-	}
-
-	public void setF_seleccionada(String f_seleccionada) {
-		this.f_seleccionada = f_seleccionada;
-	}
 
 	public String getNombreEq() {
 		return nombreEq;

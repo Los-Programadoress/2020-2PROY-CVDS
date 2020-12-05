@@ -2,7 +2,6 @@ package edu.eci.cvds.persistence.mybatisimpl;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.mybatis.guice.transactional.Transactional;
 
 import com.google.inject.Inject;

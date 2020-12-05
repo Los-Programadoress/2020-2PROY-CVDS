@@ -51,8 +51,8 @@ body {
   color: #fff;
   top: 20%;
   left: 20%;
-  font-size:22px;
-} 
+  font-size: 22px;
+}
 
 .h3 {
   position: absolute;
@@ -121,6 +121,7 @@ body {
   top: 32%;
   width: 225px;
 }
+
 .input30 {
   position: absolute;
   left: 43%;
@@ -171,7 +172,7 @@ body {
   position: absolute;
   left: 60%;
   top: 72%;
-  color: #fff; 
+  color: #fff;
 }
 
 .input6 {
@@ -221,16 +222,16 @@ body .ui-staticmessage.ui-message {
   height: 30px;
   position: absolute;
   top: 88%;
-  left:16%;
-  font-size:20px;
+  left: 16%;
+  font-size: 20px;
 }
 
 .asociarEquipo {
-  position:absolute;
+  position: absolute;
   top: 88%;
   left: 70%;
   background: #900;
-  color: #fff; 
+  color: #fff;
   border: none;
 }
 

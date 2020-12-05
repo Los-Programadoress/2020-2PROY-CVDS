@@ -1,6 +1,5 @@
 package edu.eci.cvds.view;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +14,6 @@ import org.primefaces.PrimeFaces;
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Laboratorio;
-import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.services.EquiposException;
 import edu.eci.cvds.services.EquiposServices;
 

@@ -28,7 +28,6 @@ import edu.eci.cvds.services.EquiposServices;
 public class EquiposServicesImpl implements EquiposServices{
 	
 	static final ArrayList<Elemento> elSelected = new ArrayList<>();
-	private String user;
 	private Date fecha = new Date(System.currentTimeMillis());
 
 	@Inject
