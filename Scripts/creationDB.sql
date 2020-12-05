@@ -11,6 +11,9 @@ create sequence NumEquipo_req;
 CREATE TABLE IF NOT EXISTS LABORATORIO (
   nombre VARCHAR(50) NOT NULL,
   usuario_idCorreo VARCHAR(30) NOT NULL,
+  estaCerrado BOOLEAN default false,
+  fechaCreacion DATE ,
+  fechaFin DATE,
   PRIMARY KEY (nombre),
   CONSTRAINT fk_LABORATORIO_USUARIO
     FOREIGN KEY (usuario_idCorreo)
@@ -20,10 +23,10 @@ CREATE TABLE IF NOT EXISTS EQUIPO (
   numero INT NOT NULL DEFAULT NEXTVAL ('NumEquipo_req'),
   nombre VARCHAR(50) UNIQUE NOT NULL,
   marca VARCHAR(50) NOT NULL,
-  disponible BOOLEAN NOT NULL,
+  disponible BOOLEAN NOT null default true,
   usuario_idCorreo VARCHAR(30) NOT NULL,
   nombreLab VARCHAR(50),
-  dadoDeBaja BOOLEAN,
+  dadoDeBaja BOOLEAN default false,
   PRIMARY KEY (numero),
   CONSTRAINT fk_EQUIPO_USUARIO
     FOREIGN KEY (usuario_idCorreo)
@@ -38,9 +41,9 @@ CREATE TABLE IF NOT EXISTS ELEMENTO (
   id INT NOT NULL DEFAULT NEXTVAL ('NumElemento_req'),
   tipo VARCHAR(50) NOT NULL,
   nombre VARCHAR(50) UNIQUE NOT NULL,
-  disponible BOOLEAN NOT NULL,
+  disponible BOOLEAN NOT null default true,
   numEquipo INT,
-  dadoDeBaja BOOLEAN,
+  dadoDeBaja BOOLEAN default false,
   PRIMARY KEY (id),
   CONSTRAINT fk_ELEMENTO_EQUIPO
     FOREIGN KEY (numEquipo)
