@@ -4,12 +4,12 @@
 ## 📍 HISTORIAL DE EQUIPOS
 
 #### Product Owner 💥 
-  >  -  Julián Mauricio Velasco Briceño
+>  - Julián Mauricio Velasco Briceño
 
 #### Team 👤👤👤
-  >  -  María Angélica Alfaro Fandiño (Design)
-  >  -  César Fernando Ortiz Rocha (Front)
-  >  -  Laura Alejandra Izquierdo Castro (Back)
+>  - María Angélica Alfaro Fandiño (Design)
+>  - César Fernando Ortiz Rocha (Front)
+>  - Laura Alejandra Izquierdo Castro (Back)
 
 ### 🔎 Descripción del producto 
 **Descripción general:** La Plataforma Historial de Equipo, es una herramienta donde el personal administrativo del laboratorio de informática (LabInfo) pertenecientes a la decanatura de Ingeniería de Sistemas podrán hacer el registro y seguimiento de las novedades que han sido realizadas sobre los equipos de cómputo pertenecientes al Laboratorio de Informática. 
@@ -31,12 +31,12 @@ Al ingresar al enlace de Heroku visualizará la siguiente ventana en el browser
 
 Puede usar algunas de las siguientes credenciales para iniciar sesión como **Administrador** :
 
--  *Opción 1*
-    -  **Email:** maria.alfaro   
-    -  **Contraseña:** eciAngelica
--  *Opción 2*
-    -  **Email:** julian.velasco
-    -  **Contraseña:** eciJulian
+- *Opción 1*
+  - **Email:** maria.alfaro   
+  - **Contraseña:** eciAngelica
+- *Opción 2*
+  - **Email:** julian.velasco
+  - **Contraseña:** eciJulian
 
 Una vez ingrese con una credencial válida visualizará el siguiente menú:
 
