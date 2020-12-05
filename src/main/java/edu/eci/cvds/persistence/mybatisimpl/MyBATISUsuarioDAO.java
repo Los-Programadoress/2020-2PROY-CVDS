@@ -28,7 +28,7 @@ public class MyBATISUsuarioDAO implements UsuarioDAO{
      * @return Usuario consultado
      */
 	@Override
-	public Usuario consultarUsuario(String idCorreo) throws PersistenceException {;
+	public Usuario consultarUsuario(String idCorreo) throws PersistenceException{;
 		try{
 			return usuarioMapper.consultarUsuario(idCorreo);
 		}
