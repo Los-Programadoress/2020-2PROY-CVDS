@@ -67,6 +67,7 @@ public class RegistrarEquipoBean extends BasePageBean{
 			for(Equipo eq:equipo) {
 				equipoS.cambiarBajaEquipo(eq.getNombre(), user);
 			}
+			info();
 		}
 		catch(EquiposException e){          
 		}

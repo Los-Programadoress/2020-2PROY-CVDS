@@ -19,7 +19,9 @@
 			
 			 <h1 class="h2">Elementos</h1>
 			 <image class="elementoimg" src="img/elementosEquipo.png"/>
-			<p:dataTable var="elequi" value="#{RegistrarEquiposBean.consultarElementos()}" class="tabla3" rowKey="#{elequi.id}"
+			<p:dataTable var="elequi" value="#{RegistrarEquiposBean.consultarElementos()}" class="tabla3" 
+						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+						rows="8" selection="#{registrarElementosBean.elementosSelec}" rowKey="#{elequi.id}">
 				selection="#{registrarElementosBean.elementosSelec}">
 				<f:facet name="header">Elementos asociados al equipo</f:facet>
 					<p:column class="columna" headerText="Nombre Equipo">

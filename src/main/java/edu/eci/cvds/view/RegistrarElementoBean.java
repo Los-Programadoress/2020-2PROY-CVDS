@@ -83,6 +83,7 @@ public class RegistrarElementoBean extends BasePageBean{
 		user = currentUser.getPrincipal().toString();
 		try {
 			equipoS.asociacionElemento(id, numero, tipo, equipoNombre, elementoNombre, user);
+			info3();
 		}catch(EquiposException e){  
 			e.printStackTrace();
 		}	
@@ -107,6 +108,7 @@ public class RegistrarElementoBean extends BasePageBean{
 			for(Elemento ele:elemento) {
 				equipoS.desasociarElemento(true, equipoS.numEquipoDelElemento(ele.getNombre()), ele.getTipo());
 			}
+			info4();
 		}catch(EquiposException e){  
 			e.printStackTrace(); 
 		}
@@ -165,6 +167,11 @@ public class RegistrarElementoBean extends BasePageBean{
 	 
 	 public void info3() {
 		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Asociación de Elemento", "Se asoció satisfactoriamente.");
+		 PrimeFaces.current().dialog().showMessageDynamic(message);
+	 }
+	 
+	 public void info4() {
+		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Asociación eliminada", "Se eliminó la asociación satisfactoriamente.");
 		 PrimeFaces.current().dialog().showMessageDynamic(message);
 	 }
 	 

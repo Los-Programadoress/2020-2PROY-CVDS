@@ -68,7 +68,7 @@
 	    el.disponible,
 	    el.dadoDeBaja
 	  FROM elemento AS el
-	  WHERE el.disponible = true;
+	  WHERE el.disponible = true and el.dadoDeBaja = false;
 	</select>
 	
 	<update parameterType="map" id="desasociarElemento">

@@ -4,11 +4,13 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
+import org.primefaces.PrimeFaces;
 
 import com.google.inject.Inject;
 
@@ -92,6 +94,7 @@ public class RegistrarNovedadBean extends BasePageBean{
 		catch(EquiposException e) {
  			e.printStackTrace();           
 		}
+		info();
 	}
 	
 	public List<String> consultarNombreElemento() throws EquiposException{
@@ -121,6 +124,7 @@ public class RegistrarNovedadBean extends BasePageBean{
     		else {
     			equipoS.registrarNovedadElemento(titulo, fecha, user, detalle, null, nombreElem);
     		}
+    		info();
 		}
 		catch(EquiposException e) {
  			e.printStackTrace();             
@@ -148,6 +152,7 @@ public class RegistrarNovedadBean extends BasePageBean{
     		user = currentUser.getPrincipal().toString();
     		Date fecha = new Date(System.currentTimeMillis());
 			equipoS.registrarNovedadLaboratorio(titulo, fecha,user, detalle, nLab);
+			info();
 		}
 		catch(EquiposException e) {
  			e.printStackTrace();           
@@ -182,6 +187,11 @@ public class RegistrarNovedadBean extends BasePageBean{
 	 			e.printStackTrace(); 
 		}
 		 return novedadesLa;
+	 }
+	 
+	 public void info() {
+		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Novedad registrada", "Se registró la novedad satisfactoriamente.");
+		 PrimeFaces.current().dialog().showMessageDynamic(message);
 	 }
 
 	public String getNombreEq() {
