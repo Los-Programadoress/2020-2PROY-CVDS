@@ -4,12 +4,12 @@
 ## 📍 HISTORIAL DE EQUIPOS
 
 #### Product Owner 💥 
->  - Julián Mauricio Velasco Briceño
+>  -  Julián Mauricio Velasco Briceño
 
 #### Team 👤👤👤
->  - María Angélica Alfaro Fandiño (Design)
->  - César Fernando Ortiz Rocha (Front)
->  - Laura Alejandra Izquierdo Castro (Back)
+>  -  María Angélica Alfaro Fandiño (Design)
+>  -  César Fernando Ortiz Rocha (Front)
+>  -  Laura Alejandra Izquierdo Castro (Back)
 
 ### 🔎 Descripción del producto 
 **Descripción general:** La Plataforma Historial de Equipo, es una herramienta donde el personal administrativo del laboratorio de informática (LabInfo) pertenecientes a la decanatura de Ingeniería de Sistemas podrán hacer el registro y seguimiento de las novedades que han sido realizadas sobre los equipos de cómputo pertenecientes al Laboratorio de Informática. 
@@ -32,11 +32,11 @@ Al ingresar al enlace de Heroku visualizará la siguiente ventana en el browser
 Puede usar algunas de las siguientes credenciales para iniciar sesión como **Administrador** :
 
 -  *Opción 1*
-    - **Email:** maria.alfaro   
-    - **Contraseña:** eciAngelica
+    -  **Email:** maria.alfaro   
+    -  **Contraseña:** eciAngelica
 -  *Opción 2*
-    - **Email:** julian.velasco
-    - **Contraseña:** eciJulian
+    -  **Email:** julian.velasco
+    -  **Contraseña:** eciJulian
 
 Una vez ingrese con una credencial válida visualizará el siguiente menú:
 
@@ -50,8 +50,7 @@ Una vez ingrese con una credencial válida visualizará el siguiente menú:
 
 #### Registro de Equipos
 Para registrar un equipo usted deberá ingresar por la opción con el mismo nombre.
-
-> Nota: Para el registro existoso debe ingresar los 4 elementos
+>   Nota: Para el registro existoso debe ingresar los 4 elementos
 
 <!DOCTYPE html>
 <html>
@@ -62,11 +61,12 @@ Para registrar un equipo usted deberá ingresar por la opción con el mismo nomb
 </html>
 
 Ahora podrá empezar a registrar cada elemento que hará parte del equipo. 
--  Tiene dos opciones: 
-    -  **Registrar** un nuevo elemento
-    -  **Seleccionar** uno de los que hay disponibles antes del registro del equipo. 
+-   Tiene dos opciones: 
+    -   **Registrar** un nuevo elemento
+    -   **Seleccionar** uno de los que hay disponibles antes del registro del equipo. 
 
-> Nota: En caso de elegir la segunda opción, posterior a elegir el elemento deseado, deberá dar clic en el icono inferior derecho como este ☑️ para confirmar y luego clic en **siguiente**.
+
+>  Nota: En caso de elegir la segunda opción, posterior a elegir el elemento deseado, deberá dar clic en el icono inferior derecho como este ☑️ para confirmar y luego clic en **siguiente**.
 
 Podrá ingresar los siguientes elementos: un **mouse**, un **teclado**, una **pantalla** y una **torre**.
 
@@ -108,7 +108,7 @@ Cada registro o selección exitosa se mostrará a través de un mensaje de confi
     </body>
 </html>
 
-> Ejemplo de registro de elemento
+>  Ejemplo de registro de elemento
 
 #### Registro de Equipo con sus elementos
 
@@ -194,7 +194,7 @@ Para registrar un laboratorio usted deberá ingresar por la opción con el nombr
 
 También puede **asociar un equipo** al laboratorio ingresado, de la siguiente forma:
 
-> En está ventana también será posible cerrar un laboratorio.
+>  En está ventana también será posible cerrar un laboratorio.
 
 <!DOCTYPE html>
 <html>
@@ -214,7 +214,7 @@ También puede **asociar un equipo** al laboratorio ingresado, de la siguiente f
     </body>
 </html>
 
-> Obtendrá un mensaje de confirmación de asociación exitosa.
+>  Obtendrá un mensaje de confirmación de asociación exitosa.
 
 #### Reporte Novedades
 Las Novedades presentarán cualquier operación: *registro*, *asociación*, *dado de baja* que se realice sobre cada elemento de forma automática.
@@ -257,7 +257,7 @@ Las Novedades presentarán cualquier operación: *registro*, *asociación*, *dad
     </body>
 </html>
 
-> También se puede **registrar una novedad**
+>  También se puede **registrar una novedad**
 
 #### Otras funcionalidades presentes en la aplicación
 
