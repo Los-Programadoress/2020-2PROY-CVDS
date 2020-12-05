@@ -181,7 +181,7 @@ public class EquiposServicesTest {
      * Consulta Válida: Se asocia un elemento registrado de un equipo existente.
      */
     @Test
-    public void deberíaAsociarElementoEquipo() {
+    public void deberiaAsociarElementoEquipo() {
     	try {
     		//elementos sin asociar
     		Elemento el = new Elemento(1,"Torre", "V530 AIO");
@@ -213,7 +213,7 @@ public class EquiposServicesTest {
      * Consulta Inválida: Se asocia un elemento registrado de un equipo que no existe.
      */
     @Test
-    public void noDeberíaAsociarElementoEquipo() {
+    public void noDeberiaAsociarElementoEquipo() {
     	try {
     		equiposServices.registrarElemento("PANTALLA", "LCD", "maria.alfaro");
 			equiposServices.asociarElemento(100, 1);
@@ -230,7 +230,7 @@ public class EquiposServicesTest {
      * Consulta Válida: Se da de baja a un elemento registrado que no se encuentra asociado a un equipo.
      */
     @Test
-    public void deberíaDarseDeBajaElementoNoAsociado() {
+    public void deberiaDarseDeBajaElementoNoAsociado() {
     	try {
     		equiposServices.registrarElemento("PANTALLA", "LCD", "maria.alfaro");
     		equiposServices.cambiarBajaElemento(true, "LCD", "maria.alfaro");
@@ -247,7 +247,7 @@ public class EquiposServicesTest {
     * Consulta Inválida: Se da de baja a un elemento que se encuentra asociada a un equipo.
     */
    @Test
-   public void noDeberíaDarseDeBajaElementoAsociado() {
+   public void noDeberiaDarseDeBajaElementoAsociado() {
 		try {
 			//elementos sin asociar
 			Elemento el = new Elemento(1,"Torre", "V530 AIO");
@@ -286,7 +286,7 @@ public class EquiposServicesTest {
     * Consulta Válida: Se registra automaticamente una novedad de un elemento cuando se realiza una operación que lo involucra.
     */
    @Test
-   public void deberíaRegistrarNovedadElemento() {
+   public void deberiaRegistrarNovedadElemento() {
 		try {
 			//registrar elemento
     		equiposServices.registrarElemento("TORRE", "V530 AIO", "maria.alfaro");
@@ -305,7 +305,7 @@ public class EquiposServicesTest {
     * Consulta Inválida: Se registra automaticamente una novedad de un elemento cuando se realiza una operación que no lo involucra.
     */
    @Test
-   public void noDeberíaRegistrarNovedadElemento() {
+   public void noDeberiaRegistrarNovedadElemento() {
 		try {
 			//registrar laboratorio
 			equiposServices.registrarLaboratorio("MULTIMEDIA", "maria.alfaro");
@@ -324,7 +324,7 @@ public class EquiposServicesTest {
     * Consulta Válida: Se registra automaticamente una novedad de un equipo cuando se realiza una operación que lo involucra.
     */
    @Test
-   public void deberíaRegistrarNovedadEquipo() {
+   public void deberiaRegistrarNovedadEquipo() {
 		try {
 			//elementos sin asociar
 			Elemento el = new Elemento(1,"Torre", "V530 AIO");
@@ -354,7 +354,7 @@ public class EquiposServicesTest {
     * Consulta Inválida: Se regista automaticamente una novedad de un equipo cuando se realiza una operación que no lo involucra.
     */
    @Test
-   public void noDeberíaRegistrarNovedadEquipo() {
+   public void noDeberiaRegistrarNovedadEquipo() {
 		try {
 			//registrar elementos
     		equiposServices.registrarElemento("MOUSE", "Flexible", "maria.alfaro");
@@ -374,7 +374,7 @@ public class EquiposServicesTest {
     * Consulta Válida: Se registra automaticamente una novedad de un equipo cuando se realiza una operación que lo involucra.
     */
    @Test
-   public void deberíaRegistrarNovedadLaboratorio() {
+   public void deberiaRegistrarNovedadLaboratorio() {
 		try {
 			//registrar laboratorio
 			equiposServices.registrarLaboratorio("PLATAFORMAS", "maria.alfaro");
@@ -393,7 +393,7 @@ public class EquiposServicesTest {
     * Consulta Inválida: Se registra automaticamente una novedad de un equipo cuando se realiza una operación que no lo involucra.
     */
    @Test
-   public void noDeberíaRegistrarNovedadLaboratorio() {
+   public void noDeberiaRegistrarNovedadLaboratorio() {
 		try {
 			//registrar elemento
     		equiposServices.registrarElemento("TECLADO", "Ergonómico", "maria.alfaro");
@@ -412,7 +412,7 @@ public class EquiposServicesTest {
     * Consulta Válida: Genera automaticamente un reporte de los elementos existentes.
     */
    @Test
-   public void deberíaGenerarReporteElementos() {
+   public void deberiaGenerarReporteElementos() {
 		try {
 			//registrar elemento
     		equiposServices.registrarElemento("TECLADO", "Ergonómico", "maria.alfaro");
@@ -432,7 +432,7 @@ public class EquiposServicesTest {
     * Consulta Válida: Genera automaticamente un reporte de los equipos y sus elementos existentes.
     */
    @Test
-   public void deberíaGenerarReporteEquipos() {
+   public void deberiaGenerarReporteEquipos() {
 		try {
 			//elementos sin asociar
 			Elemento el = new Elemento(1,"Torre", "V530 AIO");
