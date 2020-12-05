@@ -5,26 +5,22 @@ import static org.junit.Assert.*;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
-import org.junit.Before;
 import org.junit.Test;
 
  
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Elemento;
-import edu.eci.cvds.entities.Equipo;
-import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.services.EquiposException;
 import edu.eci.cvds.services.EquiposServices;
 import edu.eci.cvds.services.EquiposServicesFactory;
+
 public class EquiposServicesTest {
     
     @Inject
     private SqlSession sqlSession;
     
     private EquiposServices equiposServices;
-    
-    private Usuario user;
     
     /**
      * Instancia los Servicios de EquiposServices.
