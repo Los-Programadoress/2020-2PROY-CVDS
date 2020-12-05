@@ -78,6 +78,14 @@ body {
   width: 30%;
 }
 
+.h3{
+  position: absolute;
+  top: 15%;
+  left: 45%;
+  color: #fff;
+}
+
+
 .botonTabla {
   position: absolute;
   top: 85%;
@@ -136,7 +144,7 @@ body {
 .siguiente {
   position: absolute;
   top: 85%;
-  left: 22.5%;
+  left: 20.8%;
   background: #900;
   color: #fff;
   border: none;
@@ -144,7 +152,7 @@ body {
 
 .darBajaEl {
   position: absolute;
-  top: 75%;
+  top: 85%;
   left: 70%;
   background: #900;
   color: #fff;

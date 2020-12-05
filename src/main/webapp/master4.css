@@ -134,13 +134,19 @@ body {
   color: #fff;
 }
 
+  top: 30%;
+  height: 30px;
+  width: 40px;
+  color: #0000;
+  border: none;
 .botonExcel {
   position: absolute;
   left: 10%;
-  top: 28%;
-  height: 50px;
-  width: 55px;
+  top: 30%;
+  height: 30px;
+  width: 45px;
   background: url(img/excel.png) center;
   background-size: 100% 100%;
   color: #0000;
+  border: none;
 }

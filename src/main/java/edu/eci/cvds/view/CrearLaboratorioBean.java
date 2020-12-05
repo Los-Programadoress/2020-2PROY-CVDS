@@ -6,10 +6,17 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.view.ViewScoped;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.primefaces.PrimeFaces;
+import org.primefaces.model.chart.Axis;
+import org.primefaces.model.chart.AxisType;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.BarChartSeries;
+import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.PieChartModel;
 
 import com.google.inject.Inject;
 
@@ -26,9 +33,51 @@ public class CrearLaboratorioBean extends BasePageBean{
 	private List<Laboratorio> laboratorios = null;
 	private String user;
 	private Laboratorio laboratorioSelec;
+	private BarChartModel barra;
+	private PieChartModel torta;
 	
 	@Inject
 	private EquiposServices equipoS;
+	
+	public BarChartModel graficar() throws EquiposException {
+		barra = new BarChartModel();
+		laboratorios = equipoS.consultarLaboratorios();
+		for(Laboratorio la:laboratorios) {
+			ChartSeries serie = new BarChartSeries();
+			serie.setLabel(la.getNombre());
+			serie.set(la.getNombre(), equipoS.cantidadEquiposLab(la.getNombre()));
+			barra.addSeries(serie);
+		}
+		barra.setTitle("Cantidad de equipos por laboratorios");
+		barra.setLegendPosition("ne");
+		barra.setAnimate(true);
+		Axis xAxis=barra.getAxis(AxisType.X);
+		xAxis.setLabel("Laboratorios");
+		Axis yAxis=barra.getAxis(AxisType.Y);
+		yAxis.setLabel("Cantidad Equipos de laboratorio");
+		yAxis.setMin(0);
+		yAxis.setMax(20);
+		return barra;
+	}
+	
+	public PieChartModel generarEstadistica() throws EquiposException {
+        torta = new PieChartModel();
+        laboratorios = equipoS.consultarLaboratorios();
+
+        for (Laboratorio laboratory : laboratorios) {
+            torta.set(laboratory.getNombre(),equipoS.cantidadEquiposLab(laboratory.getNombre()));
+        }
+        torta.setTitle("Cantidad de equipos por laboratorio");
+        torta.setShowDataLabels(true);
+        torta.setDataLabelFormatString("%dK");
+        torta.setLegendPosition("e");
+        torta.setShowDatatip(true);
+        torta.setShowDataLabels(true);
+        torta.setDataFormat("value");
+        torta.setDataLabelFormatString("%d");
+        torta.setSeriesColors("006600,FFFF00,000099,990000");
+        return torta;
+    }
 	
 	public List<Laboratorio> consultarLaboratorios() throws EquiposException {
 		try{
@@ -123,6 +172,14 @@ public class CrearLaboratorioBean extends BasePageBean{
 
 	public void setLaboratorioSelec(Laboratorio laboratorioSelec) {
 		this.laboratorioSelec = laboratorioSelec;
+	}
+
+	public BarChartModel getBarra() {
+		return barra;
+	}
+
+	public void setBarra(BarChartModel barra) {
+		this.barra = barra;
 	}
 	
 	

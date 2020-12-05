@@ -172,6 +172,13 @@ body {
   width: 37%;
 }
 
+.tabla4{
+  position: absolute;
+  left: 15%;
+  top: 53%;
+  width: 70%;
+}
+
 .elemRegis {
   position: absolute;
   left: 5%;
@@ -204,10 +211,11 @@ body {
 .botonExcel {
   position: absolute;
   left: 15%;
-  top: 40%;
-  height: 50px;
-  width: 55px;
+  top: 45%;
+  height: 30px;
+  width: 40px;
   background: url(img/excel.png) center;
   background-size: 100% 100%;
   color: #0000;
+  border: none;
 }

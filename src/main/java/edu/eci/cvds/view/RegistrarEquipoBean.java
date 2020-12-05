@@ -46,6 +46,7 @@ public class RegistrarEquipoBean extends BasePageBean{
 		user = currentUser.getPrincipal().toString();
 		try{
 			equipoS.registrarEquipo(nombre, marca, user);
+			info3();
 		}catch(EquiposException e){           
         }
 	}
@@ -122,6 +123,16 @@ public class RegistrarEquipoBean extends BasePageBean{
  	    } 
     	return nombreEquipo; 
  	  }
+	 
+	 public String nombreEquipoPorElemento(String nombreElemento) throws EquiposException{
+		String nombreEquipo = "";
+    	try{
+ 	 		nombreEquipo = equipoS.nombreEquipoPorElemento(nombreElemento);
+ 	 	}
+ 	 	catch(Exception e){        
+ 	    } 
+    	return nombreEquipo; 
+ 	  }
 	
 	public void info() {
 		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Equipo dado de baja", "Se dió de baja satisfactoriamente.");
@@ -130,6 +141,11 @@ public class RegistrarEquipoBean extends BasePageBean{
 	
 	public void info2() {
 		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Asociación de Equipo", "Se asoció satisfactoriamente a el Laboratorio.");
+		 PrimeFaces.current().dialog().showMessageDynamic(message);
+	 }
+	
+	public void info3() {
+		 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Equipo registrado", "Se registró el equipo satisfactoriamente.");
 		 PrimeFaces.current().dialog().showMessageDynamic(message);
 	 }
 	

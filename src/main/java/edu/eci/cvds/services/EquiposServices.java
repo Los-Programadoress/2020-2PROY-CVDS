@@ -103,6 +103,12 @@ public interface EquiposServices {
       * @return nombre del equipo
       */
  	  public String nombreEquipoPorId(int nequipo) throws EquiposException;
+ 	  
+ 	 /**
+       * Método que permite consultar el nombre del equipo por el nombre del elemento
+       * @return nombre del equipo
+       */
+  	  public String nombreEquipoPorElemento(String nombreElemento) throws EquiposException;
 	 
 	//ELEMENTO 
  	/**

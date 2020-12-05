@@ -279,12 +279,13 @@ body .ui-staticmessage.ui-message {
 .botonExcel {
   position: absolute;
   left: 15%;
-  top: 42%;
-  height: 50px;
-  width: 55px;
+  top: 45%;
+  height: 30px;
+  width: 40px;
   background: url(img/excel.png) center;
   background-size: 100% 100%;
   color: #0000;
+  border: none;
 }
 
 .tap .botonExcel2 {

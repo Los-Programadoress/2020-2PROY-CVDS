@@ -228,7 +228,7 @@ public class EquiposServicesImpl implements EquiposServices{
      * @return nombre del equipo
      */
     @Override
-	  public String nombreEquipoPorId(int nequipo) throws EquiposException{
+	public String nombreEquipoPorId(int nequipo) throws EquiposException{
    	 try{
 	 		return equipoDAO.nombreEquipoPorId(nequipo);
 	 	}
@@ -236,6 +236,22 @@ public class EquiposServicesImpl implements EquiposServices{
 	        throw new EquiposException("Error al consultar el nombre del equipo",e);            
 	    }  
 	  }
+    
+    /**
+     * Método que permite consultar el nombre del equipo por el nombre del elemento
+     * @return nombre del equipo
+     */
+    @Override
+    public String nombreEquipoPorElemento(String nombreElemento) throws EquiposException{
+	    int numEquipo = 0;
+       try{
+    	   numEquipo = numEquipoDelElemento(nombreElemento);
+    	   return nombreEquipoPorId(numEquipo);
+ 	 	}
+ 	 	catch(Exception e){   
+ 	 		throw new EquiposException("Error al consultar el nombre del equipo",e);            
+ 	    } 
+ 	  }
     
 	/**
      * Método que permite consultar el nombre del laboratorio del equipo

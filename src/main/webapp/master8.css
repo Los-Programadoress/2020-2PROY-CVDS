@@ -46,7 +46,12 @@ body {
   left: 38%;
 }
 
-.oolumna {
+.columna {
+  background: #900;
+  color: #fff;
+ }
+ 
+.ui-datatable-header{
   background: #900;
   color: #fff;
 }

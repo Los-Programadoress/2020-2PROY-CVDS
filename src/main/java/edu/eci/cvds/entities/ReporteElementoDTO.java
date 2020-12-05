@@ -30,6 +30,10 @@ public class ReporteElementoDTO {
 	public boolean isDisponible() {
 		return disponible;
 	}
+	/**
+     * Método que cambia la disponibilidad del elemento
+     * @param La disponibilidad del elemento
+     */
 	public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
 	}
@@ -48,13 +52,26 @@ public class ReporteElementoDTO {
 		return disponibilidad;
 	}
 	
+	/**
+     * Método que cambia la disponibilidad del elemento
+     * @param La disponibilidad del elemento
+     */
 	public void setDisponibilidad(String disponibilidad) {
 		this.disponibilidad = disponibilidad;
 	}
+	
+	/**
+     * Método que devuelve si el elemento es dado de baja
+     * @return Si el elemento esta o no dado de baja
+     */
 	public boolean isDadoDeBaja() {
 		return dadoDeBaja;
 	}
 	
+	/**
+	 * Método que cambia si el elemento es dado de baja
+	 * @param Estado del elemento
+	 */
 	public void setDadoDeBaja(boolean dadoDeBaja) {
 		this.dadoDeBaja = dadoDeBaja;
 	}
@@ -71,12 +88,19 @@ public class ReporteElementoDTO {
 		}
 		return bajado;
 	}
-	public void setBajado(String bajado) {
-		this.bajado = bajado;
-	}
+	
+	/**
+     * Método que cambia el id del equipo
+     * @return El estado dado de baja del equipo
+     */
 	public int getEquipo() {
 		return equipo;
 	}
+	
+	/**
+	 * Método que cambia el id del equipo
+	 * @param id del equipo
+	 */
 	public void setEquipo(int equipo) {
 		this.equipo = equipo;
 	}
